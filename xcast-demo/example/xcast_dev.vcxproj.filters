@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\Study\xcast-demo\xcast-demo\example\main-view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\Study\xcast-demo\xcast-demo\example\tab-view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\Study\xcast-demo\xcast-demo\example\tree-view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\Study\xcast-demo\xcast-demo\example\xcast-dev.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\Study\xcast-demo\xcast-demo\example\xcast-ui-handler.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Live\XCastData.cpp" />
+    <ClCompile Include="Live\XCastHelper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="E:\Study\xcast-demo\xcast-demo\example\main-view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\Study\xcast-demo\xcast-demo\example\Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\Study\xcast-demo\xcast-demo\example\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\Study\xcast-demo\xcast-demo\example\targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\Study\xcast-demo\xcast-demo\example\xcast-dev.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\Study\xcast-demo\xcast-demo\example\xcast-ui-handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\xcast_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\xcast_data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\xcast_define.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\xcast_error.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\xcast_variant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xcast.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\xcast.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Live\XCastData.h" />
+    <ClInclude Include="Live\XCastHelper.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\Study\xcast-demo\xcast-demo\example\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="E:\Study\xcast-demo\xcast-demo\example\xcast-dev.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{6DE5CA25-97BC-3A7F-9095-6552E0F4FC24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{3C982294-14C0-309C-A1BE-72882AD41175}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
