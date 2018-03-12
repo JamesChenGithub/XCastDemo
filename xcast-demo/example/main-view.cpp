@@ -153,20 +153,20 @@ xcast_get_stream_param(void *user_data)
   params["track"] = track;
 #endif
 
-  xcast_data host_addr = xcast::get_property("lan-relay.host-addr");
+  //xcast_data host_addr = xcast::get_property("lan-relay.host-addr");
 
-  /* bind local ip */
-  const char* ip = host_addr["ip"];      
-  uint16_t    port = host_addr["port"];
-  const char* gateway = host_addr["gateway"];
-  /* network card name */
-  const char* name = host_addr["name"];
-  /* network card describe */
-  const char* desc =  host_addr["desc"];
-  /* network card mac address */
-  const char* mac = host_addr["mac"];
-  printf("get host addr:ip(%s) port(%u) gateway(%s) name(%s) desc(%s) mac(%s)\n",
-        ip, port, gateway, name, desc, mac);
+  ///* bind local ip */
+  //const char* ip = host_addr["ip"];      
+  //uint16_t    port = host_addr["port"];
+  //const char* gateway = host_addr["gateway"];
+  ///* network card name */
+  //const char* name = host_addr["name"];
+  ///* network card describe */
+  //const char* desc =  host_addr["desc"];
+  ///* network card mac address */
+  //const char* mac = host_addr["mac"];
+  //printf("get host addr:ip(%s) port(%u) gateway(%s) name(%s) desc(%s) mac(%s)\n",
+  //      ip, port, gateway, name, desc, mac);
 
   //int32_t      rt;
 
@@ -177,6 +177,8 @@ xcast_get_stream_param(void *user_data)
   //audio_format["bits"] = 16;
   //rt = xcast_set_property("preference.audio.output-format", audio_format);
 
+  const char *parmastr = params.dump();
+  int i = 0;
   return params;
 }
 
@@ -1734,7 +1736,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			up->identifier = 1234567;
 			up->isTestEvn = false;
 			up->sdkappid = 1400036169;
-			up->accounttype = 12345;
+			up->accounttype = 14180;
 
 			XCastHelper::getInstance()->startContext(std::move(up), [&](int code, const char *err) {
 				is_initialized = code == 0;
@@ -1799,7 +1801,47 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
       
       break;
     case ID_STARTSTREAM:
-      xcast_start_stream(hWnd);
+	{
+		/*xcast_start_stream(hWnd);
+		break;*/
+
+		std::unique_ptr<XCastStreamParam> param(new XCastStreamParam);
+
+		param->role = "user";
+		param->roomid = 1000;
+		param->auto_recv = true;
+		param->streamID = "stream1";
+
+		param->auth_info.auth_bits = -1;
+		param->auth_info.auth_type = 0;
+
+		XCastHelper::getInstance()->enterRoom(std::move(param), NULL, [&](int code, const char *err) {
+			is_stream_running = code == XCAST_OK;
+			if (is_stream_running)
+			{
+				HWND hToolbar = FindWindowEx(hWnd, NULL, TOOLBARCLASSNAME, NULL);
+				TBBUTTONINFO tbInfo;
+				tbInfo.cbSize = sizeof(TBBUTTONINFO);
+				tbInfo.dwMask = TBIF_TEXT | TBIF_IMAGE;
+				tbInfo.iImage = is_stream_running ? MAKELONG(4, 0) : MAKELONG(3, 0);
+				tbInfo.pszText = is_stream_running ? TEXT("退房") : TEXT("进房");
+				SendMessage(hToolbar, TB_SETBUTTONINFO, (WPARAM)ID_STARTSTREAM, (LPARAM)&tbInfo);
+
+				if (!is_stream_running) {
+					/* 刷新界面 */
+					ClearTrackBuffer(NULL, false);
+					InvalidVideoView();
+				}
+			}
+			else
+			{
+				ui_xcast_err(code, err, NULL);
+			}
+
+		});
+
+
+	}
       break;
        break;
     case ID_STARTLANRELAY:

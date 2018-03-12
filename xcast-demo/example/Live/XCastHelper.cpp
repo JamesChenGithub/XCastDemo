@@ -127,7 +127,7 @@ void XCastHelper::stopContext(std::function<void(int32_t, char *)> callback)
 		}
 	}
 
-	xcast_shutdown();
+	tencent::xcast::shutdown();
 	is_startup_succ = false;
 	callback(XCAST_OK, "xcast shutdown succ");
 }
@@ -148,8 +148,7 @@ void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique
 		callback(1003, "xcast is streaming");
 		return;
 	}
-
-	if (!param.get() || !param->isVaild());
+	if (!(param.get())||!(param->isVaild()))
 	{
 		callback(1004, "xcast start stream param error");
 		return;
@@ -159,7 +158,7 @@ void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique
 	m_stream_param = std::move(param);
 
 	m_room_handler.reset();
-	if (roomDelegate)
+	if (roomDelegate.get())
 	{
 		m_room_handler = std::move(roomDelegate);
 	}
@@ -196,11 +195,17 @@ void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique
 	}
 
 	params.put("auth_info", auth_info);
-	// 自定义采集（optional）,视频业务逻辑情况定
+
+
+	 //自定义采集（optional）,视频业务逻辑情况定
 	track["ext-video-capture"] = m_stream_param->track.ext_video_capture;    /* allow video track to use external capture */
 	track["ext-audio-capture"] = m_stream_param->track.ext_audio_capture;    /* allow audio track to use external capture */
 	track["ext-audio-playback"] = m_stream_param->track.ext_audio_playback;   /* allow audio track to use external playback */
-	params["track"] = track;
+	params.put("track", track);
+
+	////\"videomaxbps\":int32(3000)
+	//params["videomaxbps"] = 3000;
+	char *pstr = params.dump();
 
 	int32_t  rt = xcast_start_stream(m_stream_param->streamID.c_str(), params);
 	if (XCAST_OK != rt) {

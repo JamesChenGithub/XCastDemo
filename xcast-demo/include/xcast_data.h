@@ -86,9 +86,9 @@ public:
     return (char)xcast_variant_get_type(value_);
   }
 
-  //char *dump() {
-  //  return value_ ? xcast_variant_dump(value_) : NULL;
-  //}
+  char *dump() {
+    return value_ ? xcast_variant_dump(value_) : NULL;
+  }
 
   /* get basic type value from 'xcast_data_t' */
   operator bool() { return value_ ? xcast_variant_bool_get(value_) : false; }

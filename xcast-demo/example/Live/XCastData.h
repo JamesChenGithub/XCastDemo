@@ -65,7 +65,7 @@ typedef struct XCastStreamAuthInfo
 		//	xc_auth_auto
 		if (auth_type == xc_auth_none)
 		{
-			
+			return true;
 		}
 		else if (auth_type == xc_auth_manual)
 		{
@@ -91,7 +91,7 @@ typedef struct XCastStreamTrackInfo
 {
 	bool ext_video_capture = false;
 	bool ext_audio_capture = false;
-	bool ext_audio_playback = false;
+	bool ext_audio_playback = true;
 }XCastStreamTrackInfo;
 
 
@@ -107,14 +107,14 @@ typedef struct XCastStreamDevice {
 }XCastStreamDevice;
 
 typedef struct XCastStreamParam {
-	uint32_t roomid;
+	int32_t roomid;
 	std::string role;
 	bool auto_recv = true;
 	std::string streamID;
 	XCastStreamAuthInfo auth_info;
 	XCastStreamTrackInfo track;
 
-
+	// TODO:补投屏，以及局域网通信字段 
 
 	bool isVaild() const
 	{
@@ -123,7 +123,8 @@ typedef struct XCastStreamParam {
 			return false;
 		}
 
-		return auth_info.isVaild();
+		bool isv = auth_info.isVaild();
+		return isv;
 	}
 
 } XCastStreamParam;

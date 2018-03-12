@@ -288,7 +288,7 @@ typedef enum xc_device_state_e {
 * //     "属性set":{
 * //       // 参数：带"*"项表示必需项，"null"表示不需要
 * //       "params":[null, {其它值}],
-* //     }                                                                                                                                               
+* //     }
 * // 其中，"[]"表示数值可选，"{}"表示数值为字典vdict类型。
 * //
 */
@@ -516,8 +516,8 @@ typedef enum xc_device_state_e {
 #define XC_MIC_STATE                        "device.mic.%s.state"
 
 /*
-* // 麦克风属性: 启动/关闭指定麦克风本地回放
-* "device.mic.%s.loopback":{
+* // 麦克风属性: 启动/关闭指定麦克风本地预览
+* "device.mic.%s.preview":{
 *   "get":{
 *     "return":"vbool"
 *   },
@@ -526,7 +526,7 @@ typedef enum xc_device_state_e {
 *   },
 * },
 */
-#define XC_MIC_LOOPBACK                     "device.mic.%s.loopback"
+#define XC_MIC_PREVIEW                      "device.mic.%s.preview"
 
 /*
 * // 麦克风属性: 音量获取和设置
@@ -580,8 +580,8 @@ typedef enum xc_device_state_e {
 #define XC_SPEAKER_DEFAULT                  "device.speaker.default"
 
 /*
-* // 扬声器属性: 打开/关闭扬声器
-* "device.speaker.enable":{
+* // 扬声器属性: 打开/关闭扬声器预览
+* "device.speaker.%s.preview":{
 *   "get":{
 *     "return":"vbool"
 *   },
@@ -590,7 +590,7 @@ typedef enum xc_device_state_e {
 *   }
 * },
 */
-#define XC_SPEAKER_ENABLE                   "device.speaker.%s.enable"
+#define XC_SPEAKER_PREVIEW                  "device.speaker.%s.preview"
 
 /*
  * // 扬声器属性: 打开/关闭耳机模式

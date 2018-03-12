@@ -63,6 +63,7 @@ ui_start_stream(const char *stream, bool start, void* user_data)
   if (start) {
     int32_t     rt;
     xcast_data   params = xcast_get_stream_param(user_data);
+	char *pstr = params.dump();
     rt = xcast::start_stream(stream, params);
     if (XCAST_OK != rt) {
       ui_xcast_err(rt, xcast_err_msg(), user_data);
