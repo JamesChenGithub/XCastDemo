@@ -8,6 +8,7 @@
 */
 
 /* 启动/停止XCAST */
+int32_t  new_ui_init_xcast(bool succ, void* user_data);
 int32_t ui_init_xcast(bool start, void *user_data);
 int32_t ui_start_stream(const char *stream, bool start, void* user_data);
 

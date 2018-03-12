@@ -11,6 +11,23 @@ static int32_t on_track_event(void *user_data, xcast_data &e);
 static int32_t on_device_event(void *user_data, xcast_data &e);
 static int32_t on_stat_tips(void *user_data, xcast_data &e);
 
+
+int32_t  new_ui_init_xcast(bool succ, void* user_data)
+{
+	if (succ) {
+		/* 注册事件通知回调 */
+		xcast::handle_event(XC_EVENT_SYSTEM, on_xcast_event, user_data);
+		xcast::handle_event(XC_EVENT_STREAM, on_stream_event, user_data);
+		xcast::handle_event(XC_EVENT_TRACK, on_track_event, user_data);
+		xcast::handle_event(XC_EVENT_DEVICE, on_device_event, user_data);
+		xcast::handle_event(XC_EVENT_STATISTIC_TIPS, on_stat_tips, user_data);
+	}
+	else {
+		ui_xcast_err(-1000, "startup fail", NULL);
+	}
+	return 0;
+}
+
 int32_t 
 ui_init_xcast(bool start, void* user_data)
 {
@@ -75,6 +92,9 @@ on_xcast_event(void *user_data, xcast_data &e)
 static int32_t
 on_stream_event(void *user_data, xcast_data &e)
 {
+	char * str = e.dump();
+	if (str)
+		printf("%s\n", str);
   switch ((int32_t)e["type"]) {
   case xc_stream_added:
  {
@@ -98,6 +118,7 @@ on_stream_event(void *user_data, xcast_data &e)
   case xc_stream_updated:
     if (e["state"] == xc_stream_connected) {
       /* 流状态： 连接成功 */
+		
 		ui_stream_connected(e["src"], user_data);
     }
 

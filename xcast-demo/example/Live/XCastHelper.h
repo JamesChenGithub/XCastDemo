@@ -1,8 +1,9 @@
 #pragma once
 
 #include<mutex>
-#include "xcast.h"
+#include "xcast.hh"
 #include "XCastData.h"
+
 
 
 class XCastHelper 
@@ -14,7 +15,8 @@ private:
 
 private:
 	std::unique_ptr<XCastStartParam>	m_startup_param;
-	std::unique_ptr<XCastEventHandler>  m_event_handler;
+	std::unique_ptr<XCastGlobalHandler> m_global_handler;
+	std::unique_ptr<XCastRoomHandler>  m_room_handler;
 	std::unique_ptr<XCastStreamParam>	m_stream_param;
 
 	std::recursive_mutex				m_func_mutex;
@@ -45,10 +47,10 @@ public:
 	void stopContext(std::function<void(int32_t, char *)> callback);
 
 public:
-	void setEventHandler(std::unique_ptr<XCastEventHandler>  handler);
+	void setGlobalHandler(std::unique_ptr<XCastGlobalHandler>  handler);
 
 public:
-	void enterRoom(std::unique_ptr<XCastStreamParam>	m_stream_param, std::function<void(int32_t, char *)> callback);
+	void enterRoom(std::unique_ptr<XCastStreamParam>m_stream_param,  std::unique_ptr<XCastRoomHandler>	roomDelegate,std::function<void(int32_t, char *)> callback);
 	void exitRoom(std::function<void(int32_t, char *)> callback);
 
 	// Speaker²Ù×÷
@@ -102,6 +104,9 @@ protected:
 	//int setRotation(int rotate);
 	// enableExternalCapture()
 	//int fillExternalCaptureFrame()
+
+private:
+	int avsdkErrorCode(int xcast_err_code);
 
 };
 

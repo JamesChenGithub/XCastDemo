@@ -4,12 +4,16 @@
 #include "xcast_define.h"
 #include <string>
 
-
-
-class  XCastEventHandler
+class XCastGlobalHandler
 {
 public:
-	virtual  ~XCastEventHandler() = 0;
+	virtual  ~XCastGlobalHandler() = 0;
+};
+
+class  XCastRoomHandler
+{
+public:
+	virtual  ~XCastRoomHandler() = 0;
 public:
 	virtual void onWillEnterRoom(int result, const char *error) = 0;
 	virtual void onDidEnterRoom(int result, const char *error) = 0;
@@ -25,7 +29,7 @@ public:
 typedef struct XCastStartParam {
 	uint64_t identifier = 0;
 	bool isTestEvn = false;
-	uint32_t sdkappid = 0;
+	int32_t sdkappid = 0;
 	uint32_t accounttype = 0;
 
 	bool isVaild() const

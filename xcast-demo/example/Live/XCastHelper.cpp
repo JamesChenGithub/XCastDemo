@@ -1,5 +1,8 @@
 #include "XCastHelper.h"
-
+#include "include/xcast_variant.h"
+#include "xcast.hh"
+#include "include/xcast_variant.h"
+#pragma comment(lib, "comctl32.lib")
 XCastHelper * XCastHelper::m_instance = nullptr;
 
 XCastHelper::XCastHelper()
@@ -12,12 +15,14 @@ XCastHelper::~XCastHelper()
 {
 	m_startup_param.reset();
 	m_stream_param.reset();
-	m_event_handler.reset();
+	m_global_handler.reset();
+	m_room_handler.reset();
 }
 
 
 int32_t XCastHelper::onXCastSystemEvent(void *contextinfo, void * data)
 {
+
 	return XCAST_OK;
 }
 int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, void * data)
@@ -39,13 +44,22 @@ int32_t XCastHelper::onXCastTipsEvent(void *contextinfo, void * data)
 
 XCastHelper* XCastHelper::getInstance()
 {
-	static std::once_flag xcast_instance_flag;
+	/*static std::once_flag xcast_instance_flag;
 	std::call_once(xcast_instance_flag, [](XCastHelper *instance) {
-		instance = new XCastHelper;
-	}, m_instance);
+		m_instance = new XCastHelper;
+	});
 
 
+	return m_instance;*/
+	// TODO:先简单写
+	static bool once_flag = false;
+	if (!once_flag)
+	{
+		m_instance = new XCastHelper;
+		once_flag = true;
+	}
 	return m_instance;
+	
 }
 
 
@@ -75,26 +89,22 @@ void XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, std::func
 	m_startup_param = std::move(param);
 	// TODO：参数检查 
 
-	xcast_data_t settings;
-	settings["app_id"] = param->sdkappid;
-	settings["identifier"] = param->identifier;
-	settings["test_env"] = param->isTestEvn;
-
-	int32_t rt = xcast_startup(settings);
+	tencent::xcast_data setparam;
+	setparam["app_id"] = m_startup_param->sdkappid;
+	setparam["identifier"] = m_startup_param->identifier;
+	setparam["test_env"] =  m_startup_param->isTestEvn;
+	int32_t rt = tencent::xcast::startup(setparam);
 
 	is_startup_succ = (rt == XCAST_OK);
+	///* 注册事件通知回调 */
+	//xcast_handle_event(XC_EVENT_SYSTEM, XCastHelper::onXCastSystemEvent, (void *)m_instance);
+	//xcast_handle_event(XC_EVENT_STREAM, XCastHelper::onXCastStreamEvent, m_instance);
+	//xcast_handle_event(XC_EVENT_TRACK, XCastHelper::onXCastTrackEvent, m_instance);
+	//xcast_handle_event(XC_EVENT_DEVICE, XCastHelper::onXCastDeviceEvent, m_instance);
+	//xcast_handle_event(XC_EVENT_STATISTIC_TIPS, XCastHelper::onXCastTipsEvent, m_instance);
 
 
-
-	/* 注册事件通知回调 */
-	xcast_handle_event(XC_EVENT_SYSTEM, XCastHelper::onXCastSystemEvent, (void *)m_instance);
-	xcast_handle_event(XC_EVENT_STREAM, &XCastHelper::onXCastStreamEvent, m_instance);
-	xcast_handle_event(XC_EVENT_TRACK, &XCastHelper::onXCastTrackEvent, m_instance);
-	xcast_handle_event(XC_EVENT_DEVICE, &XCastHelper::onXCastDeviceEvent, m_instance);
-	xcast_handle_event(XC_EVENT_STATISTIC_TIPS, &XCastHelper::onXCastTipsEvent, m_instance);
-
-
-	callback(rt, is_startup_succ ? "xcast_startup succ" : "xcast_startup failed");
+	callback(avsdkErrorCode(rt), is_startup_succ ? "xcast_startup succ" : "xcast_startup failed");
 
 }
 void XCastHelper::stopContext(std::function<void(int32_t, char *)> callback)
@@ -122,16 +132,15 @@ void XCastHelper::stopContext(std::function<void(int32_t, char *)> callback)
 	callback(XCAST_OK, "xcast shutdown succ");
 }
 
-
-void XCastHelper::setEventHandler(std::unique_ptr<XCastEventHandler>  handler)
+void XCastHelper::setGlobalHandler(std::unique_ptr<XCastGlobalHandler>  handler)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-	m_event_handler.reset();
-	m_event_handler = std::move(handler);
+	m_global_handler.reset();
+	m_global_handler = std::move(handler);
 }
 
 
-void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::function<void(int32_t, char *)> callback)
+void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique_ptr<XCastRoomHandler>	roomDelegate, std::function<void(int32_t, char *)> callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 	if (is_stream_succ)
@@ -149,9 +158,15 @@ void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::functi
 	m_stream_param.reset();
 	m_stream_param = std::move(param);
 
+	m_room_handler.reset();
+	if (roomDelegate)
+	{
+		m_room_handler = std::move(roomDelegate);
+	}
+	
+
 
 	// 参数配置
-
 	xcast_data_t       params, auth_info, track;
 
 	// 房间号，接收方式，角色
@@ -308,4 +323,11 @@ int XCastHelper::updateCameraMode(const char *cameraid, bool autoSending, std::f
 int XCastHelper::switchCamera(const char *cameraid, bool preview, bool campture, std::function<void(int32_t, char *)> callback)
 {
 	return XCAST_OK;
+}
+
+
+int XCastHelper::avsdkErrorCode(int xcast_err_code)
+{
+	// TODO : xcast err code 转成AVSDK错误码
+	return xcast_err_code;
 }

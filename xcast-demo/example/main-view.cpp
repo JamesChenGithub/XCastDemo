@@ -3,6 +3,8 @@
 #include "jansson.h"
 #include <time.h>
 
+#include "Live/XCastHelper.h"
+#include "Live/XCastData.h"
 #pragma comment(lib, "comctl32.lib")
 
 
@@ -1713,7 +1715,88 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     // 分析菜单选择:
     switch (wmId) {
     case ID_INIT:
-      xcast_init(hWnd);
+	{
+		//xcast_init(hWnd);
+		//break;
+
+		/*tencent::xcast_data settings;
+		settings["app_id"] = 1400036169;
+		settings["identifier"] = 12345654;
+		settings["test_env"] = false;
+		int32_t rt = tencent::xcast::startup(settings);*/
+
+
+		if (!is_initialized)
+		{
+
+			XCastStartParam *param = new XCastStartParam;
+			std::unique_ptr<XCastStartParam> up(param);
+			up->identifier = 1234567;
+			up->isTestEvn = false;
+			up->sdkappid = 1400036169;
+			up->accounttype = 12345;
+
+			XCastHelper::getInstance()->startContext(std::move(up), [&](int code, const char *err) {
+				is_initialized = code == 0;
+				new_ui_init_xcast(is_initialized, &main_app);
+
+				HWND hToolbar = FindWindowEx(hWnd, NULL, TOOLBARCLASSNAME, NULL);
+				TBBUTTONINFO tbInfo;
+				tbInfo.cbSize = sizeof(TBBUTTONINFO);
+				tbInfo.dwMask = TBIF_TEXT | TBIF_IMAGE;
+				tbInfo.iImage = is_initialized ? MAKELONG(4, 0) : MAKELONG(3, 0);
+				tbInfo.pszText = is_initialized ? TEXT("停止") : TEXT("启动");
+				SendMessage(hToolbar, TB_SETBUTTONINFO, (WPARAM)ID_INIT, (LPARAM)&tbInfo);
+
+				if (!is_initialized) {
+					HTREEITEM         hItem;
+					char              path[XCAST_MAX_PATH] = { 0 };
+					snprintf(path, XCAST_MAX_PATH, "stream.%s", "stream1");
+					hItem = GetTreeItem(main_app.hTreeView, path, NULL);
+					if (hItem) {
+						RemoveTreeItem(main_app.hTreeView, hItem);
+					}
+				}
+
+			});
+		}
+		else
+		{
+			XCastHelper::getInstance()->stopContext([&](int32_t errcode, char *err){
+				is_stream_running = false;
+				is_initialized = false;
+				//new_ui_init_xcast(is_initialized, &main_app);
+
+				HTREEITEM         hItem;
+				char              path[XCAST_MAX_PATH] = { 0 };
+				snprintf(path, XCAST_MAX_PATH, "stream.%s", "stream1");
+				hItem = GetTreeItem(main_app.hTreeView, path, NULL);
+				if (hItem) {
+					RemoveTreeItem(main_app.hTreeView, hItem);
+				}
+
+
+				HWND hToolbar = FindWindowEx(hWnd, NULL, TOOLBARCLASSNAME, NULL);
+				TBBUTTONINFO tbInfo;
+				tbInfo.cbSize = sizeof(TBBUTTONINFO);
+				tbInfo.dwMask = TBIF_TEXT | TBIF_IMAGE;
+				tbInfo.iImage = is_initialized ? MAKELONG(4, 0) : MAKELONG(3, 0);
+				tbInfo.pszText = is_initialized ? TEXT("停止") : TEXT("启动");
+				SendMessage(hToolbar, TB_SETBUTTONINFO, (WPARAM)ID_INIT, (LPARAM)&tbInfo);
+
+				if (!is_initialized) {
+					HTREEITEM         hItem;
+					char              path[XCAST_MAX_PATH] = { 0 };
+					snprintf(path, XCAST_MAX_PATH, "stream.%s", "stream1");
+					hItem = GetTreeItem(main_app.hTreeView, path, NULL);
+					if (hItem) {
+						RemoveTreeItem(main_app.hTreeView, hItem);
+					}
+				}
+			});
+		}
+	}
+      
       break;
     case ID_STARTSTREAM:
       xcast_start_stream(hWnd);
