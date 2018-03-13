@@ -3,6 +3,19 @@
 
 #include "xcast-dev.h"
 
+
+ //static int32_t on_xcast_event(void *user_data, xcast_data &e);
+ //static int32_t on_stream_event(void *user_data, xcast_data &e);
+ //static int32_t on_track_event(void *user_data, xcast_data &e);
+ //static int32_t on_device_event(void *user_data, xcast_data &e);
+ //static int32_t on_stat_tips(void *user_data, xcast_data &e);
+
+ int32_t new_xcast_event(void *user_data, xcast_data &e);
+ int32_t new_stream_event(void *user_data, xcast_data &e);
+ int32_t new_track_event(void *user_data, xcast_data &e);
+ int32_t new_device_event(void *user_data, xcast_data &e);
+ int32_t new_stat_tips(void *user_data, xcast_data &e);
+
 /*
 * 控制XCAST在UI中的表现，可以在不同的平台上采用native UI实现以下方法来简化APP界面封装。
 */

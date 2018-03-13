@@ -8,7 +8,7 @@
 
 extern BOOL InitInstance(HINSTANCE, int);
 
-XCastApp   main_app;
+
 
 int APIENTRY 
 wWinMain(_In_ HINSTANCE hInstance,

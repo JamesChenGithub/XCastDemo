@@ -1,8 +1,16 @@
 #include "XCastHelper.h"
 #include "include/xcast_variant.h"
 #include "xcast.hh"
-#include "include/xcast_variant.h"
-#pragma comment(lib, "comctl32.lib")
+
+
+#if kForVipKidTest
+
+#include "example/xcast-dev.h"
+#include "example/xcast-ui-handler.h"
+
+#endif
+
+
 XCastHelper * XCastHelper::m_instance = nullptr;
 
 XCastHelper::XCastHelper()
@@ -20,45 +28,63 @@ XCastHelper::~XCastHelper()
 }
 
 
-int32_t XCastHelper::onXCastSystemEvent(void *contextinfo, void * data)
+int32_t XCastHelper::onXCastSystemEvent(void *contextinfo, tencent::xcast_data &data)
 {
+#if kForVipKidTest
+	new_xcast_event(&main_app, data);
+#endif
+
+	// TODO: 添加回调 
 
 	return XCAST_OK;
 }
-int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, void * data)
+int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &data)
 {
+#if kForVipKidTest
+	new_stream_event(&main_app, data);
+#endif
 	return XCAST_OK;
 }
-int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, void * data)
+int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &data)
 {
+#if kForVipKidTest
+	new_track_event(&main_app, data);
+#endif
 	return XCAST_OK;
 }
-int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, void * data)
+int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &data)
 {
+#if kForVipKidTest
+	new_device_event(&main_app, data);
+#endif
 	return XCAST_OK;
 }
-int32_t XCastHelper::onXCastTipsEvent(void *contextinfo, void * data)
+int32_t XCastHelper::onXCastTipsEvent(void *contextinfo, tencent::xcast_data &data)
 {
+#if kForVipKidTest
+	new_stat_tips(&main_app, data);
+#endif
 	return XCAST_OK;
 }
 
 XCastHelper* XCastHelper::getInstance()
 {
-	/*static std::once_flag xcast_instance_flag;
-	std::call_once(xcast_instance_flag, [](XCastHelper *instance) {
-		m_instance = new XCastHelper;
+	static std::once_flag oc;//用于call_once的局部静态变量
+	std::call_once(oc, [&] { 
+		m_instance = new XCastHelper();
 	});
-
-
-	return m_instance;*/
-	// TODO:先简单写
-	static bool once_flag = false;
-	if (!once_flag)
-	{
-		m_instance = new XCastHelper;
-		once_flag = true;
-	}
 	return m_instance;
+
+
+	//return m_instance;*/
+	//// TODO:先简单写
+	//static bool once_flag = false;
+	//if (!once_flag)
+	//{
+	//	m_instance = new XCastHelper;
+	//	once_flag = true;
+	//}
+	//return m_instance;
 	
 }
 
@@ -97,11 +123,11 @@ void XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, std::func
 
 	is_startup_succ = (rt == XCAST_OK);
 	///* 注册事件通知回调 */
-	//xcast_handle_event(XC_EVENT_SYSTEM, XCastHelper::onXCastSystemEvent, (void *)m_instance);
-	//xcast_handle_event(XC_EVENT_STREAM, XCastHelper::onXCastStreamEvent, m_instance);
-	//xcast_handle_event(XC_EVENT_TRACK, XCastHelper::onXCastTrackEvent, m_instance);
-	//xcast_handle_event(XC_EVENT_DEVICE, XCastHelper::onXCastDeviceEvent, m_instance);
-	//xcast_handle_event(XC_EVENT_STATISTIC_TIPS, XCastHelper::onXCastTipsEvent, m_instance);
+	tencent::xcast::handle_event(XC_EVENT_SYSTEM, XCastHelper::onXCastSystemEvent, (void *)m_instance);
+	tencent::xcast::handle_event(XC_EVENT_STREAM, XCastHelper::onXCastStreamEvent, m_instance);
+	tencent::xcast::handle_event(XC_EVENT_TRACK, XCastHelper::onXCastTrackEvent, m_instance);
+	tencent::xcast::handle_event(XC_EVENT_DEVICE, XCastHelper::onXCastDeviceEvent, m_instance);
+	tencent::xcast::handle_event(XC_EVENT_STATISTIC_TIPS, XCastHelper::onXCastTipsEvent, m_instance);
 
 
 	callback(avsdkErrorCode(rt), is_startup_succ ? "xcast_startup succ" : "xcast_startup failed");
@@ -166,7 +192,7 @@ void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique
 
 
 	// 参数配置
-	xcast_data_t       params, auth_info, track;
+	tencent::xcast_data       params, auth_info, track;
 
 	// 房间号，接收方式，角色
 	params["relation_id"] = m_stream_param->roomid;
@@ -184,14 +210,14 @@ void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique
 	else if (m_stream_param->auth_info.auth_type == xc_auth_manual)
 	{
 		// 方式2. 手动鉴权
-		auth_info.put_bytes("auth_buffer", m_stream_param->auth_info.auth_buffer, m_stream_param->auth_info.auth_buffer_size);  // "xxxx" 为业务生成auth_buffer
+		auth_info.put("auth_buffer", m_stream_param->auth_info.auth_buffer, m_stream_param->auth_info.auth_buffer_size);
 	}
 	else if (m_stream_param->auth_info.auth_type == xc_auth_manual)
 	{
 		auth_info["account_type"] = m_startup_param->accounttype;
 		auth_info["expire_time"] = m_stream_param->auth_info.expire_time;
 		const  char *secret_key = m_stream_param->auth_info.secret_key.c_str(); // 互动直播控制台上创建应该时生成的	
-		auth_info.put_bytes("secret_key", (const uint8_t *)secret_key, (uint32_t)strlen(secret_key));
+		auth_info.put("secret_key", (const uint8_t *)secret_key, (uint32_t)strlen(secret_key));
 	}
 
 	params.put("auth_info", auth_info);
@@ -207,7 +233,7 @@ void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique
 	//params["videomaxbps"] = 3000;
 	char *pstr = params.dump();
 
-	int32_t  rt = xcast_start_stream(m_stream_param->streamID.c_str(), params);
+	int32_t  rt = tencent::xcast::start_stream(m_stream_param->streamID.c_str(), params);
 	if (XCAST_OK != rt) {
 		// TODO：进房失败；
 		// ui_xcast_err(rt, xcast_err_msg(), user_data);

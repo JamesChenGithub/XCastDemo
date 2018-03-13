@@ -11,7 +11,7 @@ static int32_t on_track_event(void *user_data, xcast_data &e);
 static int32_t on_device_event(void *user_data, xcast_data &e);
 static int32_t on_stat_tips(void *user_data, xcast_data &e);
 
-
+//===========================================================
 int32_t  new_ui_init_xcast(bool succ, void* user_data)
 {
 	if (succ) {
@@ -28,6 +28,28 @@ int32_t  new_ui_init_xcast(bool succ, void* user_data)
 	return 0;
 }
 
+int32_t new_xcast_event(void *user_data, xcast_data &e)
+{
+	return on_xcast_event(user_data, e);
+}
+
+int32_t new_stream_event(void *user_data, xcast_data &e)
+{
+	return on_stream_event(user_data, e);
+}
+int32_t new_track_event(void *user_data, xcast_data &e)
+{
+	return on_track_event(user_data, e);
+}
+int32_t new_device_event(void *user_data, xcast_data &e)
+{
+	return on_device_event(user_data, e);
+}
+int32_t new_stat_tips(void *user_data, xcast_data &e)
+{
+	return on_stat_tips(user_data, e);
+}
+//============================================
 int32_t 
 ui_init_xcast(bool start, void* user_data)
 {

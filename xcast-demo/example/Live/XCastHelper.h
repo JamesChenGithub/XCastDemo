@@ -4,14 +4,13 @@
 #include "xcast.hh"
 #include "XCastData.h"
 
+#define kForVipKidTest 1
 
 
 class XCastHelper 
 {
 private:
 	static XCastHelper					*m_instance;
-
-
 
 private:
 	std::unique_ptr<XCastStartParam>	m_startup_param;
@@ -25,13 +24,12 @@ private:
 	bool is_startup_succ = false;
 	bool is_stream_succ = false;
 
-
 private:
-	static int32_t onXCastSystemEvent(void *contextinfo, void *data);
-	static int32_t onXCastStreamEvent(void *contextinfo, void *data);
-	static int32_t onXCastTrackEvent(void *contextinfo, void *data);
-	static int32_t onXCastDeviceEvent(void *contextinfo, void *data);
-	static int32_t onXCastTipsEvent(void *contextinfo, void *data);
+	static int32_t onXCastSystemEvent(void *contextinfo, tencent::xcast_data &data);
+	static int32_t onXCastStreamEvent(void *contextinfo, tencent::xcast_data &data);
+	static int32_t onXCastTrackEvent(void *contextinfo, tencent::xcast_data &data);
+	static int32_t onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &data);
+	static int32_t onXCastTipsEvent(void *contextinfo, tencent::xcast_data &data);
 
 private:
 	XCastHelper();
