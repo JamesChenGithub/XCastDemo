@@ -218,7 +218,6 @@ void XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, std::func
 		tencent::xcast::handle_event(XC_EVENT_TRACK, XCastHelper::onXCastTrackEvent, m_instance);
 		tencent::xcast::handle_event(XC_EVENT_DEVICE, XCastHelper::onXCastDeviceEvent, m_instance);
 		tencent::xcast::handle_event(XC_EVENT_STATISTIC_TIPS, XCastHelper::onXCastTipsEvent, m_instance);
-
 	}
 	
 
@@ -375,7 +374,7 @@ int XCastHelper::enableSpeaker(bool enable, std::function<void(int32_t, char *)>
 
 // 指定默认的speaker 为 sid
 // 同时进行enable操作
-int enableSpeaker(const char *sid, bool enable, std::function<void(int32_t, char *)> callback)
+int XCastHelper::enableSpeaker(const char *sid, bool enable, std::function<void(int32_t, char *)> callback)
 {
 	return XCAST_OK;
 }
@@ -400,7 +399,7 @@ int XCastHelper::enableMic(bool enable, std::function<void(int32_t, char *)> cal
 }
 
 // 对默认mic操作
-int XCastHelper::enableMic(const char*micid, bool enable, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
+int XCastHelper::enableMic(const char*micid, bool enable, std::function<void(int32_t, char *)> callback)
 {
 	return XCAST_OK;
 }
