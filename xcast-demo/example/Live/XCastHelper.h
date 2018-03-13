@@ -82,7 +82,7 @@ protected:
 	int enableMic(bool enable, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
 
 	// ¶ÔÄ¬ÈÏmic²Ù×÷
-	int enableMic(const char*micid, bool enable, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
+	int enableMic(const char *micid, bool enable, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
 
 	// ÇÐ»»mic
 	int switchToMic(const char *micid,  std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});

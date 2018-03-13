@@ -362,6 +362,8 @@ popup_capture_select(tree_item_data_t *item_data, HTREEITEM hItem)
     pt.x, pt.y, 0, main_app.hTreeView, NULL);
   DestroyMenu(hmenu);
 
+
+ // xcast::set_property(XC_TRACK_CAPTURE, data->stream.c_str(), data->track.c_str(), captures[n].str_val());
   if (n && captures.size() && n - 1 < captures.size()) {
     xcast::set_property(XC_TRACK_CAPTURE, data->stream.c_str(), data->track.c_str(), captures[n - 1].str_val());
   }

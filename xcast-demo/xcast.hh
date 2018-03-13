@@ -258,11 +258,17 @@ class xcast {
   }
 
   static int32_t set_property(const char *prop, const char *id, xcast_data val) {
-    return xcast_set_property(format(prop, id), val);
+    
+	  const char *cmdd = format(prop, id);
+	  const char *valstr = val.dump();
+	  return xcast_set_property(format(prop, id), val);
   }
 
   static int32_t set_property(
     const char *prop, const char *id1, const char *id2, xcast_data val) {
+
+	  const char *cmdd = format(prop, id1,id2);
+	  const char *valstr = val.dump();
     return xcast_set_property(format(prop, id1, id2), val);
   }
 
