@@ -44,7 +44,7 @@ int32_t write_file(const char* pFile, const char* mode, const char* content, uin
 void save_account();
 int32_t read_account();
 
-
+XCastApp   main_app;
 //#define UDT_TEST    1
 //#define SPEED
 //#define  AUTH_BUFFER_TEST
@@ -1805,40 +1805,70 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		/*xcast_start_stream(hWnd);
 		break;*/
 
-		std::unique_ptr<XCastStreamParam> param(new XCastStreamParam);
+		if (!is_stream_running)
+		{
+			std::unique_ptr<XCastStreamParam> param(new XCastStreamParam);
 
-		param->role = "user";
-		param->roomid = 1000;
-		param->auto_recv = true;
-		param->streamID = "stream1";
+			param->role = "user";
+			param->roomid = 1000;
+			param->auto_recv = true;
+			param->streamID = "stream1";
 
-		param->auth_info.auth_bits = -1;
-		param->auth_info.auth_type = 0;
+			param->auth_info.auth_bits = -1;
+			param->auth_info.auth_type = 0;
 
-		XCastHelper::getInstance()->enterRoom(std::move(param), NULL, [&](int code, const char *err) {
-			is_stream_running = code == XCAST_OK;
-			if (is_stream_running)
-			{
-				HWND hToolbar = FindWindowEx(hWnd, NULL, TOOLBARCLASSNAME, NULL);
-				TBBUTTONINFO tbInfo;
-				tbInfo.cbSize = sizeof(TBBUTTONINFO);
-				tbInfo.dwMask = TBIF_TEXT | TBIF_IMAGE;
-				tbInfo.iImage = is_stream_running ? MAKELONG(4, 0) : MAKELONG(3, 0);
-				tbInfo.pszText = is_stream_running ? TEXT("退房") : TEXT("进房");
-				SendMessage(hToolbar, TB_SETBUTTONINFO, (WPARAM)ID_STARTSTREAM, (LPARAM)&tbInfo);
+			XCastHelper::getInstance()->enterRoom(std::move(param), NULL, [&](int code, const char *err) {
+				is_stream_running = code == XCAST_OK;
+				if (is_stream_running)
+				{
+					HWND hToolbar = FindWindowEx(hWnd, NULL, TOOLBARCLASSNAME, NULL);
+					TBBUTTONINFO tbInfo;
+					tbInfo.cbSize = sizeof(TBBUTTONINFO);
+					tbInfo.dwMask = TBIF_TEXT | TBIF_IMAGE;
+					tbInfo.iImage = is_stream_running ? MAKELONG(4, 0) : MAKELONG(3, 0);
+					tbInfo.pszText = is_stream_running ? TEXT("退房") : TEXT("进房");
+					SendMessage(hToolbar, TB_SETBUTTONINFO, (WPARAM)ID_STARTSTREAM, (LPARAM)&tbInfo);
 
-				if (!is_stream_running) {
-					/* 刷新界面 */
-					ClearTrackBuffer(NULL, false);
-					InvalidVideoView();
+					if (!is_stream_running) {
+						/* 刷新界面 */
+						ClearTrackBuffer(NULL, false);
+						InvalidVideoView();
+					}
 				}
-			}
-			else
-			{
-				ui_xcast_err(code, err, NULL);
-			}
+				else
+				{
+					ui_xcast_err(code, err, NULL);
+				}
 
-		});
+			});
+		}
+		else
+		{
+			XCastHelper::getInstance()->exitRoom([&](int32_t code, char *err) {
+				is_stream_running = code == XCAST_OK ? false : true;
+				if (!is_stream_running)
+				{
+					HWND hToolbar = FindWindowEx(hWnd, NULL, TOOLBARCLASSNAME, NULL);
+					TBBUTTONINFO tbInfo;
+					tbInfo.cbSize = sizeof(TBBUTTONINFO);
+					tbInfo.dwMask = TBIF_TEXT | TBIF_IMAGE;
+					tbInfo.iImage = is_stream_running ? MAKELONG(4, 0) : MAKELONG(3, 0);
+					tbInfo.pszText = is_stream_running ? TEXT("退房") : TEXT("进房");
+					SendMessage(hToolbar, TB_SETBUTTONINFO, (WPARAM)ID_STARTSTREAM, (LPARAM)&tbInfo);
+
+					if (!is_stream_running) {
+						/* 刷新界面 */
+						ClearTrackBuffer(NULL, false);
+						InvalidVideoView();
+					}
+				}
+				else
+				{
+					ui_xcast_err(code, err, NULL);
+				}
+			});
+		}
+		
 
 
 	}

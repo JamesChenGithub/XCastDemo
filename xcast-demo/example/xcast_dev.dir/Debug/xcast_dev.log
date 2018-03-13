@@ -1,31 +1,14 @@
-﻿  Building Custom Rule C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeLists.txt
-  CMake does not need to re-run because C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/generate.stamp is up-to-date.
-  XCastData.cpp
-C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\include\xcast_define.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\include\xcast_define.h(1045): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  XCastHelper.cpp
-c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h(1045): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  main-view.cpp
-c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h(1045): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  tab-view.cpp
-c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h(1045): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  tree-view.cpp
-c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h(1045): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  xcast-dev.cpp
+﻿  main-view.cpp
 c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h(1045): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   xcast-ui-handler.cc
 c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h(1045): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  XCastHelper.cpp
+c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h(1045): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   正在生成代码...
 LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
-xcast-ui-handler.obj : error LNK2001: 无法解析的外部符号 "struct XCastApp main_app" (?main_app@@3UXCastApp@@A)
-XCastHelper.obj : error LNK2001: 无法解析的外部符号 "struct XCastApp main_app" (?main_app@@3UXCastApp@@A)
-main-view.obj : error LNK2001: 无法解析的外部符号 "struct XCastApp main_app" (?main_app@@3UXCastApp@@A)
-tab-view.obj : error LNK2001: 无法解析的外部符号 "struct XCastApp main_app" (?main_app@@3UXCastApp@@A)
-tree-view.obj : error LNK2001: 无法解析的外部符号 "struct XCastApp main_app" (?main_app@@3UXCastApp@@A)
-C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\bin\Debug\xcast_dev.exe : fatal error LNK1120: 1 个无法解析的外部命令
+XCastHelper.obj : error LNK2019: 无法解析的外部符号 "protected: int __thiscall XCastHelper::enableSpeaker(char const *,bool,class std::function<void __cdecl(int,char *)>)" (?enableSpeaker@XCastHelper@@IAEHPBD_NV?$function@$$A6AXHPAD@Z@std@@@Z)，该符号在函数 "private: static int __cdecl XCastHelper::onXCastStreamEvent(void *,class tencent::xcast_data &)" (?onXCastStreamEvent@XCastHelper@@CAHPAXAAVxcast_data@tencent@@@Z) 中被引用
+XCastHelper.obj : error LNK2019: 无法解析的外部符号 "protected: int __thiscall XCastHelper::enableMic(char const *,bool,class std::function<void __cdecl(int,char *)>)" (?enableMic@XCastHelper@@IAEHPBD_NV?$function@$$A6AXHPAD@Z@std@@@Z)，该符号在函数 "private: static int __cdecl XCastHelper::onXCastStreamEvent(void *,class tencent::xcast_data &)" (?onXCastStreamEvent@XCastHelper@@CAHPAXAAVxcast_data@tencent@@@Z) 中被引用
+C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\bin\Debug\xcast_dev.exe : fatal error LNK1120: 2 个无法解析的外部命令

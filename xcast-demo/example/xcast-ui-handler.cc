@@ -15,12 +15,12 @@ static int32_t on_stat_tips(void *user_data, xcast_data &e);
 int32_t  new_ui_init_xcast(bool succ, void* user_data)
 {
 	if (succ) {
-		/* 注册事件通知回调 */
-		xcast::handle_event(XC_EVENT_SYSTEM, on_xcast_event, user_data);
-		xcast::handle_event(XC_EVENT_STREAM, on_stream_event, user_data);
-		xcast::handle_event(XC_EVENT_TRACK, on_track_event, user_data);
-		xcast::handle_event(XC_EVENT_DEVICE, on_device_event, user_data);
-		xcast::handle_event(XC_EVENT_STATISTIC_TIPS, on_stat_tips, user_data);
+		///* 注册事件通知回调 */
+		//xcast::handle_event(XC_EVENT_SYSTEM, on_xcast_event, user_data);
+		//xcast::handle_event(XC_EVENT_STREAM, on_stream_event, user_data);
+		//xcast::handle_event(XC_EVENT_TRACK, on_track_event, user_data);
+		//xcast::handle_event(XC_EVENT_DEVICE, on_device_event, user_data);
+		//xcast::handle_event(XC_EVENT_STATISTIC_TIPS, on_stat_tips, user_data);
 	}
 	else {
 		ui_xcast_err(-1000, "startup fail", NULL);
@@ -30,24 +30,24 @@ int32_t  new_ui_init_xcast(bool succ, void* user_data)
 
 int32_t new_xcast_event(void *user_data, xcast_data &e)
 {
-	return on_xcast_event(user_data, e);
+	return on_xcast_event(&main_app, e);
 }
 
 int32_t new_stream_event(void *user_data, xcast_data &e)
 {
-	return on_stream_event(user_data, e);
+	return on_stream_event(&main_app, e);
 }
 int32_t new_track_event(void *user_data, xcast_data &e)
 {
-	return on_track_event(user_data, e);
+	return on_track_event(&main_app, e);
 }
 int32_t new_device_event(void *user_data, xcast_data &e)
 {
-	return on_device_event(user_data, e);
+	return on_device_event(&main_app, e);
 }
 int32_t new_stat_tips(void *user_data, xcast_data &e)
 {
-	return on_stat_tips(user_data, e);
+	return on_stat_tips(&main_app, e);
 }
 //============================================
 int32_t 
@@ -166,8 +166,6 @@ on_track_event(void *user_data, xcast_data &e)
   {
 	  /* 新增轨道 */
 	  ui_track_add(e, true, user_data);
-
-
 	  xcast_data      captures;
 	  
 	  const char     *cap;

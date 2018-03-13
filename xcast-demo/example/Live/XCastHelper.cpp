@@ -4,10 +4,7 @@
 
 
 #if kForVipKidTest
-
-#include "example/xcast-dev.h"
 #include "example/xcast-ui-handler.h"
-
 #endif
 
 
@@ -31,38 +28,149 @@ XCastHelper::~XCastHelper()
 int32_t XCastHelper::onXCastSystemEvent(void *contextinfo, tencent::xcast_data &data)
 {
 #if kForVipKidTest
-	new_xcast_event(&main_app, data);
+	new_xcast_event(NULL, data);
 #endif
+	XCastHelper *instance = (XCastHelper *)contextinfo;
+
+	if (instance && instance->m_global_handler.get())
+	{
+		instance->m_global_handler->onSystemEvent(contextinfo, data);
+	}
 
 	// TODO: 添加回调 
-
 	return XCAST_OK;
 }
 int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &data)
 {
 #if kForVipKidTest
-	new_stream_event(&main_app, data);
+	new_stream_event(NULL, data);
 #endif
+
+	XCastHelper *instance = (XCastHelper *)contextinfo;
+	char * str = data.dump();
+	if (str)
+		printf("%s\n", str);
+	switch ((int32_t)data["type"]) {
+	case xc_stream_added:
+	{
+		if (instance && instance->m_room_handler)
+		{
+			instance->m_room_handler->onWillEnterRoom(0, NULL);
+		}
+	}
+	break;
+	case xc_stream_updated:
+	{
+		if (data["state"] == xc_stream_connected) {
+			instance->stream_state = Room_Connectted;
+			/* 流状态： 连接成功 */
+			if (instance && instance->m_room_handler)
+			{
+				instance->m_room_handler->onDidEnterRoom(0, NULL);
+			}
+
+			if (instance->m_stream_param.get())
+			{
+				const XCastRoomOpera opera = instance->m_stream_param->roomOpera;
+
+				instance->enableCamera(opera.defaultCamera.c_str(), opera.autoCameraCapture, opera.autoCameraPreview);
+				instance->enableMic(opera.defaultMic.c_str(), opera.autoMic);
+				instance->enableSpeaker(opera.defaultSpeaker.c_str(), opera.autoSpeaker);
+			}
+		}
+	}
+	break;
+	case xc_stream_removed:
+	{
+		/* 流状态： 关闭, 移除媒体流 */
+		//ui_stream_closed(e["src"], e["err"], e["err-msg"], user_data);
+
+		if (instance)
+		{
+			if (instance->stream_state == Room_Connectted)
+			{
+				// 退房
+				if (instance->m_room_handler)
+				{
+					instance->m_room_handler->onExitRoomComplete((int)(data["err"]), (const char *)(data["err-msg"]));
+				}
+				instance->clearAfterExitRoom();
+			}
+			else if (instance->stream_state == Room_Connecting)
+			{
+				// 进房出现问题
+				if (instance->m_room_handler)
+				{
+					instance->m_room_handler->onDidEnterRoom((int)(data["err"]), (const char *)(data["err-msg"]));
+				}
+				instance->clearAfterExitRoom();
+			}
+		}
+	}
+	break;
+	default:
+		break;
+	}
 	return XCAST_OK;
 }
 int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &data)
 {
 #if kForVipKidTest
-	new_track_event(&main_app, data);
+	new_track_event(NULL, data);
 #endif
+
+	switch ((int32_t)data["type"])
+	{
+	case xc_track_added:
+	{
+		/* 新增轨道 */
+		/*ui_track_add(e, true, user_data);*/
+	}
+	break;
+	case xc_track_updated:
+	{
+
+	}
+	break;
+	case xc_track_capture_changed:
+	{
+	}
+	/* 更新轨道 */
+	/*ui_track_update(e, user_data);*/
+	break;
+	case xc_track_removed:
+	{
+
+	}
+	//ui_track_add(e, false, user_data);
+	break;
+	case xc_track_media: {
+		//ui_track_media(e, user_data);
+	}
+						 break;
+	default:
+		break;
+	}
+
 	return XCAST_OK;
 }
 int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &data)
 {
 #if kForVipKidTest
-	new_device_event(&main_app, data);
+	new_device_event(NULL, data);
 #endif
+	XCastHelper *instance = (XCastHelper *)contextinfo;
+
+	if (instance && instance->m_global_handler.get())
+	{
+		instance->m_global_handler->onDeviceEvent(contextinfo, data);
+	}
 	return XCAST_OK;
 }
 int32_t XCastHelper::onXCastTipsEvent(void *contextinfo, tencent::xcast_data &data)
 {
 #if kForVipKidTest
-	new_stat_tips(&main_app, data);
+	new_stat_tips(NULL, data);
 #endif
 	return XCAST_OK;
 }
@@ -74,28 +182,7 @@ XCastHelper* XCastHelper::getInstance()
 		m_instance = new XCastHelper();
 	});
 	return m_instance;
-
-
-	//return m_instance;*/
-	//// TODO:先简单写
-	//static bool once_flag = false;
-	//if (!once_flag)
-	//{
-	//	m_instance = new XCastHelper;
-	//	once_flag = true;
-	//}
-	//return m_instance;
-	
 }
-
-
-
-//static void XCastHelper::unInit()
-//{
-//
-//}
-
-
 void XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, std::function<void(int32_t, char *)> callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
@@ -122,13 +209,18 @@ void XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, std::func
 	int32_t rt = tencent::xcast::startup(setparam);
 
 	is_startup_succ = (rt == XCAST_OK);
-	///* 注册事件通知回调 */
-	tencent::xcast::handle_event(XC_EVENT_SYSTEM, XCastHelper::onXCastSystemEvent, (void *)m_instance);
-	tencent::xcast::handle_event(XC_EVENT_STREAM, XCastHelper::onXCastStreamEvent, m_instance);
-	tencent::xcast::handle_event(XC_EVENT_TRACK, XCastHelper::onXCastTrackEvent, m_instance);
-	tencent::xcast::handle_event(XC_EVENT_DEVICE, XCastHelper::onXCastDeviceEvent, m_instance);
-	tencent::xcast::handle_event(XC_EVENT_STATISTIC_TIPS, XCastHelper::onXCastTipsEvent, m_instance);
 
+	if (is_startup_succ)
+	{
+		///* 注册事件通知回调 */
+		tencent::xcast::handle_event(XC_EVENT_SYSTEM, XCastHelper::onXCastSystemEvent, m_instance);
+		tencent::xcast::handle_event(XC_EVENT_STREAM, XCastHelper::onXCastStreamEvent, m_instance);
+		tencent::xcast::handle_event(XC_EVENT_TRACK, XCastHelper::onXCastTrackEvent, m_instance);
+		tencent::xcast::handle_event(XC_EVENT_DEVICE, XCastHelper::onXCastDeviceEvent, m_instance);
+		tencent::xcast::handle_event(XC_EVENT_STATISTIC_TIPS, XCastHelper::onXCastTipsEvent, m_instance);
+
+	}
+	
 
 	callback(avsdkErrorCode(rt), is_startup_succ ? "xcast_startup succ" : "xcast_startup failed");
 
@@ -137,25 +229,25 @@ void XCastHelper::stopContext(std::function<void(int32_t, char *)> callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
-	if (is_stream_succ)
+	if (stream_state == Room_Connectted)
 	{
 		std::string sid = m_stream_param->streamID;
-		int32_t ret = xcast_close_stream(sid.c_str());
+		int32_t ret = tencent::xcast::close_stream(sid.c_str());
 
 		if (ret == XCAST_OK)
 		{
-			is_stream_succ = false;
+			clearAfterExitRoom();
 		}
 		else
 		{
-			callback(ret, "xcast cant stop streaming");
+			callback(avsdkErrorCode(ret), "xcast cant stop streaming");
 			return;
 		}
 	}
 
 	tencent::xcast::shutdown();
 	is_startup_succ = false;
-	callback(XCAST_OK, "xcast shutdown succ");
+	callback(avsdkErrorCode(XCAST_OK), "xcast shutdown succ");
 }
 
 void XCastHelper::setGlobalHandler(std::unique_ptr<XCastGlobalHandler>  handler)
@@ -169,7 +261,7 @@ void XCastHelper::setGlobalHandler(std::unique_ptr<XCastGlobalHandler>  handler)
 void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique_ptr<XCastRoomHandler>	roomDelegate, std::function<void(int32_t, char *)> callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-	if (is_stream_succ)
+	if (stream_state != Room_Closed)
 	{
 		callback(1003, "xcast is streaming");
 		return;
@@ -231,55 +323,54 @@ void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique
 
 	////\"videomaxbps\":int32(3000)
 	//params["videomaxbps"] = 3000;
-	char *pstr = params.dump();
+	/*char *pstr = params.dump();*/
 
 	int32_t  rt = tencent::xcast::start_stream(m_stream_param->streamID.c_str(), params);
 	if (XCAST_OK != rt) {
 		// TODO：进房失败；
 		// ui_xcast_err(rt, xcast_err_msg(), user_data);
 
-		callback(rt, (char *)xcast_err_msg());
-		is_stream_succ = false;
+		callback(avsdkErrorCode(rt), (char *)xcast_err_msg());
+		clearAfterExitRoom();
 		return;
 	}
-	callback(rt, "xcast_start_stream succ");
-	is_stream_succ = true;
+	callback(avsdkErrorCode(rt), "xcast_start_stream succ");
+	stream_state = Room_Connecting;
 
 }
 void XCastHelper::exitRoom(std::function<void(int32_t, char *)> callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
-	if (!is_stream_succ)
+	if (stream_state != Room_Closed)
 	{
 		callback(1004, "xcast isn't streaming");
+		return;
 	}
 
-
-	int32_t ret = xcast_close_stream(m_stream_param->streamID.c_str());
+	int32_t ret = tencent::xcast::close_stream(m_stream_param->streamID.c_str());
 
 	if (ret != XCAST_OK)
 	{
-		callback(ret, (char *)xcast_err_msg());
+		callback(avsdkErrorCode(ret), (char *)xcast_err_msg());
 	}
 	else
 	{
-		is_stream_succ = true;
-		callback(ret, "xcast close stream succ");
+		callback(avsdkErrorCode(ret), "xcast close stream succ");
 	}
 }
 
-
+void XCastHelper::clearAfterExitRoom()
+{
+	stream_state = Room_Closed;
+	m_room_handler.reset();
+	m_stream_param.reset();
+}
 // Speaker操作
 int XCastHelper::enableSpeaker(bool enable, std::function<void(int32_t, char *)> callback)
 {
-
-	/*xcast_variant_t defaultSpeaker = xcast_get_property(XC_SPEAKER_DEFAULT);
-	xcast_data_t ds(defaultSpeaker);
-
-	return enableSpeaker(ds["return"], enable, callback);*/
-
-	return XCAST_OK;
+	xcast_data defaultSpeaker = tencent::xcast::get_property(XC_SPEAKER_DEFAULT);
+	return enableSpeaker(defaultSpeaker["return"], enable, callback);
 }
 
 // 指定默认的speaker 为 sid
@@ -304,9 +395,15 @@ int XCastHelper::getSpeakerState()
 // 对默认mic操作
 int XCastHelper::enableMic(bool enable, std::function<void(int32_t, char *)> callback)
 {
-	return XCAST_OK;
+	xcast_data defaultMic = tencent::xcast::get_property(XC_MIC_DEFAULT);
+	return enableMic(defaultMic["return"], enable, callback);
 }
 
+// 对默认mic操作
+int XCastHelper::enableMic(const char*micid, bool enable, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
+{
+	return XCAST_OK;
+}
 // 切换mic
 int XCastHelper::switchToMic(const char *micid, std::function<void(int32_t, char *)> callback)
 {
@@ -331,18 +428,28 @@ int XCastHelper::enableLoopBack(bool enable)
 // 在房间外时，获取default Camera状态;
 int XCastHelper::getCameraState()
 {
+	xcast_data defaultCamera = tencent::xcast::get_property(XC_CAMERA_STATE);
 	return XCAST_OK;
 }
 
 // 在房间内时：打开摄像头，并预览，同时上行；
 // 在房间外时：打开摄像头，并预览，并设置成默认摄像头；
+
+int XCastHelper::enableCamera(bool preview, bool campture, std::function<void(int32_t, char *)> callback)
+{
+	xcast_data defaultCamera = tencent::xcast::get_property(XC_CAMERA_DEFAULT);
+	enableCamera((const char *)(defaultCamera["return"]), preview, campture, callback);
+	return XCAST_OK;
+}
 int XCastHelper::enableCamera(const char *cameraid, bool preview, std::function<void(int32_t, char *)> callback)
 {
+	enableCamera(cameraid, preview, true, callback);
 	return XCAST_OK;
 }
 
 int XCastHelper::enableCamera(const char *cameraid, bool preview, bool campture, std::function<void(int32_t, char *)> callback)
 {
+	
 	return XCAST_OK;
 }
 

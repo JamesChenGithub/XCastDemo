@@ -1,6 +1,7 @@
 #pragma once
 
-#include "xcast_data.h"
+//#include "xcast_data.h"
+#include "xcast.hh"
 #include "xcast_define.h"
 #include <string>
 
@@ -8,6 +9,9 @@ class XCastGlobalHandler
 {
 public:
 	virtual  ~XCastGlobalHandler() = 0;
+public:
+	virtual int32_t onSystemEvent(void *contextinfo, tencent::xcast_data &data) = 0;
+	virtual int32_t onDeviceEvent(void *contextinfo, tencent::xcast_data &data) = 0;
 };
 
 class  XCastRoomHandler
@@ -17,7 +21,7 @@ public:
 public:
 	virtual void onWillEnterRoom(int result, const char *error) = 0;
 	virtual void onDidEnterRoom(int result, const char *error) = 0;
-	virtual void onExitRoomComplete() = 0;
+	virtual void onExitRoomComplete(int result, const char *error) = 0;
 	virtual void onRoomDisconnected(int result, const char *error) = 0;
 
 	//virtual void onEndpointsUpdateInfo(int eventid, std::vector<>)
@@ -95,13 +99,14 @@ typedef struct XCastStreamTrackInfo
 }XCastStreamTrackInfo;
 
 
-typedef struct XCastStreamDevice {
+typedef struct XCastRoomOpera {
 	std::string defaultCamera = "";
 	std::string defaultMic = "";
 	std::string defaultSpeaker = "";
 
-	bool autoCamera = false;
-	bool autoMic = false;
+	bool autoCameraCapture = true;
+	bool autoCameraPreview = true;
+	bool autoMic = true;
 	bool autoSpeaker = true;
 
 }XCastStreamDevice;
@@ -115,6 +120,8 @@ typedef struct XCastStreamParam {
 	XCastStreamTrackInfo track;
 
 	// TODO:补投屏，以及局域网通信字段 
+
+	XCastRoomOpera roomOpera;
 
 	bool isVaild() const
 	{
