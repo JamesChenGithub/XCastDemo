@@ -1,3 +1,5 @@
+
+
 #include "XCastHelper.h"
 #include <locale.h>
 #include "xcast.hh"
@@ -54,10 +56,10 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 	switch ((int32_t)data["type"]) {
 	case xc_stream_added:
 	{
-		if (instance && instance->m_room_handler)
+		/*if (instance && instance->m_room_handler)
 		{
 			instance->m_room_handler->onWillEnterRoom(0, NULL);
-		}
+		}*/
 	}
 	break;
 	case xc_stream_updated:
@@ -135,52 +137,134 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 #if kForVipKidTest
 	new_track_event(NULL, data);
 #endif
-
-	switch ((int32_t)data["type"])
+	XCastHelper *instance = (XCastHelper *)contextinfo;
+	if (instance && instance->m_room_handler.get())
 	{
-	case xc_track_added:
-	{
-		/* 新增轨道 */
-		/*ui_track_add(e, true, user_data);*/
-	}
-	break;
-	case xc_track_updated:
-	{
-
-	}
-	break;
-	case xc_track_capture_changed:
-	{
-	}
-	/* 更新轨道 */
-	/*ui_track_update(e, user_data);*/
-	break;
-	case xc_track_removed:
-	{
-
-	}
-	//ui_track_add(e, false, user_data);
-	break;
-	case xc_track_media: {
-		//ui_track_media(e, user_data);
-	}
-						 break;
-	default:
+		switch ((int32_t)data["type"])
+		{
+		case xc_track_added:
+		{
+			/* 新增轨道 */
+			/*ui_track_add(e, true, user_data);*/
+			XCastEndPoint info;
+			instance->m_room_handler->onEndpointsUpdateInfo(info);
+		}
 		break;
+		case xc_track_updated:
+		{
+			XCastEndPoint info;
+			instance->m_room_handler->onEndpointsUpdateInfo(info);
+		}
+		break;
+		case xc_track_capture_changed:
+		{
+			XCastEndPoint info;
+			instance->m_room_handler->onEndpointsUpdateInfo(info);
+		}
+		/* 更新轨道 */
+		/*ui_track_update(e, user_data);*/
+		break;
+		case xc_track_removed:
+		{
+			XCastEndPoint info;
+			instance->m_room_handler->onEndpointsUpdateInfo(info);
+		}
+		//ui_track_add(e, false, user_data);
+		break;
+		case xc_track_media: {
+			//ui_track_media(e, user_data);
+			XCastVideoFrame *videoFrame;
+			instance->m_room_handler->onVideoPreview(videoFrame);
+		}
+							 break;
+		default:
+			break;
+		}
 	}
+	
 
 	return XCAST_OK;
 }
-int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &data)
+int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &e)
 {
 #if kForVipKidTest
-	new_device_event(NULL, data);
+	new_device_event(NULL, e);
 #endif
 	XCastHelper *instance = (XCastHelper *)contextinfo;
-
 	if (instance && instance->m_global_handler.get())
 	{
-		instance->m_global_handler->onDeviceEvent(contextinfo, data);
+		switch ((int32_t)e["type"]) {
+		case xc_device_added:
+			/* 设备插入 */
+		{
+			XCastDevice device;
+			instance->m_global_handler->onDeviceEvent_DeviceAdd(device);
+		}
+
+			/*if (e["class"] == xc_device_camera && e["src"] == "11Webcam C170")
+			{
+			int ret = xcast::set_property(XC_CAMERA_DEFAULT, e["src"]);
+			int i = 0;
+			}*/
+
+			break;
+		case xc_device_updated:
+		{
+			XCastDevice device;
+			instance->m_global_handler->onDeviceEvent_DeviceUpdate(device);
+		}
+//			/* 设备更新 */
+//			ui_device_update(e["src"], e["class"], e["state"], e["err"], e["err_msg"], user_data);
+//
+//#if defined(XCAST_EXTERNAL_VIDEO)
+//			dev = (const char *)evt["src"];
+//			state = evt["state"];
+//			if (dev == "ext1") {
+//				if (state == xc_device_running) {
+//					/* TODO: start external capture here */
+//					xcast_inject_video((const uint8_t *)0xFFFFFFFF, 4096, 480, 320);
+//				}
+//				else if (state == xc_device_stopped) {
+//					/* TODO: stop external capture here */
+//
+//				}
+//			}
+//#endif
+//
+			break;
+		case xc_device_removed:
+			/* 设备拔出 */
+			/*ui_device_added(e["src"], e["class"], false, user_data);*/
+		{
+			XCastDevice device;
+			instance->m_global_handler->onDeviceEvent_DeviceRemoved(device);
+		}
+			break;
+		case xc_device_preprocess:
+			/* 设备预处理 */
+		// 	ui_device_preprocess(e, user_data);
+			// TODO:
+			break;
+		case xc_device_preview:
+			// TODO:
+			/* 设备预览 */
+			if (instance->m_global_handler->needGlobalCallbackLocalVideo())
+			{
+				XCastVideoFrame *frame;
+				instance->m_global_handler->onLocalVideoPreview(frame);
+			}
+
+			if (instance->m_room_handler->needRoomCallbackLocalVideo())
+			{
+				XCastVideoFrame *frame;
+				instance->m_room_handler->onLocalVideoPreview(frame);
+			}
+			break;
+		default:
+			break;
+		}
+
+		return XCAST_OK;
 	}
 	return XCAST_OK;
 }
@@ -189,6 +273,12 @@ int32_t XCastHelper::onXCastTipsEvent(void *contextinfo, tencent::xcast_data &da
 #if kForVipKidTest
 	new_stat_tips(NULL, data);
 #endif
+
+	XCastHelper *instance = (XCastHelper *)contextinfo;
+	if (instance->m_room_handler->needRoomCallbackTips())
+	{
+		instance->m_room_handler->onStatTips();
+	}
 	return XCAST_OK;
 }
 

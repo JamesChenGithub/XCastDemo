@@ -87,9 +87,9 @@ ui_xcast_err(int32_t err, const char *err_msg, void* user_data)
 xcast_data 
 xcast_get_stream_param(void *user_data)
 {
-  xcast_data         params, auth_info, track;
+	xcast_data         params, auth_info, track;
+	xc_auth_type auth_type = xc_auth_none;
 
-  xc_auth_type_t     auth_type = xc_auth_none;
 #if defined(UDT_TEST)
   params["relation_id"] = 500012;
 #elif defined (SPEED)

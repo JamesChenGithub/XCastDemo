@@ -2,16 +2,29 @@
 
 //#include "xcast_data.h"
 #include "xcast.hh"
-#include "xcast_define.h"
 #include <string>
+
+struct XCastDevice;
+struct XCastVideoFrame;
+struct XCastEndPoint;
 
 class XCastGlobalHandler
 {
 public:
 	virtual  ~XCastGlobalHandler() = 0;
 public:
+
+	// 设备回调
+	virtual void onDeviceEvent_DeviceAdd(XCastDevice device) = 0;
+	virtual void onDeviceEvent_DeviceUpdate(XCastDevice device) = 0;
+	virtual void onDeviceEvent_DeviceRemoved(XCastDevice device) = 0;
+
+	// XCAST系统回调
 	virtual int32_t onSystemEvent(void *contextinfo, tencent::xcast_data &data) = 0;
-	virtual int32_t onDeviceEvent(void *contextinfo, tencent::xcast_data &data) = 0;
+
+	// 视频事件
+	virtual bool needGlobalCallbackLocalVideo() = 0;
+	virtual void onLocalVideoPreview(XCastVideoFrame *frame) = 0;
 };
 
 class  XCastRoomHandler
@@ -19,15 +32,19 @@ class  XCastRoomHandler
 public:
 	virtual  ~XCastRoomHandler() = 0;
 public:
-	virtual void onWillEnterRoom(int result, const char *error) = 0;
+	//virtual void onWillEnterRoom(int result, const char *error) = 0;
 	virtual void onDidEnterRoom(int result, const char *error) = 0;
 	virtual void onExitRoomComplete(int result, const char *error) = 0;
 	virtual void onRoomDisconnected(int result, const char *error) = 0;
 
-	//virtual void onEndpointsUpdateInfo(int eventid, std::vector<>)
+	virtual void onEndpointsUpdateInfo(XCastEndPoint info) = 0;
+	virtual bool needRoomCallbackLocalVideo() = 0;
+	virtual void onLocalVideoPreview(XCastVideoFrame *frame) = 0;
 
-	virtual void onLocalVideoPreview() = 0;
-	virtual void onVideoPreview() = 0;
+	virtual void onVideoPreview(XCastVideoFrame *frame) = 0;
+
+	virtual bool needRoomCallbackTips() = 0;
+	virtual void onStatTips() = 0;
 };
 
 typedef struct XCastStartParam {
@@ -135,3 +152,43 @@ typedef struct XCastStreamParam {
 	}
 
 } XCastStreamParam;
+
+
+///* xcast media types */
+//typedef enum xc_media_format_e {
+//	xc_media_argb32 = 0,                /* argb32 video format */
+//	xc_media_i420,                      /* i420 video format */
+//	xc_media_aac,                       /* aac audio format */
+//	xc_media_pcm,                       /* pcm audio format */
+//	xc_media_layer = 0xFF,              /* layer format*/
+//} xc_media_format;
+
+/* xcast track types */
+//typedef enum xc_track_direction_e {
+//	xc_track_out = 1,                   /* send media data to remote host */
+//	xc_track_in,                        /* receive media data from remote host */
+//} xc_track_direction;
+
+typedef struct XCastVideoFrame
+{
+	uint64_t identifier = 0;
+	int media_format = 1;
+	uint8_t *data = nullptr;
+	uint32_t size = 0;
+	uint32_t width = 0;
+	uint32_t height = 0;
+	int rotate = 0;  //[0, 90, 180, 270]
+	int direction;
+	std::string deviceSrc;
+}XCastVideoFrame;
+
+
+
+typedef struct XCastDevice {
+
+}XCastDevice;
+
+
+typedef struct XCastEndPoint {
+
+}XCastEndPoint;

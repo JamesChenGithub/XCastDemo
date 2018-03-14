@@ -182,6 +182,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\xcast-ui-handler.h" />
     <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastData.h" />
     <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastHelper.h" />
+    <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastUtil.h" />
     <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\main-view.cpp"  />
     <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\tab-view.cpp"  />
     <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\tree-view.cpp"  />
@@ -189,6 +190,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\xcast-ui-handler.cc"  />
     <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastData.cpp"  />
     <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastHelper.cpp"  />
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastUtil.cpp"  />
     <ResourceCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\xcast-dev.rc"  />
   </ItemGroup>
   <ItemGroup>

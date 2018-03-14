@@ -22,6 +22,9 @@
     <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastUtil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\main-view.h">
@@ -46,6 +49,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

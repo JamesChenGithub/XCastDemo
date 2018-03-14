@@ -1,4 +1,6 @@
-#pragma once
+
+#ifndef XCASTHELPER_H_
+#define XCASTHELPER_H_
 
 #include <mutex>
 #include <vector>
@@ -261,3 +263,4 @@ private:
 
 };
 
+#endif
