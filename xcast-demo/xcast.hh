@@ -27,10 +27,6 @@ public:
     }
   }
 
-  char *dump() {
-	  return value_ ? xcast_variant_dump(value_) : NULL;
-  }
-
 #define XCAST_DATA_TYPE(T, VT, VAL)  \
   xcast_data(T value) { value_ = xcast_variant_##VT##_new(value); } \
   operator T() { return value_ ? xcast_variant_##VT##_get(value_) : VAL; } \
@@ -75,7 +71,8 @@ public:
 
   /* current 'xcast_data' type */
   char type() { return value_ ? (char)xcast_variant_get_type(value_) : 0; }
-
+  /* dump data of xcast_variant, should free after use */
+  char *dump() { return value_ ? xcast_variant_dump(value_) : NULL; }
   /* get basic type value from 'xcast_data' */
   operator const char *() { return value_ ? xcast_variant_str_get(value_) : NULL; }
   operator const uint8_t *() { return value_ ? xcast_variant_buf_get(value_) : NULL; }
@@ -258,17 +255,11 @@ class xcast {
   }
 
   static int32_t set_property(const char *prop, const char *id, xcast_data val) {
-    
-	  const char *cmdd = format(prop, id);
-	  const char *valstr = val.dump();
-	  return xcast_set_property(format(prop, id), val);
+    return xcast_set_property(format(prop, id), val);
   }
 
   static int32_t set_property(
     const char *prop, const char *id1, const char *id2, xcast_data val) {
-
-	  const char *cmdd = format(prop, id1,id2);
-	  const char *valstr = val.dump();
     return xcast_set_property(format(prop, id1, id2), val);
   }
 

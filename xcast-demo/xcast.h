@@ -4,7 +4,7 @@
 #ifndef XCAST_H_
 #define XCAST_H_
 
-#include "./include/xcast_define.h"
+#include "./include/xcast_const.h"
 #include "./include/xcast_variant.h"
 #include "./include/xcast_error.h"
 
