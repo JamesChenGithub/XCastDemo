@@ -1,8 +1,2 @@
 ﻿  Checking Build System
-  CMake is re-running because C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/generate.stamp is out-of-date.
-    the file 'C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeLists.txt'
-    is newer than 'C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/generate.stamp.depend'
-    result='-1'
-  -- Configuring done
-  -- Generating done
-  -- Build files have been written to: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example
+  CMake does not need to re-run because C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/generate.stamp is up-to-date.

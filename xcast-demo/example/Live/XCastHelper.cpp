@@ -1,5 +1,5 @@
 #include "XCastHelper.h"
-#include "include/xcast_variant.h"
+#include <locale.h>
 #include "xcast.hh"
 
 
@@ -74,9 +74,22 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 			{
 				const XCastRoomOpera opera = instance->m_stream_param->roomOpera;
 
-				instance->enableCamera(opera.defaultCamera.c_str(), opera.autoCameraCapture, opera.autoCameraPreview);
-				//instance->enableMic(opera.defaultMic.c_str(), opera.autoMic);
-				//instance->enableSpeaker(opera.defaultSpeaker.c_str(), opera.autoSpeaker);
+				// 打开摄像头
+				instance->enableCamera(opera.autoCameraPreview, opera.autoCameraCapture, opera.defaultCamera.c_str());
+				
+				// 打开Mic
+				instance->enableMic(opera.autoMic);
+				// 打开扬声器
+				std::vector<std::string> slist = instance->getSpeakerList();
+				if (slist.size() >0)
+				{
+					instance->speakerVolume(slist[0].c_str());
+					instance->enableSpeaker(slist[0].c_str(), opera.autoSpeaker);
+				}
+				
+			
+				
+				
 			}
 		}
 	}
@@ -184,7 +197,7 @@ XCastHelper* XCastHelper::getInstance()
 	});
 	return m_instance;
 }
-void XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, std::function<void(int32_t, char *)> callback)
+void XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
@@ -224,7 +237,7 @@ void XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, std::func
 	callback(avsdkErrorCode(rt), is_startup_succ ? "xcast_startup succ" : "xcast_startup failed");
 
 }
-void XCastHelper::stopContext(std::function<void(int32_t, char *)> callback)
+void XCastHelper::stopContext(XCHCallBack callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
@@ -257,7 +270,7 @@ void XCastHelper::setGlobalHandler(std::unique_ptr<XCastGlobalHandler>  handler)
 }
 
 
-void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique_ptr<XCastRoomHandler>	roomDelegate, std::function<void(int32_t, char *)> callback)
+void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique_ptr<XCastRoomHandler>	roomDelegate, XCHCallBack callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 	if (stream_state != Room_Closed)
@@ -337,7 +350,7 @@ void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique
 	stream_state = Room_Connecting;
 
 }
-void XCastHelper::exitRoom(std::function<void(int32_t, char *)> callback)
+void XCastHelper::exitRoom(XCHCallBack callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
@@ -346,6 +359,9 @@ void XCastHelper::exitRoom(std::function<void(int32_t, char *)> callback)
 		callback(1004, "xcast isn't streaming");
 		return;
 	}
+
+
+	// 添加退房时，关摄像头的操作
 
 	int32_t ret = tencent::xcast::close_stream(m_stream_param->streamID.c_str());
 
@@ -371,22 +387,97 @@ std::vector<std::string> XCastHelper::getSpeakerList() const
 	return getDeviceList(Device_Speaker);
 }
 // Speaker操作
-int XCastHelper::enableSpeaker(bool enable, std::function<void(int32_t, char *)> callback)
+int XCastHelper::enableSpeaker(bool enable, XCHCallBack callback)
 {
-	xcast_data defaultSpeaker = tencent::xcast::get_property(XC_SPEAKER_DEFAULT);
-	return enableSpeaker(defaultSpeaker["return"], enable, callback);
+	return enableSpeaker(nullptr, enable, callback);
 }
 
 // 指定默认的speaker 为 sid
 // 同时进行enable操作
-int XCastHelper::enableSpeaker(const char *sid, bool enable, std::function<void(int32_t, char *)> callback)
+int XCastHelper::enableSpeaker(const char *sid, bool enable, XCHCallBack callback)
 {
-	return XCAST_OK;
+	std::string oidstr = getOperaSpeaker(sid);
+	const char *operdevID = oidstr.c_str();
+	if (operdevID == nullptr || strlen(operdevID))
+	{
+		callback(avsdkErrorCode(-104), "not camera param");
+		return avsdkErrorCode(-104);
+	}
+
+	// 房间外
+	int32_t ret = tencent::xcast::set_property(XC_SPEAKER_PREVIEW, operdevID);
+	callback(avsdkErrorCode(ret), ret != XCAST_OK ? "enable speaker failed" : "enable speaker succ");
+	return avsdkErrorCode(ret);
+
+	//if (stream_state == Room_Connectted)
+	//{
+	//	// 房间内
+	//	const char *streamid = m_stream_param->streamID.c_str();
+	//	tencent::xcast_data params;
+	//	params["enable"] = enable;
+	//	int32_t ret = tencent::xcast::set_property(XC_TRACK_ENABLE, streamid, "audio-out", params);
+	//	callback(avsdkErrorCode(ret), ret != XCAST_OK ? "set enable speaker error" : "enable speaker succ");
+	//	return avsdkErrorCode(ret);
+	//}
+	//else
+	//{
+	//	// 房间外
+	//	int32_t ret = tencent::xcast::set_property(XC_SPEAKER_PREVIEW, operdevID);
+	//	callback(avsdkErrorCode(ret), ret != XCAST_OK ? "not in room ,set default speaker failed" : "enable speaker succ");
+	//	return avsdkErrorCode(ret);
+	//}
+	//return XCAST_OK;
 }
 // 切换输出类型 , speaker : 1 扬声器 0 耳机
-int XCastHelper::changeOutputMode(bool speaker)
+int XCastHelper::changeOutputMode(const char *sid, bool headphone)
 {
-	return XCAST_OK;
+	std::string oidstr = getOperaSpeaker(sid);
+	const char *operdevID = oidstr.c_str();
+	if (operdevID == nullptr || strlen(operdevID))
+	{
+		return avsdkErrorCode(-104);
+	}
+
+	int32_t ret = tencent::xcast::set_property(XC_SPEAKER_EARPHONE_MODE, operdevID, tencent::xcast_data(headphone));
+	return avsdkErrorCode(ret);
+}
+
+int XCastHelper::speakerVolume(const char *sid) const
+{
+	std::string oidstr = getOperaSpeaker(sid);
+	const char *operdevID = oidstr.c_str();
+	if (operdevID == nullptr || strlen(operdevID))
+	{
+		return avsdkErrorCode(-104);
+	}
+
+	tencent::xcast_data data = tencent::xcast::get_property(XC_SPEAKER_VOLUME, sid);
+	uint32_t volume = data.uint32_val();
+	return volume;
+}
+int XCastHelper::setSpeakerVolume(int volume, const char *sid)
+{
+
+	std::string oidstr = getOperaSpeaker(sid);
+	const char *operdevID = oidstr.c_str();
+	if (operdevID == nullptr || strlen(operdevID))
+	{
+		return avsdkErrorCode(-104);
+	}
+	
+	uint32_t setvol = volume;
+	if (volume < 0)
+	{
+		setvol = 0;
+	}
+	else if (volume > 100)
+	{
+		setvol = 100;
+	}
+
+	tencent::xcast_data vol(setvol);
+	int32_t ret = tencent::xcast::set_property(XC_SPEAKER_VOLUME, sid, setvol);
+	return ret;
 }
 
 // mic操作
@@ -399,33 +490,37 @@ std::vector<std::string> XCastHelper::getMicList() const
 	return getDeviceList(Device_Mic);
 }
 
-int XCastHelper::enableMic(bool enable, std::function<void(int32_t, char *)> callback)
-{
-	xcast_data defaultMic = tencent::xcast::get_property(XC_MIC_DEFAULT);
-	return enableMic(defaultMic["return"], enable, callback);
-}
-
-// 对默认mic操作
-int XCastHelper::enableMic(const char*micid, bool enable, std::function<void(int32_t, char *)> callback)
-{
-	return XCAST_OK;
-}
-// 切换mic
-int XCastHelper::switchToMic(const char *micid, std::function<void(int32_t, char *)> callback)
-{
-	return XCAST_OK;
-}
 
 // 在房间内时，获取采集mic状态；
 // 在房间外时，获取default mic状态;
-int XCastHelper::getMicState()
+int XCastHelper::getMicState(const char *micid) const
 {
-	return XCAST_OK;
+	std::string  operidstr = getOperaMic(micid);
+	const char *operid = operidstr.c_str();
+	if (operid == nullptr)
+	{
+		return 0;
+	}
+
+	tencent::xcast_data state = tencent::xcast::get_property(XC_MIC_STATE, tencent::xcast_data(operid));
+	int16_t statea = state.int16_val();
+	return statea;
 }
 
-int XCastHelper::enableLoopBack(bool enable)
+
+int XCastHelper::enableMic(bool enableAudioOut, const char *micid, XCHCallBack callback)
 {
-	return XCAST_OK;
+	return operaMic(micid, false, false, enableAudioOut,true, false, callback);
+}
+
+int XCastHelper::enableMicPreview( bool preview, const char *micid, XCHCallBack callback)
+{
+	return operaMic(micid, preview, true, false, false, false, callback);
+}
+
+int XCastHelper::enableMic( bool preview, bool enableAudioOut, const char *micid, XCHCallBack callback)
+{
+	return operaMic(micid, preview, true, enableAudioOut, true, false, callback);
 }
 
 // 摄像头操作
@@ -455,120 +550,23 @@ int XCastHelper::getCameraState(const char *cameraid) const
 // 在房间内时：打开摄像头，并预览，同时上行；
 // 在房间外时：打开摄像头，并预览，并设置成默认摄像头；
 
-int XCastHelper::enableCamera(bool preview, bool campture, std::function<void(int32_t, char *)> callback)
+int XCastHelper::enableCamera(bool campture, const char *cameraid, XCHCallBack callback)
 {
-	enableCamera(nullptr, preview, campture, callback);
-	return XCAST_OK;
+	return operaCamera(cameraid, false, false, campture, true, false, callback);
 }
-int XCastHelper::enableCamera(const char *cameraid, bool preview, std::function<void(int32_t, char *)> callback)
+int XCastHelper::enableCameraPreview(bool preview, const char *cameraid, XCHCallBack callback)
 {
-	// 在房间内时：打开摄像头，并预览，同时上行；
-	// 在房间外时：打开摄像头，并预览，并设置成默认摄像头；
-	std::string oidstr = getOperaCamera(cameraid);
-	const char *operdevID = oidstr.c_str();
-	if (operdevID == nullptr || strlen(operdevID))
-	{
-		callback(avsdkErrorCode(-104), "not camera param");
-		return avsdkErrorCode(-104);
-	}
-	int32_t preret = tencent::xcast::set_property(XC_CAMERA_PREVIEW, operdevID, tencent::xcast_data(preview));
-	callback(avsdkErrorCode(preret), preret != XCAST_OK ? "set camera preview error" : "set camera preview succ");
-	return avsdkErrorCode(preret);
+	return operaCamera(cameraid, preview, true, false, false, false, callback);
 }
 
-int XCastHelper::enableCamera(const char *cameraid, bool preview, bool enableVideoOut, std::function<void(int32_t, char *)> callback)
+int XCastHelper::enableCamera(bool preview, bool enableVideoOut, const char *cameraid, XCHCallBack callback)
 {
-	// 在房间内时：打开摄像头，并预览，同时上行；
-	// 在房间外时：打开摄像头，并预览，并设置成默认摄像头；
-	std::string str = getOperaCamera(cameraid);
-	const char *operdevID = str.c_str();
-	if (operdevID == nullptr || strlen(operdevID) == 0)
-	{
-		callback(avsdkErrorCode(-104), "not camera param");
-		return avsdkErrorCode(-104);
-	}
-	
-	int32_t preret = tencent::xcast::set_property(XC_CAMERA_PREVIEW, operdevID, tencent::xcast_data(preview));
-
-	if (preret != XCAST_OK)
-	{
-		callback(avsdkErrorCode(preret), "set camera preview error");
-		return avsdkErrorCode(preret);
-	}
-
-	if (stream_state == Room_Connectted)
-	{
-		// 房间内
-		const char *streamid = m_stream_param->streamID.c_str();
-		int32_t ret = tencent::xcast::set_property(XC_TRACK_CAPTURE, streamid,"video-out", operdevID);
-		if (ret != XCAST_OK)
-		{
-			callback(avsdkErrorCode(ret), "set capture camera error");
-			return avsdkErrorCode(ret);
-		}
-		tencent::xcast_data params;
-		params["enable"] = enableVideoOut;
-		int32_t enret = tencent::xcast::set_property(XC_TRACK_ENABLE, streamid, "video-out", params);
-		
-		callback(avsdkErrorCode(ret), ret != XCAST_OK ? "set enable video-out error" : "enable camera succ");
-		return avsdkErrorCode(ret);
-		
-	}
-	else
-	{
-		// 房间外
-		int32_t ret = tencent::xcast::set_property(XC_CAMERA_DEFAULT, operdevID);
-		callback(avsdkErrorCode(ret), ret != XCAST_OK ? "not in room ,set default camera failed" : "enable camera succ");
-		return avsdkErrorCode(ret);
-	}
-	
+	return operaCamera(cameraid, preview, true, enableVideoOut, true, false, callback);
 }
 
-//int XCastHelper::updateCameraMode(const char *cameraid, bool autoSending, std::function<void(int32_t, char *)> callback)
-//{
-//	if (stream_state != Room_Connectted)
-//	{
-//		callback(-1, "not in room");
-//		return -1;
-//	}
-//
-//	const char *streamid = m_stream_param->streamID.c_str();
-//	if (cameraid == nullptr || strlen(cameraid) == 0)
-//	{
-//		// 直接修改当前操作的摄像头
-//		tencent::xcast_data params;
-//		params["enable"] = autoSending;
-//		int32_t enret = tencent::xcast::set_property(XC_TRACK_ENABLE, streamid, "video-out", params);
-//		if (enret != XCAST_OK)
-//		{
-//			callback(avsdkErrorCode(enret), "set enable video-out error");
-//			return avsdkErrorCode(enret);
-//		}
-//	}
-//	else
-//	{
-//		// 先获取当前摄像头，如果相同直接操作，如果不同则进行切换
-//
-//
-//
-//	}
-//
-//	
-//
-//
-//	return XCAST_OK;
-//}
-
-//int XCastHelper::switchCamera(const char *cameraid, bool preview, bool campture, std::function<void(int32_t, char *)> callback)
-//{
-//	return XCAST_OK;
-//}
-
-
-std::string XCastHelper::getOperaDevice(DeviceType type, const char *cameraid = nullptr) const
+std::string XCastHelper::getOperaDevice(DeviceType type, const char *cameraid) const
 {
 	char operdevID[XCAST_MAX_PATH];
-	bool isoperaDefaultCamera = false;
 	if (cameraid == nullptr || strlen(cameraid) == 0)
 	{
 		const char *devicetyep = nullptr;
@@ -591,15 +589,14 @@ std::string XCastHelper::getOperaDevice(DeviceType type, const char *cameraid = 
 			return "";
 		}
 		tencent::xcast_data data = tencent::xcast::get_property(devicetyep);
+		const char *dstr = data.dump();
 		const char *str_val = data.str_val();
 		if (str_val == nullptr)
 		{
-
 			return "";
 		}
 		else
 		{
-			isoperaDefaultCamera = true;
 			strcpy(operdevID, str_val);
 			return std::string(operdevID);
 		}
@@ -626,7 +623,7 @@ std::string XCastHelper::getOperaMic(const char *cameraid) const
 }
 
 
-int XCastHelper::avsdkErrorCode(int xcast_err_code)
+int XCastHelper::avsdkErrorCode(int xcast_err_code) const
 {
 	// TODO : xcast err code 转成AVSDK错误码
 	return xcast_err_code;
@@ -634,7 +631,7 @@ int XCastHelper::avsdkErrorCode(int xcast_err_code)
 
 std::vector<std::string> XCastHelper::getDeviceList(DeviceType type) const
 {
-	std::vector<std::string> camlist;
+	std::vector<std::string> devlist;
 	if (is_startup_succ)
 	{
 
@@ -655,30 +652,32 @@ std::vector<std::string> XCastHelper::getDeviceList(DeviceType type) const
 
 		if (devicetyep == nullptr)
 		{
-			return camlist;
+			return devlist;
 		}
 
 		tencent::xcast_data captures = tencent::xcast::get_property(devicetyep);
-
+		const char *datat = captures.dump();
 		const char     *cap;
 		for (uint32_t n = 0; n < captures.size(); n++) {
 			cap = captures[n].str_val();
-			camlist.push_back(std::string(cap));
+			devlist.push_back(std::string(cap));
 		}
-		std::for_each(camlist.begin(), camlist.end(), [](auto item) {
+		std::for_each(devlist.begin(), devlist.end(), [](auto item) {
 			int i = 0;
 		});
 
-		return camlist;
+
+
+		return devlist;
 	}
 	else
 	{
-		return camlist;
+		return devlist;
 	}
 }
 
 
-int XCastHelper::getDeviceState(DeviceType type, const char *device = nullptr) const
+int XCastHelper::getDeviceState(DeviceType type, const char *device) const
 {
 	if (type == Device_Speaker)
 	{
@@ -710,4 +709,192 @@ int XCastHelper::getDeviceState(DeviceType type, const char *device = nullptr) c
 	tencent::xcast_data state = tencent::xcast::get_property(devicetyep, tencent::xcast_data(operid));
 	int16_t statea = state.int16_val();
 	return statea;
+}
+
+
+int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, bool audioout, bool needExeAudioOut, bool needSetDefault, XCHCallBack callback)
+{
+
+	if (!needExePreview && !needExeAudioOut && !needSetDefault)
+	{
+		int ret = avsdkErrorCode(XCAST_OK);
+		callback(ret, "do nothing");
+		return ret;
+	}
+
+	// 在房间内时：打开摄像头，并预览，同时上行；
+	// 在房间外时：打开摄像头，并预览，并设置成默认摄像头；
+	std::string str = getOperaMic(micid);
+	const char *operdevID = str.c_str();
+	if (operdevID == nullptr || strlen(operdevID) == 0)
+	{
+		int erc = avsdkErrorCode(-104);
+		callback(erc, "not found opera mic device");
+		return erc;
+	}
+
+	if (needExePreview)
+	{
+		int32_t preret = tencent::xcast::set_property(XC_MIC_PREVIEW, operdevID, tencent::xcast_data(preview));
+
+		if (needExeAudioOut || needSetDefault)
+		{
+			if (preret != XCAST_OK)
+			{
+				int erc = avsdkErrorCode(-preret);
+				callback(erc, tencent::xcast::err_msg());
+				return erc;
+			}
+		}
+		else
+		{
+			int erc = avsdkErrorCode(preret);
+			callback(erc, tencent::xcast::err_msg());
+			return erc;
+		}
+		
+	}
+
+	if (needExeAudioOut)
+	{
+		
+		// 房间内
+		const char *streamid = m_stream_param->streamID.c_str();
+		int32_t ret = tencent::xcast::set_property(XC_TRACK_CAPTURE, streamid, "audio-out", operdevID);
+		if (ret != XCAST_OK)
+		{
+			int erc = avsdkErrorCode(ret);
+			callback(erc, tencent::xcast::err_msg());
+			return erc;
+		}
+
+		if (stream_state == Room_Connectted)
+		{
+			tencent::xcast_data params;
+			params["enable"] = audioout;
+			int32_t enret = tencent::xcast::set_property(XC_TRACK_ENABLE, streamid, "audio-out", params);
+
+			if (needSetDefault)
+			{
+				if (enret != XCAST_OK)
+				{
+					int erc = avsdkErrorCode(enret);
+					callback(erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
+					return erc;
+				}
+			}
+			else
+			{
+				int erc = avsdkErrorCode(enret);
+				callback(erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
+				return erc;
+			}
+		}
+	}
+
+	if (needSetDefault)
+	{
+		// 房间外
+		int32_t ret = tencent::xcast::set_property(XC_MIC_DEFAULT, operdevID);
+		int erc = avsdkErrorCode(ret);
+		callback(erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "set defaul mic succ");
+		return erc;
+	}
+
+	int erc = avsdkErrorCode(XCAST_OK);
+	callback(erc, "opera mic succ");
+	return erc;
+	
+}
+
+int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePreview, bool videoout, bool needExeVideoOut, bool needSetDefault, XCHCallBack callback)
+{
+	if (!needExePreview && !needExeVideoOut && !needSetDefault)
+	{
+		int erc = avsdkErrorCode(-104);
+		callback(erc, "not found opera camera device");
+		return erc;
+	}
+
+	// 在房间内时：打开摄像头，并预览，同时上行；
+	// 在房间外时：打开摄像头，并预览，并设置成默认摄像头；
+	std::string str = getOperaCamera(cameraid);
+	const char *operdevID = str.c_str();
+	if (operdevID == nullptr || strlen(operdevID) == 0)
+	{
+		int erc = avsdkErrorCode(-104);
+		callback(erc, "not found opera camera device");
+		return erc;
+	}
+
+	if (needExePreview)
+	{
+		int32_t preret = tencent::xcast::set_property(XC_CAMERA_PREVIEW, operdevID, tencent::xcast_data(preview));
+
+		if (needExeVideoOut || needSetDefault)
+		{
+			if (preret != XCAST_OK)
+			{
+				int erc = avsdkErrorCode(-preret);
+				callback(erc, tencent::xcast::err_msg());
+				return erc;
+			}
+		}
+		else
+		{
+			int erc = avsdkErrorCode(preret);
+			callback(erc, tencent::xcast::err_msg());
+			return erc;
+		}
+	}
+	
+	if (needExeVideoOut)
+	{
+		// 房间内
+		const char *streamid = m_stream_param->streamID.c_str();
+		int32_t ret = tencent::xcast::set_property(XC_TRACK_CAPTURE, streamid, "video-out", operdevID);
+		if (ret != XCAST_OK)
+		{
+			int erc = avsdkErrorCode(ret);
+			callback(erc, tencent::xcast::err_msg());
+			return erc;
+		}
+
+		if (stream_state == Room_Connectted)
+		{
+			tencent::xcast_data params;
+			params["enable"] = videoout;
+			int32_t enret = tencent::xcast::set_property(XC_TRACK_ENABLE, streamid, "video-out", params);
+
+			if (needSetDefault)
+			{
+				if (enret != XCAST_OK)
+				{
+					int erc = avsdkErrorCode(enret);
+					callback(erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
+					return erc;
+				}
+			}
+			else
+			{
+				int erc = avsdkErrorCode(enret);
+				callback(erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
+				return erc;
+			}
+
+		}
+	}
+
+	if (needSetDefault)
+	{
+		// 房间外
+		int32_t ret = tencent::xcast::set_property(XC_CAMERA_DEFAULT, operdevID);
+		int erc = avsdkErrorCode(ret);
+		callback(erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "set defaul mic succ");
+		return erc;
+	}
+
+	int erc = avsdkErrorCode(XCAST_OK);
+	callback(erc, "opera mic succ");
+	return erc;
 }

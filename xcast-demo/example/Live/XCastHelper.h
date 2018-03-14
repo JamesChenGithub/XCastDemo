@@ -7,39 +7,42 @@
 
 #define kForVipKidTest 1
 
+typedef std::function<void(int32_t, const char *)> XCHCallBack;
+#define XCHNilCallBack [](int32_t, const char *) {}
 
 class XCastHelper 
 {
 private:
-	static XCastHelper					*m_instance;
+	static XCastHelper					*m_instance;			// 单例 
 
 private:
-	std::unique_ptr<XCastStartParam>	m_startup_param;
-	std::unique_ptr<XCastGlobalHandler> m_global_handler;
-	std::unique_ptr<XCastRoomHandler>   m_room_handler;
-	std::unique_ptr<XCastStreamParam>	m_stream_param;
+	std::unique_ptr<XCastStartParam>	m_startup_param;		// 初始化参数
+	std::unique_ptr<XCastGlobalHandler> m_global_handler;		// 全局回调监听
+	std::unique_ptr<XCastRoomHandler>   m_room_handler;			// 房间内监听
+	std::unique_ptr<XCastStreamParam>	m_stream_param;			// 进房参数
 
-	std::recursive_mutex				m_func_mutex;
+	std::recursive_mutex				m_func_mutex;			// 锁
 
 private:
-	bool is_startup_succ = false;
+	bool is_startup_succ = false;								// 是否初始化成功
 
 	typedef enum Room_State {
-		Room_Closed,
-		Room_Connecting,
-		Room_Connectted
-
+		Room_Closed,											// 未进房
+		Room_Connecting,										// 进房中
+		Room_Connectted											// 已进房
 	}Room_State;
-	Room_State stream_state = Room_Closed;
+
+	Room_State stream_state = Room_Closed;						// 房间状态	
 
 	typedef enum DeviceType
 	{
-		Device_Camera,
-		Device_Mic,
-		Device_Speaker,
+		Device_Camera,											// 摄像头
+		Device_Mic,												// 麦克风
+		Device_Speaker,											// 扬声器
 	}DeviceType;
 
 private:
+	// XCAST回调
 	static int32_t onXCastSystemEvent(void *contextinfo, tencent::xcast_data &data);
 	static int32_t onXCastStreamEvent(void *contextinfo, tencent::xcast_data &data);
 	static int32_t onXCastTrackEvent(void *contextinfo, tencent::xcast_data &data);
@@ -54,73 +57,156 @@ private:
 public:
 	static XCastHelper* getInstance();
 	
+public:
+	/*
+	* 功能: 初始始化XCast
+	* param : 初始化参数，内部会保存该值；
+	* callback ：初始化回调
+	*/
+	void startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback);
+	
+	/*
+	* 功能: 反初始始化XCast，
+	* callback ：反初始化回调
+	*/
+	void stopContext(XCHCallBack callback);
 
 public:
-	void startContext(std::unique_ptr<XCastStartParam> param, std::function<void(int32_t, char *)> callback);
-	void stopContext(std::function<void(int32_t, char *)> callback);
-
-public:
+	/*
+	* 功能：设直全局监听，主要处理设备，以及系统相关的回调
+	*/
 	void setGlobalHandler(std::unique_ptr<XCastGlobalHandler>  handler);
 
 public:
-	void enterRoom(std::unique_ptr<XCastStreamParam>m_stream_param,  std::unique_ptr<XCastRoomHandler>	roomDelegate,std::function<void(int32_t, char *)> callback);
-	void exitRoom(std::function<void(int32_t, char *)> callback);
+	/*
+	* 功能：进房开始推流
+	* roomoption : 进房参数配置
+	* roomDelegate : 房间数据回调
+	* callback ：调enterroom操作回调
+	*/
+	void enterRoom(std::unique_ptr<XCastStreamParam>roomoption,  std::unique_ptr<XCastRoomHandler>	roomDelegate, XCHCallBack callback);
+	
+	/*
+	* 功能：退出房间
+	* callback ：调exitRoom操作回调
+	*/
+	
+	void exitRoom(XCHCallBack callback);
 
-
-private:
-	void clearAfterExitRoom();
+	
+public:
 	// Speaker操作
-protected:
-
-	// 获取扬声器列表, 结果是同步查询，外部不要保存结果
-	// 返回：扬声器列表（UTF-8格式串，外部进行转码）
+	/*
+	* 功能：获取扬声器列表, 同步查询，外部不要保存结果
+	* 返回：扬声器列表（UTF-8格式串，外部进行转码）
+	*/
 	std::vector<std::string> getSpeakerList() const;
 
-	// 对默认speaker操作
-	int enableSpeaker(bool enable, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
+	/*
+	* 功能：对默认的扬声器进行打开/关闭操作
+	* enable : true : 打开 / false : 关闭
+	* callback ：操作回调
+	* 返回：操作是否成功，0成功，非0失败
+	*/
+	int enableSpeaker(bool enable, XCHCallBack callback = XCHNilCallBack);
 
-	// 指定默认的speaker 为 sid
-	// 同时进行enable操作
-	int enableSpeaker(const char *sid, bool enable, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
+	/*
+	* 功能：对sid扬声器进行打开/关闭操作
+	* sid : 要操作的扬声器，可为空，为空时操作默认扬声器
+	* enable : true : 打开 / false : 关闭
+	* callback ：操作回调
+	* 返回：操作是否成功，0成功，非0失败
+	*/
+	int enableSpeaker(const char *sid, bool enable, XCHCallBack callback = XCHNilCallBack);
 	
-	// 切换输出类型 , speaker : 1 扬声器 0 耳机
-	int changeOutputMode(bool speaker);
+	/*
+	* 功能 ：切换扬声器输出类型 
+	* sid ：要操作的扬声器，可为空，为空时操作默认扬声器
+	* headphone : false : 外放 / true : 耳机
+	*/
+	int changeOutputMode(const char *sid, bool headphone);
 
+
+	/*
+	* 功能 ：获取扬声器音量
+	* sid ：扬声器ID.可以为空，为空获取默认扬声器设备
+	* 返回值 ：为负，未找到设备，其他为正常值[0,100]
+	*/
+	int speakerVolume(const char *sid = nullptr) const;
+
+	/*
+	* 功能 ：设置扬声器音量
+	* sid ：扬声器ID.可以为空，为空获取默认扬声器设备
+	* volume ： 音量值正常值[0,100] , > 100 时，设置100，<0时设置0
+	* 返回值 ：为负，未找到设备，为0设置成功
+	*/
+	int setSpeakerVolume(int volume, const char *sid = nullptr);
 	
-protected:
+public:
 	// mic操作
-	// 获取麦克风列表, 结果是同步查询，外部不要保存结果
-	// 返回：麦克风列表（UTF-8格式串，外部进行转码）
+
+	/*
+	* 功能：获取麦克风列表, 同步查询，外部不要保存结果
+	* 返回：麦克风列表（UTF-8格式串，外部进行转码）
+	*/
 	std::vector<std::string> getMicList() const;
 
-	// 在房间内时，获取采集mic状态；
-	// 在房间外时，获取default mic状态;
-	int getMicState();
+	/*
+	* 功能：获取麦克风状态
+	* micid :  麦克风id,可以为空，为空则查默认麦克风的状态
+	* 返回值 ：
+	* 0 : 未找到设备
+	* 1 : 停止
+	* 2 ：运行中
+	*/
+	int getMicState(const char *micid = nullptr) const;
 
-	// 对默认mic操作
-	int enableMic(bool enable, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
+	/*
+	* 功能：操作麦克风，控制上行，只能在房间内操作
+	* enableAudioOut : 是否上行音频, true ：上行 / false : 不上行
+	* micid :  麦克风id,可以为空，为空则查默认麦克风的状态
+	* callback ：操作回调
+	* 返回值 ：操作返回值
+	*/
+	int enableMic(bool enableAudioOut, const char *micid = nullptr, XCHCallBack callback = XCHNilCallBack);
 
-	// 对默认mic操作
-	int enableMic(const char *micid, bool enable, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
+	/*
+	* 功能：操作麦克风，控制预览(自己说话自己可以听到)
+	* micid :  麦克风id,可以为空，为空则查默认麦克风的状态
+	* preview : 是否,预览, true : 预览 / false : 不预览
+	* callback ：操作回调
+	* 返回值 ：操作返回值
+	*/
+	int enableMicPreview(bool preview, const char *micid = nullptr, XCHCallBack callback = XCHNilCallBack);
 
-	// 切换mic
-	int switchToMic(const char *micid,  std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
+	/*
+	* 功能：操作麦克风，控制预览(自己说话自己可以听到)以及上行
+	* micid :  麦克风id,可以为空，为空则查默认麦克风的状态
+	* preview : 是否,预览, true : 预览 / false : 不预览
+	* enableAudioOut : 是否上行音频, true ：上行 / false : 不上行
+	* callback ：操作回调
+	* 返回值 ：操作返回值
+	*/
+	int enableMic(bool preview, bool enableAudioOut, const char *micid = nullptr, XCHCallBack callback = XCHNilCallBack);
 
-
-
-	int enableLoopBack(bool enable);
-
+	
+public:
 	// 摄像头操作
-protected:
-	// 获取摄像头列表, 结果是同步查询，外部不要保存
-	// 返回：摄像头列表（UTF-8格式串，外部进行转码）
+
+	/*
+	* 功能：获取摄像头列表, 结果是同步查询，外部不要保存
+	* 返回：摄像头列表（UTF-8格式串，外部进行转码）
+	*/
 	std::vector<std::string> getCameraList() const;
 
-	// cameraid : 摄像头id,可以为空，为空则查默认摄像头的状态
-	// 返回值 ：
-	// 0 : 未找到设备
-	// 1 : 停止
-	// 2 ：运行中
+	/*
+	* 功能：获取摄像头状态
+	* micid :  摄像头id,可以为空，为空则查默认摄像头的状态
+	* 返回值 ：
+	* 0 : 未找到设备
+	* 1 : 停止
+	* 2 ：运行中
+	*/
 	int getCameraState(const char *cameraid = nullptr) const;
 
 	// 以下几个接口控制摄像头预览以及上行控制；
@@ -128,42 +214,32 @@ protected:
 	// 在房间外时：打开摄像头，并预览，并设置成默认摄像头；
 	
 	/*
-	* preview : 使用默认渲染进行预览 true：预览 false:不预览
+	* 功能：操作摄像头，控制上行，只能在房间内操作
 	* enableVideoOut ：是否自动上行，房间外时不处理，房间内
+	* cameraid : 摄像头id，可为空，为空处理默认摄像头（如果有的话）
 	* callback ：回调
 	* 返回值 : 操作错误码，0代码成功，其他失败
 	*/
-	int enableCamera(bool preview, bool enableVideoOut, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
+	int enableCamera(bool enableVideoOut, const char *cameraid = nullptr, XCHCallBack callback = XCHNilCallBack);
 
 	/*
-	* 只是预览，但不控制上行
-	* cameraid : 摄像头id,可为空，为空查默认摄像头
-	* preview : 使用默认渲染进行预览 true：预览 false:不预览
-	* callback ：回调
-	* 返回值 : 操作错误码，0代码成功，其他失败
+	* 功能：操作摄像头，控制预览
+	* micid :  摄像头id,可以为空，为空则查默认麦克风的状态
+	* preview : 是否,预览, true : 预览 / false : 不预览
+	* callback ：操作回调
+	* 返回值 ：操作返回值
 	*/
-	int enableCamera(const char *cameraid, bool preview, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
-
+	int enableCameraPreview( bool preview, const char *cameraid = nullptr, XCHCallBack callback = XCHNilCallBack);
+	
 	/*
-	* 控制预览以及上行，不会控制已在预览的摄像头
-	* cameraid : 摄像头id,可为空，为空查默认摄像头
-	* preview : 使用默认渲染进行预览 true：预览 false:不预览
-	* callback ：回调
-	* 返回值 : 操作错误码，0代码成功，其他失败
+	* 功能：操作摄像头，控制预览(自己说话自己可以听到)以及上行
+	* micid :  摄像头id,可以为空，为空则查默认摄像头
+	* preview : 是否,预览, true : 预览 / false : 不预览
+	* enableVideoOut : 是否上行音频, true ：上行 / false : 不上行
+	* callback ：操作回调
+	* 返回值 ：操作返回值
 	*/
-	int enableCamera(const char *cameraid, bool preview, bool enableVideoOut, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
-
-	///*
-	//* 更新摄像头是否上行, 只在房间内有效
-	//* cameraid : 摄像头id,可为空，为空查默认摄像头
-	//* enableVideoOut ：是否自动上行
-	//* callback ：回调
-	//* 返回值 : 操作错误码，0代码成功，其他失败
-	//*/
-	//int updateCameraMode(const char *cameraid, bool enableVideoOut, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
-
-	//int switchCamera(const char *cameraid, bool preview, bool enableVideoOut, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
-
+	int enableCamera( bool preview, bool enableVideoOut, const char *cameraid = nullptr, XCHCallBack callback = XCHNilCallBack);
 private:
 	std::string getOperaDevice(DeviceType type, const char *cameraid = nullptr) const;
 	std::string getOperaCamera(const char *cameraid = nullptr) const;
@@ -171,11 +247,17 @@ private:
 	std::string getOperaSpeaker(const char *cameraid = nullptr) const;
 
 private:
-	int avsdkErrorCode(int xcast_err_code);
+	int avsdkErrorCode(int xcast_err_code) const;
 	std::vector<std::string> getDeviceList(DeviceType type) const;
 	int getDeviceState(DeviceType type, const char *devid = nullptr) const;
 
+private:
+	// 功能 ：清理内部状态
+	void clearAfterExitRoom();
 
+private:
+	int operaMic(const char *micid, bool preview, bool needExePreview, bool audioout, bool needExeAudioOut, bool needSetDefault, XCHCallBack callback = XCHNilCallBack);
+	int operaCamera(const char *camid, bool preview, bool needExePreview, bool videoout, bool needExeAudioOut, bool needSetDefault, XCHCallBack callback = XCHNilCallBack);
 
 };
 

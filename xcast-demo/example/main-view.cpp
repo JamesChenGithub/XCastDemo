@@ -1766,7 +1766,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		}
 		else
 		{
-			XCastHelper::getInstance()->stopContext([&](int32_t errcode, char *err){
+			XCastHelper::getInstance()->stopContext([&](int32_t errcode, const char *err){
 				is_stream_running = false;
 				is_initialized = false;
 				//new_ui_init_xcast(is_initialized, &main_app);
@@ -1846,7 +1846,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		}
 		else
 		{
-			XCastHelper::getInstance()->exitRoom([&](int32_t code, char *err) {
+			XCastHelper::getInstance()->exitRoom([&](int32_t code, const char *err) {
 				is_stream_running = code == XCAST_OK ? false : true;
 				if (!is_stream_running)
 				{
