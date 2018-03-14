@@ -100,7 +100,7 @@ public:
 	* 功能：获取扬声器列表, 同步查询，外部不要保存结果
 	* 返回：扬声器列表（UTF-8格式串，外部进行转码）
 	*/
-	std::vector<std::string> getSpeakerList() const;
+	void getSpeakerList(std::vector<std::string> &vec) const;
 
 	/*
 	* 功能：对默认的扬声器进行打开/关闭操作
@@ -149,7 +149,7 @@ public:
 	* 功能：获取麦克风列表, 同步查询，外部不要保存结果
 	* 返回：麦克风列表（UTF-8格式串，外部进行转码）
 	*/
-	std::vector<std::string> getMicList() const;
+	void getMicList(std::vector<std::string> &vec) const;
 
 	/*
 	* 功能：获取麦克风状态
@@ -197,7 +197,7 @@ public:
 	* 功能：获取摄像头列表, 结果是同步查询，外部不要保存
 	* 返回：摄像头列表（UTF-8格式串，外部进行转码）
 	*/
-	std::vector<std::string> getCameraList() const;
+	void getCameraList(std::vector<std::string> &vec) const;
 
 	/*
 	* 功能：获取摄像头状态
@@ -241,14 +241,14 @@ public:
 	*/
 	int enableCamera( bool preview, bool enableVideoOut, const char *cameraid = nullptr, XCHCallBack callback = XCHNilCallBack);
 private:
-	std::string getOperaDevice(DeviceType type, const char *cameraid = nullptr) const;
-	std::string getOperaCamera(const char *cameraid = nullptr) const;
-	std::string getOperaMic(const char *cameraid = nullptr) const;
-	std::string getOperaSpeaker(const char *cameraid = nullptr) const;
+	void getOperaDevice(DeviceType type, std::string &retstr, const char *cameraid = nullptr) const;
+	void getOperaCamera(std::string &retstr, const char *cameraid = nullptr) const;
+	void getOperaMic(std::string &retstr, const char *cameraid = nullptr) const;
+	void getOperaSpeaker(std::string &retstr, const char *cameraid = nullptr) const;
 
 private:
 	int avsdkErrorCode(int xcast_err_code) const;
-	std::vector<std::string> getDeviceList(DeviceType type) const;
+	void getDeviceList(DeviceType type, std::vector<std::string> &list) const;
 	int getDeviceState(DeviceType type, const char *devid = nullptr) const;
 
 private:
