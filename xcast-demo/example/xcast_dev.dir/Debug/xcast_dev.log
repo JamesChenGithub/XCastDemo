@@ -1,4 +1,4 @@
-﻿  main-view.cpp
+﻿  XCastHelper.cpp
 c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_define.h(1045): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   xcast_dev.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\bin\Debug\xcast_dev.exe

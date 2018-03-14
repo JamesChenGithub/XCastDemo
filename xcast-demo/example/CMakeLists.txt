@@ -22,6 +22,10 @@ set(xcast_dev_SOURCES
     tree-view.cpp
     xcast-dev.cpp
     xcast-ui-handler.cc
+    Live/XCastData.cpp
+    Live/XCastData.h
+    Live/XCastHelper.cpp
+    Live/XCastHelper.h
     ${RESOURCES})
 
 
