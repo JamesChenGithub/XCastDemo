@@ -363,7 +363,7 @@ popup_capture_select(tree_item_data_t *item_data, HTREEITEM hItem)
   DestroyMenu(hmenu);
 
 
- // xcast::set_property(XC_TRACK_CAPTURE, data->stream.c_str(), data->track.c_str(), captures[n].str_val());
+  //xcast::set_property(XC_TRACK_CAPTURE, data->stream.c_str(), data->track.c_str(), captures[n].str_val());
   if (n && captures.size() && n - 1 < captures.size()) {
     xcast::set_property(XC_TRACK_CAPTURE, data->stream.c_str(), data->track.c_str(), captures[n - 1].str_val());
   }
@@ -1735,7 +1735,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 			XCastStartParam *param = new XCastStartParam;
 			std::unique_ptr<XCastStartParam> up(param);
-			up->identifier = 1234567;
+			up->identifier = 67890;
 			up->isTestEvn = false;
 			up->sdkappid = 1400036169;
 			up->accounttype = 14180;

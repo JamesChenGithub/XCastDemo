@@ -101,11 +101,17 @@ protected:
 
 	// 在房间内时：打开摄像头，并预览，同时上行；
 	// 在房间外时：打开摄像头，并预览，并设置成默认摄像头；
-	int enableCamera(bool preview, bool campture, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
+	/*
+	* preview : 使用默认渲染进行预览 true：预览 false:不预览
+	* enableVideoOut ：是否自动上行，房间外时不处理，房间内
+	* cameraid ：指定摄像头id，可为空，为空使用默认摄像头;
+	* callback ：回调
+	*/
+	int enableCamera(bool preview, bool enableVideoOut, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
 
 	int enableCamera(const char *cameraid, bool preview, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
 
-	int enableCamera(const char *cameraid, bool preview, bool campture, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
+	int enableCamera(const char *cameraid, bool preview, bool enableVideoOut, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
 
 	int updateCameraMode(const char *cameraid, bool autoSending, std::function<void(int32_t, char *)> callback = [](int32_t, char *) {});
 

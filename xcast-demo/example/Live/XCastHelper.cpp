@@ -45,7 +45,7 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 #if kForVipKidTest
 	new_stream_event(NULL, data);
 #endif
-	return XCAST_OK;
+	//return XCAST_OK;
 	XCastHelper *instance = (XCastHelper *)contextinfo;
 	char * str = data.dump();
 	if (str)
@@ -340,7 +340,7 @@ void XCastHelper::exitRoom(std::function<void(int32_t, char *)> callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
-	if (stream_state != Room_Closed)
+	if (stream_state != Room_Connectted)
 	{
 		callback(1004, "xcast isn't streaming");
 		return;
@@ -436,17 +436,16 @@ int XCastHelper::getCameraState()
 int XCastHelper::enableCamera(bool preview, bool campture, std::function<void(int32_t, char *)> callback)
 {
 	xcast_data defaultCamera = tencent::xcast::get_property(XC_CAMERA_DEFAULT);
-	defaultCamera.dump();
-	enableCamera((const char *)(defaultCamera["return"]), preview, campture, callback);
+	enableCamera(defaultCamera.str_val(), preview, campture, callback);
 	return XCAST_OK;
 }
 int XCastHelper::enableCamera(const char *cameraid, bool preview, std::function<void(int32_t, char *)> callback)
 {
-	enableCamera(cameraid, preview, true, callback);
+	enableCamera(cameraid, preview, false, callback);
 	return XCAST_OK;
 }
 
-int XCastHelper::enableCamera(const char *cameraid, bool preview, bool campture, std::function<void(int32_t, char *)> callback)
+int XCastHelper::enableCamera(const char *cameraid, bool preview, bool enableVideoOut, std::function<void(int32_t, char *)> callback)
 {
 	// 在房间内时：打开摄像头，并预览，同时上行；
 	// 在房间外时：打开摄像头，并预览，并设置成默认摄像头；
@@ -483,10 +482,17 @@ int XCastHelper::enableCamera(const char *cameraid, bool preview, bool campture,
 	{
 		// 房间内
 		const char *streamid = m_stream_param->streamID.c_str();
-		int32_t ret = tencent::xcast::set_property(XC_TRACK_CAPTURE, streamid,operdevID, campture);
+		int32_t ret = tencent::xcast::set_property(XC_TRACK_CAPTURE, streamid,"video-out", operdevID);
 		if (ret != XCAST_OK)
 		{
 			callback(avsdkErrorCode(ret), "set capture camera error");
+			return avsdkErrorCode(ret);
+		}
+
+		int32_t enret = tencent::xcast::set_property(XC_TRACK_ENABLE, streamid, "video-out", enableVideoOut);
+		if (ret != XCAST_OK)
+		{
+			callback(avsdkErrorCode(ret), "set enable video-out error");
 			return avsdkErrorCode(ret);
 		}
 	}
