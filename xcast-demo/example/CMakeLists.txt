@@ -28,6 +28,8 @@ set(xcast_dev_SOURCES
     Live/XCastHelper.h
 	Live/XCastUtil.cpp
     Live/XCastUtil.h
+	Live/XCastObserver.cpp
+    Live/XCastObserver.h
  
     ${RESOURCES})
 

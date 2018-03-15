@@ -11,6 +11,67 @@
 #endif
 
 
+inline void XCastHelperCallBack(XCHCallBack callback, int32_t errcode, const char *err)
+{
+	if (callback)
+		callback(errcode, err);
+}
+
+bool xcast_data_to_deviceitem(tencent::xcast_data data, XCastDeviceHotPlugItem &item)
+{
+	const char *srcstr = data["src"];
+
+	if (srcstr == nullptr)
+		return false;
+
+	XCastDeviceHotPlugItem device;
+	device.deviceClass = (XCastDeviceType)((int32_t)(data["class"]));
+	device.src = std::string(srcstr);
+	device.state = (XCastDeviceState)((int32_t)(data["state"]));
+	device.err = data["err"];
+	const char *str = data["err_msg"].str_val();
+	device.err_msg = str ? std::string(str) : "";
+	return true;
+}
+
+bool xcast_data_to_deviceitem(tencent::xcast_data data, XCastVideoFrame& frame)
+{
+	const char *dev = data["src"];
+	if (!dev)
+		return false;
+
+	//const char       *dev = evt["src"];
+	//
+	//if (!dev) return XCAST_ERR_INVALID_ARGUMENT;
+	//
+	//switch ((int32_t)evt["class"]) {
+	//case xc_device_camera:
+	//case xc_device_screen_capture: {
+	//	/* 摄像头预览数据渲染 */
+	//	int32_t         width = evt["width"];
+	//	int32_t         height = evt["height"];
+	//	int32_t         format = evt["format"];
+	//
+	//	if (format == xc_media_argb32) {
+	//		TrackVideoBuffer *buffer = GetTrackBuffer(dev, width, height);
+	//		memcpy(buffer->data, evt["data"].bytes_val(), width * height * kBytesPerPixel);
+	//		InvalidVideoView(&buffer->rcOut);
+	//	}
+	//	else if (format == xc_media_layer) {
+	//		TrackVideoBuffer *buffer = GetTrackBuffer(dev, width, height, true);
+	//		TrackBufferRefreshLayers(buffer, evt["data"]);
+	//	}
+	//	break;
+	//}
+	//case xc_device_mic:
+	//	break;
+	//default:
+	//	break;
+	//}
+}
+
+
+
 XCastHelper * XCastHelper::m_instance = nullptr;
 
 XCastHelper::XCastHelper()
@@ -37,7 +98,7 @@ int32_t XCastHelper::onXCastSystemEvent(void *contextinfo, tencent::xcast_data &
 
 	if (instance && instance->m_global_handler.get())
 	{
-		instance->m_global_handler->onSystemEvent(contextinfo, data);
+		instance->m_global_handler->onSystemEvent();
 	}
 
 	// TODO: 添加回调 
@@ -78,18 +139,20 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 
 				// 打开摄像头
 				instance->enableCamera(opera.autoCameraPreview, opera.autoCameraCapture, opera.defaultCamera.c_str());
-				
+			
 				// 打开扬声器
-				std::vector<std::string> slist;
-				instance->getSpeakerList(slist);
-				if (slist.size() > 0)
-				{
-					instance->speakerVolume(slist[0].c_str());
-					instance->enableSpeaker(slist[0].c_str(), opera.autoSpeaker);
-				}
+				instance->enableSpeaker(opera.autoSpeaker);
+				// 打开扬声器
+				//std::vector<std::string> slist;
+				//instance->getSpeakerList(slist);
+				//if (slist.size() > 0)
+				//{
+				//	instance->speakerVolume(slist[0].c_str());
+				
+				//}
 
 				// 打开Mic
-				instance->enableMic(opera.autoMic);
+				//instance->enableMic(opera.autoMic);
 				
 				
 			
@@ -173,7 +236,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 		break;
 		case xc_track_media: {
 			//ui_track_media(e, user_data);
-			XCastVideoFrame *videoFrame;
+			XCastVideoFrame *videoFrame = nullptr;
 			instance->m_room_handler->onVideoPreview(videoFrame);
 		}
 							 break;
@@ -193,72 +256,65 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 	XCastHelper *instance = (XCastHelper *)contextinfo;
 	if (instance && instance->m_global_handler.get())
 	{
-		switch ((int32_t)e["type"]) {
-		case xc_device_added:
+		
+		XCastDeviceEvent eventtype = (XCastDeviceEvent)((int32_t)(e["type"]));
+		switch (eventtype)
+		{
+		case XCastDeviceEvent_Added:
+		{
 			/* 设备插入 */
-		{
-			XCastDevice device;
-			instance->m_global_handler->onDeviceEvent_DeviceAdd(device);
-		}
-
-			/*if (e["class"] == xc_device_camera && e["src"] == "11Webcam C170")
+			XCastDeviceHotPlugItem device;
+			if (xcast_data_to_deviceitem(e, device))
 			{
-			int ret = xcast::set_property(XC_CAMERA_DEFAULT, e["src"]);
-			int i = 0;
-			}*/
-
-			break;
-		case xc_device_updated:
-		{
-			XCastDevice device;
-			instance->m_global_handler->onDeviceEvent_DeviceUpdate(device);
+				instance->m_global_handler->onDeviceEvent_DeviceAdd(device);
+			}
+			
 		}
-//			/* 设备更新 */
-//			ui_device_update(e["src"], e["class"], e["state"], e["err"], e["err_msg"], user_data);
-//
-//#if defined(XCAST_EXTERNAL_VIDEO)
-//			dev = (const char *)evt["src"];
-//			state = evt["state"];
-//			if (dev == "ext1") {
-//				if (state == xc_device_running) {
-//					/* TODO: start external capture here */
-//					xcast_inject_video((const uint8_t *)0xFFFFFFFF, 4096, 480, 320);
-//				}
-//				else if (state == xc_device_stopped) {
-//					/* TODO: stop external capture here */
-//
-//				}
-//			}
-//#endif
-//
-			break;
-		case xc_device_removed:
+		break;
+		case XCastDeviceEvent_Updated:
+		{
+			XCastDeviceHotPlugItem device;
+			if (xcast_data_to_deviceitem(e, device))
+			{
+				instance->m_global_handler->onDeviceEvent_DeviceUpdate(device);
+			}
+			
+		}
+		break;
+		case XCastDeviceEvent_Removed:
+		{
 			/* 设备拔出 */
-			/*ui_device_added(e["src"], e["class"], false, user_data);*/
-		{
-			XCastDevice device;
-			instance->m_global_handler->onDeviceEvent_DeviceRemoved(device);
+			XCastDeviceHotPlugItem device;
+			if (xcast_data_to_deviceitem(e, device))
+			{
+				instance->m_global_handler->onDeviceEvent_DeviceRemoved(device);
+			}
 		}
-			break;
-		case xc_device_preprocess:
+		break;
+		case XCastDeviceEvent_Preprocess:
 			/* 设备预处理 */
 		// 	ui_device_preprocess(e, user_data);
 			// TODO:
 			break;
-		case xc_device_preview:
-			// TODO:
+		case XCastDeviceEvent_Preview:
+		{
 			/* 设备预览 */
+			const char *cs = e.str_val();
+			const char *str = e.dump();
+
 			if (instance->m_global_handler->needGlobalCallbackLocalVideo())
 			{
-				XCastVideoFrame *frame;
-				instance->m_global_handler->onLocalVideoPreview(frame);
+				XCastVideoFrame *frame = nullptr;
+				instance->m_global_handler->onGlobalLocalVideoPreview(frame);
 			}
 
-			if (instance->m_room_handler->needRoomCallbackLocalVideo())
+			if (instance->m_room_handler && instance->m_room_handler->needRoomCallbackLocalVideo())
 			{
-				XCastVideoFrame *frame;
+				XCastVideoFrame *frame = nullptr;
 				instance->m_room_handler->onLocalVideoPreview(frame);
 			}
+		}
+			
 			break;
 		default:
 			break;
@@ -290,20 +346,23 @@ XCastHelper* XCastHelper::getInstance()
 	});
 	return m_instance;
 }
-void XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback)
+
+
+
+int XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
 	if (is_startup_succ)
 	{
-		callback(1003, "xcast has started");
-		return;
+		XCastHelperCallBack(callback, 1003, "xcast has started");
+		return 1003;
 	}
 
 	if (!param.get() || !param->isVaild())
 	{
-		callback(1004, "param error");
-		return;
+		XCastHelperCallBack(callback,1004, "param error");
+		return 1004;
 	}
 	m_startup_param.reset();
 	m_startup_param = std::move(param);
@@ -326,11 +385,11 @@ void XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBa
 		tencent::xcast::handle_event(XC_EVENT_DEVICE, XCastHelper::onXCastDeviceEvent, m_instance);
 		tencent::xcast::handle_event(XC_EVENT_STATISTIC_TIPS, XCastHelper::onXCastTipsEvent, m_instance);
 	}
-	
-	callback(avsdkErrorCode(rt), is_startup_succ ? "xcast_startup succ" : "xcast_startup failed");
-
+	int code = avsdkErrorCode(rt);
+	XCastHelperCallBack(callback, code, is_startup_succ ? "xcast_startup succ" : "xcast_startup failed");
+	return code;
 }
-void XCastHelper::stopContext(XCHCallBack callback)
+int XCastHelper::stopContext(XCHCallBack callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
@@ -345,17 +404,21 @@ void XCastHelper::stopContext(XCHCallBack callback)
 		}
 		else
 		{
-			callback(avsdkErrorCode(ret), "xcast cant stop streaming");
-			return;
+			int code = avsdkErrorCode(ret);
+			XCastHelperCallBack(callback, code, "xcast cant stop streaming");
+			return code;
 		}
 	}
 
 	tencent::xcast::shutdown();
 	is_startup_succ = false;
-	callback(avsdkErrorCode(XCAST_OK), "xcast shutdown succ");
+	m_global_handler.reset();
+	int code = avsdkErrorCode(XCAST_OK);
+	XCastHelperCallBack(callback, code, "xcast shutdown succ");
+	return code;
 }
 
-void XCastHelper::setGlobalHandler(std::unique_ptr<XCastGlobalHandler>  handler)
+void XCastHelper::setGlobalHandler(std::shared_ptr<XCastGlobalHandler>  handler)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 	m_global_handler.reset();
@@ -363,18 +426,18 @@ void XCastHelper::setGlobalHandler(std::unique_ptr<XCastGlobalHandler>  handler)
 }
 
 
-void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique_ptr<XCastRoomHandler>	roomDelegate, XCHCallBack callback)
+int XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::shared_ptr<XCastRoomHandler>	roomDelegate, XCHCallBack callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 	if (stream_state != Room_Closed)
 	{
-		callback(1003, "xcast is streaming");
-		return;
+		XCastHelperCallBack(callback,1003, "xcast is streaming");
+		return 1003;
 	}
 	if (!(param.get())||!(param->isVaild()))
 	{
-		callback(1004, "xcast start stream param error");
-		return;
+		XCastHelperCallBack(callback,1004, "xcast start stream param error");
+		return 1004;
 	}
 
 	m_stream_param.reset();
@@ -385,8 +448,6 @@ void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique
 	{
 		m_room_handler = std::move(roomDelegate);
 	}
-	
-
 
 	// 参数配置
 	tencent::xcast_data       params, auth_info, track;
@@ -431,26 +492,28 @@ void XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::unique
 	/*char *pstr = params.dump();*/
 
 	int32_t  rt = tencent::xcast::start_stream(m_stream_param->streamID.c_str(), params);
+	int code = avsdkErrorCode(rt);
 	if (XCAST_OK != rt) {
 		// TODO：进房失败；
 		// ui_xcast_err(rt, xcast_err_msg(), user_data);
-
-		callback(avsdkErrorCode(rt), (char *)xcast_err_msg());
+		
+		XCastHelperCallBack(callback, code, (char *)xcast_err_msg());
 		clearAfterExitRoom();
-		return;
+		return code;
 	}
-	callback(avsdkErrorCode(rt), "xcast_start_stream succ");
+	XCastHelperCallBack(callback, code, "xcast_start_stream succ");
 	stream_state = Room_Connecting;
+	return code;
 
 }
-void XCastHelper::exitRoom(XCHCallBack callback)
+int XCastHelper::exitRoom(XCHCallBack callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
 	if (stream_state != Room_Connectted)
 	{
-		callback(1004, "xcast isn't streaming");
-		return;
+		XCastHelperCallBack(callback,1004, "xcast isn't streaming");
+		return 1004;
 	}
 
 
@@ -458,14 +521,17 @@ void XCastHelper::exitRoom(XCHCallBack callback)
 
 	int32_t ret = tencent::xcast::close_stream(m_stream_param->streamID.c_str());
 
+	int code = avsdkErrorCode(ret);
 	if (ret != XCAST_OK)
 	{
-		callback(avsdkErrorCode(ret), (char *)xcast_err_msg());
+		XCastHelperCallBack(callback, code, (char *)xcast_err_msg());
 	}
 	else
 	{
-		callback(avsdkErrorCode(ret), "xcast close stream succ");
+		XCastHelperCallBack(callback, code, "xcast close stream succ");
 	}
+
+	return code;
 }
 
 void XCastHelper::clearAfterExitRoom()
@@ -482,18 +548,18 @@ void XCastHelper::getSpeakerList(std::vector<std::string> &vec) const
 // Speaker操作
 int XCastHelper::enableSpeaker(bool enable, XCHCallBack callback)
 {
-	return enableSpeaker(nullptr, enable, callback);
+	return enableSpeakerByID(enable, nullptr, callback);
 }
 
 // 指定默认的speaker 为 sid
 // 同时进行enable操作
-int XCastHelper::enableSpeaker(const char *sid, bool enable, XCHCallBack callback)
+int XCastHelper::enableSpeakerByID(bool enable, const char *sid, XCHCallBack callback)
 {
 	std::string oidstr;
 	getOperaSpeaker(oidstr, sid);
 	if (oidstr.length() == 0)
 	{
-		callback(avsdkErrorCode(-104), "not camera param");
+		XCastHelperCallBack(callback,avsdkErrorCode(-104), "not camera param");
 		return avsdkErrorCode(-104);
 	}
 	const char *operdevID = oidstr.c_str();
@@ -501,7 +567,7 @@ int XCastHelper::enableSpeaker(const char *sid, bool enable, XCHCallBack callbac
 	tencent::xcast_data data;
 	data["params"] = enable;
 	int32_t ret = tencent::xcast::set_property(XC_SPEAKER_PREVIEW, operdevID, data);
-	callback(avsdkErrorCode(ret), ret != XCAST_OK ? tencent::xcast::err_msg() : "enable speaker succ");
+	XCastHelperCallBack(callback,avsdkErrorCode(ret), ret != XCAST_OK ? tencent::xcast::err_msg() : "enable speaker succ");
 	return avsdkErrorCode(ret);
 }
 // 切换输出类型 , speaker : 1 扬声器 0 耳机
@@ -792,7 +858,7 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 	if (!needExePreview && !needExeAudioOut && !needSetDefault)
 	{
 		int ret = avsdkErrorCode(XCAST_OK);
-		callback(ret, "do nothing");
+		XCastHelperCallBack(callback,ret, "do nothing");
 		return ret;
 	}
 
@@ -803,7 +869,7 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 	if (str.length() == 0)
 	{
 		int erc = avsdkErrorCode(-104);
-		callback(erc, "not found opera mic device");
+		XCastHelperCallBack(callback,erc, "not found opera mic device");
 		return erc;
 	}
 	const char *operdevID = str.c_str();
@@ -816,14 +882,14 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 			if (preret != XCAST_OK)
 			{
 				int erc = avsdkErrorCode(-preret);
-				callback(erc, tencent::xcast::err_msg());
+				XCastHelperCallBack(callback,erc, tencent::xcast::err_msg());
 				return erc;
 			}
 		}
 		else
 		{
 			int erc = avsdkErrorCode(preret);
-			callback(erc, tencent::xcast::err_msg());
+			XCastHelperCallBack(callback,erc, tencent::xcast::err_msg());
 			return erc;
 		}
 		
@@ -832,13 +898,14 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 	if (needExeAudioOut)
 	{
 		const char *streamid = m_stream_param->streamID.c_str();
+
 		{	// 房间内
 			
 			int32_t ret = tencent::xcast::set_property(XC_TRACK_CAPTURE, streamid, "audio-out", operdevID);
 			if (ret != XCAST_OK)
 			{
 				int erc = avsdkErrorCode(ret);
-				callback(erc, tencent::xcast::err_msg());
+				XCastHelperCallBack(callback,erc, tencent::xcast::err_msg());
 				return erc;
 			}
 		}
@@ -855,14 +922,14 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 				if (enret != XCAST_OK)
 				{
 					int erc = avsdkErrorCode(enret);
-					callback(erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
+					XCastHelperCallBack(callback,erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
 					return erc;
 				}
 			}
 			else
 			{
 				int erc = avsdkErrorCode(enret);
-				callback(erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
+				XCastHelperCallBack(callback,erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
 				return erc;
 			}
 		}
@@ -873,12 +940,12 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 		// 房间外
 		int32_t ret = tencent::xcast::set_property(XC_MIC_DEFAULT, operdevID);
 		int erc = avsdkErrorCode(ret);
-		callback(erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "set defaul mic succ");
+		XCastHelperCallBack(callback,erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "set defaul mic succ");
 		return erc;
 	}
 
 	int erc = avsdkErrorCode(XCAST_OK);
-	callback(erc, "opera mic succ");
+	XCastHelperCallBack(callback,erc, "opera mic succ");
 	return erc;
 	
 }
@@ -888,7 +955,7 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 	if (!needExePreview && !needExeVideoOut && !needSetDefault)
 	{
 		int erc = avsdkErrorCode(-104);
-		callback(erc, "not found opera camera device");
+		XCastHelperCallBack(callback,erc, "not found opera camera device");
 		return erc;
 	}
 
@@ -899,7 +966,7 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 	if (str.length() == 0)
 	{
 		int erc = avsdkErrorCode(-104);
-		callback(erc, "not found opera camera device");
+		XCastHelperCallBack(callback,erc, "not found opera camera device");
 		return erc;
 	}
 	const char *operdevID = str.c_str();
@@ -912,14 +979,14 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 			if (preret != XCAST_OK)
 			{
 				int erc = avsdkErrorCode(-preret);
-				callback(erc, tencent::xcast::err_msg());
+				XCastHelperCallBack(callback,erc, tencent::xcast::err_msg());
 				return erc;
 			}
 		}
 		else
 		{
 			int erc = avsdkErrorCode(preret);
-			callback(erc, tencent::xcast::err_msg());
+			XCastHelperCallBack(callback,erc, tencent::xcast::err_msg());
 			return erc;
 		}
 	}
@@ -933,7 +1000,7 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 			if (ret != XCAST_OK)
 			{
 				int erc = avsdkErrorCode(ret);
-				callback(erc, tencent::xcast::err_msg());
+				XCastHelperCallBack(callback,erc, tencent::xcast::err_msg());
 				return erc;
 			}
 		}
@@ -950,14 +1017,14 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 				if (enret != XCAST_OK)
 				{
 					int erc = avsdkErrorCode(enret);
-					callback(erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
+					XCastHelperCallBack(callback,erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
 					return erc;
 				}
 			}
 			else
 			{
 				int erc = avsdkErrorCode(enret);
-				callback(erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
+				XCastHelperCallBack(callback,erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
 				return erc;
 			}
 
@@ -969,11 +1036,11 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 		// 房间外
 		int32_t ret = tencent::xcast::set_property(XC_CAMERA_DEFAULT, operdevID);
 		int erc = avsdkErrorCode(ret);
-		callback(erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "set defaul mic succ");
+		XCastHelperCallBack(callback,erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "set defaul mic succ");
 		return erc;
 	}
 
 	int erc = avsdkErrorCode(XCAST_OK);
-	callback(erc, "opera mic succ");
+	XCastHelperCallBack(callback,erc, "opera mic succ");
 	return erc;
 }

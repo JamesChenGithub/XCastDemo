@@ -10,7 +10,8 @@
 #define kForVipKidTest 1
 
 typedef std::function<void(int32_t, const char *)> XCHCallBack;
-#define XCHNilCallBack [](int32_t, const char *) {}
+#define XCHNilCallBack NULL
+//#define XCHNilCallBack [](int32_t, const char *) {}
 
 class XCastHelper 
 {
@@ -19,8 +20,8 @@ private:
 
 private:
 	std::unique_ptr<XCastStartParam>	m_startup_param;		// 初始化参数
-	std::unique_ptr<XCastGlobalHandler> m_global_handler;		// 全局回调监听
-	std::unique_ptr<XCastRoomHandler>   m_room_handler;			// 房间内监听
+	std::shared_ptr<XCastGlobalHandler> m_global_handler;		// 全局回调监听
+	std::shared_ptr<XCastRoomHandler>   m_room_handler;			// 房间内监听
 	std::unique_ptr<XCastStreamParam>	m_stream_param;			// 进房参数
 
 	std::recursive_mutex				m_func_mutex;			// 锁
@@ -65,19 +66,19 @@ public:
 	* param : 初始化参数，内部会保存该值；
 	* callback ：初始化回调
 	*/
-	void startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback);
+	int startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback);
 	
 	/*
 	* 功能: 反初始始化XCast，
 	* callback ：反初始化回调
 	*/
-	void stopContext(XCHCallBack callback);
+	int stopContext(XCHCallBack callback);
 
 public:
 	/*
 	* 功能：设直全局监听，主要处理设备，以及系统相关的回调
 	*/
-	void setGlobalHandler(std::unique_ptr<XCastGlobalHandler>  handler);
+	void setGlobalHandler(std::shared_ptr<XCastGlobalHandler>  handler);
 
 public:
 	/*
@@ -86,14 +87,14 @@ public:
 	* roomDelegate : 房间数据回调
 	* callback ：调enterroom操作回调
 	*/
-	void enterRoom(std::unique_ptr<XCastStreamParam>roomoption,  std::unique_ptr<XCastRoomHandler>	roomDelegate, XCHCallBack callback);
+	int enterRoom(std::unique_ptr<XCastStreamParam>roomoption,  std::shared_ptr<XCastRoomHandler>	roomDelegate, XCHCallBack callback);
 	
 	/*
 	* 功能：退出房间
 	* callback ：调exitRoom操作回调
 	*/
 	
-	void exitRoom(XCHCallBack callback);
+	int exitRoom(XCHCallBack callback);
 
 	
 public:
@@ -119,7 +120,7 @@ public:
 	* callback ：操作回调
 	* 返回：操作是否成功，0成功，非0失败
 	*/
-	int enableSpeaker(const char *sid, bool enable, XCHCallBack callback = XCHNilCallBack);
+	int enableSpeakerByID(bool enable, const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
 	
 	/*
 	* 功能 ：切换扬声器输出类型 

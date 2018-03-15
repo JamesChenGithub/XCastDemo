@@ -5,6 +5,7 @@
 
 #include "Live/XCastHelper.h"
 #include "Live/XCastData.h"
+#include "Live/XCastObserver.h"
 #pragma comment(lib, "comctl32.lib")
 
 
@@ -45,6 +46,8 @@ void save_account();
 int32_t read_account();
 
 XCastApp   main_app;
+
+std::shared_ptr<XCastObserver> main_observer;
 //#define UDT_TEST    1
 //#define SPEED
 //#define  AUTH_BUFFER_TEST
@@ -1729,6 +1732,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		settings["test_env"] = false;
 		int32_t rt = tencent::xcast::startup(settings);*/
 
+		main_observer.reset(new XCastObserver());
 
 		if (!is_initialized)
 		{
@@ -1762,6 +1766,10 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 					}
 				}
 
+				if (is_initialized)
+				{ 
+					XCastHelper::getInstance()->setGlobalHandler(main_observer);
+				}
 			});
 		}
 		else
@@ -1817,9 +1825,9 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			param->streamID = "stream1";
 
 			param->auth_info.auth_bits = -1;
-			param->auth_info.auth_type = 0;
+			param->auth_info.auth_type = XCastAuth_None;
 
-			XCastHelper::getInstance()->enterRoom(std::move(param), NULL, [&](int code, const char *err) {
+			XCastHelper::getInstance()->enterRoom(std::move(param), main_observer, [&](int code, const char *err) {
 				is_stream_running = code == XCAST_OK;
 				if (is_stream_running)
 				{

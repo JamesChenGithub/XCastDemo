@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -37,21 +37,21 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-    <PropertyGroup>
-      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-      <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\bin\Debug\</OutDir>
-      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">xcast_dev.dir\Debug\</IntDir>
-      <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">xcast_dev</TargetName>
-      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
-      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
-      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
-      <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\bin\Release\</OutDir>
-      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">xcast_dev.dir\Release\</IntDir>
-      <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">xcast_dev</TargetName>
-      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
-      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
-      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
-    </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">xcast_dev.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">xcast_dev</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">xcast_dev.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">xcast_dev</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <AdditionalIncludeDirectories>C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\.\..;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\.\..\include;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\.\..\thirdpart\jansson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -91,7 +91,8 @@
       <ProgramDataBaseFile>C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/bin/Debug/xcast_dev.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
-      <Version></Version>
+      <Version>
+      </Version>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -137,7 +138,8 @@
       <ProgramDataBaseFile>C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/bin/Release/xcast_dev.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
-      <Version></Version>
+      <Version>
+      </Version>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -174,6 +176,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\xcast_base.h" />
+    <ClInclude Include="..\include\xcast_const.h" />
+    <ClInclude Include="..\include\xcast_data.h" />
+    <ClInclude Include="..\include\xcast_error.h" />
+    <ClInclude Include="..\include\xcast_variant.h" />
+    <ClInclude Include="..\xcast.h" />
+    <ClInclude Include="..\xcast.hh" />
     <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\main-view.h" />
     <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Resource.h" />
     <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\stdafx.h" />
@@ -183,15 +192,17 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastData.h" />
     <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastHelper.h" />
     <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastUtil.h" />
-    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\main-view.cpp"  />
-    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\tab-view.cpp"  />
-    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\tree-view.cpp"  />
-    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\xcast-dev.cpp"  />
-    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\xcast-ui-handler.cc"  />
-    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastData.cpp"  />
-    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastHelper.cpp"  />
-    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastUtil.cpp"  />
-    <ResourceCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\xcast-dev.rc"  />
+    <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastObserver.h" />
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\main-view.cpp" />
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\tab-view.cpp" />
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\tree-view.cpp" />
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\xcast-dev.cpp" />
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\xcast-ui-handler.cc" />
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastData.cpp" />
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastHelper.cpp" />
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastUtil.cpp" />
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastObserver.cpp" />
+    <ResourceCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\xcast-dev.rc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\ZERO_CHECK.vcxproj">
