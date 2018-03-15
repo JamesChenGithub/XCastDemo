@@ -2,6 +2,8 @@
 
 //#include "xcast_data.h"
 #include <string>
+#include <vector>
+#include <functional>
 
 
 /*xcast auth type*/
@@ -108,12 +110,34 @@ typedef enum  XCastDeviceState {
 	XCastDeviceState_Running,
 } XCastDeviceState;
 
-
+typedef enum XCastEndpointEvent {
+	XCast_Endpoint_NONE = 0, ///< 默认值，无意义。
+	//XCast_Endpoint_Enter = 1, ///< 进入房间事件。
+	//XCast_Endpoint_Exit = 2, ///< 退出房间事件。						 
+	XCast_Endpoint_Has_Camera_Video = 3, ///< 有发摄像头视频事件。
+	XCast_Endpoint_No_Camera_Video = 4, ///< 无发摄像头视频事件。
+	XCast_Endpoint_Has_Audio = 5, ///< 有发语音事件。
+	XCast_Endpoint_No_Audio = 6, ///< 无发语音事件。
+	XCast_Endpoint_Has_Screen_Video = 7, ///< 有发屏幕视频事件。
+	XCast_Endpoint_No_Screen_Video = 8, ///< 无发屏幕视频事件。
+	XCast_Endpoint_Has_Media_Video = 9, ///< 有发文件视频事件。
+	XCast_Endpoint_No_Media_Video = 10, ///< 无发文件视频事件。
+}XCastEndpointEvent;
 
 //===========================================================
 struct XCastDeviceHotPlugItem;
 struct XCastVideoFrame;
-struct XCastEndPoint;
+struct XCastEndpoint;
+
+#define kSupportIMAccount 0
+#ifdef kSupportIMAccount
+class XCastAccountHandler
+{
+public:
+	virtual void tinyid_to_identifier(uint64_t tinyid,std::function<void(std::string)> func) = 0;
+	virtual void identifier_to_tinyid(std::string identifier, std::function<void(uint64_t)> func) = 0;
+};
+#endif
 
 class XCastGlobalHandler
 {
@@ -140,7 +164,7 @@ public:
 	virtual void onExitRoomComplete(int result, const char *error) = 0;
 	virtual void onRoomDisconnected(int result, const char *error) = 0;
 
-	virtual void onEndpointsUpdateInfo(XCastEndPoint info) = 0;
+	virtual void onEndpointsUpdateInfo(XCastEndpointEvent event,std::vector<XCastEndpoint> infos) = 0;
 	virtual bool needRoomCallbackLocalVideo() = 0;
 	virtual void onLocalVideoPreview(XCastVideoFrame *frame) = 0;
 
@@ -151,14 +175,17 @@ public:
 };
 
 typedef struct XCastStartParam {
-	uint64_t identifier = 0;
+#ifdef kSupportIMAccount
+	std::string identifier;
+#endif
+	uint64_t tinyid = 0;
 	bool isTestEvn = false;
 	int32_t sdkappid = 0;
 	uint32_t accounttype = 0;
 
 	bool isVaild() const
 	{
-		if (identifier == 0 || sdkappid == 0 || accounttype == 0)
+		if ((tinyid == 0 ) || sdkappid == 0 || accounttype == 0)
 		{
 			return false;
 		}
@@ -197,7 +224,7 @@ typedef struct XCastStreamAuthInfo
 		}
 		else if (auth_type == XCastAuth_Auto)
 		{
-			if (expire_time < 0 || secret_key.length() == 0 )
+			if (expire_time < 0 || secret_key.length() == 0)
 			{
 				return false;
 			}
@@ -215,7 +242,7 @@ typedef struct XCastStreamTrackInfo
 {
 	bool ext_video_capture = false;
 	bool ext_audio_capture = false;
-	bool ext_audio_playback = true;
+	bool ext_audio_playback = false;
 }XCastStreamTrackInfo;
 
 
@@ -303,67 +330,8 @@ typedef struct XCastVideoFrame
 	}
 }XCastVideoFrame;
 
-/*
-* xcast支持的设备事件
-* "event.device":{
-*   // 事件源: 设备名
-*   "*src":"vstring",
-*   // 事件类型: 新增，更新，删除,预处理数据,预览数据
-*   "*type":[xc_device_added,xc_device_updated,
-xc_device_removed,xc_device_preprocess,xc_device_preview],
-*   // 设备类型: xc_device_type
-*   "*class":[xc_device_camera,xc_device_screen_capture,xc_device_player
-*     xc_device_mic,xc_device_speaker,xc_device_external],
-*   // 事件状态: 运行，停止
-*   "state":[xc_device_running,xc_device_stopped],
-*   // 错误代码
-*   "err":"vint32",
-*   // 错误信息
-*   "err-msg":"vstring",
-*   // 数据格式
-*   "format":[xc_media_argb32,xc_media_i420,xc_media_aac],
-*   // 数据缓存
-*   "data":"vbytes",
-*   // 数据缓存长度
-*   "size":"vuint32",
-*   // 数据宽度
-*   "width":"vint32",
-*   // 数据高度
-*   "height":"vint32",
-*   // 数据旋转
-*   "rotate":[0,90,180,270],
-*   // 音频设备：音量值，取值范围[0,100]
-*   "volume":"vuint32",
-*   // 音频设备：动态音量值，取值范围[0,100]
-*   "dynamic-volume":"vuint32",
-*   // 播放器路径
-*   "player-path":"vstring",
-*   // 音频文件路径
-*   "file-path":"vstring",
-*   // 播放进度
-*   "current-pos":"vint64",
-*   // 最大进度
-*   "max-pos":"vint64",
-*   // 伴奏源: 默认值,系统伴奏,应用伴奏(播放器进程)
-*   "accompany-source":["none","system","process"],
-*   // 左边界
-*   "screen-left":"vint32",
-*   // 上边界
-*   "screen-top":"vint32",
-*   // 右边界
-*   "screen-right":"vint32",
-*   // 下边界
-*   "screen-bottom":"vint32",
-*   // 捕获帧率
-*   "screen-fps":"vuint32",
-*   // 窗口句柄, 仅支持win
-*   "screen-hwnd":"vint32"
-* },
-*/
- //"[\"state\":int32(1),\"err\":int32(0),\"type\":int32(1),\"class\":int32(7),\"src\":\"ext1\"]"	char *
 
 // 热插拔回调出来的事件
-
 typedef struct XCastDeviceHotPlugItem {
 
 	XCastDeviceState state = XCastDeviceState_Stopped;				// 状态
@@ -374,6 +342,59 @@ typedef struct XCastDeviceHotPlugItem {
 }XCastDeviceHotPlugItem;
 
 
-typedef struct XCastEndPoint {
 
-}XCastEndPoint;
+
+
+///*
+//* xcast支持的媒体流轨道事件
+//* "event.track":{
+//*   // 事件源: 轨道名 媒体流名称
+//*   "*src":"vstring",
+//*   "*stream":"vstring",
+//*   // 事件类型: 新增，更新，删除,媒体数据
+//*   "*type":[xc_track_event],
+//*   // 轨道类别: xc_track_audio,xc_track_video
+//*   "*class":[xc_track_type],
+//*   // 轨道方向: 上行,下行
+//*   "*direction":[xc_track_direction],
+//*   // 用户uin
+//*   "*uin":"vuint64",
+//*   // 轨道编号
+//*   "*index":"vuint32",
+//*   // 轨道状态
+//*   "state":[xc_track_state],
+//*   // 错误代码
+//*   "err":"vint32",
+//*   // 错误信息
+//*   "err-msg":"vstring",
+//*   // 轨道数据格式
+//*   "format":[xc_media_format],
+//*   // 轨道数据缓存
+//*   "data":"vbytes",
+//*   // 轨道数据缓存长度
+//*   "size":"vuint32",
+//*   // 轨道数据宽度
+//*   "width":"vuint32",
+//*   // 轨道数据高度
+//*   "height":"vuint32",
+//*   // 轨道数据旋转
+//*   "rotate":[0,90,180,270]
+//*   // 轨道数据视频源:摄像头，屏幕分享，媒体文件，PPT，未知源
+//*   "media-src":[xc_media_source]
+//* },
+//*/
+//
+//+str	0x010cb1b8 "[\"src\":\"video-in-12345\",
+//\"state\":int32(1),\"type\":int32(1),
+//\"media_type\":int32(1),\"direction\":int32(2),\"stream\":\"stream1\",
+//\"uin\":uint64(12345),\"err\":int32(0),\"class\":int32(3),\"index\":uint32(0)]"	const char *
+
+
+
+typedef struct XCastEndpoint {
+	uint64_t tinyid = 0;
+	bool is_audio = false;
+	bool is_camera_video = false;
+	bool is_screen_video = false;
+	bool is_media_video = false;
+}XCastEndpoint;

@@ -1,0 +1,6 @@
+xc_track_added : ["src":"audio-out","state":int32(1),"type":int32(1),"media_type":int32(0),"direction":int32(1),"stream":"stream1","uin":uint64(67890),"err":int32(0),"class":int32(2),"index":uint32(0)] 
+xc_track_added : ["src":"video-out","state":int32(1),"type":int32(1),"media_type":int32(1),"direction":int32(1),"stream":"stream1","uin":uint64(67890),"err":int32(0),"class":int32(3),"index":uint32(0)] 
+xc_track_capture_changed : ["src":"sub-video-out","state":int32(1),"type":int32(4),"media_type":int32(2),"direction":int32(1),"stream":"stream1","uin":uint64(67890),"err":int32(0),"class":int32(3),"index":uint32(1)] 
+xc_track_added : ["src":"sub-video-out","state":int32(1),"type":int32(1),"media_type":int32(2),"direction":int32(1),"stream":"stream1","uin":uint64(67890),"err":int32(0),"class":int32(3),"index":uint32(1)] 
+xc_track_updated : ["src":"video-out","state":int32(2),"type":int32(2),"media_type":int32(1),"direction":int32(1),"stream":"stream1","uin":uint64(67890),"err":int32(0),"class":int32(3),"index":uint32(0)] 
+xc_track_updated : ["src":"video-out","state":int32(1),"type":int32(2),"media_type":int32(1),"direction":int32(1),"stream":"stream1","uin":uint64(67890),"err":int32(0),"class":int32(3),"index":uint32(0)] 

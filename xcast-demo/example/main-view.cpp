@@ -1738,7 +1738,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 			XCastStartParam *param = new XCastStartParam;
 			std::unique_ptr<XCastStartParam> up(param);
-			up->identifier = 67890;
+			up->tinyid = 67890;
 			up->isTestEvn = false;
 			up->sdkappid = 1400036169;
 			up->accounttype = 14180;
@@ -1819,12 +1819,18 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			std::unique_ptr<XCastStreamParam> param(new XCastStreamParam);
 
 			param->role = "user";
-			param->roomid = 1000;
+			param->roomid = 100;
 			param->auto_recv = true;
 			param->streamID = "stream1";
 
 			param->auth_info.auth_bits = -1;
 			param->auth_info.auth_type = XCastAuth_None;
+
+			param->roomOpera.autoCameraPreview = false;
+			param->roomOpera.autoCameraCapture = false;
+			param->roomOpera.autoMic = false;
+			param->roomOpera.autoSpeaker = false;
+
 
 			XCastHelper::getInstance()->enterRoom(std::move(param), main_observer, [&](int code, const char *err) {
 				is_stream_running = code == XCAST_OK;

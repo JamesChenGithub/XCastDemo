@@ -204,6 +204,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 	new_track_event(NULL, data);
 #endif
 	XCastHelper *instance = (XCastHelper *)contextinfo;
+	const char *str = data.dump();
 	if (instance && instance->m_room_handler.get())
 	{
 		switch ((int32_t)data["type"])
@@ -212,35 +213,43 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 		{
 			/* 新增轨道 */
 			/*ui_track_add(e, true, user_data);*/
-			XCastEndPoint info;
-			instance->m_room_handler->onEndpointsUpdateInfo(info);
+			instance->logtoFile("xc_track_added", data.dump());
+
+			/*XCastEndPoint info;
+			instance->m_room_handler->onEndpointsUpdateInfo(info);*/
 		}
 		break;
 		case xc_track_updated:
 		{
-			XCastEndPoint info;
-			instance->m_room_handler->onEndpointsUpdateInfo(info);
+			instance->logtoFile("xc_track_updated", data.dump());
+		/*	XCastEndPoint info;
+			instance->m_room_handler->onEndpointsUpdateInfo(info);*/
 		}
 		break;
 		case xc_track_capture_changed:
 		{
-			XCastEndPoint info;
-			instance->m_room_handler->onEndpointsUpdateInfo(info);
+			instance->logtoFile("xc_track_capture_changed", data.dump());
+			/*XCastEndPoint info;
+			instance->m_room_handler->onEndpointsUpdateInfo(info);*/
+
+
 		}
 		/* 更新轨道 */
 		/*ui_track_update(e, user_data);*/
 		break;
 		case xc_track_removed:
 		{
-			XCastEndPoint info;
-			instance->m_room_handler->onEndpointsUpdateInfo(info);
+			instance->logtoFile("xc_track_removed", data.dump());
+		/*	XCastEndPoint info;
+			instance->m_room_handler->onEndpointsUpdateInfo(info);*/
 		}
 		//ui_track_add(e, false, user_data);
 		break;
 		case xc_track_media: {
+			instance->logtoFile("xc_track_media", data.dump());
 			//ui_track_media(e, user_data);
-			XCastVideoFrame *videoFrame = nullptr;
-			instance->m_room_handler->onVideoPreview(videoFrame);
+			/*XCastVideoFrame *videoFrame = nullptr;
+			instance->m_room_handler->onVideoPreview(videoFrame);*/
 		}
 							 break;
 		default:
@@ -317,7 +326,7 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 				XCastDeviceType deviceType = (XCastDeviceType)((int32_t)(e["class"]));
 				XCastMediaSource mediaTye = instance->getVideoSourceType(deviceType);
 
-				std::shared_ptr<XCastVideoFrame> frameptr = instance->getVideoFrameBuffer(instance->m_startup_param->identifier, mediaTye);
+				std::shared_ptr<XCastVideoFrame> frameptr = instance->getVideoFrameBuffer(instance->m_startup_param->tinyid, mediaTye);
 				XCastVideoFrame *frame = frameptr.get();
 				if (xcast_data_to_device_videoframe(e, *frame))
 				{
@@ -367,12 +376,19 @@ XCastHelper* XCastHelper::getInstance()
 	return m_instance;
 }
 
+void XCastHelper::logtoFile(const char *tag, const char * info)
+{
+	fprintf(logFile, "%s : %s \n", tag, info);
+	fflush(logFile);
+}
 
 
 int XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
+	logFile = fopen("log.txt", "w+");
+	
 	if (is_startup_succ)
 	{
 		XCastHelperCallBack(callback, 1003, "xcast has started");
@@ -390,7 +406,7 @@ int XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBac
 
 	tencent::xcast_data setparam;
 	setparam["app_id"] = m_startup_param->sdkappid;
-	setparam["identifier"] = m_startup_param->identifier;
+	setparam["identifier"] = m_startup_param->tinyid;
 	setparam["test_env"] =  m_startup_param->isTestEvn;
 	int32_t rt = tencent::xcast::startup(setparam);
 
@@ -412,7 +428,9 @@ int XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBac
 int XCastHelper::stopContext(XCHCallBack callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-
+	fflush(logFile);
+	fclose(logFile);
+	logFile = nullptr;
 	if (stream_state == Room_Connectted)
 	{
 		std::string sid = m_stream_param->streamID;
@@ -1106,7 +1124,6 @@ XCastMediaSource XCastHelper::getVideoSourceType(XCastDeviceType type) const
 const std::shared_ptr<XCastVideoFrame> XCastHelper::getVideoFrameBuffer(const uint64_t tinyid, XCastMediaSource source)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-
 	char tinyid_src[256];
 	sprintf(tinyid_src, "%lld_%d", tinyid, source);
 	std::string key = tinyid_src;
@@ -1123,5 +1140,42 @@ const std::shared_ptr<XCastVideoFrame> XCastHelper::getVideoFrameBuffer(const ui
 	else
 	{
 		return it->second;
+	}
+}
+
+std::shared_ptr<XCastEndpoint> XCastHelper::getEndpoint(uint64_t tinyid)
+{
+	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
+
+	auto it = endpoint_map.find(tinyid);
+	if (it == endpoint_map.end())
+	{
+		// 重新生成一个
+		std::shared_ptr<XCastEndpoint> endptr(new XCastEndpoint);
+		endptr->tinyid = tinyid;
+		endpoint_map.insert(std::make_pair(tinyid, endptr));
+		return endptr;
+	}
+	else
+	{
+		return it->second;
+	}
+}
+void XCastHelper::updateEndpointMap(uint64_t tinyid)
+{
+	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
+	auto it = endpoint_map.find(tinyid);
+	if (it != endpoint_map.end())
+	{
+		std::shared_ptr<XCastEndpoint> endptr = it->second;
+		XCastEndpoint *end = endptr.get();
+		if (end)
+		{
+			if (!end->is_audio || !end->is_camera_video || !end->is_screen_video || !end->is_media_video)
+			{
+				endpoint_map.erase(tinyid);
+			}
+		}
+		
 	}
 }

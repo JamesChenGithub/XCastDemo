@@ -4,6 +4,9 @@
 #include "XCastData.h"
 
 class XCastObserver : public XCastGlobalHandler, public XCastRoomHandler
+#ifdef kSupportIMAccount
+	, public XCastAccountHandler
+#endif
 {
 
 private:
@@ -33,7 +36,7 @@ public:
 	virtual void onExitRoomComplete(int result, const char *error);
 	virtual void onRoomDisconnected(int result, const char *error);
 
-	virtual void onEndpointsUpdateInfo(XCastEndPoint info);
+	virtual void onEndpointsUpdateInfo(XCastEndpointEvent event, std::vector<XCastEndpoint> infos);
 	virtual bool needRoomCallbackLocalVideo();
 	virtual void onLocalVideoPreview(XCastVideoFrame *frame);
 
@@ -41,6 +44,12 @@ public:
 
 	virtual bool needRoomCallbackTips();
 	virtual void onStatTips();
+
+#ifdef kSupportIMAccount
+	//==================================================
+	virtual void tinyid_to_identifier(uint64_t tinyid, std::function<void(std::string)> func);
+	virtual void identifier_to_tinyid(std::string identifier, std::function<void(uint64_t)> func);
+#endif
 };
 
 #endif // !XCAST_OBSERVET_H_

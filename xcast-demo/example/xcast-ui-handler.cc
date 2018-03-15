@@ -166,39 +166,7 @@ on_track_event(void *user_data, xcast_data &e)
   {
 	  /* 新增轨道 */
 	  ui_track_add(e, true, user_data);
-	  xcast_data      captures;
-	  
-	  const char     *cap;
-	  uint32_t        n;
-
-
-
-
-	  captures = xcast::get_property(XC_MIC);
-	  for (n = 0; n < captures.size(); ++n) {
-		  cap = captures[n].str_val();
-		  int i = 0;
-	  }
-	  
-
-
-	  xcast_data dss = xcast::get_property(XC_SPEAKER_DEFAULT);
-	  const char *dstr = dss.str_val();
-	  uint32_t size = dss.size();
-	  for (uint32_t i = 0; i < dss.size(); i++)
-	  {
-		  xcast_data ds = dss[i];
-		  char *dmp = ds.dump();
-		  const char *sstr = dss[i].str_val();
-		  int j = 0;
-	  }
-
 	 
-
-
-	  //xcast_data sl = xcast::get_property(XC_SPEAKER);
-	  //const char *sls = sl.dump();
-	  //i = 0;
   }
     break;
   case xc_track_updated:

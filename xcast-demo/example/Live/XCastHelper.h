@@ -28,7 +28,11 @@ private:
 	std::recursive_mutex				m_func_mutex;			// 锁
 
 private:
-	std::map<std::string, std::shared_ptr<XCastVideoFrame>>  video_frame_map;
+	std::map<std::string, std::shared_ptr<XCastVideoFrame>>		video_frame_map;
+#ifdef kSupportIMAccount
+	std::map<uint64_t, std::string>								tinyid_cache;
+#endif
+	std::map<uint64_t, std::shared_ptr<XCastEndpoint>>			endpoint_map;
 
 private:
 	bool is_startup_succ = false;								// 是否初始化成功
@@ -65,6 +69,9 @@ public:
 	static XCastHelper* getInstance();
 
 public:
+	FILE  *logFile = nullptr;
+	void logtoFile(const char *tag , const char * info);
+
 	/*
 	* 功能: 初始始化XCast
 	* param : 初始化参数，内部会保存该值；
@@ -271,8 +278,12 @@ private:
 	// frame map operation
 	const std::shared_ptr<XCastVideoFrame> getVideoFrameBuffer(uint64_t tinyid, XCastMediaSource source);
 	void earseVideoFrameBuffer(uint64_t tinyid, XCastMediaSource source);
+private:
 	XCastMediaSource getVideoSourceType(XCastDeviceType type) const;
 
+private:
+	std::shared_ptr<XCastEndpoint> getEndpoint(uint64_t tinyid);
+	void updateEndpointMap(uint64_t tinyid);
 };
 
 #endif

@@ -21,11 +21,6 @@ void XCastObserver::onDeviceEvent_DeviceAdd(XCastDeviceHotPlugItem device)
 	std::ostringstream stream;
 	stream << "onDeviceEvent_DeviceAdd" << " : class = " << device.deviceClass << "  , src = " << device.src << " , state = " << device.state << " , err = " << device.err << " , err_msg =" << device.err_msg << std::endl;
 	std::cout << stream.str() << std::endl;
-
-	if (device.deviceClass == XCastDeviceType_Camera)
-	{
-		XCastHelper::getInstance()->enableCameraPreview(true);
-	}
 }
 void XCastObserver::onDeviceEvent_DeviceUpdate(XCastDeviceHotPlugItem device)
 {
@@ -75,7 +70,7 @@ void XCastObserver::onRoomDisconnected(int result, const char *error)
 	has_enter_room = false;
 }
 
-void XCastObserver::onEndpointsUpdateInfo(XCastEndPoint info)
+void XCastObserver::onEndpointsUpdateInfo(XCastEndpointEvent event, std::vector<XCastEndpoint> infos)
 {
 
 }
@@ -101,3 +96,25 @@ void XCastObserver::onStatTips()
 {
 
 }
+#ifdef kSupportIMAccount
+void XCastObserver::tinyid_to_identifier(uint64_t tinyid, std::function<void(std::string)> func)
+{
+	char idetifier[256];
+	sprintf(idetifier, "%lld", tinyid);
+
+	if (func)
+	{
+		func(idetifier);
+	}
+}
+
+void XCastObserver::identifier_to_tinyid(std::string identifier, std::function<void(uint64_t)> func)
+{
+	uint64_t tinyid = strtoull(identifier.c_str(), nullptr, 10);
+	if (func)
+	{
+		func(tinyid);
+	}
+}
+
+#endif
