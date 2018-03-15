@@ -1,14 +1,6 @@
-﻿  main-view.cpp
+﻿  XCastHelper.cpp
 c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_const.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_const.h(1037): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  XCastHelper.cpp
-c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_const.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_const.h(1037): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastHelper.cpp(740): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
+C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastHelper.cpp(775): warning C4996: 'strdup': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strdup. See online help for details.
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(552): note: 参见“strdup”的声明
-  XCastObserver.cpp
-c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_const.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-c:\users\jameschen\github\xcastdemo\xcast-demo\./include/xcast_const.h(1037): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  正在生成代码...
-c:\users\jameschen\github\xcastdemo\xcast-demo\example\live\xcasthelper.cpp(71): warning C4715: “xcast_data_to_deviceitem”: 不是所有的控件路径都返回值
   xcast_dev.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\bin\Debug\xcast_dev.exe

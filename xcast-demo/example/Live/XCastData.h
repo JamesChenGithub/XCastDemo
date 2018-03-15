@@ -228,6 +228,7 @@ typedef struct XCastRoomOpera {
 	bool autoCameraPreview = true;
 	bool autoMic = true;
 	bool autoSpeaker = true;
+	bool autoCloseCameraOnExit = true;
 
 }XCastStreamDevice;
 
@@ -280,8 +281,10 @@ typedef struct XCastStreamParam {
 
 typedef struct XCastVideoFrame
 {
-	uint64_t identifier = 0;
-	int media_format = 1;
+	uint64_t			tinyid = 0;
+	//std::string			identifier;
+	XCastMediaFormat	media_format = XCastMedia_argb32;
+	XCastMediaSource	media_source = XCastMediaSource_Unknown;
 	uint8_t *data = nullptr;
 	uint32_t size = 0;
 	uint32_t width = 0;
@@ -289,6 +292,15 @@ typedef struct XCastVideoFrame
 	int rotate = 0;  // [0, 90, 180, 270]
 	int direction;
 	std::string deviceSrc;
+
+	~XCastVideoFrame()
+	{
+		if (data)
+		{
+			free(data);
+			data = nullptr;
+		}
+	}
 }XCastVideoFrame;
 
 /*

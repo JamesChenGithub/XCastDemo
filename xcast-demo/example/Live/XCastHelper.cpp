@@ -34,40 +34,47 @@ bool xcast_data_to_deviceitem(tencent::xcast_data data, XCastDeviceHotPlugItem &
 	return true;
 }
 
-bool xcast_data_to_deviceitem(tencent::xcast_data data, XCastVideoFrame& frame)
+bool xcast_data_to_device_videoframe(tencent::xcast_data data, XCastVideoFrame &frame)
 {
 	const char *dev = data["src"];
-	if (!dev)
+	const uint8_t *bytedata = data["data"].bytes_val();
+	if (!dev || !bytedata)
 		return false;
 
-	//const char       *dev = evt["src"];
-	//
-	//if (!dev) return XCAST_ERR_INVALID_ARGUMENT;
-	//
-	//switch ((int32_t)evt["class"]) {
-	//case xc_device_camera:
-	//case xc_device_screen_capture: {
-	//	/* 摄像头预览数据渲染 */
-	//	int32_t         width = evt["width"];
-	//	int32_t         height = evt["height"];
-	//	int32_t         format = evt["format"];
-	//
-	//	if (format == xc_media_argb32) {
-	//		TrackVideoBuffer *buffer = GetTrackBuffer(dev, width, height);
-	//		memcpy(buffer->data, evt["data"].bytes_val(), width * height * kBytesPerPixel);
-	//		InvalidVideoView(&buffer->rcOut);
-	//	}
-	//	else if (format == xc_media_layer) {
-	//		TrackVideoBuffer *buffer = GetTrackBuffer(dev, width, height, true);
-	//		TrackBufferRefreshLayers(buffer, evt["data"]);
-	//	}
-	//	break;
-	//}
-	//case xc_device_mic:
-	//	break;
-	//default:
-	//	break;
-	//}
+	frame.deviceSrc = dev;
+
+	int32_t width = data["width"];
+	int32_t height = data["height"];
+	int32_t format = data["format"];
+	int32_t	rotate = data["rotate"];
+	int32_t	size = data["size"];
+	int32_t	direction = 1;
+
+	if (frame.data == nullptr)
+	{
+		frame.data = (uint8_t *)malloc(size);
+		if (frame.data == nullptr)
+			return false;
+	}
+	else if (frame.size != size || frame.width != width || frame.height != height)
+	{
+		free(frame.data);
+		frame.data = (uint8_t *)malloc(size);
+		if (frame.data == nullptr)
+			return false;
+	}
+
+
+	memcpy(frame.data, bytedata, size);
+
+	frame.media_format = (XCastMediaFormat)format;
+	frame.rotate = rotate;
+	frame.direction = (XCastTrackDirection)direction;
+	frame.width = width;
+	frame.height = height;
+	frame.size = size;
+
+	return true;
 }
 
 
@@ -153,11 +160,6 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 
 				// 打开Mic
 				//instance->enableMic(opera.autoMic);
-				
-				
-			
-				
-				
 			}
 		}
 	}
@@ -195,6 +197,7 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 	}
 	return XCAST_OK;
 }
+
 int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &data)
 {
 #if kForVipKidTest
@@ -253,10 +256,15 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 #if kForVipKidTest
 	new_device_event(NULL, e);
 #endif
+
+	const char *srcstr = e["src"];
+
+	if (srcstr == nullptr)
+		return XCAST_OK;
+
 	XCastHelper *instance = (XCastHelper *)contextinfo;
 	if (instance && instance->m_global_handler.get())
 	{
-		
 		XCastDeviceEvent eventtype = (XCastDeviceEvent)((int32_t)(e["type"]));
 		switch (eventtype)
 		{
@@ -299,20 +307,32 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 		case XCastDeviceEvent_Preview:
 		{
 			/* 设备预览 */
+
 			const char *cs = e.str_val();
 			const char *str = e.dump();
-
-			if (instance->m_global_handler->needGlobalCallbackLocalVideo())
+			bool ng = instance->m_global_handler->needGlobalCallbackLocalVideo();
+			bool nr = instance->m_room_handler && instance->m_room_handler->needRoomCallbackLocalVideo();
+			if (ng || nr)
 			{
-				XCastVideoFrame *frame = nullptr;
-				instance->m_global_handler->onGlobalLocalVideoPreview(frame);
-			}
+				XCastDeviceType deviceType = (XCastDeviceType)((int32_t)(e["class"]));
+				XCastMediaSource mediaTye = instance->getVideoSourceType(deviceType);
 
-			if (instance->m_room_handler && instance->m_room_handler->needRoomCallbackLocalVideo())
-			{
-				XCastVideoFrame *frame = nullptr;
-				instance->m_room_handler->onLocalVideoPreview(frame);
+				std::shared_ptr<XCastVideoFrame> frameptr = instance->getVideoFrameBuffer(instance->m_startup_param->identifier, mediaTye);
+				XCastVideoFrame *frame = frameptr.get();
+				if (xcast_data_to_device_videoframe(e, *frame))
+				{
+					if (ng)
+					{
+						instance->m_global_handler->onGlobalLocalVideoPreview(frameptr.get());
+					}
+
+					if (nr)
+					{
+						instance->m_room_handler->onLocalVideoPreview(frameptr.get());
+					}
+				}
 			}
+			
 		}
 			
 			break;
@@ -516,7 +536,11 @@ int XCastHelper::exitRoom(XCHCallBack callback)
 		return 1004;
 	}
 
-
+	if (m_stream_param->roomOpera.autoCloseCameraOnExit)
+	{
+		enableCameraPreview(false);
+	}
+	
 	// 添加退房时，关摄像头的操作
 
 	int32_t ret = tencent::xcast::close_stream(m_stream_param->streamID.c_str());
@@ -539,6 +563,14 @@ void XCastHelper::clearAfterExitRoom()
 	stream_state = Room_Closed;
 	m_room_handler.reset();
 	m_stream_param.reset();
+
+	std::for_each(video_frame_map.begin(), video_frame_map.end(), [&] (std::pair<std::string, std::shared_ptr<XCastVideoFrame>> pair){
+		auto vfp = pair.second;
+		vfp.reset();
+	});
+	
+	video_frame_map.clear();
+
 }
 
 void XCastHelper::getSpeakerList(std::vector<std::string> &vec) const
@@ -1043,4 +1075,53 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 	int erc = avsdkErrorCode(XCAST_OK);
 	XCastHelperCallBack(callback,erc, "opera mic succ");
 	return erc;
+}
+
+void XCastHelper::earseVideoFrameBuffer(uint64_t tinyid, XCastMediaSource source)
+{
+	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
+	char tinyid_src[256];
+	sprintf(tinyid_src, "%lld_%d", tinyid, source);
+	std::string key = tinyid_src;
+	video_frame_map.erase(key);
+}
+
+XCastMediaSource XCastHelper::getVideoSourceType(XCastDeviceType type) const
+{
+	switch (type)
+	{
+	case XCastDeviceType_Camera:
+		return XCastMediaSource_Camera;
+	case XCastDeviceType_Screen_Capture:
+		return XCastMediaSource_Screen_Capture;
+	case XCastDeviceType_Player:
+		return XCastMediaSource_Media_Player;
+		// TODO:添加其他支持
+	default:
+		return XCastMediaSource_Unknown;
+		break;
+	}
+}
+
+const std::shared_ptr<XCastVideoFrame> XCastHelper::getVideoFrameBuffer(const uint64_t tinyid, XCastMediaSource source)
+{
+	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
+
+	char tinyid_src[256];
+	sprintf(tinyid_src, "%lld_%d", tinyid, source);
+	std::string key = tinyid_src;
+	auto it = video_frame_map.find(key);
+	if (it == video_frame_map.end())
+	{
+		// 重新生成一个
+		std::shared_ptr<XCastVideoFrame> xvf(new XCastVideoFrame);
+		xvf->tinyid = tinyid;
+		xvf->media_source = source;
+		video_frame_map.insert(std::make_pair(key, xvf));
+		return xvf;
+	}
+	else
+	{
+		return it->second;
+	}
 }

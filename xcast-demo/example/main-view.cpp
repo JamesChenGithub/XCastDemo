@@ -745,7 +745,6 @@ ui_device_preview(xcast_data &evt, void *user_data)
     int32_t         width = evt["width"];
     int32_t         height = evt["height"];
     int32_t         format = evt["format"];
-
     if (format == xc_media_argb32) {
       TrackVideoBuffer *buffer = GetTrackBuffer(dev, width, height);
       memcpy(buffer->data, evt["data"].bytes_val(), width * height * kBytesPerPixel);
