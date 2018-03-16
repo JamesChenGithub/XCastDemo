@@ -36,7 +36,7 @@ public:
 	virtual void onExitRoomComplete(int result, const char *error);
 	virtual void onRoomDisconnected(int result, const char *error);
 
-	virtual void onEndpointsUpdateInfo(XCastEndpointEvent event, std::vector<XCastEndpoint> infos);
+	virtual void onEndpointsUpdateInfo(XCastEndpointEvent event, XCastEndpoint infos);
 	virtual bool needRoomCallbackLocalVideo();
 	virtual void onLocalVideoPreview(XCastVideoFrame *frame);
 

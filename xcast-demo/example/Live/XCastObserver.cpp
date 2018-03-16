@@ -70,9 +70,11 @@ void XCastObserver::onRoomDisconnected(int result, const char *error)
 	has_enter_room = false;
 }
 
-void XCastObserver::onEndpointsUpdateInfo(XCastEndpointEvent event, std::vector<XCastEndpoint> infos)
+void XCastObserver::onEndpointsUpdateInfo(XCastEndpointEvent event, XCastEndpoint infos)
 {
-
+	std::ostringstream stream;
+	stream << "onEndpointsUpdateInfo" << " : event = " << event << "  , infos.tinyid = " << infos.tinyid << std::endl;
+	std::cout << stream.str() << std::endl;
 }
 bool XCastObserver::needRoomCallbackLocalVideo()
 {

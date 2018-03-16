@@ -254,41 +254,61 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 
 			if (event != XCast_Endpoint_NONE)
 			{
-				
+				bool notify = false;
 				std::shared_ptr<XCastEndpoint> end = instance->getEndpoint(uin);
 				switch (event)
 				{
 				case XCast_Endpoint_Has_Camera_Video:
 				case XCast_Endpoint_No_Camera_Video:
-					end->is_camera_video = has;
+					if (end->is_camera_video != has)
+					{
+						end->is_camera_video = has;
+						notify = true;
+					}
+					
 					break;
 				case XCast_Endpoint_Has_Audio:
 				case XCast_Endpoint_No_Audio:
-					end->is_audio = has;
+					if (end->is_audio != has)
+					{
+						end->is_audio = has;
+						notify = true;
+					}
+					
 					break;
 				case XCast_Endpoint_Has_Screen_Video:
 				case XCast_Endpoint_No_Screen_Video:
-					end->is_screen_video = has;
+					if (end->is_screen_video != has)
+					{
+						end->is_screen_video = has;
+						notify = true;
+					}
+					
 					break;
 				case XCast_Endpoint_Has_Media_Video:
 				case XCast_Endpoint_No_Media_Video:
-					end->is_media_video = has;
+					if (end->is_media_video != has)
+					{
+						end->is_media_video = has;
+						notify = true;
+					}
 					break;
 				default:
 					break;
 				}
 
 				// TODO: dump endpoint and callback
-
-				XCastEndpoint ep;
-				ep.tinyid = end->tinyid;
-				ep.is_audio = end->is_audio;
-				ep.is_camera_video = end->is_camera_video;
-				ep.is_screen_video = end->is_screen_video;
-				ep.is_media_video = end->is_media_video;
-				std::vector<XCastEndpoint> vec;
-				vec.push_back(ep);
-				instance->m_room_handler->onEndpointsUpdateInfo(event, vec);
+				if (notify)
+				{
+					XCastEndpoint ep;
+					ep.tinyid = end->tinyid;
+					ep.is_audio = end->is_audio;
+					ep.is_camera_video = end->is_camera_video;
+					ep.is_screen_video = end->is_screen_video;
+					ep.is_media_video = end->is_media_video;
+					instance->m_room_handler->onEndpointsUpdateInfo(event, ep);
+				}
+				
 			}
 		}
 		/* ¸üÐÂ¹ìµÀ */
