@@ -11,6 +11,7 @@
 #define kForVipKidTest 1
 
 typedef std::function<void(int32_t, const char *)> XCHCallBack;
+typedef std::function<void(XCastRequestViewItem, int32_t, const char *)> XCHReqViewListCallBack;
 #define XCHNilCallBack NULL
 //#define XCHNilCallBack [](int32_t, const char *) {}
 
@@ -257,9 +258,58 @@ public:
 
 public:
 	// 房间内上麦用户操作
-	// 远程视频 
-	void requestView();
-	void cancelView();
+	/*
+	* 功能：请求对应的画面
+	* 参数：
+	* item ： 请求参数
+	* callback ：操作回调
+	* 返回值 ：操作返回值, 0 请求成功，非零失败
+	*/
+	void requestView(XCastRequestViewItem item, XCHReqViewListCallBack callback = XCHNilCallBack);
+
+	/*
+	* 功能：调用requestView多次去请求itemList用户画面
+	* 参数：
+	* itemList ： 多用户参数请求参数
+	* callback ：操作回调，会回调多次
+	*/
+	void requestViewList(std::vector<XCastRequestViewItem> itemList, XCHReqViewListCallBack callback = XCHNilCallBack);
+
+	/*
+	* 功能：请求所有的画面
+	* 参数：
+	* callback ：操作回调，会回调多次
+	*/
+	void requestAllView(XCHReqViewListCallBack callback = XCHNilCallBack);
+
+
+	/*
+	* 功能：取消请求对应的画面
+	* 参数：
+	* item ： 请求参数
+	* callback ：操作回调
+	* 返回值 ：操作返回值, 0 请求成功，非零失败
+	*/
+	void cancelView(XCastRequestViewItem item, XCHReqViewListCallBack callback = XCHNilCallBack);
+
+	/*
+	* 功能：调用cancelView多次去取消请求itemList用户画面
+	* 参数：
+	* itemList ： 多用户参数请求参数
+	* callback ：操作回调，会回调多次
+	*/
+	void cancelViewList(std::vector<XCastRequestViewItem> itemList, XCHReqViewListCallBack callback = XCHNilCallBack);
+
+
+
+	/*
+	* 功能：取消所有的远程画面
+	* 参数：
+	* item ： 请求参数
+	* callback ：操作回调
+	* 返回值 ：操作返回值, 0 请求成功，非零失败
+	*/
+	void cancelAllView(XCHReqViewListCallBack callback = XCHNilCallBack);
 
 	// 远程音频
 	//void setAudioWhiteList()
@@ -296,6 +346,10 @@ private:
 	std::shared_ptr<XCastEndpoint> getEndpoint(uint64_t tinyid);
 	void updateEndpointMap(uint64_t tinyid);
 	void deleteEndpoint(uint64_t tinyid);
+
+	XCastRequestViewItem getFromTrackID(std::string trackid) const;
+	void remoteView(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);
+	void remoteAllView(bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);
 };
 
 #endif

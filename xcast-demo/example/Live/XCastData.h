@@ -21,12 +21,12 @@ typedef enum XCastSystemEvent {
 	XCastSystemEvent_Fatal,
 } XCastSystemEvent;
 
-/* xcast stream events */
-typedef enum  XCastStreamState {
-	XCastStreamState_Connecting = 1,           /* stream connecting */
-	XCastStreamState_Connected,                /* stream connected */
-	XCastStreamState_Closed,                   /* stream connected */
-} XCastStreamState;
+///* xcast stream events */
+//typedef enum  XCastStreamState {
+//	XCastStreamState_Connecting = 1,           /* stream connecting */
+//	XCastStreamState_Connected,                /* stream connected */
+//	XCastStreamState_Closed,                   /* stream connected */
+//} XCastStreamState;
 
 
 /* xcast media types */
@@ -44,7 +44,7 @@ typedef enum XCastMediaSource {
 	XCastMediaSource_Camera,             /* camera */
 	XCastMediaSource_Screen_Capture,     /* screen capture */
 	XCastMediaSource_Media_Player,       /* media player */
-	XCastMediaSource_PPT,                /* ppt */
+	// XCastMediaSource_PPT,                /* ppt */
 } XCastMediaSource;
 
 /* xcast device running state */
@@ -281,3 +281,19 @@ typedef struct XCastEndpoint {
 	bool is_screen_video = false;
 	bool is_media_video = false;
 }XCastEndpoint;
+
+
+typedef struct XCastRequestViewItem
+{
+	uint64_t tinyid = 0;
+	XCastMediaSource video_src = XCastMediaSource_Unknown;
+
+	bool isVaild() const
+	{
+		if (tinyid == 0 || video_src == XCastMediaSource_Unknown)
+		{
+			return false;
+		}
+		return true;
+	}
+}XCastRequestViewItem;

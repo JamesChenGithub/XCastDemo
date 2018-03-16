@@ -1899,7 +1899,20 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
       }
        break;
     case IDM_ABOUT:
-      DialogBox(main_app.hInstance, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+	{
+		static bool req = false;
+		if (req)
+		{
+			XCastHelper::getInstance()->requestAllView();
+		}
+		else
+		{
+			XCastHelper::getInstance()->cancelAllView();
+		}
+		req = !req;
+		DialogBox(main_app.hInstance, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+	}
+		
       break;
     case ID_32859:
       DialogBox(main_app.hInstance, MAKEINTRESOURCE(IDD_ROLE), hWnd, Role);

@@ -210,6 +210,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Name>ZERO_CHECK</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="icons.bmp" />
+    <Image Include="small.ico" />
+    <Image Include="xcast-dev.ico" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

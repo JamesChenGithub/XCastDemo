@@ -98,4 +98,9 @@
       <UniqueIdentifier>{CB31B9CC-C1DF-382E-88D2-F8BF24B8E7DB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="xcast-dev.ico" />
+    <Image Include="small.ico" />
+    <Image Include="icons.bmp" />
+  </ItemGroup>
 </Project>

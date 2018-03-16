@@ -11,6 +11,17 @@
 #endif
 
 
+
+#define kTRACK_CAMERA_IN "video-in"
+#define kTRACK_AUDIO_IN "audio-in"
+#define kTRACK_SCREEN_CAPTURE_IN "screen-video-in"
+#define kTRACK_MEDIA_IN "media-file-in"
+
+#define kTRACK_CAMERA_OUT "video-out"
+#define kTRACK_AUDIO_OUT "audio-out"
+#define kTRACK_SCREEN_CAPTURE_OUT "screen-video-out"
+#define kTRACK_MEDIA_OUT "media-file-out"
+
 inline void XCastHelperCallBack(XCHCallBack callback, int32_t errcode, const char *err)
 {
 	if (callback)
@@ -242,7 +253,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 					break;
 				case XCastMediaSource_Media_Player:      /* media player */
 					event = has ? XCast_Endpoint_Has_Media_Video : XCast_Endpoint_No_Media_Video;
-				case XCastMediaSource_PPT:               /* ppt */
+				//case XCastMediaSource_PPT:               /* ppt */
 				default:
 					break;
 				}
@@ -850,6 +861,46 @@ int XCastHelper::enableCamera(bool preview, bool enableVideoOut, const char *cam
 	return operaCamera(cameraid, preview, true, enableVideoOut, true, false, callback);
 }
 
+
+
+void XCastHelper::requestView(XCastRequestViewItem item, XCHReqViewListCallBack callback)
+{
+	remoteView(item, true, callback);
+}
+
+
+void XCastHelper::requestViewList(std::vector<XCastRequestViewItem> itemList, XCHReqViewListCallBack callback)
+{
+	std::for_each(itemList.begin(), itemList.end(), [&](XCastRequestViewItem item) {
+		requestView(item, callback);
+	});
+}
+
+void XCastHelper::requestAllView(XCHReqViewListCallBack callback)
+{
+	remoteAllView(true, callback);
+}
+
+
+void XCastHelper::cancelView(XCastRequestViewItem item, XCHReqViewListCallBack callback)
+{
+	remoteView(item, false, callback);
+}
+
+void XCastHelper::cancelViewList(std::vector<XCastRequestViewItem> itemList, XCHReqViewListCallBack callback)
+{
+	std::for_each(itemList.begin(), itemList.end(), [&](XCastRequestViewItem item){
+		cancelView(item, callback);
+	});
+}
+
+
+void XCastHelper::cancelAllView(XCHReqViewListCallBack callback)
+{
+	remoteAllView(false, callback);
+}
+
+
 void XCastHelper::getOperaDevice(DeviceType type, std::string &retstr, const char *cameraid ) const
 {
 	char operdevID[XCAST_MAX_PATH];
@@ -1137,7 +1188,7 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 		// ·¿¼äÄÚ
 		const char *streamid = m_stream_param->streamID.c_str();
 		{
-			int32_t ret = tencent::xcast::set_property(XC_TRACK_CAPTURE, streamid, "video-out", operdevID);
+			int32_t ret = tencent::xcast::set_property(XC_TRACK_CAPTURE, streamid, kTRACK_CAMERA_OUT, operdevID);
 			if (ret != XCAST_OK)
 			{
 				int erc = avsdkErrorCode(ret);
@@ -1151,7 +1202,7 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 		{
 			tencent::xcast_data params;
 			params["enable"] = videoout;
-			int32_t enret = tencent::xcast::set_property(XC_TRACK_ENABLE, streamid, "video-out", params);
+			int32_t enret = tencent::xcast::set_property(XC_TRACK_ENABLE, streamid, kTRACK_CAMERA_OUT, params);
 
 			if (needSetDefault)
 			{
@@ -1278,5 +1329,82 @@ void XCastHelper::deleteEndpoint(uint64_t tinyid)
 	if (it != endpoint_map.end())
 	{
 		endpoint_map.erase(tinyid);
+	}
+}
+
+XCastRequestViewItem XCastHelper::getFromTrackID(std::string track) const
+{
+	const std::string videostr = kTRACK_CAMERA_IN;
+	const std::string subvideostr = kTRACK_SCREEN_CAPTURE_IN;
+	const std::string mediavideostr = kTRACK_MEDIA_IN;
+
+	XCastRequestViewItem item;
+
+	if (track.find(videostr) == 0)
+	{
+		std::string uinstr = track.substr(videostr.length() + 1);
+		uint64_t uin = strtoull(uinstr.c_str(), 0, 10);
+		item.tinyid = uin;
+		item.video_src = XCastMediaSource_Camera;
+		return item;
+	}
+	else if (track.find(subvideostr) == 0)
+	{
+		std::string uinstr = track.substr(subvideostr.length() + 1);
+		uint64_t uin = strtoull(uinstr.c_str(), 0, 10);
+		item.tinyid = uin;
+		item.video_src = XCastMediaSource_Screen_Capture;
+		return item;
+	}
+	else if (track.find(mediavideostr) == 0)
+	{
+		std::string uinstr = track.substr(mediavideostr.length() + 1);
+		uint64_t uin = strtoull(uinstr.c_str(), 0, 10);
+		item.tinyid = uin;
+		item.video_src = XCastMediaSource_Media_Player;
+		return item;
+	}
+	return item;
+}
+void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback)
+{
+	if (!item.isVaild())
+	{
+		callback(item, 1004, "item is invaild");
+		return;
+	}
+
+	tencent::xcast_data data, params;
+	params["enable"] = enable;
+
+	std::string trackid = kTRACK_CAMERA_IN;
+	trackid += "-";
+	trackid += std::to_string(item.tinyid);
+	int32_t enret = tencent::xcast::set_property(XC_TRACK_ENABLE, m_stream_param->streamID.c_str(), trackid.c_str(), params);
+	
+	if (callback)
+	{
+		int code = avsdkErrorCode(enret);
+		callback(item, code, code == XCAST_OK ? "" : enable ? "request view failed" : "cancel view failed");
+	}
+		
+}
+
+void XCastHelper::remoteAllView(bool enable, XCHReqViewListCallBack callback)
+{
+	const char *streamid = m_stream_param->streamID.c_str();
+	tencent::xcast_data tracklist = tencent::xcast::get_property(XC_STREAM_TRACK, streamid);
+	uint32_t tlsize = tracklist.size();
+	const std::string videostr = kTRACK_CAMERA_IN;
+	const std::string subvideostr = kTRACK_SCREEN_CAPTURE_IN;
+	const std::string mediavideostr = kTRACK_MEDIA_IN;
+	for (uint32_t n = 0; n < tlsize; n++)
+	{
+		std::string track = tracklist[n].str_val();
+		XCastRequestViewItem item = getFromTrackID(track);
+		if (item.isVaild())
+		{
+			remoteView(item, enable, callback);
+		}
 	}
 }
