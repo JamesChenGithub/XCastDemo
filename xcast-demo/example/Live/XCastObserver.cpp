@@ -47,7 +47,7 @@ void XCastObserver::onSystemEvent()
 // ÊÓÆµÊÂ¼þ
 bool XCastObserver::needGlobalCallbackLocalVideo()
 {
-	return has_enter_room;
+	return true;
 }
 void XCastObserver::onGlobalLocalVideoPreview(XCastVideoFrame *frame)
 {

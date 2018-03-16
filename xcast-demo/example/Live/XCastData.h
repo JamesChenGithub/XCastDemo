@@ -22,47 +22,12 @@ typedef enum XCastSystemEvent {
 } XCastSystemEvent;
 
 /* xcast stream events */
-typedef enum XCastStreamEvent {
-	XCastStream_Added = 1,                /* new stream added */
-	XCastStream_Updated,                  /* stream state updated */
-	XCastStream_Removed,                  /* stream removed */
-} XCastStreamEvent;
-
-/* xcast stream events */
 typedef enum  XCastStreamState {
 	XCastStreamState_Connecting = 1,           /* stream connecting */
 	XCastStreamState_Connected,                /* stream connected */
 	XCastStreamState_Closed,                   /* stream connected */
 } XCastStreamState;
 
-/* xcast stream track events */
-typedef enum XCastTrackEvent {
-	XCastTrack_Added = 1,                 /* new track added */
-	XCastTrack_Updated,                   /* track state updated */
-	XCastTrack_Removed,                   /* track removed */
-	XCastTrack_Capture_Changed,           /* track capture changed */
-	XCastTrack_Media,                     /* track media data coming */
-} XCastTrackEven;
-
-/* xcast stream track running state */
-typedef enum XCastTrackState {
-	XCastTrackState_Stopped = 1,               /* track stopped */
-	XCastTrackState_Running,                   /* track is running */
-} XCastTrackState;
-
-/* xcast track types */
-typedef enum XCastTrackType {
-	XCastTrackType_Msg = 1,                   /* msg track */
-	XCastTrackType_Audio,                     /* audio track */
-	XCastTrackType_Video,                     /* video track */
-} XCastTrackType;
-
-/* xcast track types */
-typedef enum XCastTrackDirection {
-	XCastTrackDirection_None = 0,			// Preview???????
-	XCastTrackDirection_Out = 1,                   /* send media data to remote host */
-	XCastTrackDirection_In,                        /* receive media data from remote host */
-} XCastTrackDirection;
 
 /* xcast media types */
 typedef enum XCastMediaFormat {
@@ -94,15 +59,6 @@ typedef enum XCastDeviceType {
 	XCastDeviceType_External,                 /* external device type */
 } XCastDeviceType;
 
-/* xcast stream track events */
-typedef enum XCastDeviceEvent {
-	XCastDeviceEvent_Added = 1,                /* new device added */
-	XCastDeviceEvent_Updated,                  /* device state updated */
-	XCastDeviceEvent_Removed,                  /* device removed */
-	XCastDeviceEvent_Preprocess,               /* device preprocess data coming */
-	XCastDeviceEvent_Preview,                  /* device preview data coming */
-} XCDeviceEvent;
-
 /* xcast device running state */
 typedef enum  XCastDeviceState {
 	XCastDeviceState_NotFound = 0,
@@ -113,7 +69,7 @@ typedef enum  XCastDeviceState {
 typedef enum XCastEndpointEvent {
 	XCast_Endpoint_NONE = 0, ///< 默认值，无意义。
 	//XCast_Endpoint_Enter = 1, ///< 进入房间事件。
-	//XCast_Endpoint_Exit = 2, ///< 退出房间事件。						 
+	XCast_Endpoint_Removed = 2, ///< 退出房间事件。						 
 	XCast_Endpoint_Has_Camera_Video = 3, ///< 有发摄像头视频事件。
 	XCast_Endpoint_No_Camera_Video = 4, ///< 无发摄像头视频事件。
 	XCast_Endpoint_Has_Audio = 5, ///< 有发语音事件。
@@ -246,7 +202,7 @@ typedef struct XCastStreamTrackInfo
 }XCastStreamTrackInfo;
 
 
-typedef struct XCastRoomOpera {
+typedef struct XCastRoomOption {
 	std::string defaultCamera = "";
 	std::string defaultMic = "";
 	std::string defaultSpeaker = "";
@@ -269,7 +225,7 @@ typedef struct XCastStreamParam {
 
 	// TODO:补投屏，以及局域网通信字段 
 
-	XCastRoomOpera roomOpera;
+	XCastRoomOption roomOpera;
 
 	bool isVaild() const
 	{
@@ -283,28 +239,6 @@ typedef struct XCastStreamParam {
 	}
 
 } XCastStreamParam;
-
-
-///* xcast media types */
-//typedef enum xc_media_format_e {
-//	xc_media_argb32 = 0,                /* argb32 video format */
-//	xc_media_i420,                      /* i420 video format */
-//	xc_media_aac,                       /* aac audio format */
-//	xc_media_pcm,                       /* pcm audio format */
-//	xc_media_layer = 0xFF,              /* layer format*/
-//} xc_media_format;
-
-/* xcast track types */
-//typedef enum xc_track_direction_e {
-//	xc_track_out = 1,                   /* send media data to remote host */
-//	xc_track_in,                        /* receive media data from remote host */
-//} xc_track_direction;
-//
-//
-//
-//
-//
-//return XCAST_OK;
 
 typedef struct XCastVideoFrame
 {
@@ -333,63 +267,12 @@ typedef struct XCastVideoFrame
 
 // 热插拔回调出来的事件
 typedef struct XCastDeviceHotPlugItem {
-
 	XCastDeviceState state = XCastDeviceState_Stopped;				// 状态
 	XCastDeviceType deviceClass = XCastDeviceType_Unknown;			// 类型 
 	std::string src = "";											// 名称
 	int32_t err = 0;												// 出错码
-	std::string err_msg = "";									// 出错信息	
+	std::string err_msg = "";										// 出错信息	
 }XCastDeviceHotPlugItem;
-
-
-
-
-
-///*
-//* xcast支持的媒体流轨道事件
-//* "event.track":{
-//*   // 事件源: 轨道名 媒体流名称
-//*   "*src":"vstring",
-//*   "*stream":"vstring",
-//*   // 事件类型: 新增，更新，删除,媒体数据
-//*   "*type":[xc_track_event],
-//*   // 轨道类别: xc_track_audio,xc_track_video
-//*   "*class":[xc_track_type],
-//*   // 轨道方向: 上行,下行
-//*   "*direction":[xc_track_direction],
-//*   // 用户uin
-//*   "*uin":"vuint64",
-//*   // 轨道编号
-//*   "*index":"vuint32",
-//*   // 轨道状态
-//*   "state":[xc_track_state],
-//*   // 错误代码
-//*   "err":"vint32",
-//*   // 错误信息
-//*   "err-msg":"vstring",
-//*   // 轨道数据格式
-//*   "format":[xc_media_format],
-//*   // 轨道数据缓存
-//*   "data":"vbytes",
-//*   // 轨道数据缓存长度
-//*   "size":"vuint32",
-//*   // 轨道数据宽度
-//*   "width":"vuint32",
-//*   // 轨道数据高度
-//*   "height":"vuint32",
-//*   // 轨道数据旋转
-//*   "rotate":[0,90,180,270]
-//*   // 轨道数据视频源:摄像头，屏幕分享，媒体文件，PPT，未知源
-//*   "media-src":[xc_media_source]
-//* },
-//*/
-//
-//+str	0x010cb1b8 "[\"src\":\"video-in-12345\",
-//\"state\":int32(1),\"type\":int32(1),
-//\"media_type\":int32(1),\"direction\":int32(2),\"stream\":\"stream1\",
-//\"uin\":uint64(12345),\"err\":int32(0),\"class\":int32(3),\"index\":uint32(0)]"	const char *
-
-
 
 typedef struct XCastEndpoint {
 	uint64_t tinyid = 0;

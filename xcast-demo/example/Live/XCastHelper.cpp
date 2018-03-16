@@ -34,7 +34,7 @@ bool xcast_data_to_deviceitem(tencent::xcast_data data, XCastDeviceHotPlugItem &
 	return true;
 }
 
-bool xcast_data_to_device_videoframe(tencent::xcast_data data, XCastVideoFrame &frame)
+bool xcast_data_to_videoframe(tencent::xcast_data data, XCastVideoFrame &frame, bool isLocal)
 {
 	const char *dev = data["src"];
 	const uint8_t *bytedata = data["data"].bytes_val();
@@ -48,7 +48,7 @@ bool xcast_data_to_device_videoframe(tencent::xcast_data data, XCastVideoFrame &
 	int32_t format = data["format"];
 	int32_t	rotate = data["rotate"];
 	int32_t	size = data["size"];
-	int32_t	direction = 1;
+	int32_t	direction = isLocal ? 1 : data["direction"];
 
 	if (frame.data == nullptr)
 	{
@@ -63,17 +63,13 @@ bool xcast_data_to_device_videoframe(tencent::xcast_data data, XCastVideoFrame &
 		if (frame.data == nullptr)
 			return false;
 	}
-
-
 	memcpy(frame.data, bytedata, size);
-
 	frame.media_format = (XCastMediaFormat)format;
 	frame.rotate = rotate;
-	frame.direction = (XCastTrackDirection)direction;
+	frame.direction = (xc_track_direction)direction;
 	frame.width = width;
 	frame.height = height;
 	frame.size = size;
-
 	return true;
 }
 
@@ -142,7 +138,7 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 
 			if (instance->m_stream_param.get())
 			{
-				const XCastRoomOpera opera = instance->m_stream_param->roomOpera;
+				const XCastRoomOption opera = instance->m_stream_param->roomOpera;
 
 				// 打开摄像头
 				instance->enableCamera(opera.autoCameraPreview, opera.autoCameraCapture, opera.defaultCamera.c_str());
@@ -207,34 +203,34 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 	uint64_t          uin = data["uin"]; 
 	if (instance && instance->m_room_handler.get())
 	{
-		XCastTrackEvent type = (XCastTrackEvent)((int32_t)data["type"]);
+		xc_track_event type = (xc_track_event)((int32_t)data["type"]);
 
 		switch (type)
 		{
-		case XCastTrack_Added:
+		case xc_track_added:
 		{
 			/* 新增轨道 */
 			/*ui_track_add(e, true, user_data);*/
-			instance->logtoFile("xc_track_added", data.dump());
+			//instance->logtoFile("xc_track_added", data.dump());
 
 			/*XCastEndPoint info;
 			instance->m_room_handler->onEndpointsUpdateInfo(info);*/
 		}
 		break;
-		case XCastTrack_Updated:
-		case XCastTrack_Capture_Changed:
+		case xc_track_updated:
+		case xc_track_capture_changed:
 		{
 			XCastMediaSource source = (XCastMediaSource)((int32_t)data["media_type"]);
-			XCastTrackType tracktype = (XCastTrackType)((int32_t)data["class"]);
-			XCastTrackState state = (XCastTrackState)((int32_t)data["state"]);
-			bool has = (state == XCastTrackState_Running);
+			xc_track_type tracktype = (xc_track_type)((int32_t)data["class"]);
+			xc_track_state state = (xc_track_state)((int32_t)data["state"]);
+			bool has = (state == xc_track_running);
 
 			XCastEndpointEvent event = XCast_Endpoint_NONE;
-			if (tracktype == XCastTrackType_Audio)
+			if (tracktype == xc_track_audio)
 			{
 				event = has ? XCast_Endpoint_Has_Audio : XCast_Endpoint_No_Audio;
 			}
-			else if (tracktype == XCastTrackType_Video)
+			else if (tracktype == xc_track_video)
 			{
 				switch (source)
 				{
@@ -307,6 +303,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 					ep.is_screen_video = end->is_screen_video;
 					ep.is_media_video = end->is_media_video;
 					instance->m_room_handler->onEndpointsUpdateInfo(event, ep);
+					instance->updateEndpointMap(uin);
 				}
 				
 			}
@@ -314,20 +311,36 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 		/* 更新轨道 */
 		/*ui_track_update(e, user_data);*/
 		break;
-		case XCastTrack_Removed:
+		case xc_track_removed:
 		{
-			std::shared_ptr<XCastEndpoint> endptr = instance->getEndpoint(uin);
+			std::shared_ptr<XCastEndpoint> end = instance->getEndpoint(uin);
+			XCastEndpoint ep;
+			ep.tinyid = end->tinyid;
+			ep.is_audio = end->is_audio;
+			ep.is_camera_video = end->is_camera_video;
+			ep.is_screen_video = end->is_screen_video;
+			ep.is_media_video = end->is_media_video;
+			instance->m_room_handler->onEndpointsUpdateInfo(XCast_Endpoint_Removed, ep);
+
+			instance->deleteEndpoint(uin);
+
 			instance->logtoFile("xc_track_removed", data.dump());
-		/*	XCastEndPoint info;
+			/*	XCastEndPoint info;
 			instance->m_room_handler->onEndpointsUpdateInfo(info);*/
 		}
 		//ui_track_add(e, false, user_data);
 		break;
-		case XCastTrack_Media: {
+		case xc_track_media: 
+		{
 			instance->logtoFile("xc_track_media", data.dump());
-			//ui_track_media(e, user_data);
-			/*XCastVideoFrame *videoFrame = nullptr;
-			instance->m_room_handler->onVideoPreview(videoFrame);*/
+
+			XCastMediaSource mediaTye = (XCastMediaSource)((int32_t)data["media-src"]);
+			std::shared_ptr<XCastVideoFrame> frameptr = instance->getVideoFrameBuffer(uin, mediaTye);
+			XCastVideoFrame *frame = frameptr.get();
+			if (xcast_data_to_videoframe(data, *frame, false))
+			{
+				instance->m_room_handler->onVideoPreview(frameptr.get());
+			}
 		}
 							 break;
 		default:
@@ -352,10 +365,10 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 	XCastHelper *instance = (XCastHelper *)contextinfo;
 	if (instance && instance->m_global_handler.get())
 	{
-		XCastDeviceEvent eventtype = (XCastDeviceEvent)((int32_t)(e["type"]));
+		xc_device_event eventtype = (xc_device_event)((int32_t)(e["type"]));
 		switch (eventtype)
 		{
-		case XCastDeviceEvent_Added:
+		case xc_device_added:
 		{
 			/* 设备插入 */
 			XCastDeviceHotPlugItem device;
@@ -366,7 +379,7 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 			
 		}
 		break;
-		case XCastDeviceEvent_Updated:
+		case xc_device_updated:
 		{
 			XCastDeviceHotPlugItem device;
 			if (xcast_data_to_deviceitem(e, device))
@@ -376,7 +389,7 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 			
 		}
 		break;
-		case XCastDeviceEvent_Removed:
+		case xc_device_removed:
 		{
 			/* 设备拔出 */
 			XCastDeviceHotPlugItem device;
@@ -386,12 +399,12 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 			}
 		}
 		break;
-		case XCastDeviceEvent_Preprocess:
+		case xc_device_preprocess:
 			/* 设备预处理 */
 		// 	ui_device_preprocess(e, user_data);
 			// TODO:
 			break;
-		case XCastDeviceEvent_Preview:
+		case xc_device_preview:
 		{
 			/* 设备预览 */
 
@@ -402,11 +415,11 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 			if (ng || nr)
 			{
 				XCastDeviceType deviceType = (XCastDeviceType)((int32_t)(e["class"]));
-				XCastMediaSource mediaTye = instance->getVideoSourceType(deviceType);
+				XCastMediaSource mediaTye = instance->getDeviceVideoSourceType(deviceType);
 
 				std::shared_ptr<XCastVideoFrame> frameptr = instance->getVideoFrameBuffer(instance->m_startup_param->tinyid, mediaTye);
 				XCastVideoFrame *frame = frameptr.get();
-				if (xcast_data_to_device_videoframe(e, *frame))
+				if (xcast_data_to_videoframe(e, *frame, true))
 				{
 					if (ng)
 					{
@@ -436,8 +449,8 @@ int32_t XCastHelper::onXCastTipsEvent(void *contextinfo, tencent::xcast_data &da
 #if kForVipKidTest
 	new_stat_tips(NULL, data);
 #endif
-
 	XCastHelper *instance = (XCastHelper *)contextinfo;
+	instance->logtoFile("onXCastTipsEvent", data.dump());
 	if (instance->m_room_handler->needRoomCallbackTips())
 	{
 		instance->m_room_handler->onStatTips();
@@ -1182,7 +1195,7 @@ void XCastHelper::earseVideoFrameBuffer(uint64_t tinyid, XCastMediaSource source
 	video_frame_map.erase(key);
 }
 
-XCastMediaSource XCastHelper::getVideoSourceType(XCastDeviceType type) const
+XCastMediaSource XCastHelper::getDeviceVideoSourceType(XCastDeviceType type) const
 {
 	switch (type)
 	{

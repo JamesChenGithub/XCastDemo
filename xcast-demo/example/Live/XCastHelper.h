@@ -254,6 +254,17 @@ public:
 	* 返回值 ：操作返回值
 	*/
 	int enableCamera(bool preview, bool enableVideoOut, const char *cameraid = nullptr, XCHCallBack callback = XCHNilCallBack);
+
+public:
+	// 房间内上麦用户操作
+	// 远程视频 
+	void requestView();
+	void cancelView();
+
+	// 远程音频
+	//void setAudioWhiteList()
+	//void cancelAudioWhiteList();
+
 private:
 	void getOperaDevice(DeviceType type, std::string &retstr, const char *cameraid = nullptr) const;
 	void getOperaCamera(std::string &retstr, const char *cameraid = nullptr) const;
@@ -279,7 +290,7 @@ private:
 	const std::shared_ptr<XCastVideoFrame> getVideoFrameBuffer(uint64_t tinyid, XCastMediaSource source);
 	void earseVideoFrameBuffer(uint64_t tinyid, XCastMediaSource source);
 private:
-	XCastMediaSource getVideoSourceType(XCastDeviceType type) const;
+	XCastMediaSource getDeviceVideoSourceType(XCastDeviceType type) const;
 
 private:
 	std::shared_ptr<XCastEndpoint> getEndpoint(uint64_t tinyid);
