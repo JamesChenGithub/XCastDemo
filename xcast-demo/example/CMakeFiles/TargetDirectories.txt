@@ -1,3 +1,0 @@
-E:/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/xcast_dev.dir
-E:/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/ALL_BUILD.dir
-E:/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/ZERO_CHECK.dir
