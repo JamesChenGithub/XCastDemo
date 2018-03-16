@@ -1,13 +1,10 @@
-
-
 #include "XCastHelper.h"
-#include <locale.h>
 #include "xcast.hh"
-
+#include <algorithm>
 
 #if kForVipKidTest
 #include "example/xcast-ui-handler.h"
-#include <algorithm>
+
 #endif
 
 
@@ -693,22 +690,17 @@ void XCastHelper::clearAfterExitRoom()
 
 }
 
-void XCastHelper::getSpeakerList(std::vector<std::string> &vec) const
+std::vector<std::string> XCastHelper::getSpeakerList() const
 {
-	 getDeviceList(Device_Speaker, vec);
-}
-// Speaker操作
-int XCastHelper::enableSpeaker(bool enable, XCHCallBack callback)
-{
-	return enableSpeakerByID(enable, nullptr, callback);
+	return getDeviceList(XCastDeviceType_Speaker);
 }
 
 // 指定默认的speaker 为 sid
 // 同时进行enable操作
-int XCastHelper::enableSpeakerByID(bool enable, const char *sid, XCHCallBack callback)
+int XCastHelper::enableSpeaker(bool enable, const char *sid, XCHCallBack callback)
 {
-	std::string oidstr;
-	getOperaSpeaker(oidstr, sid);
+	std::string oidstr = getOperaSpeaker(sid);
+	
 	if (oidstr.length() == 0)
 	{
 		XCastHelperCallBack(callback,avsdkErrorCode(-104), "not camera param");
@@ -723,11 +715,9 @@ int XCastHelper::enableSpeakerByID(bool enable, const char *sid, XCHCallBack cal
 	return avsdkErrorCode(ret);
 }
 // 切换输出类型 , speaker : 1 扬声器 0 耳机
-int XCastHelper::changeOutputMode(const char *sid, bool headphone)
+int XCastHelper::changeOutputMode(bool headphone, const char *sid)
 {
-	std::string oidstr;
-	getOperaSpeaker(oidstr, sid);
-	
+	std::string oidstr = getOperaSpeaker(sid);;
 	if (oidstr.length() == 0)
 	{
 		return avsdkErrorCode(-104);
@@ -739,8 +729,7 @@ int XCastHelper::changeOutputMode(const char *sid, bool headphone)
 
 int XCastHelper::speakerVolume(const char *sid) const
 {
-	std::string oidstr;
-	getOperaSpeaker(oidstr,sid);
+	std::string oidstr = getOperaSpeaker(sid);
 	
 	if (oidstr.length() == 0)
 	{
@@ -753,8 +742,7 @@ int XCastHelper::speakerVolume(const char *sid) const
 }
 int XCastHelper::setSpeakerVolume(int volume, const char *sid)
 {
-	std::string oidstr;
-	getOperaSpeaker(oidstr, sid);
+	std::string oidstr = getOperaSpeaker(sid);
 	if (oidstr.length() == 0)
 	{
 		return avsdkErrorCode(-104);
@@ -780,26 +768,25 @@ int XCastHelper::setSpeakerVolume(int volume, const char *sid)
 
 // 获取麦克风列表, 结果是同步查询，外部不要保存结果
 // 返回：麦克风列表（UTF-8格式串，外部进行转码）
-void XCastHelper::getMicList(std::vector<std::string> &vec) const
+std::vector<std::string> XCastHelper::getMicList() const
 {
-	getDeviceList(Device_Mic, vec);
+	return getDeviceList(XCastDeviceType_Mic);
 }
 
 
 // 在房间内时，获取采集mic状态；
 // 在房间外时，获取default mic状态;
-int XCastHelper::getMicState(const char *micid) const
+XCastDeviceState XCastHelper::getMicState(const char *micid) const
 {
-	std::string  operidstr;
-	getOperaMic(operidstr,micid);
+	std::string  operidstr = getOperaMic(micid);
 	const char *operid = operidstr.c_str();
 	if (operid == nullptr)
 	{
-		return 0;
+		return XCastDeviceState_NotFound;
 	}
 
 	tencent::xcast_data state = tencent::xcast::get_property(XC_MIC_STATE, tencent::xcast_data(operid));
-	int16_t statea = state.int16_val();
+	XCastDeviceState  statea = (XCastDeviceState)(state.int16_val());
 	return statea;
 }
 
@@ -821,26 +808,25 @@ int XCastHelper::enableMic( bool preview, bool enableAudioOut, const char *micid
 
 // 摄像头操作
 
-void XCastHelper::getCameraList(std::vector<std::string> &vec) const
+std::vector<std::string> XCastHelper::getCameraList() const
 {
-	return getDeviceList(Device_Camera, vec);
+	return getDeviceList(XCastDeviceType_Camera);
 }
 
 
 // 在房间内时，获取采集Camera状态；
 // 在房间外时，获取default Camera状态;
-int XCastHelper::getCameraState(const char *cameraid) const
+XCastDeviceState XCastHelper::getCameraState(const char *cameraid) const
 {
-	std::string  operidstr;
-	getOperaCamera(operidstr,cameraid);
+	std::string  operidstr = getOperaCamera(cameraid);
 	const char *operid = operidstr.c_str();
 	if (operid == nullptr)
 	{
-		return 0;
+		return XCastDeviceState_NotFound;
 	}
 
 	tencent::xcast_data state = tencent::xcast::get_property(XC_CAMERA_STATE, tencent::xcast_data(operid));
-	int16_t statea = state.int16_val();
+	XCastDeviceState statea = (XCastDeviceState)(state.int16_val());
 	return statea;
 }
 
@@ -860,8 +846,6 @@ int XCastHelper::enableCamera(bool preview, bool enableVideoOut, const char *cam
 {
 	return operaCamera(cameraid, preview, true, enableVideoOut, true, false, callback);
 }
-
-
 
 void XCastHelper::requestView(XCastRequestViewItem item, XCHReqViewListCallBack callback)
 {
@@ -901,7 +885,7 @@ void XCastHelper::cancelAllView(XCHReqViewListCallBack callback)
 }
 
 
-void XCastHelper::getOperaDevice(DeviceType type, std::string &retstr, const char *cameraid ) const
+std::string XCastHelper::getOperaDevice(XCastDeviceType type, const char *cameraid ) const
 {
 	char operdevID[XCAST_MAX_PATH];
 	if (cameraid == nullptr || strlen(cameraid) == 0)
@@ -910,21 +894,31 @@ void XCastHelper::getOperaDevice(DeviceType type, std::string &retstr, const cha
 
 		switch (type)
 		{
-		case Device_Camera:
+
+		case XCastDeviceType_Camera:
 			devicetyep = XC_CAMERA_DEFAULT;
 			break;
-		case Device_Mic:
+		case XCastDeviceType_Screen_Capture:
+			break;
+		case XCastDeviceType_Player:
+			break;
+		case XCastDeviceType_Mic:
 			devicetyep = XC_MIC_DEFAULT;
 			break;
-		case Device_Speaker:
+		case XCastDeviceType_Speaker:
 			devicetyep = XC_SPEAKER_DEFAULT;
+			break;
+		case XCastDeviceType_Accompany:
+			break;
+		case XCastDeviceType_External:
+			break;
+		default:
 			break;
 		}
 
 		if (devicetyep == nullptr)
 		{
-			retstr = "";
-			return;
+			return "";
 		}
 		tencent::xcast_data data = tencent::xcast::get_property(devicetyep);
 		const char *dstr = data.dump();
@@ -932,34 +926,33 @@ void XCastHelper::getOperaDevice(DeviceType type, std::string &retstr, const cha
 		char *str  = strdup(str_val);
 		if (str_val == nullptr)
 		{
-			retstr = "";
-			return;
+			return "";
 		}
 		else
 		{
 			strcpy(operdevID, str_val);
-			retstr = std::string(operdevID);
+			return std::string(operdevID);
 		}
 	}
 	else
 	{
-		retstr = std::string(cameraid);
+		return std::string(cameraid);
 	}
 }
 
-void XCastHelper::getOperaCamera(std::string &retstr, const char *cameraid) const
+std::string XCastHelper::getOperaCamera(const char *cameraid) const
 {
-	return getOperaDevice(Device_Camera, retstr, cameraid);
+	return getOperaDevice(XCastDeviceType_Camera, cameraid);
 }
 
-void XCastHelper::getOperaSpeaker(std::string &retstr, const char *cameraid) const
+std::string XCastHelper::getOperaSpeaker( const char *cameraid) const
 {
-	return getOperaDevice(Device_Speaker, retstr, cameraid);
+	return getOperaDevice(XCastDeviceType_Speaker, cameraid);
 }
 
-void XCastHelper::getOperaMic(std::string &retstr, const char *cameraid) const
+std::string XCastHelper::getOperaMic( const char *cameraid) const
 {
-	return getOperaDevice(Device_Mic, retstr, cameraid);
+	return getOperaDevice(XCastDeviceType_Mic, cameraid);
 }
 
 
@@ -969,29 +962,40 @@ int XCastHelper::avsdkErrorCode(int xcast_err_code) const
 	return xcast_err_code;
 }
 
-void XCastHelper::getDeviceList(DeviceType type, std::vector<std::string> &devlist) const
+std::vector<std::string> XCastHelper::getDeviceList(XCastDeviceType type) const
 {
-	devlist.clear();
+	std::vector<std::string> devlist;
 	if (is_startup_succ)
 	{
 		const char *devicetyep = nullptr;
 
 		switch (type)
 		{
-		case Device_Camera:
+		case XCastDeviceType_Camera:
 			devicetyep = XC_CAMERA;
 			break;
-		case Device_Mic:
+		case XCastDeviceType_Screen_Capture:
+			break;
+		case XCastDeviceType_Player:
+			break;
+		case XCastDeviceType_Mic:
 			devicetyep = XC_MIC;
 			break;
-		case Device_Speaker:
+		case XCastDeviceType_Speaker:
 			devicetyep = XC_SPEAKER;
+			break;
+		case XCastDeviceType_Accompany:
+			break;
+		case XCastDeviceType_External:
+			devicetyep = XC_DEVICE_EXTERNAL;
+			break;
+		default:
 			break;
 		}
 
 		if (devicetyep == nullptr)
 		{
-			return;
+			return devlist;
 		}
 
 		tencent::xcast_data captures = tencent::xcast::get_property(devicetyep);
@@ -1001,45 +1005,58 @@ void XCastHelper::getDeviceList(DeviceType type, std::vector<std::string> &devli
 			cap = captures[n].str_val();
 			devlist.push_back(std::string(cap));
 		}
-		std::for_each(devlist.begin(), devlist.end(), [](auto item) {
-			int i = 0;
-		});
+		
+		return devlist;
 	}
 }
 
 
-int XCastHelper::getDeviceState(DeviceType type, const char *device) const
+XCastDeviceState XCastHelper::getDeviceState(XCastDeviceType type, const char *device) const
 {
-	if (type == Device_Speaker)
+	if (type == XCastDeviceType_Speaker)
 	{
-		return 0;
+		return XCastDeviceState_NotFound;
 	}
 
-	std::string  operidstr;
-	getOperaDevice(type, operidstr, device);
+	std::string  operidstr = getOperaDevice(type, device);
 	const char *operid = operidstr.c_str();
 	if (operid == nullptr)
 	{
-		return 0;
+		return XCastDeviceState_NotFound;
 	}
 
 	const char *devicetyep = nullptr;
 
+
 	switch (type)
 	{
-	case Device_Camera:
+	case XCastDeviceType_Camera:
 		devicetyep = XC_CAMERA_STATE;
 		break;
-	case Device_Mic:
+	case XCastDeviceType_Screen_Capture:
+		break;
+	case XCastDeviceType_Player:
+		break;
+	case XCastDeviceType_Mic:
 		devicetyep = XC_MIC_STATE;
 		break;
-	case Device_Speaker:
-		devicetyep = nullptr;
+	case XCastDeviceType_Speaker:
 		break;
+	case XCastDeviceType_Accompany:
+		break;
+	case XCastDeviceType_External:
+		devicetyep = XC_DEVICE_EXTERNAL_STATE;
+		break;
+	default:
+		break;
+	}
+	if (devicetyep == nullptr)
+	{
+		return XCastDeviceState_NotFound;
 	}
 
 	tencent::xcast_data state = tencent::xcast::get_property(devicetyep, tencent::xcast_data(operid));
-	int16_t statea = state.int16_val();
+	XCastDeviceState statea = (XCastDeviceState)(state.int16_val());
 	return statea;
 }
 
@@ -1056,8 +1073,7 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 
 	// 在房间内时：打开摄像头，并预览，同时上行；
 	// 在房间外时：打开摄像头，并预览，并设置成默认摄像头；
-	std::string str;
-	getOperaMic(str, micid);
+	std::string str = getOperaMic(micid);
 	if (str.length() == 0)
 	{
 		int erc = avsdkErrorCode(-104);
@@ -1153,8 +1169,7 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 
 	// 在房间内时：打开摄像头，并预览，同时上行；
 	// 在房间外时：打开摄像头，并预览，并设置成默认摄像头；
-	std::string str;
-	getOperaCamera(str, cameraid);
+	std::string str = getOperaCamera(cameraid);
 	if (str.length() == 0)
 	{
 		int erc = avsdkErrorCode(-104);
@@ -1370,7 +1385,11 @@ void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewL
 {
 	if (!item.isVaild())
 	{
-		callback(item, 1004, "item is invaild");
+		if (callback)
+		{
+			callback(item, 1004, "item is invaild");
+		}
+		
 		return;
 	}
 

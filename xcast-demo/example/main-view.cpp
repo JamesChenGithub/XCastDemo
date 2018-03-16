@@ -1917,6 +1917,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     case ID_32859:
       DialogBox(main_app.hInstance, MAKEINTRESOURCE(IDD_ROLE), hWnd, Role);
       break;
+
     case IDM_EXIT:
       DestroyWindow(hWnd);
       break;

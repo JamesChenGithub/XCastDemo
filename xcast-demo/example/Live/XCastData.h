@@ -1,19 +1,18 @@
-#pragma once
+#ifndef	XCAST_DATA_H
+#define XCAST_DATA_H
 
-//#include "xcast_data.h"
 #include <string>
 #include <vector>
 #include <functional>
 
-
-/*xcast auth type*/
+// 鉴权类型
 typedef enum XCastAuthType {
 	XCastAuth_None = 0,
 	XCastAuth_Manual,
 	XCastAuth_Auto,
 } XCastAuthType;
 
-/* xcast system events */
+// 内部事件类型
 typedef enum XCastSystemEvent {
 	XCastSystemEvent_Normal = 1,
 	XCastSystemEvent_Warning,
@@ -21,15 +20,7 @@ typedef enum XCastSystemEvent {
 	XCastSystemEvent_Fatal,
 } XCastSystemEvent;
 
-///* xcast stream events */
-//typedef enum  XCastStreamState {
-//	XCastStreamState_Connecting = 1,           /* stream connecting */
-//	XCastStreamState_Connected,                /* stream connected */
-//	XCastStreamState_Closed,                   /* stream connected */
-//} XCastStreamState;
-
-
-/* xcast media types */
+// 多媒体格式
 typedef enum XCastMediaFormat {
 	XCastMedia_argb32 = 0,                /* argb32 video format */
 	XCastMedia_i420,                      /* i420 video format */
@@ -38,7 +29,7 @@ typedef enum XCastMediaFormat {
 	XCastMedia_layer = 0xFF,              /* layer format*/
 } XCastMediaFormat;
 
-/* xcast media source types */
+// 多媒体来源
 typedef enum XCastMediaSource {
 	XCastMediaSource_Unknown = 0,        /* unknown source type */
 	XCastMediaSource_Camera,             /* camera */
@@ -47,7 +38,7 @@ typedef enum XCastMediaSource {
 	// XCastMediaSource_PPT,                /* ppt */
 } XCastMediaSource;
 
-/* xcast device running state */
+// 设备类型 
 typedef enum XCastDeviceType {
 	XCastDeviceType_Unknown = 0,              /* unknown device type */
 	XCastDeviceType_Camera,                   /* camera device */
@@ -297,3 +288,9 @@ typedef struct XCastRequestViewItem
 		return true;
 	}
 }XCastRequestViewItem;
+
+typedef std::function<void(int32_t, const char *)> XCHCallBack;
+typedef std::function<void(XCastRequestViewItem, int32_t, const char *)> XCHReqViewListCallBack;
+#define XCHNilCallBack NULL
+
+#endif // XCAST_DATA_H

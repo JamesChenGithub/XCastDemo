@@ -10,11 +10,6 @@
 
 #define kForVipKidTest 1
 
-typedef std::function<void(int32_t, const char *)> XCHCallBack;
-typedef std::function<void(XCastRequestViewItem, int32_t, const char *)> XCHReqViewListCallBack;
-#define XCHNilCallBack NULL
-//#define XCHNilCallBack [](int32_t, const char *) {}
-
 class XCastHelper
 {
 private:
@@ -46,12 +41,12 @@ private:
 
 	Room_State stream_state = Room_Closed;						// 房间状态	
 
-	typedef enum DeviceType
-	{
-		Device_Camera,											// 摄像头
-		Device_Mic,												// 麦克风
-		Device_Speaker,											// 扬声器
-	}DeviceType;
+	//typedef enum DeviceType
+	//{
+	//	Device_Camera,											// 摄像头
+	//	Device_Mic,												// 麦克风
+	//	Device_Speaker,											// 扬声器
+	//}DeviceType;
 
 private:
 	// XCAST回调
@@ -70,6 +65,7 @@ public:
 	static XCastHelper* getInstance();
 
 public:
+
 	FILE  *logFile = nullptr;
 	void logtoFile(const char *tag , const char * info);
 
@@ -99,7 +95,7 @@ public:
 	* roomDelegate : 房间数据回调
 	* callback ：调enterroom操作回调
 	*/
-	int enterRoom(std::unique_ptr<XCastStreamParam>roomoption, std::shared_ptr<XCastRoomHandler>	roomDelegate, XCHCallBack callback);
+	int enterRoom(std::unique_ptr<XCastStreamParam>roomoption, std::shared_ptr<XCastRoomHandler> roomDelegate, XCHCallBack callback);
 
 	/*
 	* 功能：退出房间
@@ -115,15 +111,7 @@ public:
 	* 功能：获取扬声器列表, 同步查询，外部不要保存结果
 	* 返回：扬声器列表（UTF-8格式串，外部进行转码）
 	*/
-	void getSpeakerList(std::vector<std::string> &vec) const;
-
-	/*
-	* 功能：对默认的扬声器进行打开/关闭操作
-	* enable : true : 打开 / false : 关闭
-	* callback ：操作回调
-	* 返回：操作是否成功，0成功，非0失败
-	*/
-	int enableSpeaker(bool enable, XCHCallBack callback = XCHNilCallBack);
+	std::vector<std::string> getSpeakerList() const;
 
 	/*
 	* 功能：对sid扬声器进行打开/关闭操作
@@ -132,15 +120,15 @@ public:
 	* callback ：操作回调
 	* 返回：操作是否成功，0成功，非0失败
 	*/
-	int enableSpeakerByID(bool enable, const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+	int enableSpeaker(bool enable, const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
 
 	/*
 	* 功能 ：切换扬声器输出类型
 	* sid ：要操作的扬声器，可为空，为空时操作默认扬声器
 	* headphone : false : 外放 / true : 耳机
 	*/
-	int changeOutputMode(const char *sid, bool headphone);
-
+	int changeOutputMode(bool headphone, const char *sid = nullptr);
+ 
 
 	/*
 	* 功能 ：获取扬声器音量
@@ -164,7 +152,7 @@ public:
 	* 功能：获取麦克风列表, 同步查询，外部不要保存结果
 	* 返回：麦克风列表（UTF-8格式串，外部进行转码）
 	*/
-	void getMicList(std::vector<std::string> &vec) const;
+	std::vector<std::string> getMicList() const;
 
 	/*
 	* 功能：获取麦克风状态
@@ -174,7 +162,7 @@ public:
 	* 1 : 停止
 	* 2 ：运行中
 	*/
-	int getMicState(const char *micid = nullptr) const;
+	XCastDeviceState getMicState(const char *micid = nullptr) const;
 
 	/*
 	* 功能：操作麦克风，控制上行，只能在房间内操作
@@ -212,7 +200,7 @@ public:
 	* 功能：获取摄像头列表, 结果是同步查询，外部不要保存
 	* 返回：摄像头列表（UTF-8格式串，外部进行转码）
 	*/
-	void getCameraList(std::vector<std::string> &vec) const;
+	std::vector<std::string> getCameraList() const;
 
 	/*
 	* 功能：获取摄像头状态
@@ -222,7 +210,7 @@ public:
 	* 1 : 停止
 	* 2 ：运行中
 	*/
-	int getCameraState(const char *cameraid = nullptr) const;
+	XCastDeviceState getCameraState(const char *cameraid = nullptr) const;
 
 	// 以下几个接口控制摄像头预览以及上行控制；
 	// 在房间内时：打开摄像头，并预览，同时上行；
@@ -316,15 +304,18 @@ public:
 	//void cancelAudioWhiteList();
 
 private:
-	void getOperaDevice(DeviceType type, std::string &retstr, const char *cameraid = nullptr) const;
-	void getOperaCamera(std::string &retstr, const char *cameraid = nullptr) const;
-	void getOperaMic(std::string &retstr, const char *cameraid = nullptr) const;
-	void getOperaSpeaker(std::string &retstr, const char *cameraid = nullptr) const;
+	int avsdkErrorCode(int xcast_err_code) const;
 
 private:
-	int avsdkErrorCode(int xcast_err_code) const;
-	void getDeviceList(DeviceType type, std::vector<std::string> &list) const;
-	int getDeviceState(DeviceType type, const char *devid = nullptr) const;
+	// 获取要操作的设备，如果通过devid没找到，则取默认设备
+	std::string getOperaDevice(XCastDeviceType type, const char *devid = nullptr) const;
+	std::string getOperaCamera(const char *cameraid = nullptr) const;
+	std::string getOperaMic(const char *micid = nullptr) const;
+	std::string getOperaSpeaker(const char *speakerid = nullptr) const;
+
+	// 获取要操作的设备
+	std::vector<std::string> getDeviceList(XCastDeviceType type) const;
+	XCastDeviceState getDeviceState(XCastDeviceType type, const char *devid = nullptr) const;
 
 private:
 	// 功能 ：清理内部状态
