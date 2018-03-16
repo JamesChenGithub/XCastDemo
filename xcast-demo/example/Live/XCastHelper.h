@@ -8,7 +8,7 @@
 #include "xcast.hh"
 #include "XCastData.h"
 
-#define kForVipKidTest 1
+#define kForVipKidTest 0
 
 class XCastHelper
 {
@@ -64,11 +64,15 @@ private:
 public:
 	static XCastHelper* getInstance();
 
-public:
 
+#if kForVipKidTest
+private:
 	FILE  *logFile = nullptr;
-	void logtoFile(const char *tag , const char * info);
-
+public:
+	void logtoFile(const char *tag, const char * info);
+#endif
+	
+public:
 	/*
 	* 功能: 初始始化XCast
 	* param : 初始化参数，内部会保存该值；

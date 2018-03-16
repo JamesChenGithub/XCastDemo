@@ -4,10 +4,9 @@
 
 #if kForVipKidTest
 #include "example/xcast-ui-handler.h"
-
 #endif
 
-
+//====================================================================
 
 #define kTRACK_CAMERA_IN "video-in"
 #define kTRACK_AUDIO_IN "audio-in"
@@ -19,6 +18,7 @@
 #define kTRACK_SCREEN_CAPTURE_OUT "screen-video-out"
 #define kTRACK_MEDIA_OUT "media-file-out"
 
+//====================================================================
 inline void XCastHelperCallBack(XCHCallBack callback, int32_t errcode, const char *err)
 {
 	if (callback)
@@ -28,10 +28,13 @@ inline void XCastHelperCallBack(XCHCallBack callback, int32_t errcode, const cha
 bool xcast_data_to_deviceitem(tencent::xcast_data data, XCastDeviceHotPlugItem &item)
 {
 	const char *srcstr = data["src"];
-
 	if (srcstr == nullptr)
+	{
+		// 没查到src，直接返回出错
 		return false;
+	}
 
+	// 获取其他信息
 	XCastDeviceHotPlugItem device;
 	device.deviceClass = (XCastDeviceType)((int32_t)(data["class"]));
 	device.src = std::string(srcstr);
@@ -47,7 +50,12 @@ bool xcast_data_to_videoframe(tencent::xcast_data data, XCastVideoFrame &frame, 
 	const char *dev = data["src"];
 	const uint8_t *bytedata = data["data"].bytes_val();
 	if (!dev || !bytedata)
+	{
+		// 没查到src，直接返回出错
+		// 或数据有问题
 		return false;
+	}
+		
 
 	frame.deviceSrc = dev;
 
@@ -66,11 +74,13 @@ bool xcast_data_to_videoframe(tencent::xcast_data data, XCastVideoFrame &frame, 
 	}
 	else if (frame.size != size || frame.width != width || frame.height != height)
 	{
+		// 数据有变化，重新分配置内存
 		free(frame.data);
 		frame.data = (uint8_t *)malloc(size);
 		if (frame.data == nullptr)
 			return false;
 	}
+
 	memcpy(frame.data, bytedata, size);
 	frame.media_format = (XCastMediaFormat)format;
 	frame.rotate = rotate;
@@ -81,7 +91,7 @@ bool xcast_data_to_videoframe(tencent::xcast_data data, XCastVideoFrame &frame, 
 	return true;
 }
 
-
+//=========================================================================
 
 XCastHelper * XCastHelper::m_instance = nullptr;
 
@@ -136,7 +146,8 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 	break;
 	case xc_stream_updated:
 	{
-		if (data["state"] == xc_stream_connected) {
+		if (data["state"] == xc_stream_connected)
+		{
 			instance->stream_state = Room_Connectted;
 			/* 流状态： 连接成功 */
 			if (instance && instance->m_room_handler)
@@ -208,7 +219,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 	new_track_event(NULL, data);
 #endif
 	XCastHelper *instance = (XCastHelper *)contextinfo;
-	uint64_t          uin = data["uin"]; 
+	uint64_t          uin = data["uin"];
 	if (instance && instance->m_room_handler.get())
 	{
 		xc_track_event type = (xc_track_event)((int32_t)data["type"]);
@@ -250,7 +261,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 					break;
 				case XCastMediaSource_Media_Player:      /* media player */
 					event = has ? XCast_Endpoint_Has_Media_Video : XCast_Endpoint_No_Media_Video;
-				//case XCastMediaSource_PPT:               /* ppt */
+					//case XCastMediaSource_PPT:               /* ppt */
 				default:
 					break;
 				}
@@ -269,7 +280,6 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 						end->is_camera_video = has;
 						notify = true;
 					}
-					
 					break;
 				case XCast_Endpoint_Has_Audio:
 				case XCast_Endpoint_No_Audio:
@@ -278,7 +288,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 						end->is_audio = has;
 						notify = true;
 					}
-					
+
 					break;
 				case XCast_Endpoint_Has_Screen_Video:
 				case XCast_Endpoint_No_Screen_Video:
@@ -287,7 +297,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 						end->is_screen_video = has;
 						notify = true;
 					}
-					
+
 					break;
 				case XCast_Endpoint_Has_Media_Video:
 				case XCast_Endpoint_No_Media_Video:
@@ -313,7 +323,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 					instance->m_room_handler->onEndpointsUpdateInfo(event, ep);
 					instance->updateEndpointMap(uin);
 				}
-				
+
 			}
 		}
 		/* 更新轨道 */
@@ -331,16 +341,19 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 			instance->m_room_handler->onEndpointsUpdateInfo(XCast_Endpoint_Removed, ep);
 
 			instance->deleteEndpoint(uin);
-
+#if kForVipKidTest
 			instance->logtoFile("xc_track_removed", data.dump());
+#endif
 			/*	XCastEndPoint info;
 			instance->m_room_handler->onEndpointsUpdateInfo(info);*/
 		}
 		//ui_track_add(e, false, user_data);
 		break;
-		case xc_track_media: 
+		case xc_track_media:
 		{
+#if kForVipKidTest
 			instance->logtoFile("xc_track_media", data.dump());
+#endif
 
 			XCastMediaSource mediaTye = (XCastMediaSource)((int32_t)data["media-src"]);
 			std::shared_ptr<XCastVideoFrame> frameptr = instance->getVideoFrameBuffer(uin, mediaTye);
@@ -350,12 +363,11 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 				instance->m_room_handler->onVideoPreview(frameptr.get());
 			}
 		}
-							 break;
+		break;
 		default:
 			break;
 		}
 	}
-	
 
 	return XCAST_OK;
 }
@@ -368,8 +380,10 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 	const char *srcstr = e["src"];
 
 	if (srcstr == nullptr)
+	{
 		return XCAST_OK;
-
+	}
+		
 	XCastHelper *instance = (XCastHelper *)contextinfo;
 	if (instance && instance->m_global_handler.get())
 	{
@@ -384,7 +398,6 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 			{
 				instance->m_global_handler->onDeviceEvent_DeviceAdd(device);
 			}
-			
 		}
 		break;
 		case xc_device_updated:
@@ -440,9 +453,7 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 					}
 				}
 			}
-			
 		}
-			
 			break;
 		default:
 			break;
@@ -458,7 +469,9 @@ int32_t XCastHelper::onXCastTipsEvent(void *contextinfo, tencent::xcast_data &da
 	new_stat_tips(NULL, data);
 #endif
 	XCastHelper *instance = (XCastHelper *)contextinfo;
+#if kForVipKidTest
 	instance->logtoFile("onXCastTipsEvent", data.dump());
+#endif
 	if (instance->m_room_handler->needRoomCallbackTips())
 	{
 		instance->m_room_handler->onStatTips();
@@ -475,19 +488,20 @@ XCastHelper* XCastHelper::getInstance()
 	return m_instance;
 }
 
+#if kForVipKidTest
 void XCastHelper::logtoFile(const char *tag, const char * info)
 {
 	fprintf(logFile, "%s : %s \n", tag, info);
 	fflush(logFile);
 }
-
+#endif
 
 int XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-
+#if kForVipKidTest
 	logFile = fopen("log.txt", "w+");
-	
+#endif
 	if (is_startup_succ)
 	{
 		XCastHelperCallBack(callback, 1003, "xcast has started");
@@ -527,9 +541,11 @@ int XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBac
 int XCastHelper::stopContext(XCHCallBack callback)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
+#if kForVipKidTest
 	fflush(logFile);
 	fclose(logFile);
 	logFile = nullptr;
+#endif
 	if (stream_state == Room_Connectted)
 	{
 		std::string sid = m_stream_param->streamID;
@@ -1271,8 +1287,8 @@ XCastMediaSource XCastHelper::getDeviceVideoSourceType(XCastDeviceType type) con
 		return XCastMediaSource_Screen_Capture;
 	case XCastDeviceType_Player:
 		return XCastMediaSource_Media_Player;
-		// TODO:添加其他支持
 	default:
+		// TODO:添加其他支持
 		return XCastMediaSource_Unknown;
 		break;
 	}
