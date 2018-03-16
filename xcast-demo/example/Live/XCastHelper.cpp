@@ -204,12 +204,14 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 	new_track_event(NULL, data);
 #endif
 	XCastHelper *instance = (XCastHelper *)contextinfo;
-	const char *str = data.dump();
+	uint64_t          uin = data["uin"]; 
 	if (instance && instance->m_room_handler.get())
 	{
-		switch ((int32_t)data["type"])
+		XCastTrackEvent type = (XCastTrackEvent)((int32_t)data["type"]);
+
+		switch (type)
 		{
-		case xc_track_added:
+		case XCastTrack_Added:
 		{
 			/* 新增轨道 */
 			/*ui_track_add(e, true, user_data);*/
@@ -219,33 +221,89 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 			instance->m_room_handler->onEndpointsUpdateInfo(info);*/
 		}
 		break;
-		case xc_track_updated:
+		case XCastTrack_Updated:
+		case XCastTrack_Capture_Changed:
 		{
-			instance->logtoFile("xc_track_updated", data.dump());
-		/*	XCastEndPoint info;
-			instance->m_room_handler->onEndpointsUpdateInfo(info);*/
-		}
-		break;
-		case xc_track_capture_changed:
-		{
-			instance->logtoFile("xc_track_capture_changed", data.dump());
-			/*XCastEndPoint info;
-			instance->m_room_handler->onEndpointsUpdateInfo(info);*/
+			XCastMediaSource source = (XCastMediaSource)((int32_t)data["media_type"]);
+			XCastTrackType tracktype = (XCastTrackType)((int32_t)data["class"]);
+			XCastTrackState state = (XCastTrackState)((int32_t)data["state"]);
+			bool has = (state == XCastTrackState_Running);
 
+			XCastEndpointEvent event = XCast_Endpoint_NONE;
+			if (tracktype == XCastTrackType_Audio)
+			{
+				event = has ? XCast_Endpoint_Has_Audio : XCast_Endpoint_No_Audio;
+			}
+			else if (tracktype == XCastTrackType_Video)
+			{
+				switch (source)
+				{
+				case XCastMediaSource_Camera:            /* camera */
+					event = has ? XCast_Endpoint_Has_Camera_Video : XCast_Endpoint_No_Camera_Video;
+					break;
+				case XCastMediaSource_Screen_Capture:     /* screen capture */
+					event = has ? XCast_Endpoint_Has_Screen_Video : XCast_Endpoint_No_Screen_Video;
+					break;
+				case XCastMediaSource_Media_Player:      /* media player */
+					event = has ? XCast_Endpoint_Has_Media_Video : XCast_Endpoint_No_Media_Video;
+				case XCastMediaSource_PPT:               /* ppt */
+				default:
+					break;
+				}
+			}
 
+			if (event != XCast_Endpoint_NONE)
+			{
+				
+				std::shared_ptr<XCastEndpoint> end = instance->getEndpoint(uin);
+				switch (event)
+				{
+				case XCast_Endpoint_Has_Camera_Video:
+				case XCast_Endpoint_No_Camera_Video:
+					end->is_camera_video = has;
+					break;
+				case XCast_Endpoint_Has_Audio:
+				case XCast_Endpoint_No_Audio:
+					end->is_audio = has;
+					break;
+				case XCast_Endpoint_Has_Screen_Video:
+				case XCast_Endpoint_No_Screen_Video:
+					end->is_screen_video = has;
+					break;
+				case XCast_Endpoint_Has_Media_Video:
+				case XCast_Endpoint_No_Media_Video:
+					end->is_media_video = has;
+					break;
+				default:
+					break;
+				}
+
+				// TODO: dump endpoint and callback
+
+				XCastEndpoint ep;
+				ep.tinyid = end->tinyid;
+				ep.is_audio = end->is_audio;
+				ep.is_camera_video = end->is_camera_video;
+				ep.is_screen_video = end->is_screen_video;
+				ep.is_media_video = end->is_media_video;
+				std::vector<XCastEndpoint> vec;
+				vec.push_back(ep);
+				instance->m_room_handler->onEndpointsUpdateInfo(event, vec);
+			}
 		}
 		/* 更新轨道 */
 		/*ui_track_update(e, user_data);*/
 		break;
-		case xc_track_removed:
+		case XCastTrack_Removed:
 		{
+			std::shared_ptr<XCastEndpoint> endptr = instance->getEndpoint(uin);
 			instance->logtoFile("xc_track_removed", data.dump());
 		/*	XCastEndPoint info;
 			instance->m_room_handler->onEndpointsUpdateInfo(info);*/
 		}
 		//ui_track_add(e, false, user_data);
 		break;
-		case xc_track_media: {
+		case XCastTrack_Media: {
 			instance->logtoFile("xc_track_media", data.dump());
 			//ui_track_media(e, user_data);
 			/*XCastVideoFrame *videoFrame = nullptr;
@@ -1177,5 +1235,15 @@ void XCastHelper::updateEndpointMap(uint64_t tinyid)
 			}
 		}
 		
+	}
+}
+
+void XCastHelper::deleteEndpoint(uint64_t tinyid)
+{
+	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
+	auto it = endpoint_map.find(tinyid);
+	if (it != endpoint_map.end())
+	{
+		endpoint_map.erase(tinyid);
 	}
 }

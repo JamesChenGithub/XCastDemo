@@ -284,6 +284,7 @@ private:
 private:
 	std::shared_ptr<XCastEndpoint> getEndpoint(uint64_t tinyid);
 	void updateEndpointMap(uint64_t tinyid);
+	void deleteEndpoint(uint64_t tinyid);
 };
 
 #endif
