@@ -1,5 +1,5 @@
-﻿/* 
-** Copyright (c) 2014 The xcast project. All rights reserved.
+/* 
+** Copyright (c) 2014-2017 The xCast project. All rights reserved.
 */
 #ifndef XCAST_ERROR_H_
 #define XCAST_ERROR_H_
@@ -11,74 +11,60 @@
 typedef enum xcast_error_e {
   XCAST_OK                  = 0,
 
-  /* A generic failure occurred. */
+  /* a generic failure occurred. */
   XCAST_ERROR(FAILED, -1)
   
   XCAST_ERROR(CONFIG_NOT_FOUND, -3)
 
-  /* 签名超时 */
+  /* signature key expired */
   XCAST_ERROR(KEY_EXPIRED, -8)
 
-  /* 找不到房间 */
-  XCAST_ERROR(ROOM_NOT_FOUND, -10)
-
-  /* 找不到用户 */
-  XCAST_ERROR(ENDPOINT_NOT_FOUND, -11)
-
-  /* 签名无效 */
+  /* signature key is invalid */
   XCAST_ERROR(KEY_INVALID, -12)
 
-  /* 远程用户关闭 */
-  XCAST_ERROR(ENDPOINT_CLOSE, -13)
-
-  /* 成员列表不需要更新 */
-  XCAST_ERROR(ENDPOINT_LIST_UPTODATE, -15)
-
-  XCAST_ERROR(PROTO_FAILED, -50)
-
-  /* An asynchronous operation is not yet complete.  This usually does not
-  indicate a fatal error.  Typically this error will be generated as a
+  /* an asynchronous operation is not complete yet. this usually does not
+  indicate a fatal error. typically this error will be generated as a
   notification to wait for some external notification that the operation
   finally completed. */
   XCAST_ERROR(PENDING, -100)
 
-  /* An operation is already in progress. */
+  /* an operation is already in progress. */
   XCAST_ERROR(BUSY, -101)
 
-  /* An object is already exists. */
+  /* an object is already exists. */
   XCAST_ERROR(ALREADY_EXISTS, -103)
 
-  /* An argument to the function is incorrect. */
+  /* an argument to the function is incorrect. */
   XCAST_ERROR(INVALID_ARGUMENT, -104)
 
-  /* The handle or file descriptor is invalid. */
+  /* the handle or file descriptor is invalid. */
   XCAST_ERROR(INVALID_HANDLE, -105)
 
-  /* An object cannot be found. */
+  /* an object cannot be found. */
   XCAST_ERROR(NOT_FOUND, -106)
 
-  /* An operation timed out. */
+  /* an operation timed out. */
   XCAST_ERROR(TIMED_OUT, -107)
 
-  /* The operation failed because of context not started. */
+  /* the operation failed because of context not started. */
   XCAST_ERROR(CONTEXT_NOT_STARTED, -110)
 
-  /* The operation failed because of unimplemented functionality. */
+  /* the operation failed because of unimplemented functionality. */
   XCAST_ERROR(NOT_IMPLEMENTED, -111)
 
-  /* There were not enough resources to complete the operation. */
+  /* there were not enough resources to complete the operation. */
   XCAST_ERROR(INSUFFICIENT_RESOURCES, -112)
 
-  /* Memory allocation failed. */
+  /* memory allocation failed. */
   XCAST_ERROR(OUT_OF_MEMORY, -113)
 
-  /* Operation not supported. */
+  /* operation not supported. */
   XCAST_ERROR(NOT_SUPPORTED, -114)
 
-  /* 群语音、群视频被禁用，或者用户被禁言. */
+  /* group audio/video banned */
   XCAST_ERROR(ENTER_BAN, -115)
 
-  /* 群视频抢座失败，因为群视频座位已满. */
+  /* group video full. */
   XCAST_ERROR(ENTER_VIDEO_FULL, -116)
 
   /* Get interface server address failed */

@@ -1,4 +1,4 @@
-﻿/*
+/*
 ** Copyright (c) 2014-2017 The xcast project. All rights reserved.
 */
 #ifndef XCAST_H_
@@ -11,13 +11,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-/*
-* TODO(element): !!!重要!!!
-* 1、增加接口返回值错误代码上报
-* 2、分析接口错误用法，日志自动化分析
-* 2、所有的错误都要上报
-*/
 
 /*
 * query current xcast string version.

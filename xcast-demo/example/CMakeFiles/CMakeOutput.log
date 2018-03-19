@@ -679,3 +679,1355 @@ FinalizeBuildStatus:
     Feature record: CXX_FEATURE:1cxx_variable_templates
     Feature record: CXX_FEATURE:1cxx_variadic_macros
     Feature record: CXX_FEATURE:1cxx_variadic_templates
+The system is: Windows - 6.3.9600 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) ��������汾 14.0.25420.1
+��Ȩ����(C) Microsoft Corporation����������Ȩ����
+
+��������ʱ��Ϊ 2018/3/16 20:16:01��
+�ڵ� 1 �ϵ���Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdC\CompilerIdC.vcxproj��(Ĭ��Ŀ��)��
+PrepareForBuild:
+  ���ڴ���Ŀ¼��Debug\����
+  ���ڴ���Ŀ¼��Debug\CompilerIdC.tlog\����
+InitializeBuildStatus:
+  ���ڴ�����Debug\CompilerIdC.tlog\unsuccessfulbuild������Ϊ��ָ����AlwaysCreate����
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCCompilerId.obj
+  CompilerIdC.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdC\.\CompilerIdC.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_C_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  ����ɾ���ļ���Debug\CompilerIdC.tlog\unsuccessfulbuild����
+  ���ڶԡ�Debug\CompilerIdC.tlog\CompilerIdC.lastbuildstate��ִ�� Touch ����
+�����������Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdC\CompilerIdC.vcxproj��(Ĭ��Ŀ��)�Ĳ�����
+
+�ѳɹ����ɡ�
+    0 ������
+    0 ������
+
+����ʱ�� 00:00:00.91
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+
+The C compiler identification is MSVC, found in "C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/3.8.0-rc4/CompilerIdC/CompilerIdC.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) ��������汾 14.0.25420.1
+��Ȩ����(C) Microsoft Corporation����������Ȩ����
+
+��������ʱ��Ϊ 2018/3/16 20:16:03��
+�ڵ� 1 �ϵ���Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdCXX\CompilerIdCXX.vcxproj��(Ĭ��Ŀ��)��
+PrepareForBuild:
+  ���ڴ���Ŀ¼��Debug\����
+  ���ڴ���Ŀ¼��Debug\CompilerIdCXX.tlog\����
+InitializeBuildStatus:
+  ���ڴ�����Debug\CompilerIdCXX.tlog\unsuccessfulbuild������Ϊ��ָ����AlwaysCreate����
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue CMakeCXXCompilerId.cpp
+  CMakeCXXCompilerId.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCXXCompilerId.obj
+  CompilerIdCXX.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdCXX\.\CompilerIdCXX.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_CXX_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  ����ɾ���ļ���Debug\CompilerIdCXX.tlog\unsuccessfulbuild����
+  ���ڶԡ�Debug\CompilerIdCXX.tlog\CompilerIdCXX.lastbuildstate��ִ�� Touch ����
+�����������Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdCXX\CompilerIdCXX.vcxproj��(Ĭ��Ŀ��)�Ĳ�����
+
+�ѳɹ����ɡ�
+    0 ������
+    0 ������
+
+����ʱ�� 00:00:00.60
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+
+The CXX compiler identification is MSVC, found in "C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/3.8.0-rc4/CompilerIdCXX/CompilerIdCXX.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_6afe9.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/16 20:16:04。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_6afe9.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_6afe9.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_6afe9.dir\Debug\cmTC_6afe9.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_6afe9.dir\Debug\cmTC_6afe9.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6afe9.dir\Debug\\" /Fd"cmTC_6afe9.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCCompiler.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6afe9.dir\Debug\\" /Fd"cmTC_6afe9.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCCompiler.c"
+  
+  testCCompiler.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_6afe9.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_6afe9.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_6afe9.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_6afe9.dir\Debug\testCCompiler.obj
+  cmTC_6afe9.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_6afe9.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_6afe9.dir\Debug\cmTC_6afe9.tlog\unsuccessfulbuild”。
+  正在对“cmTC_6afe9.dir\Debug\cmTC_6afe9.tlog\cmTC_6afe9.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_6afe9.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.00
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_5e499.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/16 20:16:05。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_5e499.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_5e499.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_5e499.dir\Debug\cmTC_5e499.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_5e499.dir\Debug\cmTC_5e499.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5e499.dir\Debug\\" /Fd"cmTC_5e499.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCCompilerABI.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_5e499.dir\Debug\\" /Fd"cmTC_5e499.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCCompilerABI.c"
+  
+  CMakeCCompilerABI.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_5e499.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_5e499.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_5e499.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_5e499.dir\Debug\CMakeCCompilerABI.obj
+  cmTC_5e499.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_5e499.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_5e499.dir\Debug\cmTC_5e499.tlog\unsuccessfulbuild”。
+  正在对“cmTC_5e499.dir\Debug\cmTC_5e499.tlog\cmTC_5e499.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_5e499.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.72
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_92292.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/16 20:16:06。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_92292.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_92292.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_92292.dir\Debug\cmTC_92292.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_92292.dir\Debug\cmTC_92292.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_92292.dir\Debug\\" /Fd"cmTC_92292.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_92292.dir\Debug\\" /Fd"cmTC_92292.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  
+  testCXXCompiler.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_92292.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_92292.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_92292.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_92292.dir\Debug\testCXXCompiler.obj
+  cmTC_92292.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_92292.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_92292.dir\Debug\cmTC_92292.tlog\unsuccessfulbuild”。
+  正在对“cmTC_92292.dir\Debug\cmTC_92292.tlog\cmTC_92292.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_92292.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.68
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_d11cb.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/16 20:16:07。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_d11cb.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_d11cb.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_d11cb.dir\Debug\cmTC_d11cb.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_d11cb.dir\Debug\cmTC_d11cb.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_d11cb.dir\Debug\\" /Fd"cmTC_d11cb.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCXXCompilerABI.cpp"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_d11cb.dir\Debug\\" /Fd"cmTC_d11cb.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCXXCompilerABI.cpp"
+  
+  CMakeCXXCompilerABI.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_d11cb.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_d11cb.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_d11cb.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_d11cb.dir\Debug\CMakeCXXCompilerABI.obj
+  cmTC_d11cb.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_d11cb.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_d11cb.dir\Debug\cmTC_d11cb.tlog\unsuccessfulbuild”。
+  正在对“cmTC_d11cb.dir\Debug\cmTC_d11cb.tlog\cmTC_d11cb.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_d11cb.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.67
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_95d4e.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/16 20:16:08。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_95d4e.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_95d4e.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_95d4e.dir\Debug\cmTC_95d4e.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_95d4e.dir\Debug\cmTC_95d4e.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_95d4e.dir\Debug\\" /Fd"cmTC_95d4e.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\feature_tests.cxx"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_95d4e.dir\Debug\\" /Fd"cmTC_95d4e.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\feature_tests.cxx"
+  
+  feature_tests.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_95d4e.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_95d4e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_95d4e.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_95d4e.dir\Debug\feature_tests.obj
+  cmTC_95d4e.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_95d4e.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_95d4e.dir\Debug\cmTC_95d4e.tlog\unsuccessfulbuild”。
+  正在对“cmTC_95d4e.dir\Debug\cmTC_95d4e.tlog\cmTC_95d4e.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_95d4e.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.66
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+The system is: Windows - 6.3.9600 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) ��������汾 14.0.25420.1
+��Ȩ����(C) Microsoft Corporation����������Ȩ����
+
+��������ʱ��Ϊ 2018/3/19 11:39:36��
+�ڵ� 1 �ϵ���Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdC\CompilerIdC.vcxproj��(Ĭ��Ŀ��)��
+PrepareForBuild:
+  ���ڴ���Ŀ¼��Debug\����
+  ���ڴ���Ŀ¼��Debug\CompilerIdC.tlog\����
+InitializeBuildStatus:
+  ���ڴ�����Debug\CompilerIdC.tlog\unsuccessfulbuild������Ϊ��ָ����AlwaysCreate����
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCCompilerId.obj
+  CompilerIdC.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdC\.\CompilerIdC.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_C_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  ����ɾ���ļ���Debug\CompilerIdC.tlog\unsuccessfulbuild����
+  ���ڶԡ�Debug\CompilerIdC.tlog\CompilerIdC.lastbuildstate��ִ�� Touch ����
+�����������Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdC\CompilerIdC.vcxproj��(Ĭ��Ŀ��)�Ĳ�����
+
+�ѳɹ����ɡ�
+    0 ������
+    0 ������
+
+����ʱ�� 00:00:01.41
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+
+The C compiler identification is MSVC, found in "C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/3.8.0-rc4/CompilerIdC/CompilerIdC.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) ��������汾 14.0.25420.1
+��Ȩ����(C) Microsoft Corporation����������Ȩ����
+
+��������ʱ��Ϊ 2018/3/19 11:39:37��
+�ڵ� 1 �ϵ���Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdCXX\CompilerIdCXX.vcxproj��(Ĭ��Ŀ��)��
+PrepareForBuild:
+  ���ڴ���Ŀ¼��Debug\����
+  ���ڴ���Ŀ¼��Debug\CompilerIdCXX.tlog\����
+InitializeBuildStatus:
+  ���ڴ�����Debug\CompilerIdCXX.tlog\unsuccessfulbuild������Ϊ��ָ����AlwaysCreate����
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue CMakeCXXCompilerId.cpp
+  CMakeCXXCompilerId.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCXXCompilerId.obj
+  CompilerIdCXX.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdCXX\.\CompilerIdCXX.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_CXX_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  ����ɾ���ļ���Debug\CompilerIdCXX.tlog\unsuccessfulbuild����
+  ���ڶԡ�Debug\CompilerIdCXX.tlog\CompilerIdCXX.lastbuildstate��ִ�� Touch ����
+�����������Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdCXX\CompilerIdCXX.vcxproj��(Ĭ��Ŀ��)�Ĳ�����
+
+�ѳɹ����ɡ�
+    0 ������
+    0 ������
+
+����ʱ�� 00:00:00.65
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+
+The CXX compiler identification is MSVC, found in "C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/3.8.0-rc4/CompilerIdCXX/CompilerIdCXX.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_90f5b.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:39:38。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_90f5b.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_90f5b.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_90f5b.dir\Debug\cmTC_90f5b.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_90f5b.dir\Debug\cmTC_90f5b.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_90f5b.dir\Debug\\" /Fd"cmTC_90f5b.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCCompiler.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_90f5b.dir\Debug\\" /Fd"cmTC_90f5b.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCCompiler.c"
+  
+  testCCompiler.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_90f5b.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_90f5b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_90f5b.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_90f5b.dir\Debug\testCCompiler.obj
+  cmTC_90f5b.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_90f5b.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_90f5b.dir\Debug\cmTC_90f5b.tlog\unsuccessfulbuild”。
+  正在对“cmTC_90f5b.dir\Debug\cmTC_90f5b.tlog\cmTC_90f5b.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_90f5b.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.09
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_e7593.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:39:39。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_e7593.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_e7593.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_e7593.dir\Debug\cmTC_e7593.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_e7593.dir\Debug\cmTC_e7593.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_e7593.dir\Debug\\" /Fd"cmTC_e7593.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCCompilerABI.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_e7593.dir\Debug\\" /Fd"cmTC_e7593.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCCompilerABI.c"
+  
+  CMakeCCompilerABI.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_e7593.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_e7593.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_e7593.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_e7593.dir\Debug\CMakeCCompilerABI.obj
+  cmTC_e7593.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_e7593.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_e7593.dir\Debug\cmTC_e7593.tlog\unsuccessfulbuild”。
+  正在对“cmTC_e7593.dir\Debug\cmTC_e7593.tlog\cmTC_e7593.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_e7593.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.83
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_bbe2b.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:39:41。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_bbe2b.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_bbe2b.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_bbe2b.dir\Debug\cmTC_bbe2b.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_bbe2b.dir\Debug\cmTC_bbe2b.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_bbe2b.dir\Debug\\" /Fd"cmTC_bbe2b.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_bbe2b.dir\Debug\\" /Fd"cmTC_bbe2b.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  
+  testCXXCompiler.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_bbe2b.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_bbe2b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_bbe2b.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_bbe2b.dir\Debug\testCXXCompiler.obj
+  cmTC_bbe2b.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_bbe2b.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_bbe2b.dir\Debug\cmTC_bbe2b.tlog\unsuccessfulbuild”。
+  正在对“cmTC_bbe2b.dir\Debug\cmTC_bbe2b.tlog\cmTC_bbe2b.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_bbe2b.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.79
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_69e69.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:39:42。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_69e69.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_69e69.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_69e69.dir\Debug\cmTC_69e69.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_69e69.dir\Debug\cmTC_69e69.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_69e69.dir\Debug\\" /Fd"cmTC_69e69.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCXXCompilerABI.cpp"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_69e69.dir\Debug\\" /Fd"cmTC_69e69.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCXXCompilerABI.cpp"
+  
+  CMakeCXXCompilerABI.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_69e69.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_69e69.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_69e69.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_69e69.dir\Debug\CMakeCXXCompilerABI.obj
+  cmTC_69e69.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_69e69.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_69e69.dir\Debug\cmTC_69e69.tlog\unsuccessfulbuild”。
+  正在对“cmTC_69e69.dir\Debug\cmTC_69e69.tlog\cmTC_69e69.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_69e69.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.81
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_31dfa.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:39:43。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_31dfa.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_31dfa.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_31dfa.dir\Debug\cmTC_31dfa.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_31dfa.dir\Debug\cmTC_31dfa.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_31dfa.dir\Debug\\" /Fd"cmTC_31dfa.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\feature_tests.cxx"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_31dfa.dir\Debug\\" /Fd"cmTC_31dfa.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\feature_tests.cxx"
+  
+  feature_tests.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_31dfa.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_31dfa.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_31dfa.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_31dfa.dir\Debug\feature_tests.obj
+  cmTC_31dfa.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_31dfa.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_31dfa.dir\Debug\cmTC_31dfa.tlog\unsuccessfulbuild”。
+  正在对“cmTC_31dfa.dir\Debug\cmTC_31dfa.tlog\cmTC_31dfa.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_31dfa.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.79
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+The system is: Windows - 6.3.9600 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) ��������汾 14.0.25420.1
+��Ȩ����(C) Microsoft Corporation����������Ȩ����
+
+��������ʱ��Ϊ 2018/3/19 11:42:36��
+�ڵ� 1 �ϵ���Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdC\CompilerIdC.vcxproj��(Ĭ��Ŀ��)��
+PrepareForBuild:
+  ���ڴ���Ŀ¼��Debug\����
+  ���ڴ���Ŀ¼��Debug\CompilerIdC.tlog\����
+InitializeBuildStatus:
+  ���ڴ�����Debug\CompilerIdC.tlog\unsuccessfulbuild������Ϊ��ָ����AlwaysCreate����
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCCompilerId.obj
+  CompilerIdC.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdC\.\CompilerIdC.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_C_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  ����ɾ���ļ���Debug\CompilerIdC.tlog\unsuccessfulbuild����
+  ���ڶԡ�Debug\CompilerIdC.tlog\CompilerIdC.lastbuildstate��ִ�� Touch ����
+�����������Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdC\CompilerIdC.vcxproj��(Ĭ��Ŀ��)�Ĳ�����
+
+�ѳɹ����ɡ�
+    0 ������
+    0 ������
+
+����ʱ�� 00:00:00.69
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+
+The C compiler identification is MSVC, found in "C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/3.8.0-rc4/CompilerIdC/CompilerIdC.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) ��������汾 14.0.25420.1
+��Ȩ����(C) Microsoft Corporation����������Ȩ����
+
+��������ʱ��Ϊ 2018/3/19 11:42:37��
+�ڵ� 1 �ϵ���Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdCXX\CompilerIdCXX.vcxproj��(Ĭ��Ŀ��)��
+PrepareForBuild:
+  ���ڴ���Ŀ¼��Debug\����
+  ���ڴ���Ŀ¼��Debug\CompilerIdCXX.tlog\����
+InitializeBuildStatus:
+  ���ڴ�����Debug\CompilerIdCXX.tlog\unsuccessfulbuild������Ϊ��ָ����AlwaysCreate����
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue CMakeCXXCompilerId.cpp
+  CMakeCXXCompilerId.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCXXCompilerId.obj
+  CompilerIdCXX.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdCXX\.\CompilerIdCXX.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_CXX_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  ����ɾ���ļ���Debug\CompilerIdCXX.tlog\unsuccessfulbuild����
+  ���ڶԡ�Debug\CompilerIdCXX.tlog\CompilerIdCXX.lastbuildstate��ִ�� Touch ����
+�����������Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdCXX\CompilerIdCXX.vcxproj��(Ĭ��Ŀ��)�Ĳ�����
+
+�ѳɹ����ɡ�
+    0 ������
+    0 ������
+
+����ʱ�� 00:00:00.69
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+
+The CXX compiler identification is MSVC, found in "C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/3.8.0-rc4/CompilerIdCXX/CompilerIdCXX.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_69db4.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:42:38。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_69db4.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_69db4.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_69db4.dir\Debug\cmTC_69db4.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_69db4.dir\Debug\cmTC_69db4.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_69db4.dir\Debug\\" /Fd"cmTC_69db4.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCCompiler.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_69db4.dir\Debug\\" /Fd"cmTC_69db4.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCCompiler.c"
+  
+  testCCompiler.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_69db4.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_69db4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_69db4.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_69db4.dir\Debug\testCCompiler.obj
+  cmTC_69db4.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_69db4.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_69db4.dir\Debug\cmTC_69db4.tlog\unsuccessfulbuild”。
+  正在对“cmTC_69db4.dir\Debug\cmTC_69db4.tlog\cmTC_69db4.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_69db4.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.78
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_de8df.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:42:39。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_de8df.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_de8df.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_de8df.dir\Debug\cmTC_de8df.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_de8df.dir\Debug\cmTC_de8df.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_de8df.dir\Debug\\" /Fd"cmTC_de8df.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCCompilerABI.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_de8df.dir\Debug\\" /Fd"cmTC_de8df.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCCompilerABI.c"
+  
+  CMakeCCompilerABI.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_de8df.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_de8df.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_de8df.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_de8df.dir\Debug\CMakeCCompilerABI.obj
+  cmTC_de8df.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_de8df.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_de8df.dir\Debug\cmTC_de8df.tlog\unsuccessfulbuild”。
+  正在对“cmTC_de8df.dir\Debug\cmTC_de8df.tlog\cmTC_de8df.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_de8df.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.79
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_77b9f.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:42:40。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_77b9f.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_77b9f.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_77b9f.dir\Debug\cmTC_77b9f.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_77b9f.dir\Debug\cmTC_77b9f.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_77b9f.dir\Debug\\" /Fd"cmTC_77b9f.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_77b9f.dir\Debug\\" /Fd"cmTC_77b9f.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  
+  testCXXCompiler.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_77b9f.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_77b9f.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_77b9f.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_77b9f.dir\Debug\testCXXCompiler.obj
+  cmTC_77b9f.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_77b9f.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_77b9f.dir\Debug\cmTC_77b9f.tlog\unsuccessfulbuild”。
+  正在对“cmTC_77b9f.dir\Debug\cmTC_77b9f.tlog\cmTC_77b9f.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_77b9f.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.82
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_fd7ff.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:42:41。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_fd7ff.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_fd7ff.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_fd7ff.dir\Debug\cmTC_fd7ff.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_fd7ff.dir\Debug\cmTC_fd7ff.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_fd7ff.dir\Debug\\" /Fd"cmTC_fd7ff.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCXXCompilerABI.cpp"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_fd7ff.dir\Debug\\" /Fd"cmTC_fd7ff.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCXXCompilerABI.cpp"
+  
+  CMakeCXXCompilerABI.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_fd7ff.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_fd7ff.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_fd7ff.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_fd7ff.dir\Debug\CMakeCXXCompilerABI.obj
+  cmTC_fd7ff.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_fd7ff.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_fd7ff.dir\Debug\cmTC_fd7ff.tlog\unsuccessfulbuild”。
+  正在对“cmTC_fd7ff.dir\Debug\cmTC_fd7ff.tlog\cmTC_fd7ff.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_fd7ff.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.79
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_c07b9.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:42:42。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_c07b9.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_c07b9.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_c07b9.dir\Debug\cmTC_c07b9.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_c07b9.dir\Debug\cmTC_c07b9.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_c07b9.dir\Debug\\" /Fd"cmTC_c07b9.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\feature_tests.cxx"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_c07b9.dir\Debug\\" /Fd"cmTC_c07b9.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\feature_tests.cxx"
+  
+  feature_tests.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_c07b9.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_c07b9.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_c07b9.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_c07b9.dir\Debug\feature_tests.obj
+  cmTC_c07b9.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_c07b9.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_c07b9.dir\Debug\cmTC_c07b9.tlog\unsuccessfulbuild”。
+  正在对“cmTC_c07b9.dir\Debug\cmTC_c07b9.tlog\cmTC_c07b9.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_c07b9.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:03.98
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+The system is: Windows - 6.3.9600 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) ��������汾 14.0.25420.1
+��Ȩ����(C) Microsoft Corporation����������Ȩ����
+
+��������ʱ��Ϊ 2018/3/19 11:43:26��
+�ڵ� 1 �ϵ���Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdC\CompilerIdC.vcxproj��(Ĭ��Ŀ��)��
+PrepareForBuild:
+  ���ڴ���Ŀ¼��Debug\����
+  ���ڴ���Ŀ¼��Debug\CompilerIdC.tlog\����
+InitializeBuildStatus:
+  ���ڴ�����Debug\CompilerIdC.tlog\unsuccessfulbuild������Ϊ��ָ����AlwaysCreate����
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCCompilerId.obj
+  CompilerIdC.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdC\.\CompilerIdC.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_C_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  ����ɾ���ļ���Debug\CompilerIdC.tlog\unsuccessfulbuild����
+  ���ڶԡ�Debug\CompilerIdC.tlog\CompilerIdC.lastbuildstate��ִ�� Touch ����
+�����������Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdC\CompilerIdC.vcxproj��(Ĭ��Ŀ��)�Ĳ�����
+
+�ѳɹ����ɡ�
+    0 ������
+    0 ������
+
+����ʱ�� 00:00:00.68
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+
+The C compiler identification is MSVC, found in "C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/3.8.0-rc4/CompilerIdC/CompilerIdC.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) ��������汾 14.0.25420.1
+��Ȩ����(C) Microsoft Corporation����������Ȩ����
+
+��������ʱ��Ϊ 2018/3/19 11:43:27��
+�ڵ� 1 �ϵ���Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdCXX\CompilerIdCXX.vcxproj��(Ĭ��Ŀ��)��
+PrepareForBuild:
+  ���ڴ���Ŀ¼��Debug\����
+  ���ڴ���Ŀ¼��Debug\CompilerIdCXX.tlog\����
+InitializeBuildStatus:
+  ���ڴ�����Debug\CompilerIdCXX.tlog\unsuccessfulbuild������Ϊ��ָ����AlwaysCreate����
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue CMakeCXXCompilerId.cpp
+  CMakeCXXCompilerId.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCXXCompilerId.obj
+  CompilerIdCXX.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdCXX\.\CompilerIdCXX.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_CXX_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  ����ɾ���ļ���Debug\CompilerIdCXX.tlog\unsuccessfulbuild����
+  ���ڶԡ�Debug\CompilerIdCXX.tlog\CompilerIdCXX.lastbuildstate��ִ�� Touch ����
+�����������Ŀ��C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CompilerIdCXX\CompilerIdCXX.vcxproj��(Ĭ��Ŀ��)�Ĳ�����
+
+�ѳɹ����ɡ�
+    0 ������
+    0 ������
+
+����ʱ�� 00:00:00.98
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+
+The CXX compiler identification is MSVC, found in "C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/3.8.0-rc4/CompilerIdCXX/CompilerIdCXX.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_a290a.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:43:28。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_a290a.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_a290a.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_a290a.dir\Debug\cmTC_a290a.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_a290a.dir\Debug\cmTC_a290a.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a290a.dir\Debug\\" /Fd"cmTC_a290a.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCCompiler.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a290a.dir\Debug\\" /Fd"cmTC_a290a.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCCompiler.c"
+  
+  testCCompiler.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_a290a.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_a290a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_a290a.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_a290a.dir\Debug\testCCompiler.obj
+  cmTC_a290a.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_a290a.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_a290a.dir\Debug\cmTC_a290a.tlog\unsuccessfulbuild”。
+  正在对“cmTC_a290a.dir\Debug\cmTC_a290a.tlog\cmTC_a290a.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_a290a.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.82
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_d05ad.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:43:29。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_d05ad.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_d05ad.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_d05ad.dir\Debug\cmTC_d05ad.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_d05ad.dir\Debug\cmTC_d05ad.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d05ad.dir\Debug\\" /Fd"cmTC_d05ad.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCCompilerABI.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d05ad.dir\Debug\\" /Fd"cmTC_d05ad.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCCompilerABI.c"
+  
+  CMakeCCompilerABI.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_d05ad.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_d05ad.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_d05ad.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_d05ad.dir\Debug\CMakeCCompilerABI.obj
+  cmTC_d05ad.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_d05ad.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_d05ad.dir\Debug\cmTC_d05ad.tlog\unsuccessfulbuild”。
+  正在对“cmTC_d05ad.dir\Debug\cmTC_d05ad.tlog\cmTC_d05ad.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_d05ad.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.80
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_d5cf4.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:43:30。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_d5cf4.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_d5cf4.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_d5cf4.dir\Debug\cmTC_d5cf4.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_d5cf4.dir\Debug\cmTC_d5cf4.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_d5cf4.dir\Debug\\" /Fd"cmTC_d5cf4.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_d5cf4.dir\Debug\\" /Fd"cmTC_d5cf4.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\testCXXCompiler.cxx"
+  
+  testCXXCompiler.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_d5cf4.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_d5cf4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_d5cf4.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_d5cf4.dir\Debug\testCXXCompiler.obj
+  cmTC_d5cf4.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_d5cf4.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_d5cf4.dir\Debug\cmTC_d5cf4.tlog\unsuccessfulbuild”。
+  正在对“cmTC_d5cf4.dir\Debug\cmTC_d5cf4.tlog\cmTC_d5cf4.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_d5cf4.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.76
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_ef95c.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:43:31。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_ef95c.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_ef95c.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_ef95c.dir\Debug\cmTC_ef95c.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_ef95c.dir\Debug\cmTC_ef95c.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_ef95c.dir\Debug\\" /Fd"cmTC_ef95c.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCXXCompilerABI.cpp"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_ef95c.dir\Debug\\" /Fd"cmTC_ef95c.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCXXCompilerABI.cpp"
+  
+  CMakeCXXCompilerABI.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_ef95c.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_ef95c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_ef95c.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_ef95c.dir\Debug\CMakeCXXCompilerABI.obj
+  cmTC_ef95c.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_ef95c.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_ef95c.dir\Debug\cmTC_ef95c.tlog\unsuccessfulbuild”。
+  正在对“cmTC_ef95c.dir\Debug\cmTC_ef95c.tlog\cmTC_ef95c.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_ef95c.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.81
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_aa482.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.25420.1
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/3/19 11:43:32。
+节点 1 上的项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_aa482.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_aa482.dir\Debug\”。
+  正在创建目录“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_aa482.dir\Debug\cmTC_aa482.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_aa482.dir\Debug\cmTC_aa482.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_aa482.dir\Debug\\" /Fd"cmTC_aa482.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\feature_tests.cxx"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.24210 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_aa482.dir\Debug\\" /Fd"cmTC_aa482.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:queue "C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\feature_tests.cxx"
+  
+  feature_tests.cxx
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_aa482.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_aa482.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/CMakeTmp/Debug/cmTC_aa482.lib" /MACHINE:X86 /SAFESEH   /machine:X86 cmTC_aa482.dir\Debug\feature_tests.obj
+  cmTC_aa482.vcxproj -> C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\Debug\cmTC_aa482.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_aa482.dir\Debug\cmTC_aa482.tlog\unsuccessfulbuild”。
+  正在对“cmTC_aa482.dir\Debug\cmTC_aa482.tlog\cmTC_aa482.lastbuildstate”执行 Touch 任务。
+已完成生成项目“C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\CMakeTmp\cmTC_aa482.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.87
+
+
+    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates

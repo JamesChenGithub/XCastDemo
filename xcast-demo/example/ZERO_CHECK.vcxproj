@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3F1531B0-5DB7-3837-9CD2-4363CBAB9F7F}</ProjectGuid>
+    <ProjectGUID>{1322243A-6A23-30A3-B1FF-C98E24D982B5}</ProjectGUID>
     <Keyword>Win32Proj</Keyword>
     <Platform>Win32</Platform>
     <ProjectName>ZERO_CHECK</ProjectName>
@@ -20,11 +20,13 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Utility</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
@@ -35,14 +37,14 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup>
-    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-  </PropertyGroup>
+    <PropertyGroup>
+      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
-      <AdditionalIncludeDirectories>E:\GitHub\XCastDemo\xcast-demo\example\.\..;E:\GitHub\XCastDemo\xcast-demo\example\.\..\include;E:\GitHub\XCastDemo\xcast-demo\example\.\..\thirdpart\jansson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\.\..;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\.\..\include;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\.\..\thirdpart\jansson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -52,7 +54,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
-      <AdditionalIncludeDirectories>E:\GitHub\XCastDemo\xcast-demo\example\.\..;E:\GitHub\XCastDemo\xcast-demo\example\.\..\include;E:\GitHub\XCastDemo\xcast-demo\example\.\..\thirdpart\jansson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\.\..;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\.\..\include;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\.\..\thirdpart\jansson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -61,10 +63,10 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="E:\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\6348e4f7a976e156321f34f4ddccea9c\generate.stamp.rule">
+    <CustomBuild Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\d1c3200234b379fceea51fcbe3a47c1c\generate.stamp.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Checking Build System</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"D:\Program Files\CMake\bin\cmake.exe" -HE:/GitHub/XCastDemo/xcast-demo/example -BE:/GitHub/XCastDemo/xcast-demo/example --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file E:/GitHub/XCastDemo/xcast-demo/example/xcast-dev.sln
+"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example -BC:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/xcast-dev.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -72,12 +74,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">E:/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/6348e4f7a976e156321f34f4ddccea9c/generate.stamp.rule;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCInformation.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeRCInformation.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;E:\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.11.0-rc2\CMakeCCompiler.cmake;E:\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.11.0-rc2\CMakeCXXCompiler.cmake;E:\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.11.0-rc2\CMakeRCCompiler.cmake;E:\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.11.0-rc2\CMakeSystem.cmake;E:\GitHub\XCastDemo\xcast-demo\example\CMakeLists.txt;E:\GitHub\XCastDemo\xcast-demo\example\template.vcxproj.user;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">E:\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/d1c3200234b379fceea51fcbe3a47c1c/generate.stamp.rule;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\Platform\WindowsPaths.cmake;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CMakeCCompiler.cmake;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CMakeCXXCompiler.cmake;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CMakeRCCompiler.cmake;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CMakeSystem.cmake;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeLists.txt;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\template.vcxproj.user;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Checking Build System</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"D:\Program Files\CMake\bin\cmake.exe" -HE:/GitHub/XCastDemo/xcast-demo/example -BE:/GitHub/XCastDemo/xcast-demo/example --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file E:/GitHub/XCastDemo/xcast-demo/example/xcast-dev.sln
+"C:\Program Files\CMake\bin\cmake.exe" -HC:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example -BC:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/xcast-dev.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -85,8 +87,8 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">E:/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/6348e4f7a976e156321f34f4ddccea9c/generate.stamp.rule;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCInformation.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeRCInformation.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows.cmake;D:\Program Files\CMake\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;E:\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.11.0-rc2\CMakeCCompiler.cmake;E:\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.11.0-rc2\CMakeCXXCompiler.cmake;E:\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.11.0-rc2\CMakeRCCompiler.cmake;E:\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.11.0-rc2\CMakeSystem.cmake;E:\GitHub\XCastDemo\xcast-demo\example\CMakeLists.txt;E:\GitHub\XCastDemo\xcast-demo\example\template.vcxproj.user;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">E:\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:/Users/JamesChen/GitHub/XCastDemo/xcast-demo/example/CMakeFiles/d1c3200234b379fceea51fcbe3a47c1c/generate.stamp.rule;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.8\Modules\Platform\WindowsPaths.cmake;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CMakeCCompiler.cmake;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CMakeCXXCompiler.cmake;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CMakeRCCompiler.cmake;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\3.8.0-rc4\CMakeSystem.cmake;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeLists.txt;C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\template.vcxproj.user;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>

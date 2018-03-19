@@ -1,0 +1,65 @@
+************************************************************************ xcast new proccess ************************************************************************
+xcast version : RDM_v1.0.0_b1.0.0.13_3628
+[2018-03-19 11:48:19.578][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'stream':'0x0BFA9BC8' of 'default'.
+[2018-03-19 11:48:19.578][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'logger':'0x0BFA9FB8' of 'default'.
+[2018-03-19 11:48:19.578][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'event':'0x0BFA9E68' of 'default'.
+[2018-03-19 11:48:19.579][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'account':'0x0BFAA338' of 'default'.
+[2018-03-19 11:48:19.579][I][xcast.c:43][setup_account][t:2504]: xcast app id is 1400036169, account is 67890
+[2018-03-19 11:48:19.579][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'device':'0x0BFAA6B8' of 'device_root'.
+[2018-03-19 11:48:19.579][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'device' add child 'camera':'0x0BFAA098' of 'default'.
+[2018-03-19 11:48:19.579][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'device' add child 'mic':'0x0BFAA1E8' of 'default'.
+[2018-03-19 11:48:19.579][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'device' add child 'speaker':'0x0BFAA2C8' of 'default'.
+[2018-03-19 11:48:19.579][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'device' add child 'external':'0x0BFAA258' of 'default'.
+[2018-03-19 11:48:19.580][E][xc_cell.c:318][xc_set_err_msg:xc_cell_lookup][t:2504]: invalid path of preference:preference.
+[2018-03-19 11:48:19.580][E][xc_cast.c:203][xc_set_err_msg:xc_get_property][t:2504]: no property supported for preference.external-device
+[2018-03-19 11:48:19.580][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'external' add child 'ext1':'0x0BFA9ED8' of 'device'.
+[2018-03-19 11:48:19.580][D][xc_device.c:200][xc_device_nofity][t:2504]: [DEVICE] 'ext1' state:1
+[2018-03-19 11:48:19.580][I][xc_device_root.c:138][xc_device_add][t:2504]: [DEVICE] device 'ext1' of type 'device' added.
+[2018-03-19 11:48:19.580][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'external' add child 'ext2':'0x0BFA9C38' of 'device'.
+[2018-03-19 11:48:19.580][D][xc_device.c:200][xc_device_nofity][t:2504]: [DEVICE] 'ext2' state:1
+[2018-03-19 11:48:19.580][I][xc_device_root.c:138][xc_device_add][t:2504]: [DEVICE] device 'ext2' of type 'device' added.
+[2018-03-19 11:48:19.581][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'external' add child 'ext3':'0x0BFAA568' of 'device'.
+[2018-03-19 11:48:19.581][D][xc_device.c:200][xc_device_nofity][t:2504]: [DEVICE] 'ext3' state:1
+[2018-03-19 11:48:19.581][I][xc_device_root.c:138][xc_device_add][t:2504]: [DEVICE] device 'ext3' of type 'device' added.
+[2018-03-19 11:48:19.581][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'external' add child 'ext4':'0x0BFAA3A8' of 'device'.
+[2018-03-19 11:48:19.581][D][xc_device.c:200][xc_device_nofity][t:2504]: [DEVICE] 'ext4' state:1
+[2018-03-19 11:48:19.581][I][xc_device_root.c:138][xc_device_add][t:2504]: [DEVICE] device 'ext4' of type 'device' added.
+[2018-03-19 11:48:19.581][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'preference':'0x0BFAA728' of 'default'.
+[2018-03-19 11:48:19.581][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'audio':'0x0BFAA798' of 'default'.
+[2018-03-19 11:48:19.582][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'video':'0x0BFA9F48' of 'default'.
+[2018-03-19 11:48:19.582][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'net':'0x0BFA9A78' of 'default'.
+[2018-03-19 11:48:19.582][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'misc':'0x0BFA9AE8' of 'default'.
+[2018-03-19 11:48:19.582][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'profile':'0x0BFA9B58' of 'default'.
+[2018-03-19 11:48:19.582][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'plugin':'0x0BFAA878' of 'default'.
+[2018-03-19 11:48:19.582][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'driver':'0x0BFAA8E8' of 'default'.
+[2018-03-19 11:48:19.582][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'driver' add child 'loader':'0x0BFAA958' of 'driver.loader'.
+[2018-03-19 11:48:19.582][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'driver' add child 'network':'0x0BFAA9C8' of 'default'.
+[2018-03-19 11:48:19.583][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'thread-pool':'0x0BFD3708' of 'default'.
+[2018-03-19 11:48:19.583][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'thread-pool' add child 'default':'0x0BFD3698' of 'thread-pool'.
+[2018-03-19 11:48:19.583][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'thread-pool' add child 'report':'0x0BFD35B8' of 'report'.
+[2018-03-19 11:48:19.617][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'network' add child 'libuv':'0x0BFD3628' of 'driver.network.libuv'.
+[2018-03-19 11:48:19.617][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'plugin' add child 'module.libuv':'0x0BFD31C8' of 'module'.
+[2018-03-19 11:48:19.629][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'core' add child 'lan-relay':'0x0BFD2BA8' of 'lan_relay_driver'.
+[2018-03-19 11:48:19.629][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'lan-relay' add child 'lan-relay-host':'0x0BFD2DD8' of 'channel'.
+[2018-03-19 11:48:19.630][I][uv_connection.c:1073][conn_new][t:2504]: ====>[CONN-NEW] 'uv_conn_1' 0x0BFD2E48
+[2018-03-19 11:48:19.630][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'libuv' add child 'uv_conn_1':'0x0BFD2E48' of 'conn.libuv'.
+[2018-03-19 11:48:19.634][I][lan_relay_driver.c:174][get_host_addr][t:2504]: get host addr:ip(10.66.123.206) port(9085) gateway(10.66.123.1) name({850DEFA1-DBD3-4417-861C-7EEE4984D379}) desc(Broadcom 802.11n Õ¯¬Á  ≈‰∆˜) mac(20C9D0C4AC47)
+
+[2018-03-19 11:48:19.634][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'plugin' add child 'lan_relay_module':'0x0BFD2EB8' of 'module'.
+[2018-03-19 11:48:19.635][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'plugin' add child 'module.http':'0x0BFD2C18' of 'module'.
+[2018-03-19 11:48:19.635][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'network' add child 'app_channel':'0x0BFD2908' of 'http_channel_driver_class'.
+[2018-03-19 11:48:19.635][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'app_channel' add child 'http':'0x0BFD3158' of 'network.http'.
+[2018-03-19 11:48:19.635][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'http' add child 'http-chn':'0x0BFD2F28' of 'channel'.
+[2018-03-19 11:48:19.635][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'plugin' add child 'av_http_channel_module':'0x0BFD2C88' of 'module'.
+[2018-03-19 11:48:19.636][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'driver' add child 'sys_info':'0x0BFD30E8' of 'sys_info'.
+[2018-03-19 11:48:19.636][I][sys_info.cc:144][sys_info_update][t:2504]: current platform(windows)
+[2018-03-19 11:48:19.636][D][sys_info.cc:188][sys_info_update][t:2504]: get screen width(1280) height(800)
+[2018-03-19 11:48:19.858][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'plugin' add child 'sys_info_module':'0x0BFD2CF8' of 'module'.
+[2018-03-19 11:48:19.858][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'plugin' add child 'module.udt':'0x0BFD2978' of 'module'.
+[2018-03-19 11:48:19.942][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'plugin' add child 'av_common_module':'0x0C033300' of 'module'.
+[2018-03-19 11:48:19.962][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'preference' add child 'spear_ctrl':'0x0C033290' of 'spear_ctrl'.
+[2018-03-19 11:48:19.962][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'preference' add child 'video':'0x0C032C70' of 'default'.
+[2018-03-19 11:48:19.962][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'preference' add child 'audio':'0x0C033370' of 'default'.
+[2018-03-19 11:48:19.963][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'preference' add child 'net':'0x0C032CE0' of 'default'.
+[2018-03-19 11:48:19.963][D][xc_cell.c:494][xc_cell_add_child][t:2504]:  'preference' add child 'custom':'0x0C0334C0' of 'default'.
+[2018-03-19 11:48:19.964][D][spear_ctrl.cc:826][load_json_conf][t:2504]: load spear config(C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\bin\Debug\1400

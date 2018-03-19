@@ -7,6 +7,8 @@
 #include "xcast_base.h"
 #include "xcast_variant.h"
 
+/* ATTENTION: to be removed */
+
 /*
 * data type used by xcast for property operations.
 * you can store basic types, such as 'bool', 'int', 'float', 'string' in

@@ -1,5 +1,5 @@
-﻿/*
-** Copyright (c) 2014-2017 The xcast project. All rights reserved.
+/*
+** Copyright (c) 2014-2017 The xCast project. All rights reserved.
 */
 #ifndef XCAST_HH_
 #define XCAST_HH_
@@ -260,10 +260,6 @@ class xcast {
 
   static int32_t set_property(
     const char *prop, const char *id1, const char *id2, xcast_data val) {
-
-	  const char *str = format(prop, id1, id2);
-	  const char *val_str = val.dump();
-
     return xcast_set_property(format(prop, id1, id2), val);
   }
 

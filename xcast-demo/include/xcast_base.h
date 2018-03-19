@@ -1,5 +1,5 @@
 ﻿/*
-** Copyright (c) 2014-2017 The xcast project. All rights reserved.
+** Copyright (c) 2014-2017 The xCast project. All rights reserved.
 */
 #ifndef XCAST_BASIC_TYPES_H_
 #define XCAST_BASIC_TYPES_H_

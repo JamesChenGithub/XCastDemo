@@ -1,80 +1,77 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="E:\GitHub\XCastDemo\xcast-demo\example\main-view.cpp">
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\main-view.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\GitHub\XCastDemo\xcast-demo\example\tab-view.cpp">
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\tab-view.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\GitHub\XCastDemo\xcast-demo\example\tree-view.cpp">
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\tree-view.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\GitHub\XCastDemo\xcast-demo\example\xcast-dev.cpp">
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\xcast-dev.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\GitHub\XCastDemo\xcast-demo\example\xcast-ui-handler.cc">
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\xcast-ui-handler.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\GitHub\XCastDemo\xcast-demo\example\Live\XCastData.cpp">
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\GitHub\XCastDemo\xcast-demo\example\Live\XCastHelper.cpp">
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastUtil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="E:\GitHub\XCastDemo\xcast-demo\example\Live\XCastUtil.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="E:\GitHub\XCastDemo\xcast-demo\example\Live\XCastObserver.cpp">
+    <ClCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastObserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="E:\GitHub\XCastDemo\xcast-demo\example\main-view.h">
+    <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\main-view.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\GitHub\XCastDemo\xcast-demo\example\Resource.h">
+    <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\GitHub\XCastDemo\xcast-demo\example\stdafx.h">
+    <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\GitHub\XCastDemo\xcast-demo\example\targetver.h">
+    <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\GitHub\XCastDemo\xcast-demo\example\xcast-dev.h">
+    <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\xcast-dev.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\GitHub\XCastDemo\xcast-demo\example\xcast-ui-handler.h">
+    <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\xcast-ui-handler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\GitHub\XCastDemo\xcast-demo\example\Live\XCastData.h">
+    <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\GitHub\XCastDemo\xcast-demo\example\Live\XCastHelper.h">
+    <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\GitHub\XCastDemo\xcast-demo\example\Live\XCastUtil.h">
+    <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="E:\GitHub\XCastDemo\xcast-demo\example\Live\XCastObserver.h">
+    <ClInclude Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\Live\XCastObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="E:\GitHub\XCastDemo\xcast-demo\example\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="E:\GitHub\XCastDemo\xcast-demo\example\xcast-dev.rc">
+    <ResourceCompile Include="C:\Users\JamesChen\GitHub\XCastDemo\xcast-demo\example\xcast-dev.rc">
       <Filter>Source Files</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{951BA224-45B6-368D-97AA-A20E508F16A7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{71D4EB22-9B2F-3270-ABA6-FAFF4A03DBB4}</UniqueIdentifier>
+      <UniqueIdentifier>{CE70A03A-F253-3A49-BDE3-F1E8F552F953}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{CB31B9CC-C1DF-382E-88D2-F8BF24B8E7DB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
