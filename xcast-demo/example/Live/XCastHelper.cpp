@@ -164,6 +164,7 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 			
 				// 打开扬声器
 				instance->enableSpeaker(opera.autoSpeaker);
+
 				// 打开扬声器
 				//std::vector<std::string> slist;
 				//instance->getSpeakerList(slist);

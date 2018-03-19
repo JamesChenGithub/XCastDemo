@@ -8,7 +8,7 @@
 #include "xcast.hh"
 #include "XCastData.h"
 
-#define kForVipKidTest 0
+#define kForVipKidTest 1
 
 class XCastHelper
 {
