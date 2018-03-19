@@ -1,4 +1,0 @@
-onXCastTipsEvent : ["tips":"Send: 0kbps @ 0pkt @ 0.00% 0.00..."] 
-onXCastTipsEvent : ["tips":"Send: 0kbps @ 0pkt @ 0.00% 0.00..."] 
-onXCastTipsEvent : ["tips":"Send: 64kbps @ 50pkt @ 0.00% 0.0..."] 
-onXCastTipsEvent : ["tips":"Send: 145kbps @ 33pkt @ 0.00% 0...."] 

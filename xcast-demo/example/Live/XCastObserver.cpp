@@ -1,6 +1,7 @@
 #include "XCastObserver.h"
 #include <iostream>
 #include <sstream>
+#include <algorithm>
 
 #include "XCastHelper.h"
 
@@ -99,23 +100,47 @@ void XCastObserver::onStatTips()
 
 }
 #ifdef kSupportIMAccount
-void XCastObserver::tinyid_to_identifier(uint64_t tinyid, std::function<void(std::string)> func)
+
+uint64_t XCastObserver::getTinyId()
 {
-	char idetifier[256];
-	sprintf(idetifier, "%llu", tinyid);
+	return 67890;
+}
+
+bool XCastObserver::useIMSDKasAccount() const
+{
+	return kSupportIMAccount;
+}
+
+void XCastObserver::tinyid_to_identifier(std::vector<uint64_t> tinyidlist, std::function<void(std::vector<std::string> identifiedlist, int errcode, std::string errtips)> func)
+{
+	std::vector<std::string> idlist;
+	std::for_each(tinyidlist.begin(), tinyidlist.end(), [&](uint64_t tinyid) {
+		char idetifier[256];
+		sprintf(idetifier, "%llu", tinyid);
+		idlist.push_back(std::string(idetifier));
+	});
+	
 
 	if (func)
 	{
-		func(idetifier);
+		func(idlist, 0, "");
 	}
 }
 
-void XCastObserver::identifier_to_tinyid(std::string identifier, std::function<void(uint64_t)> func)
+void XCastObserver::identifier_to_tinyid(std::vector<std::string> identifiedlist, std::function<void(std::vector<uint64_t> tinyidlist, int errcode, std::string errtips)> func)
 {
-	uint64_t tinyid = strtoull(identifier.c_str(), nullptr, 10);
+
+	std::vector<uint64_t> tinyidlist;
+
+	std::for_each(identifiedlist.begin(), identifiedlist.end(), [&](std::string identifier) {
+		uint64_t tinyid = strtoull(identifier.c_str(), nullptr, 10);
+		tinyidlist.push_back(tinyid);
+	});
+
+	
 	if (func)
 	{
-		func(tinyid);
+		func(tinyidlist,0,"");
 	}
 }
 

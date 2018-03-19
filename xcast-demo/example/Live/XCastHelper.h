@@ -17,6 +17,7 @@ private:
 
 private:
 	std::unique_ptr<XCastStartParam>	m_startup_param;		// 初始化参数
+	std::shared_ptr<XCastAccountHandler>m_account_handler;		// 帐号逻辑 
 	std::shared_ptr<XCastGlobalHandler> m_global_handler;		// 全局回调监听
 	std::shared_ptr<XCastRoomHandler>   m_room_handler;			// 房间内监听
 	std::unique_ptr<XCastStreamParam>	m_stream_param;			// 进房参数
@@ -28,7 +29,9 @@ private:
 #ifdef kSupportIMAccount
 	std::map<uint64_t, std::string>								tinyid_cache;
 #endif
-	std::map<uint64_t, std::shared_ptr<XCastEndpoint>>			endpoint_map;
+	std::map<uint64_t, std::shared_ptr<XCastEndpoint>>			m_endpoint_map;
+
+	std::map<uint64_t, std::string>								m_account_cache;
 
 private:
 	bool is_startup_succ = false;								// 是否初始化成功
@@ -71,7 +74,18 @@ private:
 public:
 	void logtoFile(const char *tag, const char * info);
 #endif
-	
+
+
+
+public:
+	/*
+	* 功能：设置帐号逻辑（tinyid转identifier逻辑），必须在startContext前设置
+	*
+	* handler ：可为空
+	* 返回值 ：true 成功，false失败
+	*/
+	bool setAccountHandler(std::shared_ptr<XCastAccountHandler> handler);
+
 public:
 	/*
 	* 功能: 初始始化XCast
@@ -132,7 +146,7 @@ public:
 	* headphone : false : 外放 / true : 耳机
 	*/
 	int changeOutputMode(bool headphone, const char *sid = nullptr);
- 
+
 
 	/*
 	* 功能 ：获取扬声器音量
@@ -355,6 +369,18 @@ private:
 	void remoteView(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);
 	void remoteAllView(bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);
 	int getSpeakerDynamicVolume(std::string trackid) const;
+
+private:
+	inline bool isSupportIMAccount() const;
+
+private:
+	int startContextWithout(std::unique_ptr<XCastStartParam> param, XCHCallBack callback);
+
+private:
+	void getUserIDWithTinyid(uint64_t tinyid, std::function<void(std::string, int, std::string)> callback);
+	void getUserIDWithTinyidFromIMSDK(uint64_t tinyid, std::function<void(std::string, int, std::string)> callback);
+	void getUserIDWithTinyid(std::vector<uint64_t> tinyidlist, std::function<void(std::vector<std::string>, int, std::string)> callback);
+	void getUserIDWithTinyidFromIMSDK(std::vector<uint64_t> tinyidlist, std::function<void(std::vector<std::string>, int, std::string)> callback);
 };
 
 #endif

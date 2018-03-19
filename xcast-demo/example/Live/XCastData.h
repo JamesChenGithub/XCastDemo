@@ -76,13 +76,16 @@ struct XCastDeviceHotPlugItem;
 struct XCastVideoFrame;
 struct XCastEndpoint;
 
-#define kSupportIMAccount 0
+#define kSupportIMAccount 1
+
 #ifdef kSupportIMAccount
 class XCastAccountHandler
 {
 public:
-	virtual void tinyid_to_identifier(uint64_t tinyid,std::function<void(std::string)> func) = 0;
-	virtual void identifier_to_tinyid(std::string identifier, std::function<void(uint64_t)> func) = 0;
+	virtual bool useIMSDKasAccount() const = 0;
+	virtual uint64_t getTinyId() = 0;
+	virtual void tinyid_to_identifier(std::vector<uint64_t> tinyidlist, std::function<void(std::vector<std::string> identifiedlist, int errcode, std::string errtips)> func) = 0;
+	virtual void identifier_to_tinyid(std::vector<std::string> identifiedlist, std::function<void(std::vector<uint64_t> tinyidlist, int errcode, std::string errtips)> func) = 0;
 };
 #endif
 
@@ -123,7 +126,7 @@ public:
 
 typedef struct XCastStartParam {
 #ifdef kSupportIMAccount
-	std::string identifier;
+	std::string identifier="";  
 #endif
 	uint64_t tinyid = 0;
 	bool isTestEvn = false;
@@ -132,12 +135,22 @@ typedef struct XCastStartParam {
 
 	bool isVaild() const
 	{
-		if ((tinyid == 0 ) || sdkappid == 0 || accounttype == 0)
+		if ((tinyid == 0) || sdkappid == 0 || accounttype == 0)
 		{
 			return false;
 		}
 		return true;
 	}
+#ifdef kSupportIMAccount
+	bool isVaildIM() const
+	{
+		if ((identifier.length() == 0) || sdkappid == 0 || accounttype == 0)
+		{
+			return false;
+		}
+		return true;
+	}
+#endif
 } XCastStartParam;
 
 
@@ -234,6 +247,7 @@ typedef struct XCastStreamParam {
 typedef struct XCastVideoFrame
 {
 	uint64_t			tinyid = 0;
+	std::string			identifier;
 	//std::string			identifier;
 	XCastMediaFormat	media_format = XCastMedia_argb32;
 	XCastMediaSource	media_source = XCastMediaSource_Unknown;
@@ -267,6 +281,7 @@ typedef struct XCastDeviceHotPlugItem {
 
 typedef struct XCastEndpoint {
 	uint64_t tinyid = 0;
+	std::string identifier;
 	bool is_audio = false;
 	bool is_camera_video = false;
 	bool is_screen_video = false;

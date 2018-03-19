@@ -105,6 +105,8 @@ XCastHelper::~XCastHelper()
 {
 	m_startup_param.reset();
 	m_stream_param.reset();
+
+	m_account_handler.reset();
 	m_global_handler.reset();
 	m_room_handler.reset();
 }
@@ -503,9 +505,21 @@ void XCastHelper::logtoFile(const char *tag, const char * info)
 }
 #endif
 
-int XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback)
+
+bool XCastHelper::setAccountHandler(std::shared_ptr<XCastAccountHandler> handler)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
+	if (!is_startup_succ)
+	{
+		m_account_handler.reset();
+		m_account_handler = std::move(handler);
+		return true;
+	}
+	return false;
+}
+
+int XCastHelper::startContextWithout(std::unique_ptr<XCastStartParam> param, XCHCallBack callback)
+{
 #if kForVipKidTest
 	logFile = fopen("log.txt", "w+");
 #endif
@@ -517,7 +531,7 @@ int XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBac
 
 	if (!param.get() || !param->isVaild())
 	{
-		XCastHelperCallBack(callback,1004, "param error");
+		XCastHelperCallBack(callback, 1004, "param error");
 		return 1004;
 	}
 	m_startup_param.reset();
@@ -527,10 +541,16 @@ int XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBac
 	tencent::xcast_data setparam;
 	setparam["app_id"] = m_startup_param->sdkappid;
 	setparam["identifier"] = m_startup_param->tinyid;
-	setparam["test_env"] =  m_startup_param->isTestEvn;
+	setparam["test_env"] = m_startup_param->isTestEvn;
 	int32_t rt = tencent::xcast::startup(setparam);
 
 	is_startup_succ = (rt == XCAST_OK);
+
+	if (is_startup_succ && m_account_handler.get() && m_account_handler->useIMSDKasAccount())
+	{
+		m_account_cache.insert(std::make_pair(m_startup_param->tinyid, m_startup_param->identifier));
+	}
+
 
 	if (is_startup_succ)
 	{
@@ -544,6 +564,52 @@ int XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBac
 	int code = avsdkErrorCode(rt);
 	XCastHelperCallBack(callback, code, is_startup_succ ? "xcast_startup succ" : "xcast_startup failed");
 	return code;
+}
+
+int XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback)
+{
+	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
+
+	if (is_startup_succ)
+	{
+		XCastHelperCallBack(callback, 1003, "xcast has started");
+		return 1003;
+	}
+	bool useim = isSupportIMAccount();
+	if (useim)
+	{
+		if (!param.get() || !param->isVaildIM())
+		{
+			XCastHelperCallBack(callback, 1004, "param error");
+			return 1004;
+		}
+
+		if (m_account_handler.get())
+		{
+			// IMSDK 登录成功后，getTinyId > 0，否则 < 0
+			uint64_t tinyid = m_account_handler->getTinyId();
+			if (tinyid == 0)
+			{
+				XCastHelperCallBack(callback, 6014, "IMSK not login");
+				return 6014;
+			}
+			else
+			{
+				param->tinyid = tinyid;
+				return startContextWithout(std::move(param), callback);
+			}
+		}
+		else
+		{
+			XCastHelperCallBack(callback, 1004, "param error");
+			return 1004;
+		}
+	}
+	else
+	{
+		return startContextWithout(std::move(param), callback);
+	}
+	
 }
 int XCastHelper::stopContext(XCHCallBack callback)
 {
@@ -1347,13 +1413,13 @@ std::shared_ptr<XCastEndpoint> XCastHelper::getEndpoint(uint64_t tinyid)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
-	auto it = endpoint_map.find(tinyid);
-	if (it == endpoint_map.end())
+	auto it = m_endpoint_map.find(tinyid);
+	if (it == m_endpoint_map.end())
 	{
 		// 重新生成一个
 		std::shared_ptr<XCastEndpoint> endptr(new XCastEndpoint);
 		endptr->tinyid = tinyid;
-		endpoint_map.insert(std::make_pair(tinyid, endptr));
+		m_endpoint_map.insert(std::make_pair(tinyid, endptr));
 		return endptr;
 	}
 	else
@@ -1364,8 +1430,8 @@ std::shared_ptr<XCastEndpoint> XCastHelper::getEndpoint(uint64_t tinyid)
 void XCastHelper::updateEndpointMap(uint64_t tinyid)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-	auto it = endpoint_map.find(tinyid);
-	if (it != endpoint_map.end())
+	auto it = m_endpoint_map.find(tinyid);
+	if (it != m_endpoint_map.end())
 	{
 		std::shared_ptr<XCastEndpoint> endptr = it->second;
 		XCastEndpoint *end = endptr.get();
@@ -1373,7 +1439,7 @@ void XCastHelper::updateEndpointMap(uint64_t tinyid)
 		{
 			if (!end->is_audio || !end->is_camera_video || !end->is_screen_video || !end->is_media_video)
 			{
-				endpoint_map.erase(tinyid);
+				m_endpoint_map.erase(tinyid);
 			}
 		}
 		
@@ -1383,10 +1449,10 @@ void XCastHelper::updateEndpointMap(uint64_t tinyid)
 void XCastHelper::deleteEndpoint(uint64_t tinyid)
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-	auto it = endpoint_map.find(tinyid);
-	if (it != endpoint_map.end())
+	auto it = m_endpoint_map.find(tinyid);
+	if (it != m_endpoint_map.end())
 	{
-		endpoint_map.erase(tinyid);
+		m_endpoint_map.erase(tinyid);
 	}
 }
 
@@ -1468,5 +1534,134 @@ void XCastHelper::remoteAllView(bool enable, XCHReqViewListCallBack callback)
 		{
 			remoteView(item, enable, callback);
 		}
+	}
+}
+
+inline bool XCastHelper::isSupportIMAccount() const
+{
+	return m_account_handler.get() ? m_account_handler->useIMSDKasAccount() : false;
+}
+
+void XCastHelper::getUserIDWithTinyid(uint64_t tinyid, std::function<void(std::string, int, std::string)> callback)
+{
+	if (callback)
+	{
+		std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
+		if (tinyid == 0)
+		{
+			callback("", 1004, "tinyid is wrong");
+			return;
+		}
+		else
+		{
+			auto endptr = m_account_cache.find(tinyid);
+			if (endptr != m_account_cache.end())
+			{
+				std::string ep = endptr->second;
+				if (ep.length() > 0)
+				{
+					callback(ep, 0, "");
+				}
+				else
+				{
+					getUserIDWithTinyidFromIMSDK(tinyid, callback);
+				}
+			}
+			else
+			{
+				getUserIDWithTinyidFromIMSDK(tinyid, callback);
+			}
+		}
+	}
+}
+
+void XCastHelper::getUserIDWithTinyid(std::vector<uint64_t> tinyidlist, std::function<void(std::vector<std::string>, int, std::string)> callback)
+{
+	std::vector<std::string> userid;
+	// 找到第一个不在列表里的元素
+	std::find_if_not(tinyidlist.begin(), tinyidlist.end(), [&](uint64_t tinyid)->bool {
+		auto endptr = m_account_cache.find(tinyid);
+		if (endptr != m_account_cache.end())
+		{
+			std::string ep = endptr->second;
+			userid.push_back(ep);
+			return true;
+		}
+		
+		return false;
+	});
+
+	if (userid.size() == tinyidlist.size())
+	{
+		if (callback)
+		{
+			callback(userid, 0, "");
+		}
+	}
+	else
+	{
+		getUserIDWithTinyidFromIMSDK(tinyidlist, callback);
+	}
+}
+
+void XCastHelper::getUserIDWithTinyidFromIMSDK(uint64_t tinyid, std::function<void(std::string, int, std::string)> callback)
+{
+	if (m_account_handler.get() && m_account_handler->useIMSDKasAccount() && callback)
+	{
+		std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
+
+		std::vector<uint64_t> tinyidvec;
+		tinyidvec.push_back(tinyid);
+		m_account_handler->tinyid_to_identifier(tinyidvec, [&](std::vector<std::string> list, int errcode, std::string errmsg) {
+
+			if (errcode == 0 && list.size() == tinyidvec.size())
+			{
+				std::string identifier = list[0];
+
+				m_account_cache.insert(std::make_pair(tinyid, identifier));
+
+				if (callback)
+				{
+					callback(identifier, 0, "");
+				}
+			}
+			else
+			{
+				callback("", 1004, "get tinyid failed");
+			}
+		});
+	}
+}
+
+void XCastHelper::getUserIDWithTinyidFromIMSDK(std::vector<uint64_t> tinyidlist, std::function<void(std::vector<std::string>, int, std::string)> callback)
+{
+	if (m_account_handler.get() && m_account_handler->useIMSDKasAccount() && callback)
+	{
+		std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
+
+		m_account_handler->tinyid_to_identifier(tinyidlist, [&](std::vector<std::string> list, int errcode, std::string errmsg) {
+
+			if (errcode == 0 && list.size() == tinyidlist.size())
+			{
+				for (int i = 0; i < list.size(); i++)
+				{
+					uint64_t tinyid = tinyidlist[0];
+					std::string identifier = list[0];
+					m_account_cache.insert(std::make_pair(tinyid, identifier));
+				}
+				if (callback)
+				{
+					callback(list, 0, "");
+				}
+			}
+			else
+			{
+				if (callback)
+
+				{
+					callback(std::vector<std::string>(), 1004, "get tinyid failed");
+				}
+			}
+		});
 	}
 }

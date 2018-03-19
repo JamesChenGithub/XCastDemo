@@ -6,6 +6,9 @@
 #include "Live/XCastHelper.h"
 #include "Live/XCastData.h"
 #include "Live/XCastObserver.h"
+
+#include <vector>
+#include <algorithm>
 #pragma comment(lib, "comctl32.lib")
 
 
@@ -1735,7 +1738,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 		if (!is_initialized)
 		{
-
+			XCastHelper::getInstance()->setAccountHandler(main_observer);
 			XCastStartParam *param = new XCastStartParam;
 			std::unique_ptr<XCastStartParam> up(param);
 			up->tinyid = 67890;
