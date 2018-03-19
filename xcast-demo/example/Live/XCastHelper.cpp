@@ -1500,7 +1500,7 @@ void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewL
 			if (code == 0 && uin != 0 )
 			{
 				item.tinyid = uin;
-				remoteViewWithTinyid(item, enable);
+				remoteViewWithTinyid(item, enable, callback);
 			}
 			else
 			{
