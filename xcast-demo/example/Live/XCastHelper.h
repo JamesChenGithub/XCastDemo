@@ -307,6 +307,15 @@ public:
 	//void setAudioWhiteList()
 	//void cancelAudioWhiteList();
 
+
+	/*
+	* 功能：获取远程track音频流音量
+	* 参数：
+	* tinyid ： 用户tinyid
+	* 返回值 ：[0,100];
+	*/
+	int getSpeakerDynamicVolume(uint64_t tinyid) const;
+
 private:
 	int avsdkErrorCode(int xcast_err_code) const;
 
@@ -345,6 +354,7 @@ private:
 	XCastRequestViewItem getFromTrackID(std::string trackid) const;
 	void remoteView(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);
 	void remoteAllView(bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);
+	int getSpeakerDynamicVolume(std::string trackid) const;
 };
 
 #endif

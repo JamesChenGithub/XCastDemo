@@ -102,7 +102,7 @@ void XCastObserver::onStatTips()
 void XCastObserver::tinyid_to_identifier(uint64_t tinyid, std::function<void(std::string)> func)
 {
 	char idetifier[256];
-	sprintf(idetifier, "%lld", tinyid);
+	sprintf(idetifier, "%llu", tinyid);
 
 	if (func)
 	{

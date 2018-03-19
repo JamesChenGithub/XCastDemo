@@ -132,9 +132,13 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 #endif
 	//return XCAST_OK;
 	XCastHelper *instance = (XCastHelper *)contextinfo;
+
+
+#if kForVipKidTest
 	char * str = data.dump();
 	if (str)
 		printf("%s\n", str);
+#endif
 	switch ((int32_t)data["type"]) {
 	case xc_stream_added:
 	{
@@ -161,21 +165,22 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 
 				// 打开摄像头
 				instance->enableCamera(opera.autoCameraPreview, opera.autoCameraCapture, opera.defaultCamera.c_str());
-			
+				
+				instance->enableMic(opera.autoMic);
 				// 打开扬声器
+				
+
+				 // 打开扬声器
+
+				std::vector<std::string> slist = instance->getSpeakerList();
+				std::for_each(slist.begin(), slist.end(), [&](std::string sid) {
+					instance->setSpeakerVolume(80, sid.c_str());
+				});
+				std::for_each(slist.begin(), slist.end(), [&](std::string sid) {
+					instance->speakerVolume(sid.c_str());
+				});
 				instance->enableSpeaker(opera.autoSpeaker);
 
-				// 打开扬声器
-				//std::vector<std::string> slist;
-				//instance->getSpeakerList(slist);
-				//if (slist.size() > 0)
-				//{
-				//	instance->speakerVolume(slist[0].c_str());
-				
-				//}
-
-				// 打开Mic
-				//instance->enableMic(opera.autoMic);
 			}
 		}
 	}
@@ -429,9 +434,10 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 		case xc_device_preview:
 		{
 			/* 设备预览 */
-
+#if kForVipKidTest
 			const char *cs = e.str_val();
 			const char *str = e.dump();
+#endif
 			bool ng = instance->m_global_handler->needGlobalCallbackLocalVideo();
 			bool nr = instance->m_room_handler && instance->m_room_handler->needRoomCallbackLocalVideo();
 			if (ng || nr)
@@ -727,9 +733,10 @@ int XCastHelper::enableSpeaker(bool enable, const char *sid, XCHCallBack callbac
 	// 房间外
 	tencent::xcast_data data;
 	data["params"] = enable;
-	int32_t ret = tencent::xcast::set_property(XC_SPEAKER_PREVIEW, operdevID, data);
-	XCastHelperCallBack(callback,avsdkErrorCode(ret), ret != XCAST_OK ? tencent::xcast::err_msg() : "enable speaker succ");
-	return avsdkErrorCode(ret);
+	int32_t ret = tencent::xcast::set_property(XC_SPEAKER_ENABLE, operdevID, data);
+	int retcode = avsdkErrorCode(ret);
+	XCastHelperCallBack(callback, retcode, ret != XCAST_OK ? tencent::xcast::err_msg() : "enable speaker succ");
+	return retcode;
 }
 // 切换输出类型 , speaker : 1 扬声器 0 耳机
 int XCastHelper::changeOutputMode(bool headphone, const char *sid)
@@ -902,6 +909,20 @@ void XCastHelper::cancelAllView(XCHReqViewListCallBack callback)
 }
 
 
+int XCastHelper::getSpeakerDynamicVolume(std::string trackid) const
+{
+	tencent::xcast_data data = tencent::xcast::get_property(XC_SPEAKER_DYNAMIC_VOLUME, trackid.c_str());
+	uint32_t volume = data.uint32_val();
+	return volume;
+}
+int XCastHelper::getSpeakerDynamicVolume(uint64_t tinyid) const
+{
+	char trackid[XCAST_MAX_PATH];
+	sprintf(trackid, "%s-%llu", kTRACK_AUDIO_IN, tinyid);
+	std::string trackstr = trackid;
+	return getSpeakerDynamicVolume(trackid);
+}
+
 std::string XCastHelper::getOperaDevice(XCastDeviceType type, const char *cameraid ) const
 {
 	char operdevID[XCAST_MAX_PATH];
@@ -938,7 +959,9 @@ std::string XCastHelper::getOperaDevice(XCastDeviceType type, const char *camera
 			return "";
 		}
 		tencent::xcast_data data = tencent::xcast::get_property(devicetyep);
+#if kForVipKidTest
 		const char *dstr = data.dump();
+#endif
 		const char *str_val = data.str_val();
 		char *str  = strdup(str_val);
 		if (str_val == nullptr)
@@ -1016,11 +1039,14 @@ std::vector<std::string> XCastHelper::getDeviceList(XCastDeviceType type) const
 		}
 
 		tencent::xcast_data captures = tencent::xcast::get_property(devicetyep);
-		const char *datat = captures.dump();
-		const char     *cap;
+		/*	const char *datat = captures.dump();*/
+		const char     *cap = nullptr;
 		for (uint32_t n = 0; n < captures.size(); n++) {
 			cap = captures[n].str_val();
-			devlist.push_back(std::string(cap));
+			if (cap)
+			{
+				devlist.push_back(std::string(cap));
+			}
 		}
 		
 		return devlist;
@@ -1273,7 +1299,7 @@ void XCastHelper::earseVideoFrameBuffer(uint64_t tinyid, XCastMediaSource source
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 	char tinyid_src[256];
-	sprintf(tinyid_src, "%lld_%d", tinyid, source);
+	sprintf(tinyid_src, "%llu_%d", tinyid, source);
 	std::string key = tinyid_src;
 	video_frame_map.erase(key);
 }
@@ -1299,7 +1325,7 @@ const std::shared_ptr<XCastVideoFrame> XCastHelper::getVideoFrameBuffer(const ui
 {
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 	char tinyid_src[256];
-	sprintf(tinyid_src, "%lld_%d", tinyid, source);
+	sprintf(tinyid_src, "%llu_%d", tinyid, source);
 	std::string key = tinyid_src;
 	auto it = video_frame_map.find(key);
 	if (it == video_frame_map.end())

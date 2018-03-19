@@ -1828,7 +1828,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 			param->roomOpera.autoCameraPreview = true;
 			param->roomOpera.autoCameraCapture = true;
-			param->roomOpera.autoMic = false;
+			param->roomOpera.autoMic = true;
 			param->roomOpera.autoSpeaker = false;
 
 

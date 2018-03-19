@@ -238,6 +238,15 @@ public:
 	*/
 	static void cancelAllView(XCHReqViewListCallBack callback = XCHNilCallBack);
 
+
+	/*
+	* 功能：获取远程track音频流音量
+	* 参数：
+	* tinyid ： 用户tinyid
+	* 返回值 ：[0,100];
+	*/
+	static int getSpeakerDynamicVolume(uint64_t tinyid);
+
 };
 #endif
 

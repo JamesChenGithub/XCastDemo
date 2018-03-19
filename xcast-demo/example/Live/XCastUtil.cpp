@@ -139,4 +139,9 @@ void XCastUtil::requestViewList(std::vector<XCastRequestViewItem> itemList, XCHR
 	 XCastHelper::getInstance()->cancelAllView(callback);
  }
 
+ int XCastUtil::getSpeakerDynamicVolume(uint64_t tinyid)
+ {
+	 return  XCastHelper::getInstance()->getSpeakerDynamicVolume(tinyid);
+ }
+
 
