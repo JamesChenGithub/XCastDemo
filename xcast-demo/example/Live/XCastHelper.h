@@ -367,6 +367,7 @@ private:
 
 	XCastRequestViewItem getFromTrackID(std::string trackid) const;
 	void remoteView(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);
+	void remoteViewWithTinyid(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);
 	void remoteAllView(bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);
 	int getSpeakerDynamicVolume(std::string trackid) const;
 
@@ -377,10 +378,24 @@ private:
 	int startContextWithout(std::unique_ptr<XCastStartParam> param, XCHCallBack callback);
 
 private:
+	std::string syncGetUserid(uint64_t tinyid) const;
+
 	void getUserIDWithTinyid(uint64_t tinyid, std::function<void(std::string, int, std::string)> callback);
 	void getUserIDWithTinyidFromIMSDK(uint64_t tinyid, std::function<void(std::string, int, std::string)> callback);
 	void getUserIDWithTinyid(std::vector<uint64_t> tinyidlist, std::function<void(std::vector<std::string>, int, std::string)> callback);
 	void getUserIDWithTinyidFromIMSDK(std::vector<uint64_t> tinyidlist, std::function<void(std::vector<std::string>, int, std::string)> callback);
+
+
+	uint64_t syncGetTinyid(std::string userid) const;
+	void getTinyIDWithUserID(std::string userid, std::function<void(uint64_t, int, std::string)> callback);
+	void getTinyIDWithUserIDFromIMSDK(std::string userid, std::function<void(uint64_t, int, std::string)> callback);
+	
+	void getTinyIDWithUserID(std::vector<std::string> useridlist, std::function<void(std::vector<uint64_t>, int, std::string)> callback);
+	void getTinyIDWithUserIDFromIMSDK(std::vector<std::string> useridlist, std::function<void(std::vector<uint64_t>, int, std::string)> callback);
+
+
+private:
+	void notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCastEndpointEvent event, const bool has);
 };
 
 #endif
