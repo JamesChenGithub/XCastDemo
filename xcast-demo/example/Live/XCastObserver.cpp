@@ -113,35 +113,53 @@ bool XCastObserver::useIMSDKasAccount() const
 
 void XCastObserver::tinyid_to_identifier(std::vector<uint64_t> tinyidlist, std::function<void(std::vector<std::string> identifiedlist, int errcode, std::string errtips)> func)
 {
-	std::vector<std::string> idlist;
-	std::for_each(tinyidlist.begin(), tinyidlist.end(), [&](uint64_t tinyid) {
-		char idetifier[256];
-		sprintf(idetifier, "%llu", tinyid);
-		idlist.push_back(std::string(idetifier));
-	});
-	
-
 	if (func)
 	{
-		func(idlist, 0, "");
+		if (tinyidlist.empty())
+		{
+			func(std::vector<std::string>(), 1004, "tinyidlist is empty");
+			return;
+		}
+		std::thread([&]() {
+			std::this_thread::sleep_for(std::chrono::microseconds(500));
+			std::vector<std::string> idlist;
+			std::for_each(tinyidlist.begin(), tinyidlist.end(), [&](uint64_t tinyid) {
+				char idetifier[256];
+				sprintf(idetifier, "%llu", tinyid);
+				idlist.push_back(std::string(idetifier));
+			});
+			func(idlist, 0, "");
+		}).detach();
 	}
+	
+	
 }
 
 void XCastObserver::identifier_to_tinyid(std::vector<std::string> identifiedlist, std::function<void(std::vector<uint64_t> tinyidlist, int errcode, std::string errtips)> func)
 {
-
-	std::vector<uint64_t> tinyidlist;
-
-	std::for_each(identifiedlist.begin(), identifiedlist.end(), [&](std::string identifier) {
-		uint64_t tinyid = strtoull(identifier.c_str(), nullptr, 10);
-		tinyidlist.push_back(tinyid);
-	});
-
-	
 	if (func)
 	{
-		func(tinyidlist,0,"");
+		if (identifiedlist.empty())
+		{
+			func(std::vector<uint64_t>(), 1004, "identifiedlist is empty");
+			return;
+		}
+		std::thread([&]() {
+			std::this_thread::sleep_for(std::chrono::microseconds(500));
+			std::vector<uint64_t> tinyidlist;
+
+			std::for_each(identifiedlist.begin(), identifiedlist.end(), [&](std::string identifier) {
+				uint64_t tinyid = strtoull(identifier.c_str(), nullptr, 10);
+				tinyidlist.push_back(tinyid);
+			});
+
+			if (func)
+			{
+				func(tinyidlist, 0, "");
+			}
+		}).detach();
 	}
+	
 }
 
 #endif

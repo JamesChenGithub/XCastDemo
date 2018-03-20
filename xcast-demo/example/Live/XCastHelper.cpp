@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <thread>
 #include <future>
+#include <mutex>
 
 #if kForVipKidTest
 #include "example/xcast-ui-handler.h"
@@ -249,7 +250,8 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 		case xc_track_updated:
 		case xc_track_capture_changed:
 		{
-			XCastMediaSource source = (XCastMediaSource)((int32_t)data["media_type"]);
+			const char *datastr = data.dump();
+			XCastMediaSource source = (XCastMediaSource)((int32_t)data["media-src"]);
 			xc_track_type tracktype = (xc_track_type)((int32_t)data["class"]);
 			xc_track_state state = (xc_track_state)((int32_t)data["state"]);
 			bool has = (state == xc_track_running);
@@ -514,7 +516,10 @@ int XCastHelper::startContextWithout(std::unique_ptr<XCastStartParam> param, XCH
 
 	if (is_startup_succ && m_account_handler.get() && m_account_handler->useIMSDKasAccount())
 	{
-		m_account_cache.insert(std::make_pair(m_startup_param->tinyid, m_startup_param->identifier));
+		atomicAccountCache([&] {
+			m_account_cache.insert(std::make_pair(m_startup_param->tinyid, m_startup_param->identifier)); 
+		});
+		
 	}
 
 
@@ -1391,8 +1396,9 @@ std::shared_ptr<XCastEndpoint> XCastHelper::getEndpoint(uint64_t tinyid)
 		getUserIDWithTinyid(tinyid, [&](std::string userid, int err, std::string errmsg) {
 			if (err == 0 && userid.length() != 0)
 			{
-				std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-				m_account_cache.insert(std::make_pair(tinyid,userid));
+				atomicAccountCache([&] {
+					m_account_cache.insert(std::make_pair(tinyid, userid));
+				});
 			}
 		});
 		return endptr;
@@ -1543,18 +1549,17 @@ inline bool XCastHelper::isSupportIMAccount() const
 	return m_account_handler.get() ? m_account_handler->useIMSDKasAccount() : false;
 }
 
-std::string XCastHelper::syncGetUserid(uint64_t tinyid) const
+std::string XCastHelper::syncGetUserid(uint64_t tinyid) 
 {
-	auto endptr = m_account_cache.find(tinyid);
-	if (endptr != m_account_cache.end())
-	{
-		std::string ep = endptr->second;
-		return ep;
-	}
-	else
-	{
-		return "";
-	}
+	std::string ep = "";
+	atomicAccountCache([&] {
+		auto endptr = m_account_cache.find(tinyid);
+		if (endptr != m_account_cache.end())
+		{
+			ep = endptr->second;
+		}
+	});
+	return ep;
 }
 
 void XCastHelper::getUserIDWithTinyid(uint64_t tinyid, std::function<void(std::string, int, std::string)> callback)
@@ -1569,18 +1574,19 @@ void XCastHelper::getUserIDWithTinyid(uint64_t tinyid, std::function<void(std::s
 		}
 		else
 		{
-			auto endptr = m_account_cache.find(tinyid);
-			if (endptr != m_account_cache.end())
+
+			std::string ep = "";
+			atomicAccountCache([&] {
+				auto endptr = m_account_cache.find(tinyid);
+				if (endptr != m_account_cache.end())
+				{
+					ep = endptr->second;
+				}
+			});
+
+			if (ep.length() > 0)
 			{
-				std::string ep = endptr->second;
-				if (ep.length() > 0)
-				{
-					callback(ep, 0, "");
-				}
-				else
-				{
-					getUserIDWithTinyidFromIMSDK(tinyid, callback);
-				}
+				callback(ep, 0, "");
 			}
 			else
 			{
@@ -1594,17 +1600,19 @@ void XCastHelper::getUserIDWithTinyid(std::vector<uint64_t> tinyidlist, std::fun
 {
 	std::vector<std::string> userid;
 	// 找到第一个不在列表里的元素
-	std::find_if_not(tinyidlist.begin(), tinyidlist.end(), [&](uint64_t tinyid)->bool {
-		auto endptr = m_account_cache.find(tinyid);
-		if (endptr != m_account_cache.end())
-		{
-			std::string ep = endptr->second;
-			userid.push_back(ep);
-			return true;
-		}
-		
-		return false;
+	atomicAccountCache([&] {
+		std::find_if_not(tinyidlist.begin(), tinyidlist.end(), [&](uint64_t tinyid)->bool {
+			auto endptr = m_account_cache.find(tinyid);
+			if (endptr != m_account_cache.end())
+			{
+				std::string ep = endptr->second;
+				userid.push_back(ep);
+				return true;
+			}
+			return false;
+		});
 	});
+
 
 	if (userid.size() == tinyidlist.size())
 	{
@@ -1628,22 +1636,25 @@ void XCastHelper::getUserIDWithTinyidFromIMSDK(uint64_t tinyid, std::function<vo
 		std::vector<uint64_t> tinyidvec;
 		tinyidvec.push_back(tinyid);
 		m_account_handler->tinyid_to_identifier(tinyidvec, [&](std::vector<std::string> list, int errcode, std::string errmsg) {
-			std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
+			
 			if (errcode == 0 && list.size() == tinyidvec.size())
 			{
 				std::string identifier = list[0];
-
-				m_account_cache.insert(std::make_pair(tinyid, identifier));
-
-				if (callback)
+				if (identifier.length() > 0)
 				{
-					callback(identifier, 0, "");
+					if (callback)
+					{
+						callback(identifier, 0, "");
+					}
+					atomicAccountCache([&] {
+						m_account_cache.insert(std::make_pair(tinyid, identifier));
+					});
+					return;
 				}
 			}
-			else
-			{
-				callback("", 1004, "get the  identifier of tinyid  failed");
-			}
+			
+			callback("", 1004, "get the  identifier of tinyid  failed");
+			
 		});
 	}
 }
@@ -1652,36 +1663,50 @@ void XCastHelper::getUserIDWithTinyidFromIMSDK(std::vector<uint64_t> tinyidlist,
 {
 	if (isSupportIMAccount() && callback)
 	{
+		if (tinyidlist.empty())
+		{
+			callback(std::vector<std::string>(), 1004, "tinyidlist is empty");
+			return;
+		}
 		std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
 		m_account_handler->tinyid_to_identifier(tinyidlist, [&](std::vector<std::string> list, int errcode, std::string errmsg) {
-			std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-			if (errcode == 0 && list.size() == tinyidlist.size())
+			
+			if (errcode == 0 && list.size() != 0 && list.size() == tinyidlist.size())
 			{
+				if (callback)
+				{
+					callback(list, 0, "");
+				}
+				std::vector<std::pair<uint64_t, std::string>> pairs;
 				for (int i = 0; i < list.size(); i++)
 				{
 					uint64_t tinyid = tinyidlist[i];
 					std::string identifier = list[i];
-					m_account_cache.insert(std::make_pair(tinyid, identifier));
+					if (tinyid != 0 && identifier.length() > 0)
+					{
+						pairs.push_back(std::make_pair(tinyid, identifier));
+					}
 				}
-				if (callback)
+				if (!pairs.empty())
 				{
-					callback(list, 0, "");
+					atomicAccountCache([&] {
+						m_account_cache.insert(pairs.begin(), pairs.end());
+					});
 				}
 			}
 			else
 			{
 				if (callback)
-
 				{
-					callback(std::vector<std::string>(), 1004, "get tinyid failed");
+					callback(std::vector<std::string>(), errcode, "get tinyid failed");
 				}
 			}
 		});
 	}
 }
 
-uint64_t XCastHelper::syncGetTinyid(std::string userid) const
+uint64_t XCastHelper::syncGetTinyid(std::string userid) 
 {
 	typedef std::map<uint64_t, std::string> AccoutCache;
 
@@ -1689,15 +1714,23 @@ uint64_t XCastHelper::syncGetTinyid(std::string userid) const
 		return pair.second == userid;
 	};
 
-	const AccoutCache::const_iterator it = std::find_if(m_account_cache.begin(), m_account_cache.end(), func);
-	if (it != m_account_cache.end() && it->first != 0)
+	if (m_cache_mutex.try_lock_for(std::chrono::milliseconds(100)))
 	{
-		return it->first;
+		const AccoutCache::const_iterator it = std::find_if(m_account_cache.begin(), m_account_cache.end(), func);
+
+		if (it != m_account_cache.end() && it->first != 0)
+		{
+			m_cache_mutex.unlock();
+			return it->first;
+		}
+		else
+		{
+			m_cache_mutex.unlock();
+			return 0;
+		}
+		
 	}
-	else
-	{
-		return 0;
-	}
+	return 0;
 }
 void XCastHelper::getTinyIDWithUserID(std::string userid, std::function<void(uint64_t, int, std::string)> callback)
 {
@@ -1732,22 +1765,24 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::string userid, std::function
 		std::vector<std::string> useridlist;
 		useridlist.push_back(userid);
 		m_account_handler->identifier_to_tinyid(useridlist, [&](std::vector<uint64_t> list, int errcode, std::string errmsg) {
-			std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-			if (errcode == 0 && list.size() == useridlist.size())
+		
+			if (errcode == 0 && !list.empty() && list.size() == useridlist.size())
 			{
 				uint64_t  tinyid = list[0];
-
-				m_account_cache.insert(std::make_pair(tinyid, userid));
-
-				if (callback)
+				if (tinyid != 0)
 				{
-					callback(tinyid, 0, "");
+					if (callback)
+					{
+						callback(tinyid, 0, "");
+					}
+					atomicAccountCache([&] {
+						m_account_cache.insert(std::make_pair(tinyid, userid));
+					});
+					return;
 				}
+				errcode = 1004;
 			}
-			else
-			{
-				callback(0, 1004, "get tinyid failed");
-			}
+			callback(0, errcode, "get tinyid failed");
 		});
 	}
 }
@@ -1755,8 +1790,6 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::string userid, std::function
 void XCastHelper::getTinyIDWithUserID(std::vector<std::string> useridlist, std::function<void(std::vector<uint64_t>, int, std::string)> callback)
 {
 	std::vector<uint64_t> tinyidlist;
-
-
 	// 找到第一个不在列表里的元素
 	std::find_if_not(useridlist.begin(), useridlist.end(), [&](std::string userid)->bool {
 		uint64_t  uin = syncGetTinyid(userid);
@@ -1792,19 +1825,25 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::vector<std::string> useridli
 		std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
 		m_account_handler->identifier_to_tinyid(useridlist, [&](std::vector<uint64_t> list, int errcode, std::string errmsg) {
-			std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-			if (errcode == 0 && list.size() == useridlist.size())
+			if (errcode == 0 && list.size() == useridlist.size() && !list.empty())
 			{
+				std::vector<std::pair<uint64_t, std::string>> pairs;
 				for (int i = 0; i < list.size(); i++)
 				{
 					uint64_t tinyid = list[i];
 					std::string identifier = useridlist[i];
-					m_account_cache.insert(std::make_pair(tinyid, identifier));
+					if (tinyid != 0 && identifier.length() > 0)
+					{
+						pairs.push_back(std::make_pair(tinyid, identifier));
+					}
 				}
 				if (callback)
 				{
 					callback(list, 0, "");
 				}
+				atomicAccountCache([&] {
+					m_account_cache.insert(pairs.begin(),pairs.end());
+				});
 			}
 			else
 			{
@@ -1879,5 +1918,16 @@ void XCastHelper::notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCa
 			m_room_handler->onEndpointsUpdateInfo(event, ep);
 		}
 		updateEndpointMap(uin);
+	}
+}
+
+
+void XCastHelper::atomicAccountCache(std::function<void()> func)
+{
+	using MS = std::chrono::milliseconds;
+	if (m_cache_mutex.try_lock_for(MS(100)))
+	{
+		func();
+		m_cache_mutex.unlock();
 	}
 }

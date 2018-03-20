@@ -23,6 +23,7 @@ private:
 	std::unique_ptr<XCastStreamParam>	m_stream_param;			// 进房参数
 
 	std::recursive_mutex				m_func_mutex;			// 锁
+	std::timed_mutex					m_cache_mutex;			// 帐号缓存锁
 
 private:
 	std::map<std::string, std::shared_ptr<XCastVideoFrame>>		video_frame_map;
@@ -378,7 +379,7 @@ private:
 	int startContextWithout(std::unique_ptr<XCastStartParam> param, XCHCallBack callback);
 
 private:
-	std::string syncGetUserid(uint64_t tinyid) const;
+	std::string syncGetUserid(uint64_t tinyid);
 
 	void getUserIDWithTinyid(uint64_t tinyid, std::function<void(std::string, int, std::string)> callback);
 	void getUserIDWithTinyidFromIMSDK(uint64_t tinyid, std::function<void(std::string, int, std::string)> callback);
@@ -386,7 +387,7 @@ private:
 	void getUserIDWithTinyidFromIMSDK(std::vector<uint64_t> tinyidlist, std::function<void(std::vector<std::string>, int, std::string)> callback);
 
 
-	uint64_t syncGetTinyid(std::string userid) const;
+	uint64_t syncGetTinyid(std::string userid) ;
 	void getTinyIDWithUserID(std::string userid, std::function<void(uint64_t, int, std::string)> callback);
 	void getTinyIDWithUserIDFromIMSDK(std::string userid, std::function<void(uint64_t, int, std::string)> callback);
 	
@@ -396,6 +397,9 @@ private:
 
 private:
 	void notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCastEndpointEvent event, const bool has);
+
+private:
+	inline void atomicAccountCache(std::function<void()> func);
 };
 
 #endif
