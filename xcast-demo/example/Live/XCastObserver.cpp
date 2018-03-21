@@ -50,14 +50,17 @@ bool XCastObserver::needGlobalCallbackLocalVideo()
 {
 	return true;
 }
-void XCastObserver::onGlobalLocalVideoPreview(XCastVideoFrame *frame)
+void XCastObserver::onGlobalLocalVideoPreview(const XCastVideoFrame *frame)
 {
 
 }
 
 
 //===============================================
+void XCastObserver::onWillEnterRoom(int result, const char *error)
+{
 
+}
 void XCastObserver::onDidEnterRoom(int result, const char *error)
 {
 	has_enter_room = true;
@@ -81,12 +84,12 @@ bool XCastObserver::needRoomCallbackLocalVideo()
 {
 	return has_enter_room;
 }
-void XCastObserver::onLocalVideoPreview(XCastVideoFrame *frame)
+void XCastObserver::onLocalVideoPreview(const XCastVideoFrame *frame)
 {
 
 }
 
-void XCastObserver::onVideoPreview(XCastVideoFrame *frame)
+void XCastObserver::onVideoPreview(const XCastVideoFrame *frame)
 {
 
 }

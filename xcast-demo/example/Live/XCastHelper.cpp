@@ -23,7 +23,7 @@
 
 
 #define kAccountMutexTimeout 100
-#define kEndpointMutexTimeout 100
+#define kEndpointMutexTimeout 10000
 
 //====================================================================
 inline void XCastHelperCallBack(XCHCallBack callback, int32_t errcode, const char *err)
@@ -34,6 +34,7 @@ inline void XCastHelperCallBack(XCHCallBack callback, int32_t errcode, const cha
 
 bool xcast_data_to_deviceitem(tencent::xcast_data data, XCastDeviceHotPlugItem &item)
 {
+	const char *tstr = data.dump();
 	const char *srcstr = data["src"];
 	if (srcstr == nullptr)
 	{
@@ -42,13 +43,12 @@ bool xcast_data_to_deviceitem(tencent::xcast_data data, XCastDeviceHotPlugItem &
 	}
 
 	// 获取其他信息
-	XCastDeviceHotPlugItem device;
-	device.deviceClass = (XCastDeviceType)((int32_t)(data["class"]));
-	device.src = std::string(srcstr);
-	device.state = (XCastDeviceState)((int32_t)(data["state"]));
-	device.err = data["err"];
+	item.deviceClass = (XCastDeviceType)((int32_t)(data["class"]));
+	item.src = std::string(srcstr);
+	item.state = (XCastDeviceState)((int32_t)(data["state"]));
+	item.err = data["err"];
 	const char *str = data["err_msg"].str_val();
-	device.err_msg = str ? std::string(str) : "";
+	item.err_msg = str ? std::string(str) : "";
 	return true;
 }
 
@@ -110,6 +110,9 @@ XCastHelper::XCastHelper()
 
 XCastHelper::~XCastHelper()
 {
+	// 清理资源
+	clearAfterExitRoom();
+
 	m_startup_param.reset();
 	m_stream_param.reset();
 
@@ -151,10 +154,11 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 	switch ((int32_t)data["type"]) {
 	case xc_stream_added:
 	{
-		/*if (instance && instance->m_room_handler)
+		// 主要用于通知界面添加提逻辑，本质上没有太大的用处
+		if (instance && instance->m_room_handler)
 		{
 			instance->m_room_handler->onWillEnterRoom(0, NULL);
-		}*/
+		}
 	}
 	break;
 	case xc_stream_updated:
@@ -174,20 +178,9 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 
 				// 打开摄像头
 				instance->enableCamera(opera.autoCameraPreview, opera.autoCameraCapture, opera.defaultCamera.c_str());
-				
+				// 打开麦克风
 				instance->enableMic(opera.autoMic);
 				// 打开扬声器
-				
-
-				 // 打开扬声器
-
-				std::vector<std::string> slist = instance->getSpeakerList();
-				std::for_each(slist.begin(), slist.end(), [&](std::string sid) {
-					instance->setSpeakerVolume(80, sid.c_str());
-				});
-				std::for_each(slist.begin(), slist.end(), [&](std::string sid) {
-					instance->speakerVolume(sid.c_str());
-				});
 				instance->enableSpeaker(opera.autoSpeaker);
 
 			}
@@ -201,12 +194,16 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 
 		if (instance)
 		{
+			int errcode = (int)(data["err"]);
+			int averrcode = avsdkErrorCode(errcode);
+			const char *msg = (const char *)(data["err-msg"]);
+
 			if (instance->stream_state == Room_Connectted)
 			{
 				// 退房
 				if (instance->m_room_handler)
 				{
-					instance->m_room_handler->onExitRoomComplete((int)(data["err"]), (const char *)(data["err-msg"]));
+					instance->m_room_handler->onExitRoomComplete(averrcode, msg);
 				}
 				instance->clearAfterExitRoom();
 			}
@@ -215,7 +212,7 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 				// 进房出现问题
 				if (instance->m_room_handler)
 				{
-					instance->m_room_handler->onDidEnterRoom((int)(data["err"]), (const char *)(data["err-msg"]));
+					instance->m_room_handler->onDidEnterRoom(errcode, msg);
 				}
 				instance->clearAfterExitRoom();
 			}
@@ -235,7 +232,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 #endif
 	XCastHelper *instance = (XCastHelper *)contextinfo;
 	uint64_t          uin = data["uin"];
-	if (instance && instance->m_room_handler.get())
+	if (instance && instance->m_room_handler.get() && uin != 0)
 	{
 		xc_track_event type = (xc_track_event)((int32_t)data["type"]);
 
@@ -243,6 +240,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 		{
 		case xc_track_added:
 		{
+			int i = 0;
 			/* 新增轨道 */
 			/*ui_track_add(e, true, user_data);*/
 			//instance->logtoFile("xc_track_added", data.dump());
@@ -254,12 +252,13 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 		case xc_track_updated:
 		case xc_track_capture_changed:
 		{
-			const char *datastr = data.dump();
+			const char *str = data.dump();
 			XCastMediaSource source = (XCastMediaSource)((int32_t)data["media-src"]);
 			xc_track_type tracktype = (xc_track_type)((int32_t)data["class"]);
 			xc_track_state state = (xc_track_state)((int32_t)data["state"]);
 			bool has = (state == xc_track_running);
 
+			// 获取事件类型
 			XCastEndpointEvent event = XCast_Endpoint_NONE;
 			if (tracktype == xc_track_audio)
 			{
@@ -287,6 +286,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 			{
 				if (instance->isSupportIMAccount())
 				{
+					// imsdk帐号模式下，先通过tinyid查到帐号，然后再通通知
 					instance->getUserIDWithTinyid(uin, [=](std::string identifer, int errcode, std::string errmsg){
 						if (errcode == 0)
 						{
@@ -300,8 +300,11 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 				}
 				else
 				{
+					// tinyid模式下直接通知
 					instance->notifyTrackEndpointEvent(uin,"", event, has);
 				}
+
+				
 			}
 		}
 		/* 更新轨道 */
@@ -309,25 +312,33 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 		break;
 		case xc_track_removed:
 		{
-			std::shared_ptr<XCastEndpoint> end = instance->getEndpoint(uin);
-			if (end.get())
-			{
-				XCastEndpoint ep;
-				ep.tinyid = end->tinyid;
-				ep.identifier = end->identifier;
-				ep.is_audio = end->is_audio;
-				ep.is_camera_video = end->is_camera_video;
-				ep.is_screen_video = end->is_screen_video;
-				ep.is_media_video = end->is_media_video;
-				instance->m_room_handler->onEndpointsUpdateInfo(XCast_Endpoint_Removed, ep);
-
-				instance->deleteEndpoint(uin);
-#if kForVipKidTest
-				instance->logtoFile("xc_track_removed", data.dump());
-#endif
-				/*	XCastEndPoint info;
-				instance->m_room_handler->onEndpointsUpdateInfo(info);*/
-			}
+//			const char *str = data.dump();
+//			// 有流退出
+//			std::shared_ptr<XCastEndpoint> end = instance->getEndpoint(uin);
+//			if (end.get() && end->tinyid != instance->m_startup_param->tinyid)
+//			{
+//				// 只通知远程流断开
+//				XCastEndpoint ep;
+//				ep.tinyid = end->tinyid;
+//				ep.identifier = end->identifier;
+//				ep.is_audio = end->is_audio;
+//				ep.is_camera_video = end->is_camera_video;
+//				ep.is_screen_video = end->is_screen_video;
+//				ep.is_media_video = end->is_media_video;
+//				instance->m_room_handler->onEndpointsUpdateInfo(XCast_Endpoint_Removed, ep);
+//
+//				instance->deleteEndpoint(uin);
+//#if kForVipKidTest
+//				instance->logtoFile("xc_track_removed", data.dump());
+//#endif
+//				/*	XCastEndPoint info;
+//				instance->m_room_handler->onEndpointsUpdateInfo(info);*/
+//			}
+//			if (end.get())
+//			{
+//				instance->earseVideoFrameBuffer(end->tinyid);
+//			}
+			
 		}
 		//ui_track_add(e, false, user_data);
 		break;
@@ -336,7 +347,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 #if kForVipKidTest
 			instance->logtoFile("xc_track_media", data.dump());
 #endif
-
+			// 获取远程视频 ，然后交给上层渲染
 			XCastMediaSource mediaTye = (XCastMediaSource)((int32_t)data["media-src"]);
 			std::shared_ptr<XCastVideoFrame> frameptr = instance->getVideoFrameBuffer(uin, mediaTye);
 			XCastVideoFrame *frame = frameptr.get();
@@ -384,10 +395,18 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 		break;
 		case xc_device_updated:
 		{
+			// 设备更新
 			XCastDeviceHotPlugItem device;
 			if (xcast_data_to_deviceitem(e, device))
 			{
 				instance->m_global_handler->onDeviceEvent_DeviceUpdate(device);
+			}
+
+			// 移除本地的视频缓存
+			if (device.state == XCastDeviceState_Stopped && (device.deviceClass == XCastDeviceType_Camera || device.deviceClass == XCastDeviceType_Screen_Capture || device.deviceClass == XCastDeviceType_Player))
+			{
+				uint64_t tinyid = instance->m_startup_param->tinyid;
+				instance->earseVideoFrameBuffer(tinyid);
 			}
 			
 		}
@@ -400,11 +419,19 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 			{
 				instance->m_global_handler->onDeviceEvent_DeviceRemoved(device);
 			}
+
+			// 移除本地的视频缓存
+			if (device.deviceClass == XCastDeviceType_Camera || device.deviceClass == XCastDeviceType_Screen_Capture || device.deviceClass == XCastDeviceType_Player)
+			{
+				uint64_t tinyid = instance->m_startup_param->tinyid;
+				instance->earseVideoFrameBuffer(tinyid);
+			}
 		}
 		break;
 		case xc_device_preprocess:
 			/* 设备预处理 */
-		// 	ui_device_preprocess(e, user_data);
+			// XCAST目前只有该类型，但无实质
+			// 	ui_device_preprocess(e, user_data);
 			// TODO:
 			break;
 		case xc_device_preview:
@@ -414,29 +441,37 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 			const char *cs = e.str_val();
 			const char *str = e.dump();
 #endif
-			bool ng = instance->m_global_handler->needGlobalCallbackLocalVideo();
-			bool nr = instance->m_room_handler && instance->m_room_handler->needRoomCallbackLocalVideo();
-			if (ng || nr)
+			XCastDeviceType deviceType = (XCastDeviceType)((int32_t)(e["class"]));
+			if (deviceType == XCastDeviceType_Camera || deviceType == XCastDeviceType_Screen_Capture || deviceType == XCastDeviceType_Player)
 			{
-				XCastDeviceType deviceType = (XCastDeviceType)((int32_t)(e["class"]));
-				XCastMediaSource mediaTye = instance->getDeviceVideoSourceType(deviceType);
-
-				std::shared_ptr<XCastVideoFrame> frameptr = instance->getVideoFrameBuffer(instance->m_startup_param->tinyid, mediaTye);
-				XCastVideoFrame *frame = frameptr.get();
-				frame->identifier = instance->m_startup_param->identifier;
-				if (xcast_data_to_videoframe(e, *frame, true))
+				bool ng = instance->m_global_handler->needGlobalCallbackLocalVideo();
+				bool nr = instance->m_room_handler && instance->m_room_handler->needRoomCallbackLocalVideo();
+				if (ng || nr)
 				{
-					if (ng)
+					XCastMediaSource mediaTye = instance->getDeviceVideoSourceType(deviceType);
+					std::shared_ptr<XCastVideoFrame> frameptr = instance->getVideoFrameBuffer(instance->m_startup_param->tinyid, mediaTye);
+					XCastVideoFrame *frame = frameptr.get();
+					frame->identifier = instance->m_startup_param->identifier;
+					if (xcast_data_to_videoframe(e, *frame, true))
 					{
-						instance->m_global_handler->onGlobalLocalVideoPreview(frameptr.get());
-					}
+						// 分批转发给上层
+						if (ng)
+						{
+							instance->m_global_handler->onGlobalLocalVideoPreview(frameptr.get());
+						}
 
-					if (nr)
-					{
-						instance->m_room_handler->onLocalVideoPreview(frameptr.get());
+						if (nr)
+						{
+							instance->m_room_handler->onLocalVideoPreview(frameptr.get());
+						}
 					}
 				}
 			}
+			else
+			{
+				// TODO:处理其他非视频类数据
+			}
+			
 		}
 			break;
 		default:
@@ -456,6 +491,7 @@ int32_t XCastHelper::onXCastTipsEvent(void *contextinfo, tencent::xcast_data &da
 #if kForVipKidTest
 	instance->logtoFile("onXCastTipsEvent", data.dump());
 #endif
+	// TODO:待xcast提供json接口，返回json数据到业务上层
 	if (instance->m_room_handler->needRoomCallbackTips())
 	{
 		instance->m_room_handler->onStatTips();
@@ -483,6 +519,7 @@ void XCastHelper::logtoFile(const char *tag, const char * info)
 
 bool XCastHelper::setAccountHandler(std::shared_ptr<XCastAccountHandler> handler)
 {
+	// 设置帐号体系，必须在startContext之前
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 	if (!is_startup_succ)
 	{
@@ -521,12 +558,12 @@ int XCastHelper::startContextWithout(std::unique_ptr<XCastStartParam> param, XCH
 
 	is_startup_succ = (rt == XCAST_OK);
 
-	if (is_startup_succ && m_account_handler.get() && m_account_handler->useIMSDKasAccount())
+	if (is_startup_succ && isSupportIMAccount())
 	{
+		// 登录成功后，直接可以拿到缓存列表
 		atomicAccountCache([&] {
 			m_account_cache.insert(std::make_pair(m_startup_param->tinyid, m_startup_param->identifier)); 
 		});
-		
 	}
 
 
@@ -644,6 +681,8 @@ int XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::shared_
 		return 1004;
 	}
 
+	clearAfterExitRoom();
+
 	m_stream_param.reset();
 	m_stream_param = std::move(param);
 
@@ -705,6 +744,12 @@ int XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::shared_
 		clearAfterExitRoom();
 		return code;
 	}
+
+	// 因每次退房都会清除掉帐号缓存，进房间时，再把自己的重新加上
+	atomicAccountCache([&] {
+		m_account_cache.insert(std::make_pair(m_startup_param->tinyid, m_startup_param->identifier));
+	});
+
 	XCastHelperCallBack(callback, code, "xcast_start_stream succ");
 	stream_state = Room_Connecting;
 	return code;
@@ -752,9 +797,20 @@ void XCastHelper::clearAfterExitRoom()
 		auto vfp = pair.second;
 		vfp.reset();
 	});
-	
 	video_frame_map.clear();
 
+	// 清理缓存的endpoint数据
+	{
+		std::lock_guard<std::mutex> el(m_endpoint_mutex);
+		m_endpoint_map.clear();
+	}
+	// 清理缓存的帐号数据
+	if (isSupportIMAccount())
+	{
+		atomicAccountCache([&] {
+			m_account_cache.clear();
+		});
+	}
 }
 
 std::vector<std::string> XCastHelper::getSpeakerList() const
@@ -766,6 +822,7 @@ std::vector<std::string> XCastHelper::getSpeakerList() const
 // 同时进行enable操作
 int XCastHelper::enableSpeaker(bool enable, const char *sid, XCHCallBack callback)
 {
+	// 获取操作摄像头
 	std::string oidstr = getOperaSpeaker(sid);
 	
 	if (oidstr.length() == 0)
@@ -1007,7 +1064,6 @@ std::string XCastHelper::getOperaDevice(XCastDeviceType type, const char *camera
 		const char *dstr = data.dump();
 #endif
 		const char *str_val = data.str_val();
-		char *str  = strdup(str_val);
 		if (str_val == nullptr)
 		{
 			return "";
@@ -1040,7 +1096,7 @@ std::string XCastHelper::getOperaMic( const char *cameraid) const
 }
 
 
-int XCastHelper::avsdkErrorCode(int xcast_err_code) const
+int XCastHelper::avsdkErrorCode(int xcast_err_code)
 {
 	// TODO : xcast err code 转成AVSDK错误码
 	return xcast_err_code;
@@ -1048,6 +1104,7 @@ int XCastHelper::avsdkErrorCode(int xcast_err_code) const
 
 std::vector<std::string> XCastHelper::getDeviceList(XCastDeviceType type) const
 {
+	// 查询设备列表
 	std::vector<std::string> devlist;
 	if (is_startup_succ)
 	{
@@ -1092,14 +1149,14 @@ std::vector<std::string> XCastHelper::getDeviceList(XCastDeviceType type) const
 				devlist.push_back(std::string(cap));
 			}
 		}
-		
-		return devlist;
 	}
+	return devlist;
 }
 
 
 XCastDeviceState XCastHelper::getDeviceState(XCastDeviceType type, const char *device) const
 {
+	// 查询设备状态
 	if (type == XCastDeviceType_Speaker)
 	{
 		return XCastDeviceState_NotFound;
@@ -1150,7 +1207,7 @@ XCastDeviceState XCastHelper::getDeviceState(XCastDeviceType type, const char *d
 
 int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, bool audioout, bool needExeAudioOut, bool needSetDefault, XCHCallBack callback)
 {
-
+	// 操作mic
 	if (!needExePreview && !needExeAudioOut && !needSetDefault)
 	{
 		int ret = avsdkErrorCode(XCAST_OK);
@@ -1176,7 +1233,7 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 		{
 			if (preret != XCAST_OK)
 			{
-				int erc = avsdkErrorCode(-preret);
+				int erc = avsdkErrorCode(preret);
 				XCastHelperCallBack(callback,erc, tencent::xcast::err_msg());
 				return erc;
 			}
@@ -1272,7 +1329,7 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 		{
 			if (preret != XCAST_OK)
 			{
-				int erc = avsdkErrorCode(-preret);
+				int erc = avsdkErrorCode(preret);
 				XCastHelperCallBack(callback,erc, tencent::xcast::err_msg());
 				return erc;
 			}
@@ -1341,11 +1398,24 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 
 void XCastHelper::earseVideoFrameBuffer(uint64_t tinyid, XCastMediaSource source)
 {
-	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-	char tinyid_src[256];
-	sprintf(tinyid_src, "%llu_%d", tinyid, source);
-	std::string key = tinyid_src;
-	video_frame_map.erase(key);
+	if (tinyid != 0)
+	{
+		std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
+		char tinyid_src[256];
+		sprintf(tinyid_src, "%llu_%d", tinyid, source);
+		std::string key = tinyid_src;
+		video_frame_map.erase(key);
+	}
+}
+
+void XCastHelper::earseVideoFrameBuffer(uint64_t tinyid)
+{
+	if (tinyid != 0)
+	{
+		earseVideoFrameBuffer(tinyid, XCastMediaSource_Camera);
+		earseVideoFrameBuffer(tinyid, XCastMediaSource_Screen_Capture);
+		earseVideoFrameBuffer(tinyid, XCastMediaSource_Media_Player);
+	}
 }
 
 XCastMediaSource XCastHelper::getDeviceVideoSourceType(XCastDeviceType type) const
@@ -1390,72 +1460,74 @@ const std::shared_ptr<XCastVideoFrame> XCastHelper::getVideoFrameBuffer(const ui
 
 std::shared_ptr<XCastEndpoint> XCastHelper::getEndpoint(uint64_t tinyid)
 {
-	if (m_endpoint_mutex.try_lock_for(std::chrono::milliseconds(kEndpointMutexTimeout)))
+	std::lock_guard<std::mutex> lock(m_endpoint_mutex);
+	auto it = m_endpoint_map.find(tinyid);
+	if (it == m_endpoint_map.end())
 	{
-		auto it = m_endpoint_map.find(tinyid);
-		if (it == m_endpoint_map.end())
-		{
-			// 重新生成一个
-			std::shared_ptr<XCastEndpoint> endptr(new XCastEndpoint);
-			endptr->tinyid = tinyid;
-			m_endpoint_map.insert(std::make_pair(tinyid, endptr));
-			m_endpoint_mutex.unlock();
+		// 重新生成一个
+		std::shared_ptr<XCastEndpoint> endptr(new XCastEndpoint);
+		endptr->tinyid = tinyid;
+		m_endpoint_map.insert(std::make_pair(tinyid, endptr));
 
-			getUserIDWithTinyid(tinyid, [=](std::string userid, int err, std::string errmsg) {
-				if (err == 0 && userid.length() != 0)
-				{
-					endptr->identifier = userid;
-					atomicAccountCache([&] {
-						m_account_cache.insert(std::make_pair(tinyid, userid));
-					});
-				}
-			});
-			return endptr;
-		}
-		else
-		{
-			m_endpoint_mutex.unlock();
-			return it->second;
-		}
-	}
 
-	return std::shared_ptr<XCastEndpoint>(nullptr);
-	
-}
-void XCastHelper::updateEndpointMap(uint64_t tinyid)
-{
-	if (m_endpoint_mutex.try_lock_for(std::chrono::milliseconds(kEndpointMutexTimeout)))
-	{
-		auto it = m_endpoint_map.find(tinyid);
-		if (it != m_endpoint_map.end())
-		{
-			std::shared_ptr<XCastEndpoint> endptr = it->second;
-			XCastEndpoint *end = endptr.get();
-			if (end)
+		getUserIDWithTinyid(tinyid, [=](std::string userid, int err, std::string errmsg) {
+			if (err == 0 && userid.length() != 0)
 			{
-				if (!end->is_audio || !end->is_camera_video || !end->is_screen_video || !end->is_media_video)
-				{
-					m_endpoint_map.erase(tinyid);
-				}
+				endptr->identifier = userid;
+				atomicAccountCache([&] {
+					m_account_cache.insert(std::make_pair(tinyid, userid));
+				});
+			}
+		});
+		return endptr;
+	}
+	else
+	{
+		return it->second;
+	}
+}
+void XCastHelper::updateEndpointMap(uint64_t tinyid, XCastEndpointEvent event)
+{
+	std::lock_guard<std::mutex> lock(m_endpoint_mutex);
+	auto it = m_endpoint_map.find(tinyid);
+	if (it != m_endpoint_map.end())
+	{
+		std::shared_ptr<XCastEndpoint> endptr = it->second;
+		XCastEndpoint *end = endptr.get();
+		if (end)
+		{
+			switch (event)
+			{
+			case XCast_Endpoint_No_Camera_Video:
+				earseVideoFrameBuffer(end->tinyid, XCastMediaSource_Camera);
+				break;
+			case XCast_Endpoint_No_Screen_Video:
+				earseVideoFrameBuffer(end->tinyid, XCastMediaSource_Screen_Capture);
+				break;
+			case XCast_Endpoint_No_Media_Video:
+				earseVideoFrameBuffer(end->tinyid, XCastMediaSource_Media_Player);
+				break;
+			default:
+				break;
+			}
+
+			if (!end->is_audio && !end->is_camera_video && !end->is_screen_video && !end->is_media_video)
+			{
+				m_endpoint_map.erase(tinyid);
+				// 同时清除frame_map中对应的数据
 			}
 		}
-		m_endpoint_mutex.unlock();
 	}
-	
 }
 
 void XCastHelper::deleteEndpoint(uint64_t tinyid)
 {
-	if (m_endpoint_mutex.try_lock_for(std::chrono::milliseconds(kEndpointMutexTimeout)))
+	std::lock_guard<std::mutex> lock(m_endpoint_mutex);
+	auto it = m_endpoint_map.find(tinyid);
+	if (it != m_endpoint_map.end())
 	{
-		auto it = m_endpoint_map.find(tinyid);
-		if (it != m_endpoint_map.end())
-		{
-			m_endpoint_map.erase(tinyid);
-		}
-		m_endpoint_mutex.unlock();
+		m_endpoint_map.erase(tinyid);
 	}
-	
 }
 
 XCastRequestViewItem XCastHelper::getFromTrackID(std::string track) 
@@ -1702,7 +1774,8 @@ void XCastHelper::getUserIDWithTinyidFromIMSDK(std::vector<uint64_t> tinyidlist,
 			{
 				
 				std::vector<std::pair<uint64_t, std::string>> pairs;
-				for (int i = 0; i < list.size(); i++)
+
+				for (uint32_t i = 0; i < list.size(); i++)
 				{
 					uint64_t tinyid = tlist[i];
 					std::string identifier = list[i];
@@ -1856,7 +1929,7 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::vector<std::string> useridli
 			if (errcode == 0 && list.size() == idlist.size() && !list.empty())
 			{
 				std::vector<std::pair<uint64_t, std::string>> pairs;
-				for (int i = 0; i < list.size(); i++)
+				for (uint32_t i = 0; i < list.size(); i++)
 				{
 					uint64_t tinyid = list[i];
 					std::string identifier = idlist[i];
@@ -1876,7 +1949,6 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::vector<std::string> useridli
 			else
 			{
 				if (callback)
-
 				{
 					callback(std::vector<std::uint64_t>(), 1004, "get tinyid failed");
 				}
@@ -1947,7 +2019,7 @@ void XCastHelper::notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCa
 			{
 				m_room_handler->onEndpointsUpdateInfo(event, ep);
 			}
-			updateEndpointMap(uin);
+			updateEndpointMap(uin,event);
 		}
 	}
 	

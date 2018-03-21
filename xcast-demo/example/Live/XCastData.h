@@ -60,7 +60,7 @@ typedef enum  XCastDeviceState {
 typedef enum XCastEndpointEvent {
 	XCast_Endpoint_NONE = 0, ///< 默认值，无意义。
 	//XCast_Endpoint_Enter = 1, ///< 进入房间事件。
-	XCast_Endpoint_Removed = 2, ///< 退出房间事件。						 
+	//XCast_Endpoint_Removed = 2, ///< 退出房间事件。						 
 	XCast_Endpoint_Has_Camera_Video = 3, ///< 有发摄像头视频事件。
 	XCast_Endpoint_No_Camera_Video = 4, ///< 无发摄像头视频事件。
 	XCast_Endpoint_Has_Audio = 5, ///< 有发语音事件。
@@ -105,22 +105,22 @@ public:
 	virtual void onSystemEvent() = 0;
 	// 视频事件
 	virtual bool needGlobalCallbackLocalVideo() = 0;
-	virtual void onGlobalLocalVideoPreview(XCastVideoFrame *frame) = 0;
+	virtual void onGlobalLocalVideoPreview(const XCastVideoFrame *frame) = 0;
 };
 
 class  XCastRoomHandler
 {
 public:
-	//virtual void onWillEnterRoom(int result, const char *error) = 0;
+	virtual void onWillEnterRoom(int result, const char *error) = 0;
 	virtual void onDidEnterRoom(int result, const char *error) = 0;
 	virtual void onExitRoomComplete(int result, const char *error) = 0;
 	virtual void onRoomDisconnected(int result, const char *error) = 0;
 
 	virtual void onEndpointsUpdateInfo(XCastEndpointEvent event,XCastEndpoint infos) = 0;
 	virtual bool needRoomCallbackLocalVideo() = 0;
-	virtual void onLocalVideoPreview(XCastVideoFrame *frame) = 0;
+	virtual void onLocalVideoPreview(const XCastVideoFrame *frame) = 0;
 
-	virtual void onVideoPreview(XCastVideoFrame *frame) = 0;
+	virtual void onVideoPreview(const XCastVideoFrame *frame) = 0;
 
 	virtual bool needRoomCallbackTips() = 0;
 	virtual void onStatTips() = 0;

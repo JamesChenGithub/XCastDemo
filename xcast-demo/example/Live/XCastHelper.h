@@ -26,11 +26,10 @@ private:
 	
 
 private:
-	std::map<std::string, std::shared_ptr<XCastVideoFrame>>		video_frame_map;
-#ifdef kSupportIMAccount
-	std::map<uint64_t, std::string>								tinyid_cache;
-#endif
-	std::timed_mutex											m_endpoint_mutex;		// endpont锁
+	
+	std::map<std::string, std::shared_ptr<XCastVideoFrame>>		video_frame_map;		// 视频所有的回调都是在xcast主线程中回调，暂不加锁
+
+	std::mutex													m_endpoint_mutex;		// endpont锁
 	std::map<uint64_t, std::shared_ptr<XCastEndpoint>>			m_endpoint_map;
 
 	std::timed_mutex											m_cache_mutex;			// 帐号缓存锁
@@ -66,6 +65,10 @@ private:
 	XCastHelper();
 	~XCastHelper();
 
+	// 禁用类的赋值操作符
+	XCastHelper& operator=(const XCastHelper&) = delete; 
+	XCastHelper(const XCastHelper&) = delete;
+	XCastHelper(const XCastHelper&&) = delete;
 
 public:
 	static XCastHelper* getInstance();
@@ -334,7 +337,7 @@ public:
 	int getSpeakerDynamicVolume(uint64_t tinyid) const;
 
 private:
-	int avsdkErrorCode(int xcast_err_code) const;
+	static inline int avsdkErrorCode(int xcast_err_code);
 
 private:
 	// 获取要操作的设备，如果通过devid没找到，则取默认设备
@@ -360,12 +363,13 @@ private:
 	// frame map operation
 	const std::shared_ptr<XCastVideoFrame> getVideoFrameBuffer(uint64_t tinyid, XCastMediaSource source);
 	void earseVideoFrameBuffer(uint64_t tinyid, XCastMediaSource source);
+	void earseVideoFrameBuffer(uint64_t tinyid);
 private:
 	XCastMediaSource getDeviceVideoSourceType(XCastDeviceType type) const;
 
 private:
 	std::shared_ptr<XCastEndpoint> getEndpoint(uint64_t tinyid);
-	void updateEndpointMap(uint64_t tinyid);
+	void updateEndpointMap(uint64_t tinyid, XCastEndpointEvent event);
 	void deleteEndpoint(uint64_t tinyid);
 
 	XCastRequestViewItem getFromTrackID(std::string trackid);

@@ -1830,7 +1830,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			param->auth_info.auth_bits = -1;
 			param->auth_info.auth_type = XCastAuth_None;
 
-			param->roomOpera.autoCameraPreview = true;
+			param->roomOpera.autoCameraPreview = false;
 			param->roomOpera.autoCameraCapture = false;
 			param->roomOpera.autoMic = false;
 			param->roomOpera.autoSpeaker = false;

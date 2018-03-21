@@ -27,20 +27,20 @@ public:
 
 	// ÊÓÆµÊÂ¼þ
 	virtual bool needGlobalCallbackLocalVideo();
-	virtual void onGlobalLocalVideoPreview(XCastVideoFrame *frame);
+	virtual void onGlobalLocalVideoPreview(const XCastVideoFrame *frame);
 
 
 	//===============================================
-	
+	virtual void onWillEnterRoom(int result, const char *error);
 	virtual void onDidEnterRoom(int result, const char *error);
 	virtual void onExitRoomComplete(int result, const char *error);
 	virtual void onRoomDisconnected(int result, const char *error);
 
 	virtual void onEndpointsUpdateInfo(XCastEndpointEvent event, XCastEndpoint infos);
 	virtual bool needRoomCallbackLocalVideo();
-	virtual void onLocalVideoPreview(XCastVideoFrame *frame);
+	virtual void onLocalVideoPreview(const XCastVideoFrame *frame);
 
-	virtual void onVideoPreview(XCastVideoFrame *frame);
+	virtual void onVideoPreview(const XCastVideoFrame *frame);
 
 	virtual bool needRoomCallbackTips();
 	virtual void onStatTips();
