@@ -111,51 +111,64 @@ bool XCastObserver::useIMSDKasAccount() const
 	return kSupportIMAccount;
 }
 
-void XCastObserver::tinyid_to_identifier(std::vector<uint64_t> tinyidlist, std::function<void(std::vector<std::string> identifiedlist, int errcode, std::string errtips)> func)
+void XCastObserver::tinyid_to_identifier(std::vector<uint64_t> tinyidlist, XCastAccountCallBack func)
 {
 	if (func)
 	{
 		if (tinyidlist.empty())
 		{
-			func(std::vector<std::string>(), 1004, "tinyidlist is empty");
+			func(std::vector<uint64_t>(), std::vector<std::string>(), 1004, "tinyidlist is empty");
 			return;
 		}
-		std::thread([&]() {
+		std::thread([=] {
+
+			std::shared_ptr<std::vector<uint64_t>> tptr(new std::vector<uint64_t>(tinyidlist));
+		
+
 			std::this_thread::sleep_for(std::chrono::microseconds(500));
 			std::vector<std::string> idlist;
-			std::for_each(tinyidlist.begin(), tinyidlist.end(), [&](uint64_t tinyid) {
+			std::for_each(tptr->begin(), tptr->end(), [&](uint64_t tinyid) {
 				char idetifier[256];
 				sprintf(idetifier, "%llu", tinyid);
 				idlist.push_back(std::string(idetifier));
 			});
-			func(idlist, 0, "");
+			if (func)
+			{
+				func(*tptr, idlist, 0, "");
+			}
+			
 		}).detach();
 	}
 	
 	
 }
 
-void XCastObserver::identifier_to_tinyid(std::vector<std::string> identifiedlist, std::function<void(std::vector<uint64_t> tinyidlist, int errcode, std::string errtips)> func)
+void XCastObserver::identifier_to_tinyid(std::vector<std::string> identifiedlist, XCastAccountCallBack func)
 {
 	if (func)
 	{
 		if (identifiedlist.empty())
 		{
-			func(std::vector<uint64_t>(), 1004, "identifiedlist is empty");
+			func(std::vector<uint64_t>(), std::vector<std::string>(), 1004, "identifiedlist is empty");
 			return;
 		}
-		std::thread([&]() {
+		std::thread([=]() {
+
+
+			std::shared_ptr<std::vector<std::string>> tptr(new std::vector<std::string>(identifiedlist));
+			//XCastAccountCallBack funca = std::move(func);
+
 			std::this_thread::sleep_for(std::chrono::microseconds(500));
 			std::vector<uint64_t> tinyidlist;
 
-			std::for_each(identifiedlist.begin(), identifiedlist.end(), [&](std::string identifier) {
+			std::for_each(tptr->begin(), tptr->end(), [&](std::string identifier) {
 				uint64_t tinyid = strtoull(identifier.c_str(), nullptr, 10);
 				tinyidlist.push_back(tinyid);
 			});
 
 			if (func)
 			{
-				func(tinyidlist, 0, "");
+				func(tinyidlist, *tptr, 0, "");
 			}
 		}).detach();
 	}

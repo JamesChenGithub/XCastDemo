@@ -49,8 +49,8 @@ public:
 	//==================================================
 	virtual bool useIMSDKasAccount() const;
 	virtual uint64_t getTinyId();
-	virtual void tinyid_to_identifier(std::vector<uint64_t> tinyidlist, std::function<void(std::vector<std::string> identifiedlist, int errcode, std::string errtips)> func);
-	virtual void identifier_to_tinyid(std::vector<std::string> identifiedlist, std::function<void(std::vector<uint64_t> tinyidlist, int errcode, std::string errtips)> func);
+	virtual void tinyid_to_identifier(std::vector<uint64_t> tinyidlist, XCastAccountCallBack func);
+	virtual void identifier_to_tinyid(std::vector<std::string> identifiedlist, XCastAccountCallBack func);
 #endif
 };
 

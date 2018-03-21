@@ -366,7 +366,7 @@ private:
 	void updateEndpointMap(uint64_t tinyid);
 	void deleteEndpoint(uint64_t tinyid);
 
-	XCastRequestViewItem getFromTrackID(std::string trackid) const;
+	XCastRequestViewItem getFromTrackID(std::string trackid);
 	void remoteView(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);
 	void remoteViewWithTinyid(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);
 	void remoteAllView(bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);

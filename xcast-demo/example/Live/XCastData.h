@@ -82,10 +82,12 @@ struct XCastEndpoint;
 class XCastAccountHandler
 {
 public:
+
+	typedef std::function<void(std::vector<uint64_t>, std::vector<std::string>, int, std::string)> XCastAccountCallBack;
 	virtual bool useIMSDKasAccount() const = 0;
 	virtual uint64_t getTinyId() = 0;
-	virtual void tinyid_to_identifier(std::vector<uint64_t> tinyidlist, std::function<void(std::vector<std::string> identifiedlist, int errcode, std::string errtips)> func) = 0;
-	virtual void identifier_to_tinyid(std::vector<std::string> identifiedlist, std::function<void(std::vector<uint64_t> tinyidlist, int errcode, std::string errtips)> func) = 0;
+	virtual void tinyid_to_identifier(std::vector<uint64_t> tinyidlist, XCastAccountCallBack func) = 0;
+	virtual void identifier_to_tinyid(std::vector<std::string> identifiedlist, XCastAccountCallBack func) = 0;
 };
 #endif
 
@@ -292,7 +294,7 @@ typedef struct XCastEndpoint {
 typedef struct XCastRequestViewItem
 {
 	uint64_t tinyid = 0;
-	std::string indentifer;
+	std::string identifer;
 	XCastMediaSource video_src = XCastMediaSource_Unknown;
 
 	bool isVaild() const

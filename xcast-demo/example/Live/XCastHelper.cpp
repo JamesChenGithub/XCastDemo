@@ -1392,10 +1392,16 @@ std::shared_ptr<XCastEndpoint> XCastHelper::getEndpoint(uint64_t tinyid)
 		std::shared_ptr<XCastEndpoint> endptr(new XCastEndpoint);
 		endptr->tinyid = tinyid;
 		m_endpoint_map.insert(std::make_pair(tinyid, endptr));
+		
+		std::for_each(m_account_cache.begin(), m_account_cache.end(), [](std::pair<uint64_t, std::string> pair) {
+			uint64_t uin = pair.first;
+			std::string uid = pair.second;
+		});
 
 		getUserIDWithTinyid(tinyid, [&](std::string userid, int err, std::string errmsg) {
 			if (err == 0 && userid.length() != 0)
 			{
+				endptr->identifier = userid;
 				atomicAccountCache([&] {
 					m_account_cache.insert(std::make_pair(tinyid, userid));
 				});
@@ -1437,7 +1443,7 @@ void XCastHelper::deleteEndpoint(uint64_t tinyid)
 	}
 }
 
-XCastRequestViewItem XCastHelper::getFromTrackID(std::string track) const
+XCastRequestViewItem XCastHelper::getFromTrackID(std::string track) 
 {
 	const std::string videostr = kTRACK_CAMERA_IN;
 	const std::string subvideostr = kTRACK_SCREEN_CAPTURE_IN;
@@ -1450,6 +1456,7 @@ XCastRequestViewItem XCastHelper::getFromTrackID(std::string track) const
 		std::string uinstr = track.substr(videostr.length() + 1);
 		uint64_t uin = strtoull(uinstr.c_str(), 0, 10);
 		item.tinyid = uin;
+		item.identifer = syncGetUserid(uin);
 		item.video_src = XCastMediaSource_Camera;
 		return item;
 	}
@@ -1502,7 +1509,7 @@ void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewL
 {
 	if (isSupportIMAccount() && callback)
 	{
-		getTinyIDWithUserID(item.indentifer, [&](uint64_t uin, int code, std::string msg) {
+		getTinyIDWithUserID(item.identifer, [&](uint64_t uin, int code, std::string msg) {
 			if (code == 0 && uin != 0 )
 			{
 				item.tinyid = uin;
@@ -1635,18 +1642,17 @@ void XCastHelper::getUserIDWithTinyidFromIMSDK(uint64_t tinyid, std::function<vo
 
 		std::vector<uint64_t> tinyidvec;
 		tinyidvec.push_back(tinyid);
-		m_account_handler->tinyid_to_identifier(tinyidvec, [&](std::vector<std::string> list, int errcode, std::string errmsg) {
-			
-			if (errcode == 0 && list.size() == tinyidvec.size())
+		m_account_handler->tinyid_to_identifier(tinyidvec, [&](std::vector<uint64_t> tinyidlist, std::vector<std::string> identifierlist, int errcode, std::string errmsg) {
+			if (errcode == 0 && tinyidlist.size() == identifierlist.size())
 			{
-				std::string identifier = list[0];
+				std::string identifier = identifierlist[0];
 				if (identifier.length() > 0)
 				{
 					if (callback)
 					{
 						callback(identifier, 0, "");
 					}
-					atomicAccountCache([&] {
+					atomicAccountCache([=] {
 						m_account_cache.insert(std::make_pair(tinyid, identifier));
 					});
 					return;
@@ -1670,9 +1676,9 @@ void XCastHelper::getUserIDWithTinyidFromIMSDK(std::vector<uint64_t> tinyidlist,
 		}
 		std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
-		m_account_handler->tinyid_to_identifier(tinyidlist, [&](std::vector<std::string> list, int errcode, std::string errmsg) {
-			
-			if (errcode == 0 && list.size() != 0 && list.size() == tinyidlist.size())
+		m_account_handler->tinyid_to_identifier(tinyidlist, [=](std::vector<uint64_t> tlist,std::vector<std::string> list, int errcode, std::string errmsg) {
+
+			if (errcode == 0 && list.size() != 0 && list.size() == tlist.size())
 			{
 				if (callback)
 				{
@@ -1681,7 +1687,7 @@ void XCastHelper::getUserIDWithTinyidFromIMSDK(std::vector<uint64_t> tinyidlist,
 				std::vector<std::pair<uint64_t, std::string>> pairs;
 				for (int i = 0; i < list.size(); i++)
 				{
-					uint64_t tinyid = tinyidlist[i];
+					uint64_t tinyid = tlist[i];
 					std::string identifier = list[i];
 					if (tinyid != 0 && identifier.length() > 0)
 					{
@@ -1690,7 +1696,7 @@ void XCastHelper::getUserIDWithTinyidFromIMSDK(std::vector<uint64_t> tinyidlist,
 				}
 				if (!pairs.empty())
 				{
-					atomicAccountCache([&] {
+					atomicAccountCache([=] {
 						m_account_cache.insert(pairs.begin(), pairs.end());
 					});
 				}
@@ -1764,9 +1770,9 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::string userid, std::function
 
 		std::vector<std::string> useridlist;
 		useridlist.push_back(userid);
-		m_account_handler->identifier_to_tinyid(useridlist, [&](std::vector<uint64_t> list, int errcode, std::string errmsg) {
+		m_account_handler->identifier_to_tinyid(useridlist, [=](std::vector<uint64_t> list, std::vector<std::string> idlist, int errcode, std::string errmsg) {
 		
-			if (errcode == 0 && !list.empty() && list.size() == useridlist.size())
+			if (errcode == 0 && !list.empty() && list.size() == idlist.size())
 			{
 				uint64_t  tinyid = list[0];
 				if (tinyid != 0)
@@ -1775,7 +1781,7 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::string userid, std::function
 					{
 						callback(tinyid, 0, "");
 					}
-					atomicAccountCache([&] {
+					atomicAccountCache([=] {
 						m_account_cache.insert(std::make_pair(tinyid, userid));
 					});
 					return;
@@ -1824,14 +1830,14 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::vector<std::string> useridli
 	{
 		std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
-		m_account_handler->identifier_to_tinyid(useridlist, [&](std::vector<uint64_t> list, int errcode, std::string errmsg) {
-			if (errcode == 0 && list.size() == useridlist.size() && !list.empty())
+		m_account_handler->identifier_to_tinyid(useridlist, [=](std::vector<uint64_t> list, std::vector<std::string> idlist,int errcode, std::string errmsg) {
+			if (errcode == 0 && list.size() == idlist.size() && !list.empty())
 			{
 				std::vector<std::pair<uint64_t, std::string>> pairs;
 				for (int i = 0; i < list.size(); i++)
 				{
 					uint64_t tinyid = list[i];
-					std::string identifier = useridlist[i];
+					std::string identifier = idlist[i];
 					if (tinyid != 0 && identifier.length() > 0)
 					{
 						pairs.push_back(std::make_pair(tinyid, identifier));
@@ -1841,7 +1847,7 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::vector<std::string> useridli
 				{
 					callback(list, 0, "");
 				}
-				atomicAccountCache([&] {
+				atomicAccountCache([=] {
 					m_account_cache.insert(pairs.begin(),pairs.end());
 				});
 			}
