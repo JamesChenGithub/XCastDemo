@@ -23,15 +23,17 @@ private:
 	std::unique_ptr<XCastStreamParam>	m_stream_param;			// ½ø·¿²ÎÊı
 
 	std::recursive_mutex				m_func_mutex;			// Ëø
-	std::timed_mutex					m_cache_mutex;			// ÕÊºÅ»º´æËø
+	
 
 private:
 	std::map<std::string, std::shared_ptr<XCastVideoFrame>>		video_frame_map;
 #ifdef kSupportIMAccount
 	std::map<uint64_t, std::string>								tinyid_cache;
 #endif
+	std::timed_mutex											m_endpoint_mutex;		// endpontËø
 	std::map<uint64_t, std::shared_ptr<XCastEndpoint>>			m_endpoint_map;
 
+	std::timed_mutex											m_cache_mutex;			// ÕÊºÅ»º´æËø
 	std::map<uint64_t, std::string>								m_account_cache;
 
 private:

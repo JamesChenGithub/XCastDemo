@@ -21,6 +21,10 @@
 #define kTRACK_SCREEN_CAPTURE_OUT "screen-video-out"
 #define kTRACK_MEDIA_OUT "media-file-out"
 
+
+#define kAccountMutexTimeout 100
+#define kEndpointMutexTimeout 100
+
 //====================================================================
 inline void XCastHelperCallBack(XCHCallBack callback, int32_t errcode, const char *err)
 {
@@ -283,7 +287,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 			{
 				if (instance->isSupportIMAccount())
 				{
-					instance->getUserIDWithTinyid(uin, [&](std::string identifer, int errcode, std::string errmsg){
+					instance->getUserIDWithTinyid(uin, [=](std::string identifer, int errcode, std::string errmsg){
 						if (errcode == 0)
 						{
 							instance->notifyTrackEndpointEvent(uin, identifer, event, has);
@@ -306,21 +310,24 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 		case xc_track_removed:
 		{
 			std::shared_ptr<XCastEndpoint> end = instance->getEndpoint(uin);
-			XCastEndpoint ep;
-			ep.tinyid = end->tinyid;
-			ep.identifier = end->identifier;
-			ep.is_audio = end->is_audio;
-			ep.is_camera_video = end->is_camera_video;
-			ep.is_screen_video = end->is_screen_video;
-			ep.is_media_video = end->is_media_video;
-			instance->m_room_handler->onEndpointsUpdateInfo(XCast_Endpoint_Removed, ep);
+			if (end.get())
+			{
+				XCastEndpoint ep;
+				ep.tinyid = end->tinyid;
+				ep.identifier = end->identifier;
+				ep.is_audio = end->is_audio;
+				ep.is_camera_video = end->is_camera_video;
+				ep.is_screen_video = end->is_screen_video;
+				ep.is_media_video = end->is_media_video;
+				instance->m_room_handler->onEndpointsUpdateInfo(XCast_Endpoint_Removed, ep);
 
-			instance->deleteEndpoint(uin);
+				instance->deleteEndpoint(uin);
 #if kForVipKidTest
-			instance->logtoFile("xc_track_removed", data.dump());
+				instance->logtoFile("xc_track_removed", data.dump());
 #endif
-			/*	XCastEndPoint info;
-			instance->m_room_handler->onEndpointsUpdateInfo(info);*/
+				/*	XCastEndPoint info;
+				instance->m_room_handler->onEndpointsUpdateInfo(info);*/
+			}
 		}
 		//ui_track_add(e, false, user_data);
 		break;
@@ -1383,64 +1390,72 @@ const std::shared_ptr<XCastVideoFrame> XCastHelper::getVideoFrameBuffer(const ui
 
 std::shared_ptr<XCastEndpoint> XCastHelper::getEndpoint(uint64_t tinyid)
 {
-	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-
-	auto it = m_endpoint_map.find(tinyid);
-	if (it == m_endpoint_map.end())
+	if (m_endpoint_mutex.try_lock_for(std::chrono::milliseconds(kEndpointMutexTimeout)))
 	{
-		// 重新生成一个
-		std::shared_ptr<XCastEndpoint> endptr(new XCastEndpoint);
-		endptr->tinyid = tinyid;
-		m_endpoint_map.insert(std::make_pair(tinyid, endptr));
-		
-		std::for_each(m_account_cache.begin(), m_account_cache.end(), [](std::pair<uint64_t, std::string> pair) {
-			uint64_t uin = pair.first;
-			std::string uid = pair.second;
-		});
+		auto it = m_endpoint_map.find(tinyid);
+		if (it == m_endpoint_map.end())
+		{
+			// 重新生成一个
+			std::shared_ptr<XCastEndpoint> endptr(new XCastEndpoint);
+			endptr->tinyid = tinyid;
+			m_endpoint_map.insert(std::make_pair(tinyid, endptr));
+			m_endpoint_mutex.unlock();
 
-		getUserIDWithTinyid(tinyid, [&](std::string userid, int err, std::string errmsg) {
-			if (err == 0 && userid.length() != 0)
-			{
-				endptr->identifier = userid;
-				atomicAccountCache([&] {
-					m_account_cache.insert(std::make_pair(tinyid, userid));
-				});
-			}
-		});
-		return endptr;
+			getUserIDWithTinyid(tinyid, [=](std::string userid, int err, std::string errmsg) {
+				if (err == 0 && userid.length() != 0)
+				{
+					endptr->identifier = userid;
+					atomicAccountCache([&] {
+						m_account_cache.insert(std::make_pair(tinyid, userid));
+					});
+				}
+			});
+			return endptr;
+		}
+		else
+		{
+			m_endpoint_mutex.unlock();
+			return it->second;
+		}
 	}
-	else
-	{
-		return it->second;
-	}
+
+	return std::shared_ptr<XCastEndpoint>(nullptr);
+	
 }
 void XCastHelper::updateEndpointMap(uint64_t tinyid)
 {
-	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-	auto it = m_endpoint_map.find(tinyid);
-	if (it != m_endpoint_map.end())
+	if (m_endpoint_mutex.try_lock_for(std::chrono::milliseconds(kEndpointMutexTimeout)))
 	{
-		std::shared_ptr<XCastEndpoint> endptr = it->second;
-		XCastEndpoint *end = endptr.get();
-		if (end)
+		auto it = m_endpoint_map.find(tinyid);
+		if (it != m_endpoint_map.end())
 		{
-			if (!end->is_audio || !end->is_camera_video || !end->is_screen_video || !end->is_media_video)
+			std::shared_ptr<XCastEndpoint> endptr = it->second;
+			XCastEndpoint *end = endptr.get();
+			if (end)
 			{
-				m_endpoint_map.erase(tinyid);
+				if (!end->is_audio || !end->is_camera_video || !end->is_screen_video || !end->is_media_video)
+				{
+					m_endpoint_map.erase(tinyid);
+				}
 			}
 		}
-		
+		m_endpoint_mutex.unlock();
 	}
+	
 }
 
 void XCastHelper::deleteEndpoint(uint64_t tinyid)
 {
-	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
-	auto it = m_endpoint_map.find(tinyid);
-	if (it != m_endpoint_map.end())
+	if (m_endpoint_mutex.try_lock_for(std::chrono::milliseconds(kEndpointMutexTimeout)))
 	{
-		m_endpoint_map.erase(tinyid);
+		auto it = m_endpoint_map.find(tinyid);
+		if (it != m_endpoint_map.end())
+		{
+			m_endpoint_map.erase(tinyid);
+		}
+		m_endpoint_mutex.unlock();
 	}
+	
 }
 
 XCastRequestViewItem XCastHelper::getFromTrackID(std::string track) 
@@ -1559,7 +1574,7 @@ inline bool XCastHelper::isSupportIMAccount() const
 std::string XCastHelper::syncGetUserid(uint64_t tinyid) 
 {
 	std::string ep = "";
-	atomicAccountCache([&] {
+	atomicAccountCache([=, &ep] {
 		auto endptr = m_account_cache.find(tinyid);
 		if (endptr != m_account_cache.end())
 		{
@@ -1583,7 +1598,7 @@ void XCastHelper::getUserIDWithTinyid(uint64_t tinyid, std::function<void(std::s
 		{
 
 			std::string ep = "";
-			atomicAccountCache([&] {
+			atomicAccountCache([=, &ep] {
 				auto endptr = m_account_cache.find(tinyid);
 				if (endptr != m_account_cache.end())
 				{
@@ -1607,7 +1622,7 @@ void XCastHelper::getUserIDWithTinyid(std::vector<uint64_t> tinyidlist, std::fun
 {
 	std::vector<std::string> userid;
 	// 找到第一个不在列表里的元素
-	atomicAccountCache([&] {
+	atomicAccountCache([=, &userid] {
 		std::find_if_not(tinyidlist.begin(), tinyidlist.end(), [&](uint64_t tinyid)->bool {
 			auto endptr = m_account_cache.find(tinyid);
 			if (endptr != m_account_cache.end())
@@ -1642,25 +1657,30 @@ void XCastHelper::getUserIDWithTinyidFromIMSDK(uint64_t tinyid, std::function<vo
 
 		std::vector<uint64_t> tinyidvec;
 		tinyidvec.push_back(tinyid);
-		m_account_handler->tinyid_to_identifier(tinyidvec, [&](std::vector<uint64_t> tinyidlist, std::vector<std::string> identifierlist, int errcode, std::string errmsg) {
+		m_account_handler->tinyid_to_identifier(tinyidvec, [=](std::vector<uint64_t> tinyidlist, std::vector<std::string> identifierlist, int errcode, std::string errmsg) {
+			
 			if (errcode == 0 && tinyidlist.size() == identifierlist.size())
 			{
+				uint64_t uin = tinyidlist[0];
 				std::string identifier = identifierlist[0];
 				if (identifier.length() > 0)
 				{
+					atomicAccountCache([&] {
+						m_account_cache.insert(std::make_pair(uin, identifier));
+					});
 					if (callback)
 					{
 						callback(identifier, 0, "");
 					}
-					atomicAccountCache([=] {
-						m_account_cache.insert(std::make_pair(tinyid, identifier));
-					});
+					
 					return;
 				}
 			}
 			
-			callback("", 1004, "get the  identifier of tinyid  failed");
-			
+			if (callback)
+			{
+				callback("", 1004, "get the  identifier of tinyid  failed");
+			}
 		});
 	}
 }
@@ -1680,10 +1700,7 @@ void XCastHelper::getUserIDWithTinyidFromIMSDK(std::vector<uint64_t> tinyidlist,
 
 			if (errcode == 0 && list.size() != 0 && list.size() == tlist.size())
 			{
-				if (callback)
-				{
-					callback(list, 0, "");
-				}
+				
 				std::vector<std::pair<uint64_t, std::string>> pairs;
 				for (int i = 0; i < list.size(); i++)
 				{
@@ -1696,9 +1713,14 @@ void XCastHelper::getUserIDWithTinyidFromIMSDK(std::vector<uint64_t> tinyidlist,
 				}
 				if (!pairs.empty())
 				{
-					atomicAccountCache([=] {
+					atomicAccountCache([&] {
 						m_account_cache.insert(pairs.begin(), pairs.end());
 					});
+				}
+
+				if (callback)
+				{
+					callback(list, 0, "");
 				}
 			}
 			else
@@ -1720,7 +1742,7 @@ uint64_t XCastHelper::syncGetTinyid(std::string userid)
 		return pair.second == userid;
 	};
 
-	if (m_cache_mutex.try_lock_for(std::chrono::milliseconds(100)))
+	if (m_cache_mutex.try_lock_for(std::chrono::milliseconds(kAccountMutexTimeout)))
 	{
 		const AccoutCache::const_iterator it = std::find_if(m_account_cache.begin(), m_account_cache.end(), func);
 
@@ -1781,7 +1803,7 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::string userid, std::function
 					{
 						callback(tinyid, 0, "");
 					}
-					atomicAccountCache([=] {
+					atomicAccountCache([&] {
 						m_account_cache.insert(std::make_pair(tinyid, userid));
 					});
 					return;
@@ -1847,7 +1869,7 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::vector<std::string> useridli
 				{
 					callback(list, 0, "");
 				}
-				atomicAccountCache([=] {
+				atomicAccountCache([&] {
 					m_account_cache.insert(pairs.begin(),pairs.end());
 				});
 			}
@@ -1868,70 +1890,74 @@ void XCastHelper::notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCa
 {
 	bool notify = false;
 	std::shared_ptr<XCastEndpoint> end = getEndpoint(uin);
-	switch (event)
+	if (end.get())
 	{
-	case XCast_Endpoint_Has_Camera_Video:
-	case XCast_Endpoint_No_Camera_Video:
-		if (end->is_camera_video != has)
+		switch (event)
 		{
-			end->is_camera_video = has;
-			notify = true;
-		}
-		break;
-	case XCast_Endpoint_Has_Audio:
-	case XCast_Endpoint_No_Audio:
-		if (end->is_audio != has)
-		{
-			end->is_audio = has;
-			notify = true;
+		case XCast_Endpoint_Has_Camera_Video:
+		case XCast_Endpoint_No_Camera_Video:
+			if (end->is_camera_video != has)
+			{
+				end->is_camera_video = has;
+				notify = true;
+			}
+			break;
+		case XCast_Endpoint_Has_Audio:
+		case XCast_Endpoint_No_Audio:
+			if (end->is_audio != has)
+			{
+				end->is_audio = has;
+				notify = true;
+			}
+
+			break;
+		case XCast_Endpoint_Has_Screen_Video:
+		case XCast_Endpoint_No_Screen_Video:
+			if (end->is_screen_video != has)
+			{
+				end->is_screen_video = has;
+				notify = true;
+			}
+
+			break;
+		case XCast_Endpoint_Has_Media_Video:
+		case XCast_Endpoint_No_Media_Video:
+			if (end->is_media_video != has)
+			{
+				end->is_media_video = has;
+				notify = true;
+			}
+			break;
+		default:
+			break;
 		}
 
-		break;
-	case XCast_Endpoint_Has_Screen_Video:
-	case XCast_Endpoint_No_Screen_Video:
-		if (end->is_screen_video != has)
+		// TODO: dump endpoint and callback
+		if (notify)
 		{
-			end->is_screen_video = has;
-			notify = true;
-		}
+			XCastEndpoint ep;
+			ep.tinyid = end->tinyid;
+			ep.identifier = userid;
+			ep.is_audio = end->is_audio;
+			ep.is_camera_video = end->is_camera_video;
+			ep.is_screen_video = end->is_screen_video;
+			ep.is_media_video = end->is_media_video;
 
-		break;
-	case XCast_Endpoint_Has_Media_Video:
-	case XCast_Endpoint_No_Media_Video:
-		if (end->is_media_video != has)
-		{
-			end->is_media_video = has;
-			notify = true;
+			if (m_room_handler.get())
+			{
+				m_room_handler->onEndpointsUpdateInfo(event, ep);
+			}
+			updateEndpointMap(uin);
 		}
-		break;
-	default:
-		break;
 	}
-
-	// TODO: dump endpoint and callback
-	if (notify)
-	{
-		XCastEndpoint ep;
-		ep.tinyid = end->tinyid;
-		ep.identifier = userid;
-		ep.is_audio = end->is_audio;
-		ep.is_camera_video = end->is_camera_video;
-		ep.is_screen_video = end->is_screen_video;
-		ep.is_media_video = end->is_media_video;
-		
-		if (m_room_handler.get())
-		{
-			m_room_handler->onEndpointsUpdateInfo(event, ep);
-		}
-		updateEndpointMap(uin);
-	}
+	
 }
 
 
 void XCastHelper::atomicAccountCache(std::function<void()> func)
 {
 	using MS = std::chrono::milliseconds;
-	if (m_cache_mutex.try_lock_for(MS(100)))
+	if (m_cache_mutex.try_lock_for(MS(kAccountMutexTimeout)))
 	{
 		func();
 		m_cache_mutex.unlock();
