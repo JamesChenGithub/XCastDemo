@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7FB93D29-3109-30F3-936B-22053BD496EE}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>jansson</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">I:\xcast-demo\thirdpart\jansson\lib\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">jansson.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">jansson_d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">I:\xcast-demo\thirdpart\jansson\lib\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">jansson.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">jansson</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">I:\xcast-demo\thirdpart\jansson\lib\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">jansson.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">jansson</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">I:\xcast-demo\thirdpart\jansson\lib\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">jansson.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">jansson</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>I:\xcast-demo\thirdpart\jansson\include;I:\xcast-demo\thirdpart\jansson\private_include;I:\xcast-demo\thirdpart\jansson\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4005;4996</DisableSpecificWarnings>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>I:\xcast-demo\thirdpart\jansson\include;I:\xcast-demo\thirdpart\jansson\private_include;I:\xcast-demo\thirdpart\jansson\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>I:\xcast-demo\thirdpart\jansson\include;I:\xcast-demo\thirdpart\jansson\private_include;I:\xcast-demo\thirdpart\jansson\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>I:\xcast-demo\thirdpart\jansson\include;I:\xcast-demo\thirdpart\jansson\private_include;I:\xcast-demo\thirdpart\jansson\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <DisableSpecificWarnings>4005;4996</DisableSpecificWarnings>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat></DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>I:\xcast-demo\thirdpart\jansson\include;I:\xcast-demo\thirdpart\jansson\private_include;I:\xcast-demo\thirdpart\jansson\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>I:\xcast-demo\thirdpart\jansson\include;I:\xcast-demo\thirdpart\jansson\private_include;I:\xcast-demo\thirdpart\jansson\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>I:\xcast-demo\thirdpart\jansson\include;I:\xcast-demo\thirdpart\jansson\private_include;I:\xcast-demo\thirdpart\jansson\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <DisableSpecificWarnings>4005;4996</DisableSpecificWarnings>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat></DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>I:\xcast-demo\thirdpart\jansson\include;I:\xcast-demo\thirdpart\jansson\private_include;I:\xcast-demo\thirdpart\jansson\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>I:\xcast-demo\thirdpart\jansson\include;I:\xcast-demo\thirdpart\jansson\private_include;I:\xcast-demo\thirdpart\jansson\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>I:\xcast-demo\thirdpart\jansson\include;I:\xcast-demo\thirdpart\jansson\private_include;I:\xcast-demo\thirdpart\jansson\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4005;4996</DisableSpecificWarnings>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_CONFIG_H;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>I:\xcast-demo\thirdpart\jansson\include;I:\xcast-demo\thirdpart\jansson\private_include;I:\xcast-demo\thirdpart\jansson\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>I:\xcast-demo\thirdpart\jansson\include;I:\xcast-demo\thirdpart\jansson\private_include;I:\xcast-demo\thirdpart\jansson\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="I:\xcast-demo\thirdpart\jansson\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule I:/xcast-demo/thirdpart/jansson/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"E:\Program Files\CMake\bin\cmake.exe" -HI:/xcast-demo/thirdpart/jansson -BI:/xcast-demo/thirdpart/jansson --check-stamp-file I:/xcast-demo/thirdpart/jansson/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">I:/xcast-demo/thirdpart/jansson/CMakeLists.txt;I:\xcast-demo\thirdpart\jansson\CMakeLists.txt;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineSystem.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystem.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeSystem.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInitialize.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompilerId.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCompilerIdDetection.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\ADSP-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\ARMCC-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\AppleClang-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Borland-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Clang-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Cray-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\GHS-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\GNU-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\HP-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IAR-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Intel-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\MIPSpro-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\MSVC-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\PGI-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\PathScale-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\SCO-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\TI-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Watcom-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\XL-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\zOS-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CompilerId\VS-10.vcxproj.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeFindBinUtils.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompiler.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeGenericSystem.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\WindowsPaths.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC-C.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineRCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeRCCompiler.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeRCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeRCInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeTestRCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeTestCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeTestCompilerCommon.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompilerABI.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeParseImplicitLinkInfo.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompilerABI.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompileFeatures.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompiler.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.cmake;I:\xcast-demo\thirdpart\jansson\cmake\CheckFunctionKeywords.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckCSourceCompiles.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFiles.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFile.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFileCXX.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckSymbolExists.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFile.c.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\__INT64.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT64_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\LONG_LONG_INT.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT32_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\__INT32.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\LONG_INT.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\SSIZE_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\UPPERCASE_SSIZE_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;I:\xcast-demo\thirdpart\jansson\jansson.pc.in;I:\xcast-demo\thirdpart\jansson\cmake\jansson_config.h.cmake;I:\xcast-demo\thirdpart\jansson\cmake\config.h.cmake;I:\xcast-demo\thirdpart\jansson\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">I:\xcast-demo\thirdpart\jansson\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule I:/xcast-demo/thirdpart/jansson/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"E:\Program Files\CMake\bin\cmake.exe" -HI:/xcast-demo/thirdpart/jansson -BI:/xcast-demo/thirdpart/jansson --check-stamp-file I:/xcast-demo/thirdpart/jansson/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">I:/xcast-demo/thirdpart/jansson/CMakeLists.txt;I:\xcast-demo\thirdpart\jansson\CMakeLists.txt;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineSystem.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystem.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeSystem.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInitialize.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompilerId.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCompilerIdDetection.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\ADSP-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\ARMCC-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\AppleClang-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Borland-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Clang-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Cray-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\GHS-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\GNU-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\HP-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IAR-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Intel-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\MIPSpro-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\MSVC-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\PGI-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\PathScale-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\SCO-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\TI-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Watcom-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\XL-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\zOS-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CompilerId\VS-10.vcxproj.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeFindBinUtils.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompiler.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeGenericSystem.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\WindowsPaths.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC-C.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineRCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeRCCompiler.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeRCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeRCInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeTestRCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeTestCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeTestCompilerCommon.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompilerABI.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeParseImplicitLinkInfo.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompilerABI.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompileFeatures.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompiler.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.cmake;I:\xcast-demo\thirdpart\jansson\cmake\CheckFunctionKeywords.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckCSourceCompiles.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFiles.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFile.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFileCXX.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckSymbolExists.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFile.c.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\__INT64.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT64_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\LONG_LONG_INT.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT32_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\__INT32.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\LONG_INT.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\SSIZE_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\UPPERCASE_SSIZE_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;I:\xcast-demo\thirdpart\jansson\jansson.pc.in;I:\xcast-demo\thirdpart\jansson\cmake\jansson_config.h.cmake;I:\xcast-demo\thirdpart\jansson\cmake\config.h.cmake;I:\xcast-demo\thirdpart\jansson\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">I:\xcast-demo\thirdpart\jansson\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule I:/xcast-demo/thirdpart/jansson/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"E:\Program Files\CMake\bin\cmake.exe" -HI:/xcast-demo/thirdpart/jansson -BI:/xcast-demo/thirdpart/jansson --check-stamp-file I:/xcast-demo/thirdpart/jansson/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">I:/xcast-demo/thirdpart/jansson/CMakeLists.txt;I:\xcast-demo\thirdpart\jansson\CMakeLists.txt;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineSystem.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystem.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeSystem.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInitialize.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompilerId.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCompilerIdDetection.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\ADSP-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\ARMCC-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\AppleClang-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Borland-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Clang-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Cray-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\GHS-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\GNU-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\HP-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IAR-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Intel-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\MIPSpro-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\MSVC-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\PGI-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\PathScale-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\SCO-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\TI-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Watcom-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\XL-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\zOS-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CompilerId\VS-10.vcxproj.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeFindBinUtils.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompiler.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeGenericSystem.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\WindowsPaths.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC-C.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineRCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeRCCompiler.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeRCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeRCInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeTestRCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeTestCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeTestCompilerCommon.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompilerABI.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeParseImplicitLinkInfo.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompilerABI.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompileFeatures.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompiler.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.cmake;I:\xcast-demo\thirdpart\jansson\cmake\CheckFunctionKeywords.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckCSourceCompiles.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFiles.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFile.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFileCXX.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckSymbolExists.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFile.c.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\__INT64.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT64_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\LONG_LONG_INT.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT32_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\__INT32.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\LONG_INT.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\SSIZE_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\UPPERCASE_SSIZE_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;I:\xcast-demo\thirdpart\jansson\jansson.pc.in;I:\xcast-demo\thirdpart\jansson\cmake\jansson_config.h.cmake;I:\xcast-demo\thirdpart\jansson\cmake\config.h.cmake;I:\xcast-demo\thirdpart\jansson\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">I:\xcast-demo\thirdpart\jansson\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule I:/xcast-demo/thirdpart/jansson/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"E:\Program Files\CMake\bin\cmake.exe" -HI:/xcast-demo/thirdpart/jansson -BI:/xcast-demo/thirdpart/jansson --check-stamp-file I:/xcast-demo/thirdpart/jansson/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">I:/xcast-demo/thirdpart/jansson/CMakeLists.txt;I:\xcast-demo\thirdpart\jansson\CMakeLists.txt;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineSystem.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystem.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeSystem.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInitialize.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompilerId.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCompilerIdDetection.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\ADSP-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\ARMCC-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\AppleClang-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Borland-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Clang-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Cray-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\GHS-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\GNU-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\HP-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IAR-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Intel-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\MIPSpro-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\MSVC-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\PGI-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\PathScale-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\SCO-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\TI-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\Watcom-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\XL-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\zOS-C-DetermineCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CompilerId\VS-10.vcxproj.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeFindBinUtils.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompiler.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeGenericSystem.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\WindowsPaths.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC-C.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineRCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeRCCompiler.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeRCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeRCInformation.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeTestRCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeTestCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeTestCompilerCommon.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompilerABI.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeParseImplicitLinkInfo.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompilerABI.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeDetermineCompileFeatures.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompiler.cmake.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CMakeCCompiler.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.cmake;I:\xcast-demo\thirdpart\jansson\cmake\CheckFunctionKeywords.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckCSourceCompiles.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFiles.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFile.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFileCXX.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckSymbolExists.cmake;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckIncludeFile.c.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\__INT64.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT64_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\LONG_LONG_INT.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT32_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\__INT32.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\LONG_INT.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\SSIZE_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckTypeSize.c.in;I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\UPPERCASE_SSIZE_T.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeConfigurableFile.in;I:\xcast-demo\thirdpart\jansson\jansson.pc.in;I:\xcast-demo\thirdpart\jansson\cmake\jansson_config.h.cmake;I:\xcast-demo\thirdpart\jansson\cmake\config.h.cmake;I:\xcast-demo\thirdpart\jansson\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">I:\xcast-demo\thirdpart\jansson\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="I:\xcast-demo\thirdpart\jansson\src\dump.c"  />
+    <ClCompile Include="I:\xcast-demo\thirdpart\jansson\src\error.c"  />
+    <ClCompile Include="I:\xcast-demo\thirdpart\jansson\src\hashtable.c"  />
+    <ClCompile Include="I:\xcast-demo\thirdpart\jansson\src\load.c"  />
+    <ClCompile Include="I:\xcast-demo\thirdpart\jansson\src\memory.c"  />
+    <ClCompile Include="I:\xcast-demo\thirdpart\jansson\src\pack_unpack.c"  />
+    <ClCompile Include="I:\xcast-demo\thirdpart\jansson\src\strbuffer.c"  />
+    <ClCompile Include="I:\xcast-demo\thirdpart\jansson\src\strconv.c"  />
+    <ClCompile Include="I:\xcast-demo\thirdpart\jansson\src\utf.c"  />
+    <ClCompile Include="I:\xcast-demo\thirdpart\jansson\src\value.c"  />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="I:\xcast-demo\thirdpart\jansson\ZERO_CHECK.vcxproj">
+      <Project>{616B6EF9-D3F5-30D3-9709-22D42BD31715}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

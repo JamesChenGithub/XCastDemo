@@ -1,0 +1,3 @@
+I:/xcast-demo/thirdpart/jansson/CMakeFiles/jansson.dir
+I:/xcast-demo/thirdpart/jansson/CMakeFiles/ALL_BUILD.dir
+I:/xcast-demo/thirdpart/jansson/CMakeFiles/ZERO_CHECK.dir

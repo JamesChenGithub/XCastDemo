@@ -1,0 +1,1950 @@
+************************************************************************ xcast new proccess ************************************************************************
+xcast version : RDM_v1.0.0_b1.0.0.15_3749
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'stream':'0x007C61A0' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'logger':'0x007C6210' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'event':'0x007C6280' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'account':'0x007C62F0' of 'default'.
+[2018-03-22 15:00:44.824][I][xcast.c:43][setup_account][t:13260]: xcast app id is 1400036169, account is 67890
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'device':'0x007C6360' of 'device_root'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'device' add child 'camera':'0x007C63D0' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'device' add child 'mic':'0x007C6440' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'device' add child 'speaker':'0x007C64B0' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'device' add child 'external':'0x007C6520' of 'default'.
+[2018-03-22 15:00:44.824][E][xc_cell.c:318][xc_set_err_msg:xc_cell_lookup][t:13260]: invalid path of preference:preference.
+[2018-03-22 15:00:44.824][E][xc_cast.c:203][xc_set_err_msg:xc_get_property][t:13260]: no property supported for preference.external-device
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'external' add child 'ext1':'0x007C6590' of 'device'.
+[2018-03-22 15:00:44.824][D][xc_device.c:220][xc_device_nofity][t:13260]: [DEVICE] 'ext1' state:1
+[2018-03-22 15:00:44.824][I][xc_device_root.c:176][xc_device_add][t:13260]: [DEVICE] device 'ext1' of type 'device' added.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'external' add child 'ext2':'0x007C6670' of 'device'.
+[2018-03-22 15:00:44.824][D][xc_device.c:220][xc_device_nofity][t:13260]: [DEVICE] 'ext2' state:1
+[2018-03-22 15:00:44.824][I][xc_device_root.c:176][xc_device_add][t:13260]: [DEVICE] device 'ext2' of type 'device' added.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'external' add child 'ext3':'0x007C6750' of 'device'.
+[2018-03-22 15:00:44.824][D][xc_device.c:220][xc_device_nofity][t:13260]: [DEVICE] 'ext3' state:1
+[2018-03-22 15:00:44.824][I][xc_device_root.c:176][xc_device_add][t:13260]: [DEVICE] device 'ext3' of type 'device' added.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'external' add child 'ext4':'0x007F59D0' of 'device'.
+[2018-03-22 15:00:44.824][D][xc_device.c:220][xc_device_nofity][t:13260]: [DEVICE] 'ext4' state:1
+[2018-03-22 15:00:44.824][I][xc_device_root.c:176][xc_device_add][t:13260]: [DEVICE] device 'ext4' of type 'device' added.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'preference':'0x007F5AB0' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'audio':'0x007F5B20' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'video':'0x007F5B90' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'net':'0x007F5C00' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'misc':'0x007F5C70' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'profile':'0x007F5CE0' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'plugin':'0x007F5D50' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'driver':'0x007F5DC0' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'driver' add child 'loader':'0x007F5E30' of 'driver.loader'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'driver' add child 'network':'0x007F5EA0' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'thread-pool':'0x007F5F10' of 'default'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'thread-pool' add child 'default':'0x007F5F80' of 'thread-pool'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'thread-pool' add child 'report':'0x007F5FF0' of 'report'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'network' add child 'libuv':'0x007F6060' of 'driver.network.libuv'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'module.libuv':'0x007F60D0' of 'module'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'core' add child 'lan-relay':'0x007F6140' of 'lan_relay_driver'.
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'lan-relay' add child 'lan-relay-host':'0x007F61B0' of 'channel'.
+[2018-03-22 15:00:44.824][I][uv_connection.c:1076][conn_new][t:13260]: ====>[CONN-NEW] 'uv_conn_1' 0x007F6220
+[2018-03-22 15:00:44.824][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'libuv' add child 'uv_conn_1':'0x007F6220' of 'conn.libuv'.
+[2018-03-22 15:00:55.406][I][lan_relay_driver.c:174][get_host_addr][t:13260]: get host addr:ip(10.10.107.37) port(9021) gateway(10.10.107.1) name({716F0C8F-9674-48D2-B2B1-05CA3A04CD29}) desc(Realtek PCIe GBE Family Controller) mac(3464A9159DBC)
+
+[2018-03-22 15:00:55.406][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'lan_relay_module':'0x007F6370' of 'module'.
+[2018-03-22 15:00:55.416][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'module.http':'0x007F63E0' of 'module'.
+[2018-03-22 15:00:55.416][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'network' add child 'app_channel':'0x007F6450' of 'http_channel_driver_class'.
+[2018-03-22 15:00:55.416][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'app_channel' add child 'http':'0x007F64C0' of 'network.http'.
+[2018-03-22 15:00:55.416][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'http' add child 'http-chn':'0x007F6530' of 'channel'.
+[2018-03-22 15:00:55.416][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'av_http_channel_module':'0x007F65A0' of 'module'.
+[2018-03-22 15:00:55.416][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'driver' add child 'sys_info':'0x007F6610' of 'sys_info'.
+[2018-03-22 15:00:55.416][I][sys_info.cc:144][sys_info_update][t:13260]: current platform(windows)
+[2018-03-22 15:00:55.416][D][sys_info.cc:188][sys_info_update][t:13260]: get screen width(1920) height(1080)
+[2018-03-22 15:00:58.466][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'sys_info_module':'0x007F66F0' of 'module'.
+[2018-03-22 15:00:58.466][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'module.udt':'0x007F6760' of 'module'.
+[2018-03-22 15:00:58.476][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'av_common_module':'0x00849E60' of 'module'.
+[2018-03-22 15:00:58.476][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'preference' add child 'spear_ctrl':'0x00849DF0' of 'spear_ctrl'.
+[2018-03-22 15:00:58.477][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'preference' add child 'video':'0x00849ED0' of 'default'.
+[2018-03-22 15:00:58.477][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'preference' add child 'audio':'0x00849FB0' of 'default'.
+[2018-03-22 15:00:58.477][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'preference' add child 'net':'0x0084A020' of 'default'.
+[2018-03-22 15:00:58.477][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'preference' add child 'custom':'0x0084A6B0' of 'default'.
+[2018-03-22 15:00:58.489][D][spear_ctrl.cc:826][load_json_conf][t:13260]: load spear config(E:\GitHub\XCastDemo\xcast-demo\bin\Debug\1400036169.conf)
+[2018-03-22 15:00:58.492][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'preference' add child 'spear':'0x0084A720' of 'spear-config'.
+[2018-03-22 15:00:58.492][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'spear' add child 'audio':'0x0084A790' of 'default'.
+[2018-03-22 15:00:58.492][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'spear' add child 'video':'0x0084A800' of 'default'.
+[2018-03-22 15:00:58.492][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'spear' add child 'net':'0x0084A870' of 'default'.
+[2018-03-22 15:00:58.492][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'spear' add child 'roles':'0x0084A8E0' of 'default'.
+[2018-03-22 15:00:58.492][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child 'user':'0x0084A950' of 'default'.
+[2018-03-22 15:00:58.492][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'user' add child 'audio':'0x0084A9C0' of 'default'.
+[2018-03-22 15:00:58.493][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'user' add child 'video':'0x0084AA30' of 'default'.
+[2018-03-22 15:00:58.493][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'user' add child 'net':'0x0084AAA0' of 'default'.
+[2018-03-22 15:00:58.493][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '32024010':'0x0084AB10' of 'default'.
+[2018-03-22 15:00:58.493][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '32024010' add child 'audio':'0x0084AB80' of 'default'.
+[2018-03-22 15:00:58.493][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '32024010' add child 'video':'0x0084ABF0' of 'default'.
+[2018-03-22 15:00:58.493][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '32024010' add child 'net':'0x007F6840' of 'default'.
+[2018-03-22 15:00:58.493][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '480360':'0x007F68B0' of 'default'.
+[2018-03-22 15:00:58.493][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '480360' add child 'audio':'0x00832CA0' of 'default'.
+[2018-03-22 15:00:58.493][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '480360' add child 'video':'0x00832D10' of 'default'.
+[2018-03-22 15:00:58.493][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '480360' add child 'net':'0x00832D80' of 'default'.
+[2018-03-22 15:00:58.494][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '64036815':'0x00832DF0' of 'default'.
+[2018-03-22 15:00:58.494][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '64036815' add child 'audio':'0x00832E60' of 'default'.
+[2018-03-22 15:00:58.494][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '64036815' add child 'video':'0x00832ED0' of 'default'.
+[2018-03-22 15:00:58.494][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '64036815' add child 'net':'0x00832F40' of 'default'.
+[2018-03-22 15:00:58.494][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '64048025':'0x00832FB0' of 'default'.
+[2018-03-22 15:00:58.494][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '64048025' add child 'audio':'0x00833020' of 'default'.
+[2018-03-22 15:00:58.494][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '64048025' add child 'video':'0x00833090' of 'default'.
+[2018-03-22 15:00:58.494][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '64048025' add child 'net':'0x00833100' of 'default'.
+[2018-03-22 15:00:58.494][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '96054025':'0x00833170' of 'default'.
+[2018-03-22 15:00:58.494][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '96054025' add child 'audio':'0x008331E0' of 'default'.
+[2018-03-22 15:00:58.495][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '96054025' add child 'video':'0x00833250' of 'default'.
+[2018-03-22 15:00:58.495][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '96054025' add child 'net':'0x008332C0' of 'default'.
+[2018-03-22 15:00:58.495][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '12872020':'0x00833330' of 'default'.
+[2018-03-22 15:00:58.495][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '12872020' add child 'audio':'0x008333A0' of 'default'.
+[2018-03-22 15:00:58.495][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '12872020' add child 'video':'0x00833410' of 'default'.
+[2018-03-22 15:00:58.495][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '12872020' add child 'net':'0x00833480' of 'default'.
+[2018-03-22 15:00:58.495][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '32024015':'0x008334F0' of 'default'.
+[2018-03-22 15:00:58.495][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '32024015' add child 'audio':'0x00833560' of 'default'.
+[2018-03-22 15:00:58.495][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '32024015' add child 'video':'0x008335D0' of 'default'.
+[2018-03-22 15:00:58.495][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '32024015' add child 'net':'0x00833640' of 'default'.
+[2018-03-22 15:00:58.496][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '64036820':'0x008336B0' of 'default'.
+[2018-03-22 15:00:58.496][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '64036820' add child 'audio':'0x00833720' of 'default'.
+[2018-03-22 15:00:58.496][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '64036820' add child 'video':'0x00833790' of 'default'.
+[2018-03-22 15:00:58.496][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '64036820' add child 'net':'0x00833800' of 'default'.
+[2018-03-22 15:00:58.496][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '64048015':'0x00833870' of 'default'.
+[2018-03-22 15:00:58.496][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '64048015' add child 'audio':'0x008338E0' of 'default'.
+[2018-03-22 15:00:58.496][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '64048015' add child 'video':'0x00833950' of 'default'.
+[2018-03-22 15:00:58.496][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '64048015' add child 'net':'0x008339C0' of 'default'.
+[2018-03-22 15:00:58.496][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '96054015':'0x00833A30' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '96054015' add child 'audio':'0x00833AA0' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '96054015' add child 'video':'0x00833B10' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '96054015' add child 'net':'0x00833B80' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '12872030':'0x00833BF0' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '12872030' add child 'audio':'0x00830CA0' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '12872030' add child 'video':'0x00830D10' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '12872030' add child 'net':'0x00830D80' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '96054020':'0x00830DF0' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '96054020' add child 'audio':'0x00830E60' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '96054020' add child 'video':'0x00830ED0' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '96054020' add child 'net':'0x00830F40' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '48036015':'0x00830FB0' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '48036015' add child 'audio':'0x00831020' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '48036015' add child 'video':'0x00831090' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '48036015' add child 'net':'0x00831100' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '7640152400':'0x00831170' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '7640152400' add child 'audio':'0x008311E0' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '7640152400' add child 'video':'0x00831250' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '7640152400' add child 'net':'0x008312C0' of 'default'.
+[2018-03-22 15:00:58.497][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child '640480bp':'0x00831330' of 'default'.
+[2018-03-22 15:00:58.498][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '640480bp' add child 'audio':'0x008313A0' of 'default'.
+[2018-03-22 15:00:58.498][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '640480bp' add child 'video':'0x00831410' of 'default'.
+[2018-03-22 15:00:58.498][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  '640480bp' add child 'net':'0x00831480' of 'default'.
+[2018-03-22 15:00:58.498][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child 'wawa640':'0x008314F0' of 'default'.
+[2018-03-22 15:00:58.498][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'wawa640' add child 'audio':'0x00831560' of 'default'.
+[2018-03-22 15:00:58.498][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'wawa640' add child 'video':'0x008315D0' of 'default'.
+[2018-03-22 15:00:58.498][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'wawa640' add child 'net':'0x00831640' of 'default'.
+[2018-03-22 15:00:58.498][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child 'lx320':'0x008316B0' of 'default'.
+[2018-03-22 15:00:58.498][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'lx320' add child 'audio':'0x00831720' of 'default'.
+[2018-03-22 15:00:58.499][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'lx320' add child 'video':'0x00831790' of 'default'.
+[2018-03-22 15:00:58.499][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'lx320' add child 'net':'0x00831800' of 'default'.
+[2018-03-22 15:00:58.499][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child 'lx640':'0x00831870' of 'default'.
+[2018-03-22 15:00:58.499][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'lx640' add child 'audio':'0x008318E0' of 'default'.
+[2018-03-22 15:00:58.499][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'lx640' add child 'video':'0x00831950' of 'default'.
+[2018-03-22 15:00:58.499][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'lx640' add child 'net':'0x008319C0' of 'default'.
+[2018-03-22 15:00:58.499][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child 'lx64015':'0x00831A30' of 'default'.
+[2018-03-22 15:00:58.499][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'lx64015' add child 'audio':'0x00831AA0' of 'default'.
+[2018-03-22 15:00:58.499][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'lx64015' add child 'video':'0x00831B10' of 'default'.
+[2018-03-22 15:00:58.499][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'lx64015' add child 'net':'0x00831B80' of 'default'.
+[2018-03-22 15:00:58.499][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child 'lx960':'0x00831BF0' of 'default'.
+[2018-03-22 15:00:58.499][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'lx960' add child 'audio':'0x0080CAF0' of 'default'.
+[2018-03-22 15:00:58.500][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'lx960' add child 'video':'0x0080CB60' of 'default'.
+[2018-03-22 15:00:58.500][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'lx960' add child 'net':'0x0080CBD0' of 'default'.
+[2018-03-22 15:00:58.500][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'roles' add child 'fancy':'0x0080CC40' of 'default'.
+[2018-03-22 15:00:58.500][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'fancy' add child 'audio':'0x0080CCB0' of 'default'.
+[2018-03-22 15:00:58.500][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'fancy' add child 'video':'0x0080CD20' of 'default'.
+[2018-03-22 15:00:58.500][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'fancy' add child 'net':'0x0080CD90' of 'default'.
+[2018-03-22 15:00:58.501][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'av_config':'0x0080CE00' of 'module'.
+[2018-03-22 15:00:58.501][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'profile' add child 'observer':'0x0080CE70' of 'av_profile'.
+[2018-03-22 15:00:58.501][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'av_profile':'0x0080CEE0' of 'module'.
+[2018-03-22 15:00:58.501][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'module.udt':'0x0080CF50' of 'module'.
+[2018-03-22 15:00:58.501][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'driver' add child 'trae':'0x0080CFC0' of 'driver.trae'.
+[2018-03-22 15:00:58.501][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'trae_module':'0x0080D030' of 'module'.
+[2018-03-22 15:00:58.502][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'driver' add child 'videocore':'0x0080D0A0' of 'tve driver'.
+[2018-03-22 15:01:14.783][E][tve_driver.cc:78][LogVideoEngine][t:13260]: [PreLoadIntelDecLib][VideoDecoder.cpp][47]preload intel dec lib ok!
+[2018-03-22 15:01:14.783][E][tve_driver.cc:78][LogVideoEngine][t:13260]: [PreLoadIntelEncLib][VideoEncoder.cpp][65]preload intel enc ok
+[2018-03-22 15:01:14.783][E][tve_driver.cc:78][LogVideoEngine][t:13260]: [CVideoEngine::SetSendMode][CVideoEngine.cpp][1055]SetSendMode 4
+[2018-03-22 15:01:14.783][E][tve_driver.cc:78][LogVideoEngine][t:13260]: [PreLoadIntelDecLib][VideoDecoder.cpp][47]preload intel dec lib ok!
+[2018-03-22 15:01:14.783][E][tve_driver.cc:78][LogVideoEngine][t:13260]: [PreLoadIntelEncLib][VideoEncoder.cpp][65]preload intel enc ok
+[2018-03-22 15:01:14.783][E][tve_driver.cc:78][LogVideoEngine][t:13260]: [CVideoEngine::SetSendMode][CVideoEngine.cpp][1055]SetSendMode 4
+[2018-03-22 15:01:14.783][D][tve_driver.cc:491][read_ability][t:13260]: cpu name is Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz
+[2018-03-22 15:01:14.783][E][tve_driver.cc:78][LogVideoEngine][t:13260]: [PreLoadIntelDecLib][VideoDecoder.cpp][47]preload intel dec lib ok!
+[2018-03-22 15:01:14.783][E][tve_driver.cc:78][LogVideoEngine][t:13260]: [PreLoadIntelEncLib][VideoEncoder.cpp][65]preload intel enc ok
+[2018-03-22 15:01:16.561][E][tve_driver.cc:78][LogVideoEngine][t:13260]: [PreLoadIntelDecLib][VideoDecoder.cpp][47]preload intel dec lib ok!
+[2018-03-22 15:01:16.561][E][tve_driver.cc:78][LogVideoEngine][t:13260]: [PreLoadIntelEncLib][VideoEncoder.cpp][65]preload intel enc ok
+[2018-03-22 15:01:16.617][E][tve_driver.cc:514][read_ability][t:13260]: CPU Level is 157
+[2018-03-22 15:01:16.617][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'tve_module':'0x0080D110' of 'module'.
+[2018-03-22 15:01:16.618][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'driver' add child 'adv_video':'0x0080D180' of 'driver.adv_video'.
+[2018-03-22 15:01:16.618][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'adv-video module':'0x0080D1F0' of 'module'.
+[2018-03-22 15:01:16.618][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'av_renderer':'0x0080D260' of 'module'.
+[2018-03-22 15:01:16.619][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'av_session_module':'0x0080D2D0' of 'module'.
+[2018-03-22 15:01:16.619][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'driver' add child 'screen_capture':'0x0080D340' of 'driver.screen_capture'.
+[2018-03-22 15:01:16.619][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'video-capture module':'0x0080D3B0' of 'module'.
+[2018-03-22 15:01:16.619][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'plugin' add child 'screen preprocor module':'0x0080D420' of 'module'.
+[2018-03-22 15:01:16.619][D][spear_ctrl.cc:256][av_preference_int32][t:13260]: ****** pref('preference.audio.force-aec'= 0)
+[2018-03-22 15:01:16.620][D][spear_ctrl.cc:256][av_preference_int32][t:13260]: ****** pref('preference.audio.force-agc'= 0)
+[2018-03-22 15:01:16.620][D][spear_ctrl.cc:256][av_preference_int32][t:13260]: ****** pref('preference.audio.force-ans'= 0)
+[2018-03-22 15:01:16.620][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: CTRAEDataObserver [CTRAEEngineStat::CreateInstance] entry, ins_count_: 0
+[2018-03-22 15:01:16.621][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: 1967 PM 02650068|M|E_S 15189F48|V|m_eStrEngineState|'E_UNKOWN'
+[2018-03-22 15:01:16.621][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: CTRAEDataObserver [CTRAEEngineStat::CreateInstance] exit, ins_count_: 1
+[2018-03-22 15:01:16.621][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [CTRAEEngineStat::EnableEngineStatReport] state: OPEN
+[2018-03-22 15:01:16.621][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: CTRAEDataObserver [CTRAEDataObserver::CreateInstance] entry, ins_count_: 0
+[2018-03-22 15:01:16.626][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: 1125 PM 02650068|M|E_S 02652A4B|V|m_bEnginePause|false
+[2018-03-22 15:01:16.627][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: CTRAEDataObserver [CTRAEDataObserver::CreateInstance] exit, ins_count_: 1
+[2018-03-22 15:01:16.627][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [EngineStateSwitch] E_UNKOWN to E_CREATE 
+
+[2018-03-22 15:01:16.627][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: 1664 PM 02650068|M|E_S 15189F48|V|m_eStrEngineState|'E_CREATE'
+[2018-03-22 15:01:16.627][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: 1637 PM 02650068|M|E_S 02651960|V|m_nTraeRef|1
+[2018-03-22 15:01:16.628][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: CreateInstance ref=1
+
+[2018-03-22 15:01:16.628][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [WARNING] CEngine::MakeSureConfigurationDeterminedAndTopoCreated !!!
+
+[2018-03-22 15:01:16.637][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: 725 PM 04730040|M|mix 047315AC|V|m_nStrmCnt|4
+[2018-03-22 15:01:16.638][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: 121 PM 04730040|M|mix 047315B0|V|m_nMixSampleRate|48000 047315B4|V|m_nMixCh|2 047315B8|V|m_nOutSampleRate|48000 047315BC|V|m_nOutCh|2
+[2018-03-22 15:01:16.639][I][trae_driver.cc:145][SpeechEngineLog][t:10892]: [INFO] Thread with name:thread 15 started 
+
+[2018-03-22 15:01:16.642][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [Warning]Speaker State From Off To On Spent 20 ms
+
+[2018-03-22 15:01:16.642][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: 725 PM 04730040|M|mix 047315AC|V|m_nStrmCnt|6
+[2018-03-22 15:01:18.233][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [Info][Select Capture Device] UseDefault = true,External Choose Index = -1,real internal Device index = 0
+ 		 DeviceName = И╨╕Е┘▀Иё▌ (3- Webcam C170) , DeviceId = {0.0.1.00000000}.{47983834-477e-4870-8afc-91a3c8e1ab74}
+
+[2018-03-22 15:01:18.245][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [INFO] WinWasapiCapture -- SelDev index 0.
+
+[2018-03-22 15:01:18.249][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [Info][Select Capture Device] UseDefault = false,External Choose Index = 0,real internal Device index = 0
+ 		 DeviceName = И╨╕Е┘▀Иё▌ (3- Webcam C170) , DeviceId = {0.0.1.00000000}.{47983834-477e-4870-8afc-91a3c8e1ab74}
+
+[2018-03-22 15:01:18.249][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [INFO] WinWasapiCapture -- Real index 0.
+
+[2018-03-22 15:01:18.251][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [WARNING] CWinWasapiCapture::GetOutputType: Device support multiple channels [1]
+
+[2018-03-22 15:01:18.251][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [!!!!!]TRAE CWinWasapiCapture::GetOutputType output type sr= 44100,ch = 1
+
+[2018-03-22 15:01:18.251][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [!!!!!]TRAE nSr = 44100, nCh = 1
+
+[2018-03-22 15:01:18.251][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [!!!!!]TRAE m_nFrameSize = 1764
+
+[2018-03-22 15:01:18.252][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: 620 PM 02650068|M|E_S 026529F8|V|m_nCapSr|44100 026529FC|V|m_nCapCh|-842150451
+[2018-03-22 15:01:18.255][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [WARNING] CWinWasapiCapture::GetOutputType: Device support multiple channels [1]
+
+[2018-03-22 15:01:18.255][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [!!!!!]TRAE CWinWasapiCapture::GetOutputType output type sr= 44100,ch = 1
+
+[2018-03-22 15:01:18.255][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [INFO] WinWasapiCapture -- SelDev index 0.
+
+[2018-03-22 15:01:18.260][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [Info][Select Capture Device] UseDefault = false,External Choose Index = 0,real internal Device index = 0
+ 		 DeviceName = И╨╕Е┘▀Иё▌ (3- Webcam C170) , DeviceId = {0.0.1.00000000}.{47983834-477e-4870-8afc-91a3c8e1ab74}
+
+[2018-03-22 15:01:18.260][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [INFO] WinWasapiCapture -- Real index 0.
+
+[2018-03-22 15:01:18.261][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [WARNING] CWinWasapiCapture::GetOutputType: Device support multiple channels [1]
+
+[2018-03-22 15:01:18.262][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [!!!!!]TRAE CWinWasapiCapture::GetOutputType output type sr= 44100,ch = 1
+
+[2018-03-22 15:01:18.262][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [!!!!!]same setting,TRAE nSr = 44100, nCh = 1
+
+[2018-03-22 15:01:18.263][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: 620 PM 02650068|M|E_S 026529F8|V|m_nCapSr|44100 026529FC|V|m_nCapCh|-842150451
+[2018-03-22 15:01:18.267][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [Info][Select Render Device] UseDefault = true,External Choose Index = -1,real internal Device index = 0
+ 		 DeviceName = Ф┴╛Её╟Е≥╗ (Realtek High Definition Audio) , DeviceId = {0.0.0.00000000}.{1a89c4ca-dc50-4aae-9afa-f93e66c38aac}
+
+[2018-03-22 15:01:18.267][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [INFO] WinWasapiRender -- SelDev index 0.
+
+[2018-03-22 15:01:18.268][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [Info][Select Render Device] UseDefault = false,External Choose Index = 0,real internal Device index = 0
+ 		 DeviceName = Ф┴╛Её╟Е≥╗ (Realtek High Definition Audio) , DeviceId = {0.0.0.00000000}.{1a89c4ca-dc50-4aae-9afa-f93e66c38aac}
+
+[2018-03-22 15:01:18.268][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [INFO] WinWasapiRender -- Real index 0.
+
+[2018-03-22 15:01:18.269][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: 628 PM 02650068|M|E_S 02652A00|V|m_nPlaySr|48000 02652A04|V|m_nPlayCh|2
+[2018-03-22 15:01:18.270][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [INFO] WinWasapiRender -- SelDev index 0.
+
+[2018-03-22 15:01:18.271][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [Info][Select Render Device] UseDefault = false,External Choose Index = 0,real internal Device index = 0
+ 		 DeviceName = Ф┴╛Её╟Е≥╗ (Realtek High Definition Audio) , DeviceId = {0.0.0.00000000}.{1a89c4ca-dc50-4aae-9afa-f93e66c38aac}
+
+[2018-03-22 15:01:18.271][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [INFO] WinWasapiRender -- Real index 0.
+
+[2018-03-22 15:01:18.272][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: 628 PM 02650068|M|E_S 02652A00|V|m_nPlaySr|48000 02652A04|V|m_nPlayCh|2
+[2018-03-22 15:01:18.275][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [Warning]Mic State From Off To On Spent 1654 ms
+
+[2018-03-22 15:01:18.275][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: QTTopo Create true
+
+[2018-03-22 15:01:18.275][I][trae_driver.cc:145][SpeechEngineLog][t:13260]: [Info][PathInfo][E:\GitHub\XCastDemo\xcast-demo\example\bin\dataллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллл/]
+
+[2018-03-22 15:01:18.275][I][trae_driver.cc:2605][trae_start][t:11868]: trae_start m_argAudio{nPlayDevId[0] nRecDevId[0]},audioCategory = 0
+[2018-03-22 15:01:18.275][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] OS Version: [Microsoft Windows 7 Service Pack 1][10060101]
+
+[2018-03-22 15:01:18.275][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TRAE Version: 1.8.9003.28_3367:20729
+
+[2018-03-22 15:01:18.276][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TRAE: InitEngine() [0x009aff00]
+
+[2018-03-22 15:01:18.276][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [EngineStateSwitch] E_CREATE to E_INIT 
+
+[2018-03-22 15:01:18.276][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: 1664 PM 02650068|M|E_S 15189F48|V|m_eStrEngineState|'E_INIT'
+[2018-03-22 15:01:18.277][E][xc_cell.c:318][xc_set_err_msg:xc_cell_lookup][t:13260]: invalid path of device.screen-capture:screen-capture.
+[2018-03-22 15:01:18.277][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'device' add child 'screen-capture':'0x0080D490' of 'camera.video-capture'.
+[2018-03-22 15:01:18.277][D][xc_device.c:220][xc_device_nofity][t:13260]: [DEVICE] 'screen-capture' state:1
+[2018-03-22 15:01:18.277][I][xc_device_root.c:176][xc_device_add][t:13260]: [DEVICE] device 'screen-capture' of type 'camera.video-capture' added.
+[2018-03-22 15:01:18.277][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info] linkparsers start
+
+[2018-03-22 15:01:18.277][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [NetSrc[0](0) ==> dmx[1](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:18.279][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: 628 PM 02650068|M|E_S 02652A00|V|m_nPlaySr|48000 02652A04|V|m_nPlayCh|2
+[2018-03-22 15:01:18.280][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [tee[3](0) ==> WinWasapiRender[4](0), type=[CAT_AUDIO : TYPE_PCM : [sr=48000, ch=2, b=16] ]]
+
+[2018-03-22 15:01:18.280][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: 372 PM 04730040|M|mix 047315B8|V|m_nOutSampleRate|48000 047315BC|V|m_nOutCh|2
+[2018-03-22 15:01:18.280][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [mix[2](0) ==> tee[3](0), type=[CAT_AUDIO : TYPE_PCM : [sr=48000, ch=2, b=16] ]]
+
+[2018-03-22 15:01:18.281][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [AutoDec[18](0) ==> mix[2](0), type=[CAT_AUDIO : TYPE_PCM : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:18.281][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [jitter[17](0) ==> AutoDec[18](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:18.281][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [dmx[1](0) ==> FEC Dec[15](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:18.282][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [FEC Dec[15](0) ==> QT Dec[16](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:20.020][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [QT Dec[16](0) ==> jitter[17](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.021][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: ParserId 18---Index 0
+
+[2018-03-22 15:01:20.025][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [AutoDec[23](0) ==> mix[2](1), type=[CAT_AUDIO : TYPE_PCM : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.030][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [jitter[22](0) ==> AutoDec[23](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.031][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [dmx[1](1) ==> FEC Dec[20](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:20.032][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [FEC Dec[20](0) ==> QT Dec[21](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:20.032][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [QT Dec[21](0) ==> jitter[22](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.033][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: ParserId 23---Index 1
+
+[2018-03-22 15:01:20.125][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [AutoDec[28](0) ==> mix[2](2), type=[CAT_AUDIO : TYPE_PCM : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.125][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [jitter[27](0) ==> AutoDec[28](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.126][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [dmx[1](2) ==> FEC Dec[25](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:20.126][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [FEC Dec[25](0) ==> QT Dec[26](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:20.127][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [QT Dec[26](0) ==> jitter[27](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.127][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: ParserId 28---Index 2
+
+[2018-03-22 15:01:20.257][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [AutoDec[33](0) ==> mix[2](3), type=[CAT_AUDIO : TYPE_PCM : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.257][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [jitter[32](0) ==> AutoDec[33](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.257][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [dmx[1](3) ==> FEC Dec[30](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:20.257][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [FEC Dec[30](0) ==> QT Dec[31](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:20.257][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [QT Dec[31](0) ==> jitter[32](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.257][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: ParserId 33---Index 3
+
+[2018-03-22 15:01:20.457][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [AutoDec[38](0) ==> mix[2](4), type=[CAT_AUDIO : TYPE_PCM : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.457][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [jitter[37](0) ==> AutoDec[38](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.458][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [dmx[1](4) ==> FEC Dec[35](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:20.458][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [FEC Dec[35](0) ==> QT Dec[36](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:20.458][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [QT Dec[36](0) ==> jitter[37](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.459][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: ParserId 38---Index 4
+
+[2018-03-22 15:01:20.461][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [AutoDec[43](0) ==> mix[2](5), type=[CAT_AUDIO : TYPE_PCM : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.461][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [jitter[42](0) ==> AutoDec[43](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.462][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [dmx[1](5) ==> FEC Dec[40](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:20.462][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [FEC Dec[40](0) ==> QT Dec[41](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:20.462][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [QT Dec[41](0) ==> jitter[42](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.472][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: ParserId 43---Index 5
+
+[2018-03-22 15:01:20.768][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [WARNING] CWinWasapiCapture::GetOutputType: Device support multiple channels [1]
+
+[2018-03-22 15:01:20.768][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [!!!!!]TRAE CWinWasapiCapture::GetOutputType output type sr= 44100,ch = 1
+
+[2018-03-22 15:01:20.881][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: 620 PM 02650068|M|E_S 026529F8|V|m_nCapSr|44100 026529FC|V|m_nCapCh|-842150451
+[2018-03-22 15:01:20.881][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][EC]: nInputIdx:0,pType sr:44100, ch:1 
+
+[2018-03-22 15:01:20.881][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][EC]: SetInputType 0, cap sr:44100 
+
+[2018-03-22 15:01:20.881][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][EC]:SetInputType 0, pstAecmaecHandle is NULL 
+
+[2018-03-22 15:01:20.881][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [WinWasapiCapture[5](0) ==> ec[6](0), type=[CAT_AUDIO : TYPE_PCM : [sr=44100, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.881][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][EC]: nInputIdx:1,pType sr:48000, ch:2 
+
+[2018-03-22 15:01:20.881][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][EC]: SetInputType 1, ref sr:48000 
+
+[2018-03-22 15:01:20.881][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][EC]:SetInputType 1, pstAecmaecHandle is NULL 
+
+[2018-03-22 15:01:20.881][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [tee[3](1) ==> ec[6](1), type=[CAT_AUDIO : TYPE_PCM : [sr=48000, ch=2, b=16] ]]
+
+[2018-03-22 15:01:20.881][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][EC]: nOutIdx:0,pType sr:48000, ch:1 
+
+[2018-03-22 15:01:20.881][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][EC]: SetOutputType  nChannels:1, nSampleRate:48000 
+
+[2018-03-22 15:01:20.891][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][EC]: SetOutputType, out sr:48000 
+
+[2018-03-22 15:01:20.891][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [ec[6](0) ==> CaptureMix[7](0), type=[CAT_AUDIO : TYPE_PCM : [sr=48000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.891][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [CaptureMix[7](0) ==> prep[8](0), type=[CAT_AUDIO : TYPE_PCM : [sr=48000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.891][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [prep[8](0) ==> AuxInMix[14](0), type=[CAT_AUDIO : TYPE_PCM : [sr=48000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.891][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [AuxInMix[14](0) ==> AutoEnc[10](0), type=[CAT_AUDIO : TYPE_PCM : [sr=48000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.891][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [AutoEnc[10](0) ==> QTEnc[11](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=48000, ch=1, b=16] ]]
+
+[2018-03-22 15:01:20.891][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [QTEnc[11](0) ==> FEC Enc[13](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:20.891][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TopoNode: LINK [FEC Enc[13](0) ==> NetSink[12](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:01:20.891][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info] linkparsers end
+
+[2018-03-22 15:01:21.280][I][uv_connection.c:708][uv_conn_open][t:4956]: 'uv_conn_1' tcp try listen after bind(9021:0).
+[2018-03-22 15:01:21.282][I][xc_connection.c:185][xc_conn_cycle_once][t:13260]: 'uv_conn_1' connected
+[2018-03-22 15:01:21.282][I][lan_relay_driver.c:471][on_host_ready][t:13260]: ====>[LAN-RELAY] lan host ready rt(0) err(Unknown system error 0)
+[2018-03-22 15:01:21.284][I][lan_relay_driver.c:174][get_host_addr][t:13260]: get host addr:ip(10.10.107.37) port(9021) gateway(10.10.107.1) name({716F0C8F-9674-48D2-B2B1-05CA3A04CD29}) desc(Realtek PCIe GBE Family Controller) mac(3464A9159DBC)
+
+[2018-03-22 15:01:21.287][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][WinWasapiCapture][SetOutputFormat]: Request Format [SR=16000, CH=1], Actual Format [SR=44100, CH=1]
+
+[2018-03-22 15:01:21.287][D][trae_driver.cc:1079][SelectDevice][t:11868]: select device playback(1) nDevId(0)
+[2018-03-22 15:01:21.287][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: CSpkCtrl, CSpkCtrl::SelectDevice
+
+[2018-03-22 15:01:21.287][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] WinWasapiRender -- SelDev index 0.
+
+[2018-03-22 15:01:21.288][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][Select Render Device] UseDefault = false,External Choose Index = 0,real internal Device index = 0
+ 		 DeviceName = Ф┴╛Её╟Е≥╗ (Realtek High Definition Audio) , DeviceId = {0.0.0.00000000}.{1a89c4ca-dc50-4aae-9afa-f93e66c38aac}
+
+[2018-03-22 15:01:21.289][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] WinWasapiRender -- Real index 0.
+
+[2018-03-22 15:01:21.289][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: 628 PM 02650068|M|E_S 02652A00|V|m_nPlaySr|48000 02652A04|V|m_nPlayCh|2
+[2018-03-22 15:01:21.290][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][TRAE] CAuxInMix::SetMicOpen = on
+
+[2018-03-22 15:01:21.290][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info]!!!!EnableMic On
+
+[2018-03-22 15:01:21.290][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [DataObServer]MuteDataSrc eLoopback to 0
+
+[2018-03-22 15:01:21.290][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info]!!!!EnableSpeaker On
+
+[2018-03-22 15:01:21.290][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: CSpkCtrl, CSpkCtrl::SelectDevice OK
+
+[2018-03-22 15:01:21.290][D][trae_driver.cc:1079][SelectDevice][t:11868]: select device playback(0) nDevId(0)
+[2018-03-22 15:01:21.290][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: CMicCtrl, CMicCtrl::SelectDevice,nDevIdx = 0
+
+[2018-03-22 15:01:21.290][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: bStarted = Off bMicEnable = On bSpkEnable = On
+
+[2018-03-22 15:01:21.290][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] WinWasapiCapture -- SelDev index 0.
+
+[2018-03-22 15:01:21.295][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][Select Capture Device] UseDefault = false,External Choose Index = 0,real internal Device index = 0
+ 		 DeviceName = И╨╕Е┘▀Иё▌ (3- Webcam C170) , DeviceId = {0.0.1.00000000}.{47983834-477e-4870-8afc-91a3c8e1ab74}
+
+[2018-03-22 15:01:21.295][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] WinWasapiCapture -- Real index 0.
+
+[2018-03-22 15:01:21.297][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [WARNING] CWinWasapiCapture::GetOutputType: Device support multiple channels [1]
+
+[2018-03-22 15:01:21.297][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [!!!!!]TRAE CWinWasapiCapture::GetOutputType output type sr= 44100,ch = 1
+
+[2018-03-22 15:01:21.297][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [!!!!!]same setting,TRAE nSr = 44100, nCh = 1
+
+[2018-03-22 15:01:21.299][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: 620 PM 02650068|M|E_S 026529F8|V|m_nCapSr|44100 026529FC|V|m_nCapCh|-842150451
+[2018-03-22 15:01:21.300][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][TRAE] CAuxInMix::SetMicOpen = on
+
+[2018-03-22 15:01:21.300][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info]!!!!EnableMic On
+
+[2018-03-22 15:01:21.300][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [DataObServer]MuteDataSrc eLoopback to 0
+
+[2018-03-22 15:01:21.300][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info]!!!!EnableSpeaker On
+
+[2018-03-22 15:01:21.301][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: CMicCtrl, CMicCtrl::SelectDevice OK
+
+[2018-03-22 15:01:21.301][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [INFO] TRAE: StartEngine() [0x009aff00]
+
+[2018-03-22 15:01:21.301][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [EngineStateSwitch] E_INIT to E_START 
+
+[2018-03-22 15:01:21.301][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: 1664 PM 02650068|M|E_S 15189F48|V|m_eStrEngineState|'E_START'
+[2018-03-22 15:01:21.301][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [DataObserver] DataObserver already exit
+
+[2018-03-22 15:01:21.304][I][trae_driver.cc:145][SpeechEngineLog][t:10956]: [INFO] Thread with name:thread 14 started 
+
+[2018-03-22 15:01:21.306][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: CFDKAACEnc::int Codec:4108 SampleRate:48000, Chn:1, Bitrate:24000, AOT:2, frameLen:1024
+[2018-03-22 15:01:21.306][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: 531 PM 02650068|M|E_S 026529E4|V|m_codecType|4108
+[2018-03-22 15:01:21.306][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: 638 PM 02650068|M|E_S 02652A08|V|m_nEncSr|48000 02652A0C|V|m_nEncCh|1
+[2018-03-22 15:01:21.311][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info] CPrep::StartParser _fsopen rb fail--No such process
+
+[2018-03-22 15:01:21.311][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info] CPrep::StartParser lastmic:capability is -12345,stepdb is -431602080.000000,rvol is -431602080.000000
+
+[2018-03-22 15:01:21.312][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][EC] Windows 7/8/10 ... 
+
+[2018-03-22 15:01:21.312][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][EC] Aecmaec_Init,ref:48000, cap:44100, out:48000
+
+[2018-03-22 15:01:21.312][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][EC]:StartParser, m_FarendQueue.Clear() 
+
+[2018-03-22 15:01:21.313][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: ResetJitter sys:3363126
+[2018-03-22 15:01:21.314][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: ResetJitter sys:3363127
+[2018-03-22 15:01:21.314][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: ResetJitter sys:3363127
+[2018-03-22 15:01:21.314][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: ResetJitter sys:3363127
+[2018-03-22 15:01:21.315][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: ResetJitter sys:3363128
+[2018-03-22 15:01:21.315][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: ResetJitter sys:3363128
+[2018-03-22 15:01:21.400][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][CoreRender] Success Set Digtal Volume = 65535
+
+[2018-03-22 15:01:21.400][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][CoreRender][SpeakerCfg] DigtalVolume = 65535 volume range [0-65535]
+
+[2018-03-22 15:01:21.401][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][CoreRender][SpeakerCfg] RenderSeesionVolume = 100 volume range [0-100]
+
+[2018-03-22 15:01:21.402][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][CoreRender][SpeakerCfg] RenderSeesionMute IsMute = 0 
+
+[2018-03-22 15:01:21.402][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][CoreRender][SpeakerCfg] AudioEndpointVolume = 16 volume range [0-100]
+
+[2018-03-22 15:01:21.403][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][CoreRender][SpeakerCfg] AudioEndpointMute IsMute = 0 
+
+[2018-03-22 15:01:21.404][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: [INFO] Thread with name:thread 18 started 
+
+[2018-03-22 15:01:21.404][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: [INFO] AudRnd -- State Change [STOPPED  -> STARTING]
+
+[2018-03-22 15:01:21.405][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: [INFO] AudRnd -- State Change [STARTING -> STARTED ]
+
+[2018-03-22 15:01:21.405][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: 612 PM 02650068|M|E_S 026529F0|V|m_nMixSr|48000 026529F4|V|m_nMixCh|2
+[2018-03-22 15:01:21.405][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: [Info] SetOutputFormat CParser = mix  OutputIdx = 0 nSampleRate = 48000 nCh = 2
+
+[2018-03-22 15:01:21.406][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: 888 PM 04730040|M|mix 047315B0|V|m_nMixSampleRate|48000 047315B4|V|m_nMixCh|2 047315B8|V|m_nOutSampleRate|48000 047315BC|V|m_nOutCh|2
+[2018-03-22 15:01:21.407][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: [INFO] Thread with name:thread 13 started 
+
+[2018-03-22 15:01:21.408][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO] Thread with name:thread 16 started 
+
+[2018-03-22 15:01:21.409][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [!!!!!]same setting,TRAE nSr = 44100, nCh = 1
+
+[2018-03-22 15:01:21.411][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [WARNING] CWinWasapiCapture::GetOutputType: Device support multiple channels [1]
+
+[2018-03-22 15:01:21.411][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [!!!!!]TRAE CWinWasapiCapture::GetOutputType output type sr= 44100,ch = 1
+
+[2018-03-22 15:01:21.412][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: 620 PM 02650068|M|E_S 026529F8|V|m_nCapSr|44100 026529FC|V|m_nCapCh|-842150451
+[2018-03-22 15:01:21.437][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: capture vol = 58871
+
+[2018-03-22 15:01:21.438][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][Warning][CoreCapture] SetMute Failed
+
+[2018-03-22 15:01:21.439][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [DataObserver] Create DataObserver Thread Success and Dataobserver start working
+
+[2018-03-22 15:01:21.440][I][trae_driver.cc:145][SpeechEngineLog][t:13136]: [INFO] Thread with name:thread 0 started 
+
+[2018-03-22 15:01:21.440][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info][TRAE] CAuxInMix::SetMicOpen = off
+
+[2018-03-22 15:01:21.440][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Warning]Mic State From On To Off Spent 3165 ms
+
+[2018-03-22 15:01:21.440][I][trae_driver.cc:145][SpeechEngineLog][t:11588]: [INFO] Thread with name:thread 12 started 
+
+[2018-03-22 15:01:21.440][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info]!!!!EnableMic Off
+
+[2018-03-22 15:01:21.440][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Warning]Speaker State From On To Off Spent 4799 ms
+
+[2018-03-22 15:01:21.440][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [DataObServer]MuteDataSrc eLoopback to 1
+
+[2018-03-22 15:01:21.440][I][trae_driver.cc:145][SpeechEngineLog][t:11868]: [Info]!!!!EnableSpeaker Off
+
+[2018-03-22 15:01:21.442][I][trae_driver.cc:1327][enum_devices][t:11868]: start mic device enum
+[2018-03-22 15:01:21.445][I][trae_driver.cc:1342][enum_devices][t:11868]: mic: [бС©к╥Г (3- Webcam C170)]
+[2018-03-22 15:01:21.445][I][trae_driver.cc:1327][enum_devices][t:11868]: start speaker device enum
+[2018-03-22 15:01:21.446][I][trae_driver.cc:1342][enum_devices][t:11868]: speaker: [яОиЫфВ (Realtek High Definition Audio)]
+[2018-03-22 15:01:21.446][I][trae_driver.cc:2717][trae_start_done][t:13260]: trae start done rt(0)
+[2018-03-22 15:01:21.446][I][trae_driver.cc:1431][enum_devs_done][t:13260]: new mic: [бС©к╥Г (3- Webcam C170)]
+[2018-03-22 15:01:21.447][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'mic' add child 'И╨╕Е┘▀Иё▌ (3- Webcam C170)':'0x0080D650' of 'device.mic.trae'.
+[2018-03-22 15:01:21.447][D][xc_device.c:220][xc_device_nofity][t:13260]: [DEVICE] 'бС©к╥Г (3- Webcam C170)' state:1
+[2018-03-22 15:01:21.447][I][xc_device_root.c:176][xc_device_add][t:13260]: [DEVICE] device 'бС©к╥Г (3- Webcam C170)' of type 'device.mic.trae' added.
+[2018-03-22 15:01:21.447][I][xc_device_root.c:99][set_mic_default][t:13260]: [DEVICE] set default mic to 'И╨╕Е┘▀Иё▌ (3- Webcam C170)'
+[2018-03-22 15:01:21.447][I][trae_driver.cc:1431][enum_devs_done][t:13260]: new speaker: [яОиЫфВ (Realtek High Definition Audio)]
+[2018-03-22 15:01:21.447][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'speaker' add child 'Ф┴╛Её╟Е≥╗ (Realtek High Definition Audio)':'0x0080D5E0' of 'device.speaker.trae'.
+[2018-03-22 15:01:21.447][D][xc_device.c:220][xc_device_nofity][t:13260]: [DEVICE] 'яОиЫфВ (Realtek High Definition Audio)' state:1
+[2018-03-22 15:01:21.447][I][xc_device_root.c:176][xc_device_add][t:13260]: [DEVICE] device 'яОиЫфВ (Realtek High Definition Audio)' of type 'device.speaker.trae' added.
+[2018-03-22 15:01:21.447][I][xc_device_root.c:129][set_speaker_default][t:13260]: [DEVICE] set default speaker to 'Ф┴╛Её╟Е≥╗ (Realtek High Definition Audio)'
+[2018-03-22 15:01:23.255][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC]: nOutIdx:0,pType sr:16000, ch:1 
+
+[2018-03-22 15:01:23.255][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC]: SetOutputType  nChannels:1, nSampleRate:16000 
+
+[2018-03-22 15:01:23.255][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC]: SetOutputType, out sr:16000 
+
+[2018-03-22 15:01:25.635][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][CPrep]: New Format: 16000 -- 1
+
+[2018-03-22 15:01:25.635][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [CPrep]: wrong set!! The settings must be set before start!!
+
+[2018-03-22 15:01:25.635][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [CPrep]: fst:12.000000->12.000000
+
+[2018-03-22 15:01:25.636][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [CPrep]: min:12.000000->0.000000
+
+[2018-03-22 15:01:25.636][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [CPrep]: max:30.000000->30.000000
+
+[2018-03-22 15:01:25.647][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO] Prep -- VAD Voice [Inactive] Detected
+
+[2018-03-22 15:01:25.647][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC] capture interval: 2392
+
+[2018-03-22 15:01:25.648][I][trae_driver.cc:145][SpeechEngineLog][t:10956]: [Info]CNetSink Send First Packet
+
+[2018-03-22 15:01:25.648][I][trae_driver.cc:145][SpeechEngineLog][t:10956]: [Info] Ignore First EOS Packet
+
+[2018-03-22 15:01:25.650][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:25.954][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC] capture interval: 301
+
+[2018-03-22 15:01:25.954][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: [Info][EC] play interval: 304
+
+[2018-03-22 15:01:27.485][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: [Info][EC] play interval: 1531
+
+[2018-03-22 15:01:27.485][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC] capture interval: 1531
+
+[2018-03-22 15:01:28.923][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC] capture interval: 1437
+
+[2018-03-22 15:01:28.923][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: [Info][EC] play interval: 1437
+
+[2018-03-22 15:01:31.587][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: [CNetSrc] Waiting data timeout.
+
+[2018-03-22 15:01:31.587][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: [INFO] CFECDec: DBF_EOS.
+
+[2018-03-22 15:01:31.588][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: CFECDecParser::SendPacket receive EOS
+[2018-03-22 15:01:31.589][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: ResetJitter sys:3373403
+[2018-03-22 15:01:31.589][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: [INFO] CFECDec: DBF_EOS.
+
+[2018-03-22 15:01:31.589][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: CFECDecParser::SendPacket receive EOS
+[2018-03-22 15:01:31.589][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: ResetJitter sys:3373403
+[2018-03-22 15:01:31.590][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: [INFO] CFECDec: DBF_EOS.
+
+[2018-03-22 15:01:31.590][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: CFECDecParser::SendPacket receive EOS
+[2018-03-22 15:01:31.590][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: ResetJitter sys:3373404
+[2018-03-22 15:01:31.591][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: [INFO] CFECDec: DBF_EOS.
+
+[2018-03-22 15:01:31.591][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: CFECDecParser::SendPacket receive EOS
+[2018-03-22 15:01:31.591][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: ResetJitter sys:3373405
+[2018-03-22 15:01:31.592][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: [INFO] CFECDec: DBF_EOS.
+
+[2018-03-22 15:01:31.592][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: CFECDecParser::SendPacket receive EOS
+[2018-03-22 15:01:31.592][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: ResetJitter sys:3373406
+[2018-03-22 15:01:31.593][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: [INFO] CFECDec: DBF_EOS.
+
+[2018-03-22 15:01:31.593][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: CFECDecParser::SendPacket receive EOS
+[2018-03-22 15:01:31.593][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: ResetJitter sys:3373407
+[2018-03-22 15:01:31.593][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: [Info][EC] play interval: 2614
+
+[2018-03-22 15:01:31.595][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC] capture interval: 2598
+
+[2018-03-22 15:01:31.600][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:33.572][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: [Info][EC] play interval: 1964
+
+[2018-03-22 15:01:35.600][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: [Info][EC] play interval: 2027
+
+[2018-03-22 15:01:39.367][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: [Info][EC] play interval: 3748
+
+[2018-03-22 15:01:42.136][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: [CNetSrc] Waiting data timeout.
+
+[2018-03-22 15:01:42.137][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: [Info][EC] play interval: 2758
+
+[2018-03-22 15:01:42.146][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC] capture interval: 10540
+
+[2018-03-22 15:01:42.158][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:44.833][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: [Info][EC] play interval: 2676
+
+[2018-03-22 15:01:44.839][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC] capture interval: 2671
+
+[2018-03-22 15:01:44.844][D][adv_video.cc:298][dump_cap][t:11868]: camera 160*120@30
+[2018-03-22 15:01:44.845][D][adv_video.cc:298][dump_cap][t:11868]: camera 176*144@30
+[2018-03-22 15:01:44.845][D][adv_video.cc:298][dump_cap][t:11868]: camera 320*176@30
+[2018-03-22 15:01:44.845][D][adv_video.cc:298][dump_cap][t:11868]: camera 320*240@30
+[2018-03-22 15:01:44.846][D][adv_video.cc:298][dump_cap][t:11868]: camera 352*288@30
+[2018-03-22 15:01:44.846][D][adv_video.cc:298][dump_cap][t:11868]: camera 432*240@30
+[2018-03-22 15:01:44.847][D][adv_video.cc:298][dump_cap][t:11868]: camera 544*288@30
+[2018-03-22 15:01:44.847][D][adv_video.cc:298][dump_cap][t:11868]: camera 640*360@30
+[2018-03-22 15:01:44.847][D][adv_video.cc:298][dump_cap][t:11868]: camera 640*480@30
+[2018-03-22 15:01:44.847][D][adv_video.cc:298][dump_cap][t:11868]: camera 800*480@30
+[2018-03-22 15:01:44.848][D][adv_video.cc:298][dump_cap][t:11868]: camera 1024*768@30
+[2018-03-22 15:01:44.848][D][xc_cell.c:494][xc_cell_add_child][t:13260]:  'camera' add child 'Webcam C170':'0x0080D570' of 'camera.adv'.
+[2018-03-22 15:01:44.848][D][xc_device.c:220][xc_device_nofity][t:13260]: [DEVICE] 'Webcam C170' state:1
+[2018-03-22 15:01:44.848][I][xc_device_root.c:176][xc_device_add][t:13260]: [DEVICE] device 'Webcam C170' of type 'camera.adv' added.
+[2018-03-22 15:01:44.849][I][xc_device_root.c:39][set_camera_default][t:13260]: [DEVICE] set default camera to 'Webcam C170'
+[2018-03-22 15:01:44.852][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:44.862][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:44.875][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:44.880][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:44.904][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:44.923][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:44.944][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:44.947][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:44.951][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:44.954][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:44.963][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:44.970][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:44.972][I][trae_driver.cc:145][SpeechEngineLog][t:11248]:  FirstCapMeter 4793
+
+[2018-03-22 15:01:44.974][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:01:45.808][I][trae_driver.cc:145][SpeechEngineLog][t:10664]:  FirstRndMeter 0
+
+[2018-03-22 15:01:50.136][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: [CNetSrc] Waiting data timeout.
+
+[2018-03-22 15:01:52.874][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][CAudCapBase]InDevMeter:4793,7750,4921,11058,5690
+
+[2018-03-22 15:01:52.874][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][CAudCapBase]Volume:66,66,66,66,66
+
+[2018-03-22 15:01:52.874][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][CAudCapBase]Boost:0.0,0.0,0.0,0.0,0.0
+
+[2018-03-22 15:01:52.874][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][CAudCapBase]DigitalGainLinear:4.0,4.0,4.0,4.0,4.0
+
+[2018-03-22 15:01:52.875][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: 900 PM 02650068|M|E_S 02652AA0|V|m_IndevMeterStr|'IndevMeter: ' 02652A68|V|m_capMeter1|4793 02652A6A|V|m_capMeter2|7750 02652A6C|V|m_capMeter3|4921 02652A6E|V|m_capMeter4|11058 02652A70|V|m_capMeter5|5690
+[2018-03-22 15:01:53.333][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC]:0522EF90, m_bECOn:1,  m_bNSOn:1, cap nChannels:1, nSampleRate:44100, ref nChannels:2, nSampleRate:48000, out:  nChannels:1, nSampleRate:16000 
+
+[2018-03-22 15:01:53.336][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC]::Leak10ms:0, Rend-Cap:-46 
+
+[2018-03-22 15:01:53.337][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC]:0522EF90, m_bECOn:1,  m_bNSOn:1, cap nChannels:1, nSampleRate:44100, ref nChannels:2, nSampleRate:48000, out:  nChannels:1, nSampleRate:16000 
+
+[2018-03-22 15:01:53.807][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: 915 PM 02650068|M|E_S 02652AA4|V|m_OutDevMeterStr|'OutdevMeter: ' 02652A72|V|m_rndMeter1|0 02652A74|V|m_rndMeter2|0 02652A76|V|m_rndMeter3|0 02652A78|V|m_rndMeter4|0 02652A7A|V|m_rndMeter5|0
+[2018-03-22 15:01:56.215][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [EC][Aecmaec]machinetype: 1431655766, delay legal cnt:0 
+
+[2018-03-22 15:01:58.136][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: [CNetSrc] Waiting data timeout.
+
+[2018-03-22 15:02:02.873][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][CAudCapBase]InDevMeter:7662,11045,6228,9697,11345
+
+[2018-03-22 15:02:02.873][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][CAudCapBase]Volume:72,72,72,75,85
+
+[2018-03-22 15:02:02.874][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][CAudCapBase]Boost:0.0,0.0,0.0,0.0,0.0
+
+[2018-03-22 15:02:02.874][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][CAudCapBase]DigitalGainLinear:4.0,4.0,4.0,4.0,4.0
+
+[2018-03-22 15:02:02.874][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: 900 PM 02650068|M|E_S 02652AA0|V|m_IndevMeterStr|'IndevMeter: ' 02652A68|V|m_capMeter1|7662 02652A6A|V|m_capMeter2|11045 02652A6C|V|m_capMeter3|6228 02652A6E|V|m_capMeter4|9697 02652A70|V|m_capMeter5|11345
+[2018-03-22 15:02:03.333][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC]:0522EF90, m_bECOn:1,  m_bNSOn:1, cap nChannels:1, nSampleRate:44100, ref nChannels:2, nSampleRate:48000, out:  nChannels:1, nSampleRate:16000 
+
+[2018-03-22 15:02:03.335][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC]::Leak10ms:0, Rend-Cap:-46 
+
+[2018-03-22 15:02:03.336][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC]:0522EF90, m_bECOn:1,  m_bNSOn:1, cap nChannels:1, nSampleRate:44100, ref nChannels:2, nSampleRate:48000, out:  nChannels:1, nSampleRate:16000 
+
+[2018-03-22 15:02:03.806][I][trae_driver.cc:145][SpeechEngineLog][t:10664]: 915 PM 02650068|M|E_S 02652AA4|V|m_OutDevMeterStr|'OutdevMeter: ' 02652A72|V|m_rndMeter1|0 02652A74|V|m_rndMeter2|0 02652A76|V|m_rndMeter3|0 02652A78|V|m_rndMeter4|0 02652A7A|V|m_rndMeter5|0
+[2018-03-22 15:02:06.136][I][trae_driver.cc:145][SpeechEngineLog][t:7448]: [CNetSrc] Waiting data timeout.
+
+[2018-03-22 15:02:09.553][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [EC][Aecmaec]machinetype: 1431655766, delay legal cnt:0 
+
+[2018-03-22 15:02:12.873][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][CAudCapBase]InDevMeter:20835,17054,10982,17221,10434
+
+[2018-03-22 15:02:12.874][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][CAudCapBase]Volume:85,85,85,85,85
+
+[2018-03-22 15:02:12.874][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][CAudCapBase]Boost:0.0,0.0,0.0,0.0,0.0
+
+[2018-03-22 15:02:12.874][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [INFO][CAudCapBase]DigitalGainLinear:3.8,3.2,3.2,3.2,3.2
+
+[2018-03-22 15:02:12.874][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: 900 PM 02650068|M|E_S 02652AA0|V|m_IndevMeterStr|'IndevMeter: ' 02652A68|V|m_capMeter1|20835 02652A6A|V|m_capMeter2|17054 02652A6C|V|m_capMeter3|10982 02652A6E|V|m_capMeter4|17221 02652A70|V|m_capMeter5|10434
+[2018-03-22 15:02:13.333][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC]:0522EF90, m_bECOn:1,  m_bNSOn:1, cap nChannels:1, nSampleRate:44100, ref nChannels:2, nSampleRate:48000, out:  nChannels:1, nSampleRate:16000 
+
+[2018-03-22 15:02:13.337][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC]::Leak10ms:0, Rend-Cap:-46 
+
+[2018-03-22 15:02:13.339][I][trae_driver.cc:145][SpeechEngineLog][t:11248]: [Info][EC]:0522EF90, m_bECOn:1,  m_bNSOn:1, cap nChannels:1, nSampleRate:44100, ref nChan************************************************************************ xcast new proccess ************************************************************************
+xcast version : RDM_v1.0.0_b1.0.0.15_3749
+[2018-03-22 15:03:02.527][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'stream':'0x007A61A0' of 'default'.
+[2018-03-22 15:03:02.527][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'logger':'0x007A6210' of 'default'.
+[2018-03-22 15:03:02.527][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'event':'0x007A6280' of 'default'.
+[2018-03-22 15:03:02.527][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'account':'0x007A62F0' of 'default'.
+[2018-03-22 15:03:02.527][I][xcast.c:43][setup_account][t:14312]: xcast app id is 1400036169, account is 67890
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'device':'0x007A6360' of 'device_root'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'device' add child 'camera':'0x007A63D0' of 'default'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'device' add child 'mic':'0x007A6440' of 'default'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'device' add child 'speaker':'0x007A64B0' of 'default'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'device' add child 'external':'0x007A6520' of 'default'.
+[2018-03-22 15:03:02.537][E][xc_cell.c:318][xc_set_err_msg:xc_cell_lookup][t:14312]: invalid path of preference:preference.
+[2018-03-22 15:03:02.537][E][xc_cast.c:203][xc_set_err_msg:xc_get_property][t:14312]: no property supported for preference.external-device
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'external' add child 'ext1':'0x007A6590' of 'device'.
+[2018-03-22 15:03:02.537][D][xc_device.c:220][xc_device_nofity][t:14312]: [DEVICE] 'ext1' state:1
+[2018-03-22 15:03:02.537][I][xc_device_root.c:176][xc_device_add][t:14312]: [DEVICE] device 'ext1' of type 'device' added.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'external' add child 'ext2':'0x007A6670' of 'device'.
+[2018-03-22 15:03:02.537][D][xc_device.c:220][xc_device_nofity][t:14312]: [DEVICE] 'ext2' state:1
+[2018-03-22 15:03:02.537][I][xc_device_root.c:176][xc_device_add][t:14312]: [DEVICE] device 'ext2' of type 'device' added.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'external' add child 'ext3':'0x007A6750' of 'device'.
+[2018-03-22 15:03:02.537][D][xc_device.c:220][xc_device_nofity][t:14312]: [DEVICE] 'ext3' state:1
+[2018-03-22 15:03:02.537][I][xc_device_root.c:176][xc_device_add][t:14312]: [DEVICE] device 'ext3' of type 'device' added.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'external' add child 'ext4':'0x007D59D0' of 'device'.
+[2018-03-22 15:03:02.537][D][xc_device.c:220][xc_device_nofity][t:14312]: [DEVICE] 'ext4' state:1
+[2018-03-22 15:03:02.537][I][xc_device_root.c:176][xc_device_add][t:14312]: [DEVICE] device 'ext4' of type 'device' added.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'preference':'0x007D5AB0' of 'default'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'audio':'0x007D5B20' of 'default'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'video':'0x007D5B90' of 'default'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'net':'0x007D5C00' of 'default'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'misc':'0x007D5C70' of 'default'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'profile':'0x007D5CE0' of 'default'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'plugin':'0x007D5D50' of 'default'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'driver':'0x007D5DC0' of 'default'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'driver' add child 'loader':'0x007D5E30' of 'driver.loader'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'driver' add child 'network':'0x007D5EA0' of 'default'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'thread-pool':'0x007D5F10' of 'default'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'thread-pool' add child 'default':'0x007D5F80' of 'thread-pool'.
+[2018-03-22 15:03:02.537][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'thread-pool' add child 'report':'0x007D5FF0' of 'report'.
+[2018-03-22 15:03:02.547][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'network' add child 'libuv':'0x007D6060' of 'driver.network.libuv'.
+[2018-03-22 15:03:02.547][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'module.libuv':'0x007D60D0' of 'module'.
+[2018-03-22 15:03:02.547][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'core' add child 'lan-relay':'0x007D6140' of 'lan_relay_driver'.
+[2018-03-22 15:03:02.547][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'lan-relay' add child 'lan-relay-host':'0x007D61B0' of 'channel'.
+[2018-03-22 15:03:02.547][I][uv_connection.c:1076][conn_new][t:14312]: ====>[CONN-NEW] 'uv_conn_1' 0x007D6220
+[2018-03-22 15:03:02.547][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'libuv' add child 'uv_conn_1':'0x007D6220' of 'conn.libuv'.
+[2018-03-22 15:03:02.557][I][lan_relay_driver.c:174][get_host_addr][t:14312]: get host addr:ip(10.10.107.37) port(9089) gateway(10.10.107.1) name({716F0C8F-9674-48D2-B2B1-05CA3A04CD29}) desc(Realtek PCIe GBE Family Controller) mac(3464A9159DBC)
+
+[2018-03-22 15:03:02.557][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'lan_relay_module':'0x007D6370' of 'module'.
+[2018-03-22 15:03:02.557][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'module.http':'0x007D63E0' of 'module'.
+[2018-03-22 15:03:02.557][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'network' add child 'app_channel':'0x007D6450' of 'http_channel_driver_class'.
+[2018-03-22 15:03:02.557][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'app_channel' add child 'http':'0x007D64C0' of 'network.http'.
+[2018-03-22 15:03:02.557][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'http' add child 'http-chn':'0x007D6530' of 'channel'.
+[2018-03-22 15:03:02.557][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'av_http_channel_module':'0x007D65A0' of 'module'.
+[2018-03-22 15:03:02.557][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'driver' add child 'sys_info':'0x007D6610' of 'sys_info'.
+[2018-03-22 15:03:02.557][I][sys_info.cc:144][sys_info_update][t:14312]: current platform(windows)
+[2018-03-22 15:03:02.557][D][sys_info.cc:188][sys_info_update][t:14312]: get screen width(1920) height(1080)
+[2018-03-22 15:03:02.567][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'sys_info_module':'0x007D66F0' of 'module'.
+[2018-03-22 15:03:02.567][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'module.udt':'0x007D6760' of 'module'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'av_common_module':'0x00827490' of 'module'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'preference' add child 'spear_ctrl':'0x00827420' of 'spear_ctrl'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'preference' add child 'video':'0x00827500' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'preference' add child 'audio':'0x008275E0' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'preference' add child 'net':'0x00827650' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'preference' add child 'custom':'0x00827CE0' of 'default'.
+[2018-03-22 15:03:02.587][D][spear_ctrl.cc:826][load_json_conf][t:14312]: load spear config(E:\GitHub\XCastDemo\xcast-demo\bin\Debug\1400036169.conf)
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'preference' add child 'spear':'0x00827D50' of 'spear-config'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'spear' add child 'audio':'0x00827DC0' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'spear' add child 'video':'0x00827E30' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'spear' add child 'net':'0x00827EA0' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'spear' add child 'roles':'0x00827F10' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child 'user':'0x00827F80' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'user' add child 'audio':'0x00827FF0' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'user' add child 'video':'0x00828060' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'user' add child 'net':'0x008280D0' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '32024010':'0x00828140' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '32024010' add child 'audio':'0x008281B0' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '32024010' add child 'video':'0x00828220' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '32024010' add child 'net':'0x007D6840' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '480360':'0x007D68B0' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '480360' add child 'audio':'0x008232D0' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '480360' add child 'video':'0x00823340' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '480360' add child 'net':'0x008233B0' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '64036815':'0x00823420' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '64036815' add child 'audio':'0x00823490' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '64036815' add child 'video':'0x00823500' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '64036815' add child 'net':'0x00823570' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '64048025':'0x008235E0' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '64048025' add child 'audio':'0x00823650' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '64048025' add child 'video':'0x008236C0' of 'default'.
+[2018-03-22 15:03:02.587][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '64048025' add child 'net':'0x00823730' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '96054025':'0x008237A0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '96054025' add child 'audio':'0x00823810' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '96054025' add child 'video':'0x00823880' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '96054025' add child 'net':'0x008238F0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '12872020':'0x00823960' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '12872020' add child 'audio':'0x008239D0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '12872020' add child 'video':'0x00823A40' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '12872020' add child 'net':'0x00823AB0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '32024015':'0x00823B20' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '32024015' add child 'audio':'0x00823B90' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '32024015' add child 'video':'0x00823C00' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '32024015' add child 'net':'0x00823C70' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '64036820':'0x00823CE0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '64036820' add child 'audio':'0x00823D50' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '64036820' add child 'video':'0x00823DC0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '64036820' add child 'net':'0x00823E30' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '64048015':'0x00823EA0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '64048015' add child 'audio':'0x00823F10' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '64048015' add child 'video':'0x00823F80' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '64048015' add child 'net':'0x00823FF0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '96054015':'0x00824060' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '96054015' add child 'audio':'0x008240D0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '96054015' add child 'video':'0x00824140' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '96054015' add child 'net':'0x008241B0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '12872030':'0x00824220' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '12872030' add child 'audio':'0x008212D0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '12872030' add child 'video':'0x00821340' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '12872030' add child 'net':'0x008213B0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '96054020':'0x00821420' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '96054020' add child 'audio':'0x00821490' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '96054020' add child 'video':'0x00821500' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '96054020' add child 'net':'0x00821570' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '48036015':'0x008215E0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '48036015' add child 'audio':'0x00821650' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '48036015' add child 'video':'0x008216C0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '48036015' add child 'net':'0x00821730' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '7640152400':'0x008217A0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '7640152400' add child 'audio':'0x00821810' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '7640152400' add child 'video':'0x00821880' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '7640152400' add child 'net':'0x008218F0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child '640480bp':'0x00821960' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '640480bp' add child 'audio':'0x008219D0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '640480bp' add child 'video':'0x00821A40' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  '640480bp' add child 'net':'0x00821AB0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child 'wawa640':'0x00821B20' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'wawa640' add child 'audio':'0x00821B90' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'wawa640' add child 'video':'0x00821C00' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'wawa640' add child 'net':'0x00821C70' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child 'lx320':'0x00821CE0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'lx320' add child 'audio':'0x00821D50' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'lx320' add child 'video':'0x00821DC0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'lx320' add child 'net':'0x00821E30' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child 'lx640':'0x00821EA0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'lx640' add child 'audio':'0x00821F10' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'lx640' add child 'video':'0x00821F80' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'lx640' add child 'net':'0x00821FF0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child 'lx64015':'0x00822060' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'lx64015' add child 'audio':'0x008220D0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'lx64015' add child 'video':'0x00822140' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'lx64015' add child 'net':'0x008221B0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child 'lx960':'0x00822220' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'lx960' add child 'audio':'0x007E9990' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'lx960' add child 'video':'0x007E9A00' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'lx960' add child 'net':'0x007E9A70' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'roles' add child 'fancy':'0x007E9AE0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'fancy' add child 'audio':'0x007E9B50' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'fancy' add child 'video':'0x007E9BC0' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'fancy' add child 'net':'0x007E9C30' of 'default'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'av_config':'0x007E9CA0' of 'module'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'profile' add child 'observer':'0x007E9D10' of 'av_profile'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'av_profile':'0x007E9D80' of 'module'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'module.udt':'0x007E9DF0' of 'module'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'driver' add child 'trae':'0x007E9E60' of 'driver.trae'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'trae_module':'0x007E9ED0' of 'module'.
+[2018-03-22 15:03:02.597][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'driver' add child 'videocore':'0x007E9F40' of 'tve driver'.
+[2018-03-22 15:03:02.657][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [PreLoadIntelDecLib][VideoDecoder.cpp][47]preload intel dec lib ok!
+[2018-03-22 15:03:02.657][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [PreLoadIntelEncLib][VideoEncoder.cpp][65]preload intel enc ok
+[2018-03-22 15:03:02.657][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [CVideoEngine::SetSendMode][CVideoEngine.cpp][1055]SetSendMode 4
+[2018-03-22 15:03:02.657][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [PreLoadIntelDecLib][VideoDecoder.cpp][47]preload intel dec lib ok!
+[2018-03-22 15:03:02.657][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [PreLoadIntelEncLib][VideoEncoder.cpp][65]preload intel enc ok
+[2018-03-22 15:03:02.657][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [CVideoEngine::SetSendMode][CVideoEngine.cpp][1055]SetSendMode 4
+[2018-03-22 15:03:02.657][D][tve_driver.cc:491][read_ability][t:14312]: cpu name is Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz
+[2018-03-22 15:03:02.657][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [PreLoadIntelDecLib][VideoDecoder.cpp][47]preload intel dec lib ok!
+[2018-03-22 15:03:02.657][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [PreLoadIntelEncLib][VideoEncoder.cpp][65]preload intel enc ok
+[2018-03-22 15:03:02.667][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [PreLoadIntelDecLib][VideoDecoder.cpp][47]preload intel dec lib ok!
+[2018-03-22 15:03:02.667][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [PreLoadIntelEncLib][VideoEncoder.cpp][65]preload intel enc ok
+[2018-03-22 15:03:02.667][E][tve_driver.cc:514][read_ability][t:14312]: CPU Level is 157
+[2018-03-22 15:03:02.667][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'tve_module':'0x007E9FB0' of 'module'.
+[2018-03-22 15:03:02.667][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'driver' add child 'adv_video':'0x007EA020' of 'driver.adv_video'.
+[2018-03-22 15:03:02.667][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'adv-video module':'0x007EA090' of 'module'.
+[2018-03-22 15:03:02.667][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'av_renderer':'0x007EA100' of 'module'.
+[2018-03-22 15:03:02.667][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'av_session_module':'0x007EA170' of 'module'.
+[2018-03-22 15:03:02.667][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'driver' add child 'screen_capture':'0x007EA1E0' of 'driver.screen_capture'.
+[2018-03-22 15:03:02.667][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'video-capture module':'0x007EA250' of 'module'.
+[2018-03-22 15:03:02.667][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'plugin' add child 'screen preprocor module':'0x007EA2C0' of 'module'.
+[2018-03-22 15:03:02.667][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.force-aec'= 0)
+[2018-03-22 15:03:02.667][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.force-agc'= 0)
+[2018-03-22 15:03:02.667][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.force-ans'= 0)
+[2018-03-22 15:03:02.667][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: CTRAEDataObserver [CTRAEEngineStat::CreateInstance] entry, ins_count_: 0
+[2018-03-22 15:03:02.667][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: 1967 PM 02480068|M|E_S 149A9F48|V|m_eStrEngineState|'E_UNKOWN'
+[2018-03-22 15:03:02.667][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: CTRAEDataObserver [CTRAEEngineStat::CreateInstance] exit, ins_count_: 1
+[2018-03-22 15:03:02.667][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [CTRAEEngineStat::EnableEngineStatReport] state: OPEN
+[2018-03-22 15:03:02.667][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: CTRAEDataObserver [CTRAEDataObserver::CreateInstance] entry, ins_count_: 0
+[2018-03-22 15:03:02.667][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: 1125 PM 02480068|M|E_S 02482A4B|V|m_bEnginePause|false
+[2018-03-22 15:03:02.667][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: CTRAEDataObserver [CTRAEDataObserver::CreateInstance] exit, ins_count_: 1
+[2018-03-22 15:03:02.667][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [EngineStateSwitch] E_UNKOWN to E_CREATE 
+
+[2018-03-22 15:03:02.667][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: 1664 PM 02480068|M|E_S 149A9F48|V|m_eStrEngineState|'E_CREATE'
+[2018-03-22 15:03:02.667][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: 1637 PM 02480068|M|E_S 02481960|V|m_nTraeRef|1
+[2018-03-22 15:03:02.667][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: CreateInstance ref=1
+
+[2018-03-22 15:03:02.667][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [WARNING] CEngine::MakeSureConfigurationDeterminedAndTopoCreated !!!
+
+[2018-03-22 15:03:02.677][I][trae_driver.cc:145][SpeechEngineLog][t:13688]: [INFO] Thread with name:thread 15 started 
+
+[2018-03-22 15:03:02.677][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: 725 PM 05030040|M|mix 050315AC|V|m_nStrmCnt|4
+[2018-03-22 15:03:02.677][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: 121 PM 05030040|M|mix 050315B0|V|m_nMixSampleRate|48000 050315B4|V|m_nMixCh|2 050315B8|V|m_nOutSampleRate|48000 050315BC|V|m_nOutCh|2
+[2018-03-22 15:03:02.677][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [Warning]Speaker State From Off To On Spent 10 ms
+
+[2018-03-22 15:03:02.677][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: 725 PM 05030040|M|mix 050315AC|V|m_nStrmCnt|6
+[2018-03-22 15:03:02.687][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [Info][Select Capture Device] UseDefault = true,External Choose Index = -1,real internal Device index = 0
+ 		 DeviceName = И╨╕Е┘▀Иё▌ (3- Webcam C170) , DeviceId = {0.0.1.00000000}.{47983834-477e-4870-8afc-91a3c8e1ab74}
+
+[2018-03-22 15:03:02.707][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [INFO] WinWasapiCapture -- SelDev index 0.
+
+[2018-03-22 15:03:02.707][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [Info][Select Capture Device] UseDefault = false,External Choose Index = 0,real internal Device index = 0
+ 		 DeviceName = И╨╕Е┘▀Иё▌ (3- Webcam C170) , DeviceId = {0.0.1.00000000}.{47983834-477e-4870-8afc-91a3c8e1ab74}
+
+[2018-03-22 15:03:02.707][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [INFO] WinWasapiCapture -- Real index 0.
+
+[2018-03-22 15:03:02.707][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [WARNING] CWinWasapiCapture::GetOutputType: Device support multiple channels [1]
+
+[2018-03-22 15:03:02.707][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [!!!!!]TRAE CWinWasapiCapture::GetOutputType output type sr= 44100,ch = 1
+
+[2018-03-22 15:03:02.707][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [!!!!!]TRAE nSr = 44100, nCh = 1
+
+[2018-03-22 15:03:02.707][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [!!!!!]TRAE m_nFrameSize = 1764
+
+[2018-03-22 15:03:02.717][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: 620 PM 02480068|M|E_S 024829F8|V|m_nCapSr|44100 024829FC|V|m_nCapCh|-842150451
+[2018-03-22 15:03:02.717][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [WARNING] CWinWasapiCapture::GetOutputType: Device support multiple channels [1]
+
+[2018-03-22 15:03:02.717][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [!!!!!]TRAE CWinWasapiCapture::GetOutputType output type sr= 44100,ch = 1
+
+[2018-03-22 15:03:02.717][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [INFO] WinWasapiCapture -- SelDev index 0.
+
+[2018-03-22 15:03:02.717][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [Info][Select Capture Device] UseDefault = false,External Choose Index = 0,real internal Device index = 0
+ 		 DeviceName = И╨╕Е┘▀Иё▌ (3- Webcam C170) , DeviceId = {0.0.1.00000000}.{47983834-477e-4870-8afc-91a3c8e1ab74}
+
+[2018-03-22 15:03:02.717][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [INFO] WinWasapiCapture -- Real index 0.
+
+[2018-03-22 15:03:02.727][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [WARNING] CWinWasapiCapture::GetOutputType: Device support multiple channels [1]
+
+[2018-03-22 15:03:02.727][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [!!!!!]TRAE CWinWasapiCapture::GetOutputType output type sr= 44100,ch = 1
+
+[2018-03-22 15:03:02.727][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [!!!!!]same setting,TRAE nSr = 44100, nCh = 1
+
+[2018-03-22 15:03:02.727][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: 620 PM 02480068|M|E_S 024829F8|V|m_nCapSr|44100 024829FC|V|m_nCapCh|-842150451
+[2018-03-22 15:03:02.727][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [Info][Select Render Device] UseDefault = true,External Choose Index = -1,real internal Device index = 0
+ 		 DeviceName = Ф┴╛Её╟Е≥╗ (Realtek High Definition Audio) , DeviceId = {0.0.0.00000000}.{1a89c4ca-dc50-4aae-9afa-f93e66c38aac}
+
+[2018-03-22 15:03:02.727][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [INFO] WinWasapiRender -- SelDev index 0.
+
+[2018-03-22 15:03:02.727][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [Info][Select Render Device] UseDefault = false,External Choose Index = 0,real internal Device index = 0
+ 		 DeviceName = Ф┴╛Её╟Е≥╗ (Realtek High Definition Audio) , DeviceId = {0.0.0.00000000}.{1a89c4ca-dc50-4aae-9afa-f93e66c38aac}
+
+[2018-03-22 15:03:02.727][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [INFO] WinWasapiRender -- Real index 0.
+
+[2018-03-22 15:03:02.727][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: 628 PM 02480068|M|E_S 02482A00|V|m_nPlaySr|48000 02482A04|V|m_nPlayCh|2
+[2018-03-22 15:03:02.727][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [INFO] WinWasapiRender -- SelDev index 0.
+
+[2018-03-22 15:03:02.727][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [Info][Select Render Device] UseDefault = false,External Choose Index = 0,real internal Device index = 0
+ 		 DeviceName = Ф┴╛Её╟Е≥╗ (Realtek High Definition Audio) , DeviceId = {0.0.0.00000000}.{1a89c4ca-dc50-4aae-9afa-f93e66c38aac}
+
+[2018-03-22 15:03:02.727][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [INFO] WinWasapiRender -- Real index 0.
+
+[2018-03-22 15:03:02.727][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: 628 PM 02480068|M|E_S 02482A00|V|m_nPlaySr|48000 02482A04|V|m_nPlayCh|2
+[2018-03-22 15:03:02.737][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [Warning]Mic State From Off To On Spent 70 ms
+
+[2018-03-22 15:03:02.737][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: QTTopo Create true
+
+[2018-03-22 15:03:02.737][I][trae_driver.cc:145][SpeechEngineLog][t:14312]: [Info][PathInfo][E:\GitHub\XCastDemo\xcast-demo\example\bin\dataллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллллл/]
+
+[2018-03-22 15:03:02.737][I][trae_driver.cc:2605][trae_start][t:13160]: trae_start m_argAudio{nPlayDevId[0] nRecDevId[0]},audioCategory = 0
+[2018-03-22 15:03:02.737][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] OS Version: [Microsoft Windows 7 Service Pack 1][10060101]
+
+[2018-03-22 15:03:02.737][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TRAE Version: 1.8.9003.28_3367:20729
+
+[2018-03-22 15:03:02.737][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TRAE: InitEngine() [0x0033ff00]
+
+[2018-03-22 15:03:02.737][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [EngineStateSwitch] E_CREATE to E_INIT 
+
+[2018-03-22 15:03:02.737][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: 1664 PM 02480068|M|E_S 149A9F48|V|m_eStrEngineState|'E_INIT'
+[2018-03-22 15:03:02.737][E][xc_cell.c:318][xc_set_err_msg:xc_cell_lookup][t:14312]: invalid path of device.screen-capture:screen-capture.
+[2018-03-22 15:03:02.737][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'device' add child 'screen-capture':'0x007EA330' of 'camera.video-capture'.
+[2018-03-22 15:03:02.737][D][xc_device.c:220][xc_device_nofity][t:14312]: [DEVICE] 'screen-capture' state:1
+[2018-03-22 15:03:02.737][I][xc_device_root.c:176][xc_device_add][t:14312]: [DEVICE] device 'screen-capture' of type 'camera.video-capture' added.
+[2018-03-22 15:03:02.737][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info] linkparsers start
+
+[2018-03-22 15:03:02.737][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [NetSrc[0](0) ==> dmx[1](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.737][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: 628 PM 02480068|M|E_S 02482A00|V|m_nPlaySr|48000 02482A04|V|m_nPlayCh|2
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [tee[3](0) ==> WinWasapiRender[4](0), type=[CAT_AUDIO : TYPE_PCM : [sr=48000, ch=2, b=16] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: 372 PM 05030040|M|mix 050315B8|V|m_nOutSampleRate|48000 050315BC|V|m_nOutCh|2
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [mix[2](0) ==> tee[3](0), type=[CAT_AUDIO : TYPE_PCM : [sr=48000, ch=2, b=16] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [AutoDec[18](0) ==> mix[2](0), type=[CAT_AUDIO : TYPE_PCM : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [jitter[17](0) ==> AutoDec[18](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [dmx[1](0) ==> FEC Dec[15](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [FEC Dec[15](0) ==> QT Dec[16](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [QT Dec[16](0) ==> jitter[17](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: ParserId 18---Index 0
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [AutoDec[23](0) ==> mix[2](1), type=[CAT_AUDIO : TYPE_PCM : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [jitter[22](0) ==> AutoDec[23](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [dmx[1](1) ==> FEC Dec[20](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [FEC Dec[20](0) ==> QT Dec[21](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [QT Dec[21](0) ==> jitter[22](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: ParserId 23---Index 1
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [AutoDec[28](0) ==> mix[2](2), type=[CAT_AUDIO : TYPE_PCM : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [jitter[27](0) ==> AutoDec[28](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [dmx[1](2) ==> FEC Dec[25](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [FEC Dec[25](0) ==> QT Dec[26](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [QT Dec[26](0) ==> jitter[27](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.747][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: ParserId 28---Index 2
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [AutoDec[33](0) ==> mix[2](3), type=[CAT_AUDIO : TYPE_PCM : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [jitter[32](0) ==> AutoDec[33](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [dmx[1](3) ==> FEC Dec[30](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [FEC Dec[30](0) ==> QT Dec[31](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [QT Dec[31](0) ==> jitter[32](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: ParserId 33---Index 3
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [AutoDec[38](0) ==> mix[2](4), type=[CAT_AUDIO : TYPE_PCM : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [jitter[37](0) ==> AutoDec[38](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [dmx[1](4) ==> FEC Dec[35](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [FEC Dec[35](0) ==> QT Dec[36](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [QT Dec[36](0) ==> jitter[37](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: ParserId 38---Index 4
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [AutoDec[43](0) ==> mix[2](5), type=[CAT_AUDIO : TYPE_PCM : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [jitter[42](0) ==> AutoDec[43](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [dmx[1](5) ==> FEC Dec[40](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [FEC Dec[40](0) ==> QT Dec[41](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [QT Dec[41](0) ==> jitter[42](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=8000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: ParserId 43---Index 5
+
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [WARNING] CWinWasapiCapture::GetOutputType: Device support multiple channels [1]
+
+[2018-03-22 15:03:02.757][I][uv_connection.c:708][uv_conn_open][t:13712]: 'uv_conn_1' tcp try listen after bind(9089:0).
+[2018-03-22 15:03:02.757][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [!!!!!]TRAE CWinWasapiCapture::GetOutputType output type sr= 44100,ch = 1
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: 620 PM 02480068|M|E_S 024829F8|V|m_nCapSr|44100 024829FC|V|m_nCapCh|-842150451
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][EC]: nInputIdx:0,pType sr:44100, ch:1 
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][EC]: SetInputType 0, cap sr:44100 
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][EC]:SetInputType 0, pstAecmaecHandle is NULL 
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [WinWasapiCapture[5](0) ==> ec[6](0), type=[CAT_AUDIO : TYPE_PCM : [sr=44100, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][EC]: nInputIdx:1,pType sr:48000, ch:2 
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][EC]: SetInputType 1, ref sr:48000 
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][EC]:SetInputType 1, pstAecmaecHandle is NULL 
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [tee[3](1) ==> ec[6](1), type=[CAT_AUDIO : TYPE_PCM : [sr=48000, ch=2, b=16] ]]
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][EC]: nOutIdx:0,pType sr:48000, ch:1 
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][EC]: SetOutputType  nChannels:1, nSampleRate:48000 
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][EC]: SetOutputType, out sr:48000 
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [ec[6](0) ==> CaptureMix[7](0), type=[CAT_AUDIO : TYPE_PCM : [sr=48000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [CaptureMix[7](0) ==> prep[8](0), type=[CAT_AUDIO : TYPE_PCM : [sr=48000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [prep[8](0) ==> AuxInMix[14](0), type=[CAT_AUDIO : TYPE_PCM : [sr=48000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [AuxInMix[14](0) ==> AutoEnc[10](0), type=[CAT_AUDIO : TYPE_PCM : [sr=48000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [AutoEnc[10](0) ==> QTEnc[11](0), type=[CAT_AUDIO : TYPE_UNKNOWN : [sr=48000, ch=1, b=16] ]]
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [QTEnc[11](0) ==> FEC Enc[13](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TopoNode: LINK [FEC Enc[13](0) ==> NetSink[12](0), type=[CAT_MUX : TYPE_QT : [] ]]
+
+[2018-03-22 15:03:02.767][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info] linkparsers end
+
+[2018-03-22 15:03:02.777][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][WinWasapiCapture][SetOutputFormat]: Request Format [SR=16000, CH=1], Actual Format [SR=44100, CH=1]
+
+[2018-03-22 15:03:02.777][D][trae_driver.cc:1079][SelectDevice][t:13160]: select device playback(1) nDevId(0)
+[2018-03-22 15:03:02.777][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: CSpkCtrl, CSpkCtrl::SelectDevice
+
+[2018-03-22 15:03:02.777][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] WinWasapiRender -- SelDev index 0.
+
+[2018-03-22 15:03:02.777][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][Select Render Device] UseDefault = false,External Choose Index = 0,real internal Device index = 0
+ 		 DeviceName = Ф┴╛Её╟Е≥╗ (Realtek High Definition Audio) , DeviceId = {0.0.0.00000000}.{1a89c4ca-dc50-4aae-9afa-f93e66c38aac}
+
+[2018-03-22 15:03:02.777][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] WinWasapiRender -- Real index 0.
+
+[2018-03-22 15:03:02.777][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: 628 PM 02480068|M|E_S 02482A00|V|m_nPlaySr|48000 02482A04|V|m_nPlayCh|2
+[2018-03-22 15:03:02.777][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][TRAE] CAuxInMix::SetMicOpen = on
+
+[2018-03-22 15:03:02.777][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info]!!!!EnableMic On
+
+[2018-03-22 15:03:02.777][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [DataObServer]MuteDataSrc eLoopback to 0
+
+[2018-03-22 15:03:02.777][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info]!!!!EnableSpeaker On
+
+[2018-03-22 15:03:02.777][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: CSpkCtrl, CSpkCtrl::SelectDevice OK
+
+[2018-03-22 15:03:02.777][D][trae_driver.cc:1079][SelectDevice][t:13160]: select device playback(0) nDevId(0)
+[2018-03-22 15:03:02.777][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: CMicCtrl, CMicCtrl::SelectDevice,nDevIdx = 0
+
+[2018-03-22 15:03:02.777][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: bStarted = Off bMicEnable = On bSpkEnable = On
+
+[2018-03-22 15:03:02.777][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] WinWasapiCapture -- SelDev index 0.
+
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][Select Capture Device] UseDefault = false,External Choose Index = 0,real internal Device index = 0
+ 		 DeviceName = И╨╕Е┘▀Иё▌ (3- Webcam C170) , DeviceId = {0.0.1.00000000}.{47983834-477e-4870-8afc-91a3c8e1ab74}
+
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] WinWasapiCapture -- Real index 0.
+
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [WARNING] CWinWasapiCapture::GetOutputType: Device support multiple channels [1]
+
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [!!!!!]TRAE CWinWasapiCapture::GetOutputType output type sr= 44100,ch = 1
+
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [!!!!!]same setting,TRAE nSr = 44100, nCh = 1
+
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: 620 PM 02480068|M|E_S 024829F8|V|m_nCapSr|44100 024829FC|V|m_nCapCh|-842150451
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][TRAE] CAuxInMix::SetMicOpen = on
+
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info]!!!!EnableMic On
+
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [DataObServer]MuteDataSrc eLoopback to 0
+
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info]!!!!EnableSpeaker On
+
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: CMicCtrl, CMicCtrl::SelectDevice OK
+
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [INFO] TRAE: StartEngine() [0x0033ff00]
+
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [EngineStateSwitch] E_INIT to E_START 
+
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: 1664 PM 02480068|M|E_S 149A9F48|V|m_eStrEngineState|'E_START'
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [DataObserver] DataObserver already exit
+
+[2018-03-22 15:03:02.787][I][trae_driver.cc:145][SpeechEngineLog][t:11296]: [INFO] Thread with name:thread 14 started 
+
+[2018-03-22 15:03:02.788][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: CFDKAACEnc::int Codec:4108 SampleRate:48000, Chn:1, Bitrate:24000, AOT:2, frameLen:1024
+[2018-03-22 15:03:02.788][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: 531 PM 02480068|M|E_S 024829E4|V|m_codecType|4108
+[2018-03-22 15:03:02.788][I][xc_connection.c:185][xc_conn_cycle_once][t:14312]: 'uv_conn_1' connected
+[2018-03-22 15:03:02.788][I][lan_relay_driver.c:471][on_host_ready][t:14312]: ====>[LAN-RELAY] lan host ready rt(0) err(Unknown system error 0)
+[2018-03-22 15:03:02.788][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: 638 PM 02480068|M|E_S 02482A08|V|m_nEncSr|48000 02482A0C|V|m_nEncCh|1
+[2018-03-22 15:03:02.788][I][lan_relay_driver.c:174][get_host_addr][t:14312]: get host addr:ip(10.10.107.37) port(9089) gateway(10.10.107.1) name({716F0C8F-9674-48D2-B2B1-05CA3A04CD29}) desc(Realtek PCIe GBE Family Controller) mac(3464A9159DBC)
+
+[2018-03-22 15:03:02.788][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info] CPrep::StartParser _fsopen rb fail--No such process
+
+[2018-03-22 15:03:02.788][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info] CPrep::StartParser lastmic:capability is -12345,stepdb is -431602080.000000,rvol is -431602080.000000
+
+[2018-03-22 15:03:02.788][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][EC] Windows 7/8/10 ... 
+
+[2018-03-22 15:03:02.788][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][EC] Aecmaec_Init,ref:48000, cap:44100, out:48000
+
+[2018-03-22 15:03:02.788][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][EC]:StartParser, m_FarendQueue.Clear() 
+
+[2018-03-22 15:03:02.788][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: ResetJitter sys:3464600
+[2018-03-22 15:03:02.788][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: ResetJitter sys:3464600
+[2018-03-22 15:03:02.788][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: ResetJitter sys:3464600
+[2018-03-22 15:03:02.788][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: ResetJitter sys:3464600
+[2018-03-22 15:03:02.788][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: ResetJitter sys:3464600
+[2018-03-22 15:03:02.788][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: ResetJitter sys:3464600
+[2018-03-22 15:03:02.879][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][CoreRender] Success Set Digtal Volume = 65535
+
+[2018-03-22 15:03:02.879][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][CoreRender][SpeakerCfg] DigtalVolume = 65535 volume range [0-65535]
+
+[2018-03-22 15:03:02.879][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][CoreRender][SpeakerCfg] RenderSeesionVolume = 100 volume range [0-100]
+
+[2018-03-22 15:03:02.879][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][CoreRender][SpeakerCfg] RenderSeesionMute IsMute = 0 
+
+[2018-03-22 15:03:02.879][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][CoreRender][SpeakerCfg] AudioEndpointVolume = 16 volume range [0-100]
+
+[2018-03-22 15:03:02.879][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][CoreRender][SpeakerCfg] AudioEndpointMute IsMute = 0 
+
+[2018-03-22 15:03:02.879][I][trae_driver.cc:145][SpeechEngineLog][t:11300]: [INFO] Thread with name:thread 18 started 
+
+[2018-03-22 15:03:02.879][I][trae_driver.cc:145][SpeechEngineLog][t:11300]: [INFO] AudRnd -- State Change [STOPPED  -> STARTING]
+
+[2018-03-22 15:03:02.879][I][trae_driver.cc:145][SpeechEngineLog][t:11300]: [INFO] AudRnd -- State Change [STARTING -> STARTED ]
+
+[2018-03-22 15:03:02.879][I][trae_driver.cc:145][SpeechEngineLog][t:11300]: 612 PM 02480068|M|E_S 024829F0|V|m_nMixSr|48000 024829F4|V|m_nMixCh|2
+[2018-03-22 15:03:02.879][I][trae_driver.cc:145][SpeechEngineLog][t:11300]: [Info] SetOutputFormat CParser = mix  OutputIdx = 0 nSampleRate = 48000 nCh = 2
+
+[2018-03-22 15:03:02.879][I][trae_driver.cc:145][SpeechEngineLog][t:11300]: 888 PM 05030040|M|mix 050315B0|V|m_nMixSampleRate|48000 050315B4|V|m_nMixCh|2 050315B8|V|m_nOutSampleRate|48000 050315BC|V|m_nOutCh|2
+[2018-03-22 15:03:02.880][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: [INFO] Thread with name:thread 13 started 
+
+[2018-03-22 15:03:02.880][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO] Thread with name:thread 16 started 
+
+[2018-03-22 15:03:02.880][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [!!!!!]same setting,TRAE nSr = 44100, nCh = 1
+
+[2018-03-22 15:03:02.880][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [WARNING] CWinWasapiCapture::GetOutputType: Device support multiple channels [1]
+
+[2018-03-22 15:03:02.880][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [!!!!!]TRAE CWinWasapiCapture::GetOutputType output type sr= 44100,ch = 1
+
+[2018-03-22 15:03:02.880][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: 620 PM 02480068|M|E_S 024829F8|V|m_nCapSr|44100 024829FC|V|m_nCapCh|-842150451
+[2018-03-22 15:03:02.895][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: capture vol = 58789
+
+[2018-03-22 15:03:02.896][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][Warning][CoreCapture] SetMute Failed
+
+[2018-03-22 15:03:02.897][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [DataObserver] Create DataObserver Thread Success and Dataobserver start working
+
+[2018-03-22 15:03:02.897][I][trae_driver.cc:145][SpeechEngineLog][t:13820]: [INFO] Thread with name:thread 12 started 
+
+[2018-03-22 15:03:02.897][I][trae_driver.cc:145][SpeechEngineLog][t:13828]: [INFO] Thread with name:thread 0 started 
+
+[2018-03-22 15:03:02.898][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][TRAE] CAuxInMix::SetMicOpen = off
+
+[2018-03-22 15:03:02.898][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Warning]Mic State From On To Off Spent 179 ms
+
+[2018-03-22 15:03:02.898][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info]!!!!EnableMic Off
+
+[2018-03-22 15:03:02.898][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Warning]Speaker State From On To Off Spent 239 ms
+
+[2018-03-22 15:03:02.898][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [DataObServer]MuteDataSrc eLoopback to 1
+
+[2018-03-22 15:03:02.898][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info]!!!!EnableSpeaker Off
+
+[2018-03-22 15:03:02.900][I][trae_driver.cc:1327][enum_devices][t:13160]: start mic device enum
+[2018-03-22 15:03:02.903][I][trae_driver.cc:1342][enum_devices][t:13160]: mic: [бС©к╥Г (3- Webcam C170)]
+[2018-03-22 15:03:02.903][I][trae_driver.cc:1327][enum_devices][t:13160]: start speaker device enum
+[2018-03-22 15:03:02.904][I][trae_driver.cc:1342][enum_devices][t:13160]: speaker: [яОиЫфВ (Realtek High Definition Audio)]
+[2018-03-22 15:03:02.904][I][trae_driver.cc:2717][trae_start_done][t:14312]: trae start done rt(0)
+[2018-03-22 15:03:02.904][I][trae_driver.cc:1431][enum_devs_done][t:14312]: new mic: [бС©к╥Г (3- Webcam C170)]
+[2018-03-22 15:03:02.905][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'mic' add child 'И╨╕Е┘▀Иё▌ (3- Webcam C170)':'0x007EA4F0' of 'device.mic.trae'.
+[2018-03-22 15:03:02.905][D][xc_device.c:220][xc_device_nofity][t:14312]: [DEVICE] 'бС©к╥Г (3- Webcam C170)' state:1
+[2018-03-22 15:03:02.905][I][xc_device_root.c:176][xc_device_add][t:14312]: [DEVICE] device 'бС©к╥Г (3- Webcam C170)' of type 'device.mic.trae' added.
+[2018-03-22 15:03:02.905][I][xc_device_root.c:99][set_mic_default][t:14312]: [DEVICE] set default mic to 'И╨╕Е┘▀Иё▌ (3- Webcam C170)'
+[2018-03-22 15:03:02.905][I][trae_driver.cc:1431][enum_devs_done][t:14312]: new speaker: [яОиЫфВ (Realtek High Definition Audio)]
+[2018-03-22 15:03:02.905][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'speaker' add child 'Ф┴╛Её╟Е≥╗ (Realtek High Definition Audio)':'0x007EA480' of 'device.speaker.trae'.
+[2018-03-22 15:03:02.905][D][xc_device.c:220][xc_device_nofity][t:14312]: [DEVICE] 'яОиЫфВ (Realtek High Definition Audio)' state:1
+[2018-03-22 15:03:02.905][I][xc_device_root.c:176][xc_device_add][t:14312]: [DEVICE] device 'яОиЫфВ (Realtek High Definition Audio)' of type 'device.speaker.trae' added.
+[2018-03-22 15:03:02.906][I][xc_device_root.c:129][set_speaker_default][t:14312]: [DEVICE] set default speaker to 'Ф┴╛Её╟Е≥╗ (Realtek High Definition Audio)'
+[2018-03-22 15:03:02.934][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [Info][EC]: nOutIdx:0,pType sr:16000, ch:1 
+
+[2018-03-22 15:03:02.934][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [Info][EC]: SetOutputType  nChannels:1, nSampleRate:16000 
+
+[2018-03-22 15:03:02.935][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [Info][EC]: SetOutputType, out sr:16000 
+
+[2018-03-22 15:03:02.938][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [Info][CPrep]: New Format: 16000 -- 1
+
+[2018-03-22 15:03:02.938][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [CPrep]: wrong set!! The settings must be set before start!!
+
+[2018-03-22 15:03:02.938][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [CPrep]: fst:12.000000->12.000000
+
+[2018-03-22 15:03:02.939][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [CPrep]: min:12.000000->0.000000
+
+[2018-03-22 15:03:02.939][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [CPrep]: max:30.000000->30.000000
+
+[2018-03-22 15:03:02.944][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO] Prep -- VAD Voice [Inactive] Detected
+
+[2018-03-22 15:03:02.945][I][trae_driver.cc:145][SpeechEngineLog][t:11296]: [Info]CNetSink Send First Packet
+
+[2018-03-22 15:03:02.945][I][trae_driver.cc:145][SpeechEngineLog][t:11296]: [Info] Ignore First EOS Packet
+
+[2018-03-22 15:03:02.945][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:03:03.007][D][adv_video.cc:298][dump_cap][t:13160]: camera 160*120@30
+[2018-03-22 15:03:03.008][D][adv_video.cc:298][dump_cap][t:13160]: camera 176*144@30
+[2018-03-22 15:03:03.008][D][adv_video.cc:298][dump_cap][t:13160]: camera 320*176@30
+[2018-03-22 15:03:03.008][D][adv_video.cc:298][dump_cap][t:13160]: camera 320*240@30
+[2018-03-22 15:03:03.008][D][adv_video.cc:298][dump_cap][t:13160]: camera 352*288@30
+[2018-03-22 15:03:03.008][D][adv_video.cc:298][dump_cap][t:13160]: camera 432*240@30
+[2018-03-22 15:03:03.008][D][adv_video.cc:298][dump_cap][t:13160]: camera 544*288@30
+[2018-03-22 15:03:03.008][D][adv_video.cc:298][dump_cap][t:13160]: camera 640*360@30
+[2018-03-22 15:03:03.008][D][adv_video.cc:298][dump_cap][t:13160]: camera 640*480@30
+[2018-03-22 15:03:03.009][D][adv_video.cc:298][dump_cap][t:13160]: camera 800*480@30
+[2018-03-22 15:03:03.009][D][adv_video.cc:298][dump_cap][t:13160]: camera 1024*768@30
+[2018-03-22 15:03:03.009][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'camera' add child 'Webcam C170':'0x007EA640' of 'camera.adv'.
+[2018-03-22 15:03:03.009][D][xc_device.c:220][xc_device_nofity][t:14312]: [DEVICE] 'Webcam C170' state:1
+[2018-03-22 15:03:03.009][I][xc_device_root.c:176][xc_device_add][t:14312]: [DEVICE] device 'Webcam C170' of type 'camera.adv' added.
+[2018-03-22 15:03:03.009][I][xc_device_root.c:39][set_camera_default][t:14312]: [DEVICE] set default camera to 'Webcam C170'
+[2018-03-22 15:03:03.024][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO][EC]: m_nDiffCnt+1
+
+[2018-03-22 15:03:04.787][I][trae_driver.cc:145][SpeechEngineLog][t:11300]:  FirstRndMeter 0
+
+[2018-03-22 15:03:04.904][I][trae_driver.cc:145][SpeechEngineLog][t:13232]:  FirstCapMeter 2488
+
+[2018-03-22 15:03:05.527][E][xc_cell.c:318][xc_set_err_msg:xc_cell_lookup][t:14312]: invalid path of stream.stream1:stream1.
+[2018-03-22 15:03:05.529][I][spear_ctrl.cc:1141][pref_set_role][t:14312]: ****** xcast role is 'user'.
+[2018-03-22 15:03:05.529][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'stream' add child 'stream1':'0x007EA870' of 'stream'.
+[2018-03-22 15:03:05.529][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'stream1' add child 'session':'0x007EA410' of 'av_session'.
+[2018-03-22 15:03:05.529][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'session' add child 'conn':'0x007EA6B0' of 'av_connector'.
+[2018-03-22 15:03:05.529][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.au_scheme'= 1)
+[2018-03-22 15:03:05.529][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.role-type'= 1)
+[2018-03-22 15:03:05.529][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.scheme'= 4)
+[2018-03-22 15:03:05.530][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.recv-mode'= 0)
+[2018-03-22 15:03:05.530][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.sub-recv-mode'= 0)
+[2018-03-22 15:03:05.530][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.hw-enc'= 0)
+[2018-03-22 15:03:05.530][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.hw-dec'= 0)
+[2018-03-22 15:03:05.530][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.sub-hw-enc'= 0)
+[2018-03-22 15:03:05.530][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.sub-hw-dec'= 0)
+[2018-03-22 15:03:05.530][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'conn' add child 'udt-channel1':'0x007EA720' of 'udt-channel'.
+[2018-03-22 15:03:05.530][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'session' add child 'qos':'0x007EA800' of 'av.sess.qos'.
+[2018-03-22 15:03:05.530][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'session' add child 'users':'0x007EA790' of 'av.track.users'.
+[2018-03-22 15:03:05.530][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.auto-recv'= 1)
+[2018-03-22 15:03:05.530][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'session' add child 'reporter':'0x043872A0' of 'av.sess.reporter'.
+[2018-03-22 15:03:05.530][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'stream1' add child 'controller':'0x04387310' of 'stream.ctrl.video'.
+[2018-03-22 15:03:05.531][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'stream1' add child 'display':'0x04387380' of 'display.raw'.
+[2018-03-22 15:03:05.532][I][lan_relay_driver.c:174][get_host_addr][t:14312]: get host addr:ip(10.10.107.37) port(9089) gateway(10.10.107.1) name({716F0C8F-9674-48D2-B2B1-05CA3A04CD29}) desc(Realtek PCIe GBE Family Controller) mac(3464A9159DBC)
+
+[2018-03-22 15:03:05.532][I][xc_connector.c:431][xc_connector_cycle_start][t:14312]: [CONNECTOR] conn cycle start.
+[2018-03-22 15:03:05.532][I][xc_connector.c:287][xc_connector_loop][t:14312]: [CONNECTOR LOOP] rt(0), next state(0).
+[2018-03-22 15:03:05.532][I][xc_connector.c:93][conn_init][t:14312]: [CONNECTOR] conn connector init.
+[2018-03-22 15:03:05.532][I][av_connector.cc:249][app_query][t:14312]: [AV_CONNECTOR] 'conn' query room start.
+[2018-03-22 15:03:05.532][D][cs0x01_0x02.c:125][req_serialize][t:14312]: req->auth_bits(4294967295)auth_bits(18446744069414584320)
+[2018-03-22 15:03:05.532][I][av_connector.cc:308][app_query][t:14312]: xcast(RDM_v1.0.0_b1.0.0.15_3749) appid(1400036169), account(67890), relation_id(100)
+[2018-03-22 15:03:05.532][D][xcast.c:455][xcast_start_stream][t:14312]: 
+
+*****---+[cell] 'stream' of 'default' 0x007A61A0--- 
+*****     +-vprop:'id'
+*****----+[cell] 'stream1' of 'stream' 0x007EA870--- 
+*****-     +-prop:'state'
+*****-     +-prop:'track'
+*****-     +-vprop:'id'
+*****-     +-vprop:'track-conf'
+*****-----+[cell] 'session' of 'av_session' 0x007EA410--- 
+*****--     +-prop:'udt'
+*****--     +-vprop:'id'
+*****--     +-vprop:'room_info'
+*****--     +-sig 's_in' 0x04380B38
+*****--     +-sig 's_udt' 0x04380B80
+*****--     +--handle:0x0F0DA630 data:0x007EA410
+*****--     +-sig 's_video_fastctrl' 0x04380C10
+*****--     +--handle:0x0F09C937 data:0x007EA410
+*****------+[cell] 'conn' of 'av_connector' 0x007EA6B0--- 
+*****---     +-vprop:'id'
+*****---     +-sig 's_tips' 0x04363D08
+*****---     +--handle:0x0F091014 data:0x008120E0
+*****---     +-sig 's_out' 0x04380AA8
+*****---     +-sig 's_conn' 0x04380AF0
+*****---     +--handle:0x0437FE08 data:0x0F53FC6C
+*****---     +--handle:0x007BB160 data:0x00808408
+*****-------+[cell] 'udt-channel1' of 'udt-channel' 0x007EA720--- 
+*****----     +-vprop:'id'
+*****----     +-sig 's_conn' 0x04363D98
+*****----     +-sig 's_read' 0x04363DE0
+*****----     +-sig 's_update' 0x04363E28
+*****----     +--handle:0x0F1591B0 data:0x0435E3D0
+*****----     +-sig 's_set0' 0x043808F8
+*****----     +--handle:0x0F3B11D0 data:0x0435E3D0
+*****----     +-sig 's_set1' 0x04380940
+*****----     +--handle:0x0F3B1CC0 data:0x0435E3D0
+*****----     +-sig 's_setrtt' 0x04380988
+*****----     +--handle:0x0F3B1D10 data:0x0435E3D0
+*****----     +-sig 's_calcLoss' 0x043809D0
+*****----     +--handle:0x0F3B1890 data:0x0435E3D0
+*****----     +-sig 's_skip_udt' 0x04380A18
+*****----     +--handle:0x0F3B1E30 data:0x0435E3D0
+*****----     +-sig 's_skip_mic' 0x04380A60
+*****----     +--handle:0x0F3B1EA0 data:0x0435E3D0
+*****------+[cell] 'qos' of 'av.sess.qos' 0x007EA800--- 
+*****---     +-vprop:'video_qos'
+*****---     +-vprop:'id'
+*****---     +-vprop:'sub_video_qos'
+*****---     +-vprop:'audio_qos'
+*****---   
+[2018-03-22 15:03:05.533][I][uv_connection.c:1076][conn_new][t:14312]: ====>[CONN-NEW] 'uv_conn_2' 0x043873F0
+[2018-03-22 15:03:05.533][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'libuv' add child 'uv_conn_2':'0x043873F0' of 'conn.libuv'.
+[2018-03-22 15:03:05.550][D][uv_driver.c:183][on_resolved][t:13712]: get dns address (59.37.116.121:15000)
+[2018-03-22 15:03:05.557][I][xc_connection.c:185][xc_conn_cycle_once][t:14312]: 'uv_conn_2' connected
+[2018-03-22 15:03:05.558][D][http_connection.c:203][on_connected][t:14312]: http connection success
+[2018-03-22 15:03:05.557][D][uv_connection.c:52][uv_keepalive][t:13712]: use keepalive mode, ret(0)
+[2018-03-22 15:03:05.558][D][http_connection.c:339][request][t:14312]: send http request:len(444) str(
+POST http://openmsf.3g.qq.com:15000 HTTP/1.1
+Host: openmsf.3g.qq.com:15000
+Content-Length: 207
+Accept: */*
+User-Agent: xcast/0 CFNetwork/868.2 Darwin/16.7.0
+Content-Type: application/x-www-form-urlencoded
+Connection: keep-alive
+
+)
+[2018-03-22 15:03:05.558][D][uv_connection.c:55][uv_keepalive][t:13712]: uv_fileno ret(0) fd(1980)
+[2018-03-22 15:03:05.558][I][http_channel_driver.c:465][driver_cycle_once][t:14312]: http channel send rt(0)
+[2018-03-22 15:03:05.791][I][http_connection.c:390][on_channel_read][t:14312]: on http channel read erroce(0) status(200) headlen(57) contentlen(251)
+[2018-03-22 15:03:05.791][D][http_channel_driver.c:121][http_parse_msg][t:14312]: preparse_msg size :251
+[2018-03-22 15:03:05.792][I][http_channel_driver.c:123][http_parse_msg][t:14312]: sso unpack rt(0)
+[2018-03-22 15:03:05.792][I][http_channel_driver.c:137][http_parse_msg][t:14312]: app cs preparse rt(0)
+[2018-03-22 15:03:05.792][D][http_channel_driver.c:159][http_parse_msg][t:14312]: http parse msg rt(0)
+[2018-03-22 15:03:05.792][I][http_connection.c:415][on_channel_read][t:14312]: http connection response seq(1) remain msgs(0)
+[2018-03-22 15:03:05.792][I][http_channel_driver.c:218][http_response][t:14312]: http response type(7) seq(1) err(0)
+[2018-03-22 15:03:05.792][D][http_channel_driver.c:25][cs0x01_0x02_rsp_handler][t:14312]: cs0x01_0x02_rsp_handler
+[2018-03-22 15:03:05.792][I][av_connector.cc:347][query_room_done][t:14312]: [AV_CONNECTOR] 'conn' query room done[0].
+[2018-03-22 15:03:05.792][I][xc_connector.c:287][xc_connector_loop][t:14312]: [CONNECTOR LOOP] rt(0), next state(1).
+[2018-03-22 15:03:05.792][I][xc_connector.c:108][conn_connect][t:14312]: [CONNECTOR] conn start connecting[0]...
+[2018-03-22 15:03:05.792][I][av_connector.cc:469][channel_prepare][t:14312]: [CONNECTOR] 'conn' use interface svr[183.36.112.54:8000:udp].
+[2018-03-22 15:03:05.792][I][xc_connector.c:139][conn_connect][t:14312]: [CONNECTOR] conn start channel udt-channel1.
+[2018-03-22 15:03:05.792][I][uv_connection.c:1076][conn_new][t:14312]: ====>[CONN-NEW] 'uv_conn_3' 0x043874D0
+[2018-03-22 15:03:05.792][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'libuv' add child 'uv_conn_3':'0x043874D0' of 'conn.libuv'.
+[2018-03-22 15:03:05.793][D][http_channel_driver.c:27][cs0x01_0x02_rsp_handler][t:14312]: cs0x01_0x02_rsp_handler fired
+[2018-03-22 15:03:05.793][I][http_channel_driver.c:237][http_response][t:14312]: http response seq(1) xc_msg_table_fire_msg rt(0)
+[2018-03-22 15:03:05.793][I][xc_connection.c:185][xc_conn_cycle_once][t:14312]: 'uv_conn_3' connected
+[2018-03-22 15:03:05.793][I][xc_connector.c:77][channel_state][t:14312]: [CONNECTOR] conn channel connected.
+[2018-03-22 15:03:05.793][I][xc_connector.c:287][xc_connector_loop][t:14312]: [CONNECTOR LOOP] rt(0), next state(2).
+[2018-03-22 15:03:05.793][I][xc_connector.c:151][conn_handshake][t:14312]: [CONNECTOR] conn start handshaking[0]...
+[2018-03-22 15:03:05.793][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.auto-recv'= 1)
+[2018-03-22 15:03:05.793][I][av_connector.cc:631][create_room][t:14312]: [AV_CONNECTOR] 'conn' create room start.
+[2018-03-22 15:03:05.794][E][xc_cast.c:203][xc_set_err_msg:xc_get_property][t:14312]: no property supported for device.camera.caps
+[2018-03-22 15:03:05.794][W][session_qos.cc:598][client::multi::qos::SessionQos::FillCameraLimit][t:14312]: no camera exist!!!
+[2018-03-22 15:03:05.794][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.aec'= 1)
+[2018-03-22 15:03:05.794][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.agc'= 1)
+[2018-03-22 15:03:05.794][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.ans'= 1)
+[2018-03-22 15:03:05.794][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.frame'= 20)
+[2018-03-22 15:03:05.794][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.silence_detect'= 1)
+[2018-03-22 15:03:05.794][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.anti_dropout'= 1)
+[2018-03-22 15:03:05.794][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.sample_rate'= 16000)
+[2018-03-22 15:03:05.795][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.channel'= 1)
+[2018-03-22 15:03:05.795][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.codec_prof'= 4129)
+[2018-03-22 15:03:05.795][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.sample_rate'= 16000)
+[2018-03-22 15:03:05.795][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.kbps'= 30000)
+[2018-03-22 15:03:05.795][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.min_antishake'= 80)
+[2018-03-22 15:03:05.795][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.min_antishake'= 80)
+[2018-03-22 15:03:05.795][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.max_antishake_max'= 1000)
+[2018-03-22 15:03:05.795][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.max_antishake_max'= 1000)
+[2018-03-22 15:03:05.795][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.max_antishake_min'= 400)
+[2018-03-22 15:03:05.795][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.audio.max_antishake_min'= 400)
+[2018-03-22 15:03:05.795][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.qclear'= -1)
+[2018-03-22 15:03:05.795][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.anti_dropout'= 1)
+[2018-03-22 15:03:05.796][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.fps'= 15)
+[2018-03-22 15:03:05.796][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.maxqp'= -1)
+[2018-03-22 15:03:05.796][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.minqp'= -1)
+[2018-03-22 15:03:05.796][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.maxkbps'= 350)
+[2018-03-22 15:03:05.796][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.minkbps'= 300)
+[2018-03-22 15:03:05.796][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.fqueue_time'= -1)
+[2018-03-22 15:03:05.796][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.small_video_upload'= -1)
+[2018-03-22 15:03:05.796][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.live_adapt'= -1)
+[2018-03-22 15:03:05.796][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.format_fix_width'= 864)
+[2018-03-22 15:03:05.796][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.format_fix_height'= 480)
+[2018-03-22 15:03:05.796][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.format_max_width'= -1)
+[2018-03-22 15:03:05.796][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.video.format_max_height'= -1)
+[2018-03-22 15:03:05.797][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.role-type'= 1)
+[2018-03-22 15:03:05.797][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.net.rc_anti_dropout'= 1)
+[2018-03-22 15:03:05.797][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.net.rc_max_delay'= -1)
+[2018-03-22 15:03:05.797][D][spear_ctrl.cc:256][av_preference_int32][t:14312]: ****** pref('preference.net.rc_init_delay'= -1)
+[2018-03-22 15:03:05.939][I][av_connector.cc:661][create_room_done][t:14312]: [CONNECTOR] 'conn' create room done[0].
+[2018-03-22 15:03:05.939][I][xc_connector.c:287][xc_connector_loop][t:14312]: [CONNECTOR LOOP] rt(0), next state(3).
+[2018-03-22 15:03:05.939][I][xc_connector.c:182][conn_established][t:14312]: [CONNECTOR] conn connect done[0].
+[2018-03-22 15:03:05.939][I][av_session.cc:214][concector_done][t:14312]: [SESSION] session connected.
+[2018-03-22 15:03:05.939][I][stream_tracks.cc:193][av_tracks_setup][t:14312]: [STREAM] add out track[stream1.audio_out].
+[2018-03-22 15:03:05.939][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'stream1' add child 'audio-out':'0x043BEF70' of 'track'.
+[2018-03-22 15:03:05.939][I][xc_track.c:165][on_capture_change][t:14312]: [TRACK] 'audio-out' apply capture 'И╨╕Е┘▀Иё▌ (3- Webcam C170)'.
+[2018-03-22 15:03:05.939][I][stream_tracks.cc:218][av_tracks_setup][t:14312]: [STREAM] add out track[stream1.audio_out].
+[2018-03-22 15:03:05.939][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'stream1' add child 'audio-in':'0x043BEDB0' of 'track'.
+[2018-03-22 15:03:05.940][E][xc_track.c:772][xc_set_err_msg:xc_track_cycle_start][t:14312]: [TRACK] 'audio-in:s_in' link to 'session:s_out'!
+[2018-03-22 15:03:05.940][E][xc_track.c:784][xc_set_err_msg:xc_track_cycle_start][t:14312]: [TRACK] 'audio-in' start 'Ф┴╛Её╟Е≥╗ (Realtek High Definition Audio)'!
+[2018-03-22 15:03:05.940][E][xc_track.c:792][xc_set_err_msg:xc_track_cycle_start][t:14312]: [TRACK] 'audio-in' started!
+[2018-03-22 15:03:05.940][I][stream_tracks.cc:234][av_tracks_setup][t:14312]: [STREAM] add out track[stream1.video_out].
+[2018-03-22 15:03:05.940][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'stream1' add child 'video-out':'0x08732750' of 'track'.
+[2018-03-22 15:03:05.940][I][xc_track.c:165][on_capture_change][t:14312]: [TRACK] 'video-out' apply capture 'Webcam C170'.
+[2018-03-22 15:03:05.940][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'video-out' add child 'codec':'0x08732830' of 'codec.tve'.
+[2018-03-22 15:03:05.940][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [CVideoEngine::SetVidDecHwFlag][CVideoEngine.cpp][591]SetVidDecHwFlag 1
+[2018-03-22 15:03:05.940][I][xc_track.c:547][set_codec][t:14312]: [TRACK] 'video-out' add encode 'codec' of type 'codec.tve'.
+[2018-03-22 15:03:05.940][I][stream_tracks.cc:264][av_tracks_setup][t:14312]: [STREAM] add out track[stream1.sub_video_out].
+[2018-03-22 15:03:05.940][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'stream1' add child 'sub-video-out':'0x087328A0' of 'track'.
+[2018-03-22 15:03:05.940][I][xc_track.c:235][on_capture_change][t:14312]: [TRACK] 'sub-video-out' apply capture 'screen-capture'.
+[2018-03-22 15:03:05.940][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'sub-video-out' add child 'codec':'0x08732980' of 'codec.tve'.
+[2018-03-22 15:03:05.940][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [CVideoEngine::SetVidDecHwFlag][CVideoEngine.cpp][591]SetVidDecHwFlag 1
+[2018-03-22 15:03:05.940][I][xc_track.c:547][set_codec][t:14312]: [TRACK] 'sub-video-out' add encode 'codec' of type 'codec.tve'.
+[2018-03-22 15:03:05.941][D][xc_cell.c:494][xc_cell_add_child][t:14312]:  'sub-video-out' add child 'sub-video-out-preprocor':'0x087329F0' of 'screen.preprocor'.
+[2018-03-22 15:03:05.941][I][xc_track.c:165][on_capture_change][t:14312]: [TRACK] 'video-out' apply capture 'Webcam C170'.
+[2018-03-22 15:03:05.941][I][av_session.cc:687][av_session_video_out_req][t:14312]: [SESSION] session change video state[0].
+[2018-03-22 15:03:05.941][I][av_session.cc:603][change_state][t:14312]: [CONNECTOR] 'conn' change av state start. state[1]
+[2018-03-22 15:03:05.941][I][stream_tracks.cc:87][start_video_out_track][t:14312]: [STREAM] stop track[stream1].
+[2018-03-22 15:03:05.941][I][xc_track.c:165][on_capture_change][t:14312]: [TRACK] 'audio-out' apply capture 'И╨╕Е┘▀Иё▌ (3- Webcam C170)'.
+[2018-03-22 15:03:05.941][I][stream_tracks.cc:43][start_audio_track][t:14312]: [STREAM] stop track[stream1.audio-out].
+[2018-03-22 15:03:05.940][D][trae_driver.cc:1079][SelectDevice][t:13160]: select device playback(1) nDevId(0)
+[2018-03-22 15:03:05.943][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: CSpkCtrl, CSpkCtrl::SelectDevice
+
+[2018-03-22 15:03:05.945][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info][Warning] CurrentDevice name = Ф┴╛Её╟Е≥╗ (Realtek High Definition Audio),id = {0.0.0.00000000}.{1a89c4ca-dc50-4aae-9afa-f93e66c38aac} Has been selected
+
+[2018-03-22 15:03:05.945][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Warning]Speaker State From Off To On Spent 3047 ms
+
+[2018-03-22 15:03:05.945][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [DataObServer]MuteDataSrc eLoopback to 0
+
+[2018-03-22 15:03:05.945][I][trae_driver.cc:145][SpeechEngineLog][t:13160]: [Info]!!!!EnableSpeaker On
+
+[2018-03-22 15:03:05.945][E][trae_driver.cc:1565][start_dev_internal][t:13160]: ===>[TRAE-DEV] start speaker яОиЫфВ (Realtek High Definition Audio):0
+[2018-03-22 15:03:05.946][D][xc_device.c:220][xc_device_nofity][t:14312]: [DEVICE] 'яОиЫфВ (Realtek High Definition Audio)' state:2
+[2018-03-22 15:03:05.984][I][av_session.cc:350][sc0x64_0x65_req_handler][t:14312]: [SESSION] sc0x64_0x65_req_handler. subcmd[6]
+[2018-03-22 15:03:05.984][I][av_session.cc:296][cs0x25_0x26_rsp_handler][t:14312]: [SESSION] session change av state done[0].
+[2018-03-22 15:03:05.984][I][stream_tracks.cc:728][av_track_start][t:14312]: [STREAM] stop track[stream1.video-out.0].
+[2018-03-22 15:03:05.992][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:524.28% RTT:0
+TotalMem:16306MB FreeMem:11080MB ProcUsed:0.00MB
+Audio:
+Codec:0 SampleRate:0 bitR:0 packMS:0 NM:0+0 MTU:0 INFEC:0 JC:0 [0,0] DS:0
+UDTQos: mode[3452816845] sendq[3452816845] recvq[3452816845]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:07.995][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:1.84% RTT:0
+TotalMem:16306MB FreeMem:11064MB ProcUsed:0.00MB
+Audio:
+Codec:0 SampleRate:0 bitR:0 packMS:0 NM:0+0 MTU:0 INFEC:0 JC:0 [0,0] DS:0
+UDTQos: mode[3452816845] sendq[3452816845] recvq[3452816845]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:09.999][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:0.97% RTT:12
+TotalMem:16306MB FreeMem:11032MB ProcUsed:34.27MB
+Audio:
+Codec:0 SampleRate:0 bitR:0 packMS:0 NM:0+0 MTU:0 INFEC:0 JC:0 [0,0] DS:0
+UDTQos: mode[3452816845] sendq[3452816845] recvq[3452816845]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:10.011][E][udt_channel.cc:1048][set_udt_params][t:14312]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-22 15:03:10.012][E][udt_channel.cc:1057][set_udt_params][t:14312]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-22 15:03:10.012][E][udt_channel.cc:1064][set_udt_params][t:14312]: =====>[UDT-STARTED-MAIN]
+[2018-03-22 15:03:10.012][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [CVideoEngine::SetUDT][CVideoEngine.cpp][1112]set udt flag[1]
+[2018-03-22 15:03:10.012][D][video_ctrl.cc:68][set_sub_video_qos][t:14312]: start set_sub_video_qos.... udt: 1
+[2018-03-22 15:03:10.013][E][udt_channel.cc:443][udt_thread_proc][t:13120]: =====>[UDT-STARTED-WORKER]
+[2018-03-22 15:03:10.871][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: [CNetSrc] Waiting data timeout.
+
+[2018-03-22 15:03:10.871][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: [INFO] CFECDec: DBF_EOS.
+
+[2018-03-22 15:03:10.872][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: CFECDecParser::SendPacket receive EOS
+[2018-03-22 15:03:10.872][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: ResetJitter sys:3472693
+[2018-03-22 15:03:10.872][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: [INFO] CFECDec: DBF_EOS.
+
+[2018-03-22 15:03:10.872][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: CFECDecParser::SendPacket receive EOS
+[2018-03-22 15:03:10.872][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: ResetJitter sys:3472693
+[2018-03-22 15:03:10.872][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: [INFO] CFECDec: DBF_EOS.
+
+[2018-03-22 15:03:10.873][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: CFECDecParser::SendPacket receive EOS
+[2018-03-22 15:03:10.873][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: ResetJitter sys:3472694
+[2018-03-22 15:03:10.873][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: [INFO] CFECDec: DBF_EOS.
+
+[2018-03-22 15:03:10.873][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: CFECDecParser::SendPacket receive EOS
+[2018-03-22 15:03:10.873][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: ResetJitter sys:3472694
+[2018-03-22 15:03:10.873][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: [INFO] CFECDec: DBF_EOS.
+
+[2018-03-22 15:03:10.873][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: CFECDecParser::SendPacket receive EOS
+[2018-03-22 15:03:10.873][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: ResetJitter sys:3472694
+[2018-03-22 15:03:10.874][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: [INFO] CFECDec: DBF_EOS.
+
+[2018-03-22 15:03:10.874][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: CFECDecParser::SendPacket receive EOS
+[2018-03-22 15:03:10.874][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: ResetJitter sys:3472695
+[2018-03-22 15:03:12.001][D][udt_channel.cc:1141][udt_calcLoss][t:14312]: LossRateSend 0 UnsendTick 0
+[2018-03-22 15:03:12.001][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:2.04% RTT:13
+TotalMem:16306MB FreeMem:11145MB ProcUsed:34.27MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:12.783][I][trae_driver.cc:145][SpeechEngineLog][t:11300]: 915 PM 02480068|M|E_S 02482AA4|V|m_OutDevMeterStr|'OutdevMeter: ' 02482A72|V|m_rndMeter1|0 02482A74|V|m_rndMeter2|0 02482A76|V|m_rndMeter3|0 02482A78|V|m_rndMeter4|0 02482A7A|V|m_rndMeter5|0
+[2018-03-22 15:03:12.904][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO][CAudCapBase]InDevMeter:2488,2651,2994,11125,10467
+
+[2018-03-22 15:03:12.904][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO][CAudCapBase]Volume:49,49,49,49,49
+
+[2018-03-22 15:03:12.904][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO][CAudCapBase]Boost:0.0,0.0,0.0,0.0,0.0
+
+[2018-03-22 15:03:12.904][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO][CAudCapBase]DigitalGainLinear:4.0,4.0,4.0,4.0,4.0
+
+[2018-03-22 15:03:12.904][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: 900 PM 02480068|M|E_S 02482AA0|V|m_IndevMeterStr|'IndevMeter: ' 02482A68|V|m_capMeter1|2488 02482A6A|V|m_capMeter2|2651 02482A6C|V|m_capMeter3|2994 02482A6E|V|m_capMeter4|11125 02482A70|V|m_capMeter5|10467
+[2018-03-22 15:03:14.004][D][udt_channel.cc:1141][udt_calcLoss][t:14312]: LossRateSend 0 UnsendTick 0
+[2018-03-22 15:03:14.005][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:1.75% RTT:13
+TotalMem:16306MB FreeMem:11114MB ProcUsed:34.27MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:16.011][D][udt_channel.cc:1141][udt_calcLoss][t:14312]: LossRateSend 0 UnsendTick 0
+[2018-03-22 15:03:16.012][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:1.84% RTT:16
+TotalMem:16306MB FreeMem:11114MB ProcUsed:34.32MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:16.018][E][udt_channel.cc:1048][set_udt_params][t:14312]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-22 15:03:16.018][E][udt_channel.cc:1057][set_udt_params][t:14312]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-22 15:03:16.019][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [CVideoEngine::SetUDT][CVideoEngine.cpp][1112]set udt flag[1]
+[2018-03-22 15:03:16.019][D][video_ctrl.cc:68][set_sub_video_qos][t:14312]: start set_sub_video_qos.... udt: 1
+[2018-03-22 15:03:16.244][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [EC][Aecmaec]machinetype: 1431655766, delay legal cnt:0 
+
+[2018-03-22 15:03:18.017][D][udt_channel.cc:1141][udt_calcLoss][t:14312]: LossRateSend 0 UnsendTick 0
+[2018-03-22 15:03:18.018][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:2.13% RTT:17
+TotalMem:16306MB FreeMem:11133MB ProcUsed:34.32MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:18.031][E][udt_channel.cc:1048][set_udt_params][t:14312]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-22 15:03:18.031][E][udt_channel.cc:1057][set_udt_params][t:14312]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-22 15:03:18.031][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [CVideoEngine::SetUDT][CVideoEngine.cpp][1112]set udt flag[1]
+[2018-03-22 15:03:18.031][D][video_ctrl.cc:68][set_sub_video_qos][t:14312]: start set_sub_video_qos.... udt: 1
+[2018-03-22 15:03:18.874][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: [CNetSrc] Waiting data timeout.
+
+[2018-03-22 15:03:20.020][D][udt_channel.cc:1141][udt_calcLoss][t:14312]: LossRateSend 0 UnsendTick 0
+[2018-03-22 15:03:20.021][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:1.94% RTT:14
+TotalMem:16306MB FreeMem:11112MB ProcUsed:34.32MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:22.024][D][udt_channel.cc:1141][udt_calcLoss][t:14312]: LossRateSend 0 UnsendTick 0
+[2018-03-22 15:03:22.025][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:2.14% RTT:13
+TotalMem:16306MB FreeMem:11159MB ProcUsed:34.32MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:22.037][E][udt_channel.cc:1048][set_udt_params][t:14312]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-22 15:03:22.037][E][udt_channel.cc:1057][set_udt_params][t:14312]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-22 15:03:22.037][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [CVideoEngine::SetUDT][CVideoEngine.cpp][1112]set udt flag[1]
+[2018-03-22 15:03:22.038][D][video_ctrl.cc:68][set_sub_video_qos][t:14312]: start set_sub_video_qos.... udt: 1
+[2018-03-22 15:03:22.782][I][trae_driver.cc:145][SpeechEngineLog][t:11300]: 915 PM 02480068|M|E_S 02482AA4|V|m_OutDevMeterStr|'OutdevMeter: ' 02482A72|V|m_rndMeter1|0 02482A74|V|m_rndMeter2|0 02482A76|V|m_rndMeter3|0 02482A78|V|m_rndMeter4|0 02482A7A|V|m_rndMeter5|0
+[2018-03-22 15:03:22.903][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO][CAudCapBase]InDevMeter:4452,8147,1796,5904,2160
+
+[2018-03-22 15:03:22.903][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO][CAudCapBase]Volume:49,49,49,49,49
+
+[2018-03-22 15:03:22.903][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO][CAudCapBase]Boost:0.0,0.0,0.0,0.0,0.0
+
+[2018-03-22 15:03:22.903][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO][CAudCapBase]DigitalGainLinear:4.0,4.0,4.0,5.0,5.0
+
+[2018-03-22 15:03:22.903][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: 900 PM 02480068|M|E_S 02482AA0|V|m_IndevMeterStr|'IndevMeter: ' 02482A68|V|m_capMeter1|4452 02482A6A|V|m_capMeter2|8147 02482A6C|V|m_capMeter3|1796 02482A6E|V|m_capMeter4|5904 02482A70|V|m_capMeter5|2160
+[2018-03-22 15:03:24.028][D][udt_channel.cc:1141][udt_calcLoss][t:14312]: LossRateSend 0 UnsendTick 0
+[2018-03-22 15:03:24.029][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:1.55% RTT:14
+TotalMem:16306MB FreeMem:11144MB ProcUsed:34.32MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:24.042][E][udt_channel.cc:1048][set_udt_params][t:14312]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-22 15:03:24.043][E][udt_channel.cc:1057][set_udt_params][t:14312]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-22 15:03:24.043][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [CVideoEngine::SetUDT][CVideoEngine.cpp][1112]set udt flag[1]
+[2018-03-22 15:03:24.043][D][video_ctrl.cc:68][set_sub_video_qos][t:14312]: start set_sub_video_qos.... udt: 1
+[2018-03-22 15:03:26.031][D][udt_channel.cc:1141][udt_calcLoss][t:14312]: LossRateSend 0 UnsendTick 0
+[2018-03-22 15:03:26.032][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:1.36% RTT:15
+TotalMem:16306MB FreeMem:11141MB ProcUsed:34.32MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:26.045][E][udt_channel.cc:1048][set_udt_params][t:14312]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-22 15:03:26.045][E][udt_channel.cc:1057][set_udt_params][t:14312]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-22 15:03:26.045][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [CVideoEngine::SetUDT][CVideoEngine.cpp][1112]set udt flag[1]
+[2018-03-22 15:03:26.045][D][video_ctrl.cc:68][set_sub_video_qos][t:14312]: start set_sub_video_qos.... udt: 1
+[2018-03-22 15:03:26.874][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: [CNetSrc] Waiting data timeout.
+
+[2018-03-22 15:03:28.035][D][udt_channel.cc:1141][udt_calcLoss][t:14312]: LossRateSend 0 UnsendTick 0
+[2018-03-22 15:03:28.036][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:0.97% RTT:16
+TotalMem:16306MB FreeMem:11121MB ProcUsed:34.32MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:29.583][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [EC][Aecmaec]machinetype: 1431655766, delay legal cnt:0 
+
+[2018-03-22 15:03:30.039][D][udt_channel.cc:1141][udt_calcLoss][t:14312]: LossRateSend 0 UnsendTick 0
+[2018-03-22 15:03:30.040][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:1.45% RTT:13
+TotalMem:16306MB FreeMem:11189MB ProcUsed:34.32MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:30.053][E][udt_channel.cc:1048][set_udt_params][t:14312]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-22 15:03:30.053][E][udt_channel.cc:1057][set_udt_params][t:14312]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-22 15:03:30.053][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [CVideoEngine::SetUDT][CVideoEngine.cpp][1112]set udt flag[1]
+[2018-03-22 15:03:30.053][D][video_ctrl.cc:68][set_sub_video_qos][t:14312]: start set_sub_video_qos.... udt: 1
+[2018-03-22 15:03:32.043][D][udt_channel.cc:1141][udt_calcLoss][t:14312]: LossRateSend 0 UnsendTick 0
+[2018-03-22 15:03:32.044][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:1.84% RTT:14
+TotalMem:16306MB FreeMem:11129MB ProcUsed:34.32MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:32.057][E][udt_channel.cc:1048][set_udt_params][t:14312]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-22 15:03:32.057][E][udt_channel.cc:1057][set_udt_params][t:14312]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-22 15:03:32.057][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [CVideoEngine::SetUDT][CVideoEngine.cpp][1112]set udt flag[1]
+[2018-03-22 15:03:32.057][D][video_ctrl.cc:68][set_sub_video_qos][t:14312]: start set_sub_video_qos.... udt: 1
+[2018-03-22 15:03:32.782][I][trae_driver.cc:145][SpeechEngineLog][t:11300]: 915 PM 02480068|M|E_S 02482AA4|V|m_OutDevMeterStr|'OutdevMeter: ' 02482A72|V|m_rndMeter1|0 02482A74|V|m_rndMeter2|0 02482A76|V|m_rndMeter3|0 02482A78|V|m_rndMeter4|0 02482A7A|V|m_rndMeter5|0
+[2018-03-22 15:03:32.862][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [Info][EC] m_MachineType: 1431655766, ResOn: 0 
+
+[2018-03-22 15:03:32.902][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO][CAudCapBase]InDevMeter:7244,9971,13504,6719,26143
+
+[2018-03-22 15:03:32.902][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO][CAudCapBase]Volume:49,49,49,49,49
+
+[2018-03-22 15:03:32.903][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO][CAudCapBase]Boost:0.0,0.0,0.0,0.0,0.0
+
+[2018-03-22 15:03:32.903][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: [INFO][CAudCapBase]DigitalGainLinear:5.0,5.0,5.0,5.0,5.0
+
+[2018-03-22 15:03:32.903][I][trae_driver.cc:145][SpeechEngineLog][t:13232]: 900 PM 02480068|M|E_S 02482AA0|V|m_IndevMeterStr|'IndevMeter: ' 02482A68|V|m_capMeter1|7244 02482A6A|V|m_capMeter2|9971 02482A6C|V|m_capMeter3|13504 02482A6E|V|m_capMeter4|6719 02482A70|V|m_capMeter5|26143
+[2018-03-22 15:03:34.046][D][udt_channel.cc:1141][udt_calcLoss][t:14312]: LossRateSend 0 UnsendTick 0
+[2018-03-22 15:03:34.047][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:1.46% RTT:15
+TotalMem:16306MB FreeMem:11065MB ProcUsed:34.32MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:34.060][E][udt_channel.cc:1048][set_udt_params][t:14312]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-22 15:03:34.061][E][udt_channel.cc:1057][set_udt_params][t:14312]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-22 15:03:34.061][E][tve_driver.cc:78][LogVideoEngine][t:14312]: [CVideoEngine::SetUDT][CVideoEngine.cpp][1112]set udt flag[1]
+[2018-03-22 15:03:34.061][D][video_ctrl.cc:68][set_sub_video_qos][t:14312]: start set_sub_video_qos.... udt: 1
+[2018-03-22 15:03:34.874][I][trae_driver.cc:145][SpeechEngineLog][t:13812]: [CNetSrc] Waiting data timeout.
+
+[2018-03-22 15:03:35.940][I][av_connector.cc:898][do_disconnect][t:14312]: [AV_CONNECTOR] do_disconnect rev_stamp_sec(1521702214), cur_stamp_sec(1521702215)
+[2018-03-22 15:03:36.049][D][udt_channel.cc:1141][udt_calcLoss][t:14312]: LossRateSend 0 UnsendTick 0
+[2018-03-22 15:03:36.050][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:1.94% RTT:15
+TotalMem:16306MB FreeMem:11041MB ProcUsed:34.32MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.15_3749 
+host: 10.10.107.37:9089 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-22 15:03:38.053][D][udt_channel.cc:1141][udt_calcLoss][t:14312]: LossRateSend 0 UnsendTick 0
+[2018-03-22 15:03:38.054][I][session_reporter.cc:920][client::StatisticMgrMulti::DoReportInternal][t:14312]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:1.94% RTT:13
+TotalMem:16306MB FreeMem:11082MB ProcUsed:34.32MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+Audio:
+Codec:4129 Sample

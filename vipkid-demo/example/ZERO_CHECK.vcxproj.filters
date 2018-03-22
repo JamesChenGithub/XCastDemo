@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\GitHub\XCastDemo\vipkid-demo\example\CMakeFiles\8c00891c857fe3af5f5dda028c386383\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{68A797C7-250C-3567-9036-786C444FC393}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

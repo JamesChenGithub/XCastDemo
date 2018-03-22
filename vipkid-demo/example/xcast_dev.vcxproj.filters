@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="E:\GitHub\XCastDemo\vipkid-demo\example\main-view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\GitHub\XCastDemo\vipkid-demo\example\tab-view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\GitHub\XCastDemo\vipkid-demo\example\tree-view.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\GitHub\XCastDemo\vipkid-demo\example\xcast-dev.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\GitHub\XCastDemo\vipkid-demo\example\xcast-ui-handler.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\GitHub\XCastDemo\vipkid-demo\example\Live\XCastHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\GitHub\XCastDemo\vipkid-demo\example\Live\XCastUtil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="E:\GitHub\XCastDemo\vipkid-demo\example\Live\XCastObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="E:\GitHub\XCastDemo\vipkid-demo\example\main-view.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\GitHub\XCastDemo\vipkid-demo\example\Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\GitHub\XCastDemo\vipkid-demo\example\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\GitHub\XCastDemo\vipkid-demo\example\targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\GitHub\XCastDemo\vipkid-demo\example\xcast-dev.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\GitHub\XCastDemo\vipkid-demo\example\xcast-ui-handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\GitHub\XCastDemo\vipkid-demo\example\Live\XCastData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\GitHub\XCastDemo\vipkid-demo\example\Live\XCastHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\GitHub\XCastDemo\vipkid-demo\example\Live\XCastUtil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="E:\GitHub\XCastDemo\vipkid-demo\example\Live\XCastObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="E:\GitHub\XCastDemo\vipkid-demo\example\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="E:\GitHub\XCastDemo\vipkid-demo\example\xcast-dev.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{7F7B778F-B59F-3005-B4B9-D323C656F4DB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{CE3EB191-2A8F-3DCC-AFEA-C0C7439EC163}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

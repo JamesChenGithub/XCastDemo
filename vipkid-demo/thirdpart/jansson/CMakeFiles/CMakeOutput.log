@@ -1,0 +1,919 @@
+The system is: Windows - 10.0.14393 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Microsoft (R) ��������汾 14.0.23107.0
+��Ȩ����(C) Microsoft Corporation����������Ȩ����
+
+��������ʱ��Ϊ 2018/2/27 20:16:56��
+�ڵ� 1 �ϵ���Ŀ��I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CompilerIdC\CompilerIdC.vcxproj��(Ĭ��Ŀ��)��
+PrepareForBuild:
+  ���ڴ���Ŀ¼��Debug\����
+  ���ڴ���Ŀ¼��Debug\CompilerIdC.tlog\����
+InitializeBuildStatus:
+  ���ڴ�����Debug\CompilerIdC.tlog\unsuccessfulbuild������Ϊ��ָ����AlwaysCreate����
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /nologo /W0 /WX- /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCCompilerId.obj
+  CompilerIdC.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CompilerIdC\.\CompilerIdC.exe
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_C_COMPILER=E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\cl.exe
+FinalizeBuildStatus:
+  ����ɾ���ļ���Debug\CompilerIdC.tlog\unsuccessfulbuild����
+  ���ڶԡ�Debug\CompilerIdC.tlog\CompilerIdC.lastbuildstate��ִ�� Touch ����
+�����������Ŀ��I:\xcast-demo\thirdpart\jansson\CMakeFiles\3.9.0\CompilerIdC\CompilerIdC.vcxproj��(Ĭ��Ŀ��)�Ĳ�����
+
+�ѳɹ����ɡ�
+    0 ������
+    0 ������
+
+����ʱ�� 00:00:00.70
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+
+The C compiler identification is MSVC, found in "I:/xcast-demo/thirdpart/jansson/CMakeFiles/3.9.0/CompilerIdC/CompilerIdC.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_28e5e.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:16:57。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_28e5e.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_28e5e.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_28e5e.dir\Debug\cmTC_28e5e.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_28e5e.dir\Debug\cmTC_28e5e.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_28e5e.dir\Debug\\" /Fd"cmTC_28e5e.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\testCCompiler.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_28e5e.dir\Debug\\" /Fd"cmTC_28e5e.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\testCCompiler.c"
+  
+  testCCompiler.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_28e5e.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_28e5e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_28e5e.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_28e5e.dir\Debug\testCCompiler.obj
+  cmTC_28e5e.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_28e5e.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_28e5e.dir\Debug\cmTC_28e5e.tlog\unsuccessfulbuild”。
+  正在对“cmTC_28e5e.dir\Debug\cmTC_28e5e.tlog\cmTC_28e5e.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_28e5e.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.77
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_0e5a7.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:16:58。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_0e5a7.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_0e5a7.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_0e5a7.dir\Debug\cmTC_0e5a7.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_0e5a7.dir\Debug\cmTC_0e5a7.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0e5a7.dir\Debug\\" /Fd"cmTC_0e5a7.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompilerABI.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0e5a7.dir\Debug\\" /Fd"cmTC_0e5a7.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "E:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCCompilerABI.c"
+  
+  CMakeCCompilerABI.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_0e5a7.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_0e5a7.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_0e5a7.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_0e5a7.dir\Debug\CMakeCCompilerABI.obj
+  cmTC_0e5a7.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_0e5a7.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_0e5a7.dir\Debug\cmTC_0e5a7.tlog\unsuccessfulbuild”。
+  正在对“cmTC_0e5a7.dir\Debug\cmTC_0e5a7.tlog\cmTC_0e5a7.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_0e5a7.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.77
+
+
+Determining if files sys/types.h exist passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_68377.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:16:59。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_68377.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_68377.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_68377.dir\Debug\cmTC_68377.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_68377.dir\Debug\cmTC_68377.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_68377.dir\Debug\\" /Fd"cmTC_68377.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_68377.dir\Debug\\" /Fd"cmTC_68377.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  
+  CheckIncludeFiles.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_68377.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_68377.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_68377.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_68377.dir\Debug\CheckIncludeFiles.obj
+  cmTC_68377.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_68377.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_68377.dir\Debug\cmTC_68377.tlog\unsuccessfulbuild”。
+  正在对“cmTC_68377.dir\Debug\cmTC_68377.tlog\cmTC_68377.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_68377.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.74
+
+
+Determining if files inttypes.h exist passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_186f5.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:00。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_186f5.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_186f5.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_186f5.dir\Debug\cmTC_186f5.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_186f5.dir\Debug\cmTC_186f5.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_186f5.dir\Debug\\" /Fd"cmTC_186f5.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_186f5.dir\Debug\\" /Fd"cmTC_186f5.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  
+  CheckIncludeFiles.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_186f5.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_186f5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_186f5.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_186f5.dir\Debug\CheckIncludeFiles.obj
+  cmTC_186f5.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_186f5.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_186f5.dir\Debug\cmTC_186f5.tlog\unsuccessfulbuild”。
+  正在对“cmTC_186f5.dir\Debug\cmTC_186f5.tlog\cmTC_186f5.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_186f5.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.78
+
+
+Determining if files stdint.h exist passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_08e73.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:01。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_08e73.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_08e73.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_08e73.dir\Debug\cmTC_08e73.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_08e73.dir\Debug\cmTC_08e73.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_08e73.dir\Debug\\" /Fd"cmTC_08e73.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_08e73.dir\Debug\\" /Fd"cmTC_08e73.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  
+  CheckIncludeFiles.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_08e73.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_08e73.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_08e73.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_08e73.dir\Debug\CheckIncludeFiles.obj
+  cmTC_08e73.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_08e73.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_08e73.dir\Debug\cmTC_08e73.tlog\unsuccessfulbuild”。
+  正在对“cmTC_08e73.dir\Debug\cmTC_08e73.tlog\cmTC_08e73.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_08e73.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.77
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_37a9e.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:02。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_37a9e.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_37a9e.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_37a9e.dir\Debug\cmTC_37a9e.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_37a9e.dir\Debug\cmTC_37a9e.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_37a9e.dir\Debug\\" /Fd"cmTC_37a9e.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_37a9e.dir\Debug\\" /Fd"cmTC_37a9e.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+  
+  CheckIncludeFile.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_37a9e.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_37a9e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_37a9e.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_37a9e.dir\Debug\CheckIncludeFile.obj
+  cmTC_37a9e.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_37a9e.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_37a9e.dir\Debug\cmTC_37a9e.tlog\unsuccessfulbuild”。
+  正在对“cmTC_37a9e.dir\Debug\cmTC_37a9e.tlog\cmTC_37a9e.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_37a9e.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.78
+
+
+Determining size of __int64 passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_0f30a.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:03。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_0f30a.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_0f30a.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_0f30a.dir\Debug\cmTC_0f30a.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_0f30a.dir\Debug\cmTC_0f30a.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0f30a.dir\Debug\\" /Fd"cmTC_0f30a.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\__INT64.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0f30a.dir\Debug\\" /Fd"cmTC_0f30a.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\__INT64.c"
+  
+  __INT64.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_0f30a.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_0f30a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_0f30a.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_0f30a.dir\Debug\__INT64.obj
+  cmTC_0f30a.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_0f30a.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_0f30a.dir\Debug\cmTC_0f30a.tlog\unsuccessfulbuild”。
+  正在对“cmTC_0f30a.dir\Debug\cmTC_0f30a.tlog\cmTC_0f30a.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_0f30a.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.77
+
+
+Determining size of int64_t passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_ce800.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:04。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_ce800.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_ce800.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_ce800.dir\Debug\cmTC_ce800.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_ce800.dir\Debug\cmTC_ce800.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ce800.dir\Debug\\" /Fd"cmTC_ce800.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT64_T.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ce800.dir\Debug\\" /Fd"cmTC_ce800.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT64_T.c"
+  
+  INT64_T.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_ce800.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_ce800.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_ce800.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_ce800.dir\Debug\INT64_T.obj
+  cmTC_ce800.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_ce800.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_ce800.dir\Debug\cmTC_ce800.tlog\unsuccessfulbuild”。
+  正在对“cmTC_ce800.dir\Debug\cmTC_ce800.tlog\cmTC_ce800.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_ce800.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.75
+
+
+Determining size of long long passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_fe5b4.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:05。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_fe5b4.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_fe5b4.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_fe5b4.dir\Debug\cmTC_fe5b4.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_fe5b4.dir\Debug\cmTC_fe5b4.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_fe5b4.dir\Debug\\" /Fd"cmTC_fe5b4.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\LONG_LONG_INT.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_fe5b4.dir\Debug\\" /Fd"cmTC_fe5b4.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\LONG_LONG_INT.c"
+  
+  LONG_LONG_INT.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_fe5b4.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_fe5b4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_fe5b4.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_fe5b4.dir\Debug\LONG_LONG_INT.obj
+  cmTC_fe5b4.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_fe5b4.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_fe5b4.dir\Debug\cmTC_fe5b4.tlog\unsuccessfulbuild”。
+  正在对“cmTC_fe5b4.dir\Debug\cmTC_fe5b4.tlog\cmTC_fe5b4.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_fe5b4.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.72
+
+
+Determining size of int32_t passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_d491a.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:06。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_d491a.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_d491a.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_d491a.dir\Debug\cmTC_d491a.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_d491a.dir\Debug\cmTC_d491a.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d491a.dir\Debug\\" /Fd"cmTC_d491a.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT32_T.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d491a.dir\Debug\\" /Fd"cmTC_d491a.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT32_T.c"
+  
+  INT32_T.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_d491a.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_d491a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_d491a.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_d491a.dir\Debug\INT32_T.obj
+  cmTC_d491a.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_d491a.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_d491a.dir\Debug\cmTC_d491a.tlog\unsuccessfulbuild”。
+  正在对“cmTC_d491a.dir\Debug\cmTC_d491a.tlog\cmTC_d491a.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_d491a.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.77
+
+
+Determining size of __int32 passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_3a45d.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:07。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_3a45d.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_3a45d.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_3a45d.dir\Debug\cmTC_3a45d.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_3a45d.dir\Debug\cmTC_3a45d.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3a45d.dir\Debug\\" /Fd"cmTC_3a45d.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\__INT32.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3a45d.dir\Debug\\" /Fd"cmTC_3a45d.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\__INT32.c"
+  
+  __INT32.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_3a45d.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_3a45d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_3a45d.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_3a45d.dir\Debug\__INT32.obj
+  cmTC_3a45d.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_3a45d.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_3a45d.dir\Debug\cmTC_3a45d.tlog\unsuccessfulbuild”。
+  正在对“cmTC_3a45d.dir\Debug\cmTC_3a45d.tlog\cmTC_3a45d.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_3a45d.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.75
+
+
+Determining size of long passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_04ab9.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:08。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_04ab9.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_04ab9.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_04ab9.dir\Debug\cmTC_04ab9.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_04ab9.dir\Debug\cmTC_04ab9.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_04ab9.dir\Debug\\" /Fd"cmTC_04ab9.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\LONG_INT.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_04ab9.dir\Debug\\" /Fd"cmTC_04ab9.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\LONG_INT.c"
+  
+  LONG_INT.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_04ab9.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_04ab9.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_04ab9.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_04ab9.dir\Debug\LONG_INT.obj
+  cmTC_04ab9.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_04ab9.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_04ab9.dir\Debug\cmTC_04ab9.tlog\unsuccessfulbuild”。
+  正在对“cmTC_04ab9.dir\Debug\cmTC_04ab9.tlog\cmTC_04ab9.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_04ab9.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.74
+
+
+Determining size of int passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_9c1bc.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:09。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_9c1bc.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_9c1bc.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_9c1bc.dir\Debug\cmTC_9c1bc.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_9c1bc.dir\Debug\cmTC_9c1bc.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9c1bc.dir\Debug\\" /Fd"cmTC_9c1bc.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9c1bc.dir\Debug\\" /Fd"cmTC_9c1bc.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CheckTypeSize\INT.c"
+  
+  INT.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_9c1bc.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_9c1bc.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_9c1bc.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_9c1bc.dir\Debug\INT.obj
+  cmTC_9c1bc.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_9c1bc.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_9c1bc.dir\Debug\cmTC_9c1bc.tlog\unsuccessfulbuild”。
+  正在对“cmTC_9c1bc.dir\Debug\cmTC_9c1bc.tlog\cmTC_9c1bc.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_9c1bc.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.93
+
+
+Determining if the function strtoll exists passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_3809c.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:11。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_3809c.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_3809c.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_3809c.dir\Debug\cmTC_3809c.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_3809c.dir\Debug\cmTC_3809c.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=strtoll /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3809c.dir\Debug\\" /Fd"cmTC_3809c.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=strtoll /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3809c.dir\Debug\\" /Fd"cmTC_3809c.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c"
+  
+  CheckFunctionExists.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_3809c.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_3809c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_3809c.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_3809c.dir\Debug\CheckFunctionExists.obj
+  cmTC_3809c.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_3809c.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_3809c.dir\Debug\cmTC_3809c.tlog\unsuccessfulbuild”。
+  正在对“cmTC_3809c.dir\Debug\cmTC_3809c.tlog\cmTC_3809c.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_3809c.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.72
+
+
+Determining if the function _strtoi64 exists passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_78d2d.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:13。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_78d2d.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_78d2d.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_78d2d.dir\Debug\cmTC_78d2d.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_78d2d.dir\Debug\cmTC_78d2d.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=_strtoi64 /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_78d2d.dir\Debug\\" /Fd"cmTC_78d2d.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=_strtoi64 /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_78d2d.dir\Debug\\" /Fd"cmTC_78d2d.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c"
+  
+  CheckFunctionExists.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_78d2d.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_78d2d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_78d2d.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_78d2d.dir\Debug\CheckFunctionExists.obj
+  cmTC_78d2d.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_78d2d.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_78d2d.dir\Debug\cmTC_78d2d.tlog\unsuccessfulbuild”。
+  正在对“cmTC_78d2d.dir\Debug\cmTC_78d2d.tlog\cmTC_78d2d.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_78d2d.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.74
+
+
+Determining if files locale.h exist passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_3650b.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:14。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_3650b.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_3650b.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_3650b.dir\Debug\cmTC_3650b.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_3650b.dir\Debug\cmTC_3650b.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3650b.dir\Debug\\" /Fd"cmTC_3650b.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3650b.dir\Debug\\" /Fd"cmTC_3650b.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckIncludeFiles.c"
+  
+  CheckIncludeFiles.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_3650b.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_3650b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_3650b.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_3650b.dir\Debug\CheckIncludeFiles.obj
+  cmTC_3650b.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_3650b.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_3650b.dir\Debug\cmTC_3650b.tlog\unsuccessfulbuild”。
+  正在对“cmTC_3650b.dir\Debug\cmTC_3650b.tlog\cmTC_3650b.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_3650b.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.74
+
+
+Determining if the function localeconv exists passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_12d8f.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:15。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_12d8f.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_12d8f.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_12d8f.dir\Debug\cmTC_12d8f.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_12d8f.dir\Debug\cmTC_12d8f.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=localeconv /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_12d8f.dir\Debug\\" /Fd"cmTC_12d8f.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=localeconv /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_12d8f.dir\Debug\\" /Fd"cmTC_12d8f.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c"
+  
+  CheckFunctionExists.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_12d8f.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_12d8f.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_12d8f.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_12d8f.dir\Debug\CheckFunctionExists.obj
+  cmTC_12d8f.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_12d8f.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_12d8f.dir\Debug\cmTC_12d8f.tlog\unsuccessfulbuild”。
+  正在对“cmTC_12d8f.dir\Debug\cmTC_12d8f.tlog\cmTC_12d8f.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_12d8f.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.74
+
+
+Determining if the function setlocale exists passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_58c8e.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:16。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_58c8e.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_58c8e.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_58c8e.dir\Debug\cmTC_58c8e.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_58c8e.dir\Debug\cmTC_58c8e.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=setlocale /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_58c8e.dir\Debug\\" /Fd"cmTC_58c8e.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=setlocale /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_58c8e.dir\Debug\\" /Fd"cmTC_58c8e.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "E:\Program Files\CMake\share\cmake-3.9\Modules\CheckFunctionExists.c"
+  
+  CheckFunctionExists.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_58c8e.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_58c8e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_58c8e.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_58c8e.dir\Debug\CheckFunctionExists.obj
+  cmTC_58c8e.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_58c8e.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_58c8e.dir\Debug\cmTC_58c8e.tlog\unsuccessfulbuild”。
+  正在对“cmTC_58c8e.dir\Debug\cmTC_58c8e.tlog\cmTC_58c8e.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_58c8e.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.79
+
+
+Performing C SOURCE FILE Test HAVE_INLINE succeeded with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_84cb8.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:17。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_84cb8.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_84cb8.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_84cb8.dir\Debug\cmTC_84cb8.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_84cb8.dir\Debug\cmTC_84cb8.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D HAVE_INLINE /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_84cb8.dir\Debug\\" /Fd"cmTC_84cb8.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\src.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D HAVE_INLINE /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_84cb8.dir\Debug\\" /Fd"cmTC_84cb8.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\src.c"
+  
+  src.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_84cb8.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_84cb8.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_84cb8.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_84cb8.dir\Debug\src.obj
+  cmTC_84cb8.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_84cb8.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_84cb8.dir\Debug\cmTC_84cb8.tlog\unsuccessfulbuild”。
+  正在对“cmTC_84cb8.dir\Debug\cmTC_84cb8.tlog\cmTC_84cb8.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_84cb8.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.76
+
+Source file was:
+inline void func(); void func() { } int main() { func(); return 0; }
+Performing C SOURCE FILE Test HAVE___INLINE succeeded with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_0dbc1.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:18。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_0dbc1.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_0dbc1.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_0dbc1.dir\Debug\cmTC_0dbc1.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_0dbc1.dir\Debug\cmTC_0dbc1.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D HAVE___INLINE /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0dbc1.dir\Debug\\" /Fd"cmTC_0dbc1.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\src.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D HAVE___INLINE /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_0dbc1.dir\Debug\\" /Fd"cmTC_0dbc1.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\src.c"
+  
+  src.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_0dbc1.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_0dbc1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_0dbc1.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_0dbc1.dir\Debug\src.obj
+  cmTC_0dbc1.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_0dbc1.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_0dbc1.dir\Debug\cmTC_0dbc1.tlog\unsuccessfulbuild”。
+  正在对“cmTC_0dbc1.dir\Debug\cmTC_0dbc1.tlog\cmTC_0dbc1.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_0dbc1.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.76
+
+Source file was:
+__inline void func(); void func() { } int main() { func(); return 0; }
+Determining if the snprintf exist passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_20215.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:20。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_20215.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_20215.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_20215.dir\Debug\cmTC_20215.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_20215.dir\Debug\cmTC_20215.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_20215.dir\Debug\\" /Fd"cmTC_20215.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckSymbolExists.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_20215.dir\Debug\\" /Fd"cmTC_20215.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckSymbolExists.c"
+  
+  CheckSymbolExists.c
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_20215.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_20215.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_20215.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_20215.dir\Debug\CheckSymbolExists.obj
+  cmTC_20215.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_20215.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_20215.dir\Debug\cmTC_20215.tlog\unsuccessfulbuild”。
+  正在对“cmTC_20215.dir\Debug\cmTC_20215.tlog\cmTC_20215.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_20215.vcxproj”(默认目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:00.85
+
+File I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdio.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef snprintf
+  return ((int*)(&snprintf))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the _snprintf exist passed with the following output:
+Change Dir: I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/Program Files (x86)/MSBuild/14.0/bin/MSBuild.exe" "cmTC_4c9fe.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=14.0"
+Microsoft (R) 生成引擎版本 14.0.23107.0
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+生成启动时间为 2018/2/27 20:17:21。
+节点 1 上的项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_4c9fe.vcxproj”(默认目标)。
+PrepareForBuild:
+  正在创建目录“cmTC_4c9fe.dir\Debug\”。
+  正在创建目录“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\”。
+  正在创建目录“cmTC_4c9fe.dir\Debug\cmTC_4c9fe.tlog\”。
+InitializeBuildStatus:
+  正在创建“cmTC_4c9fe.dir\Debug\cmTC_4c9fe.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+ClCompile:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4c9fe.dir\Debug\\" /Fd"cmTC_4c9fe.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckSymbolExists.c"
+  用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.00.23026 版
+  版权所有(C) Microsoft Corporation。保留所有权利。
+  
+  cl /c /I"e:\Program Files (x86)\Visual Leak Detector\include" /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4c9fe.dir\Debug\\" /Fd"cmTC_4c9fe.dir\Debug\vc140.pdb" /Gd /TC /analyze- /errorReport:queue "I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckSymbolExists.c"
+  
+  CheckSymbolExists.c
+I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckSymbolExists.c(8): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_4c9fe.vcxproj]
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt\stdio.h(1952): note: 参见“_snprintf”的声明
+Link:
+  E:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:QUEUE /OUT:"I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_4c9fe.exe" /INCREMENTAL /NOLOGO /LIBPATH:"e:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_4c9fe.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/Debug/cmTC_4c9fe.lib" /MACHINE:X86 /SAFESEH  /machine:X86 cmTC_4c9fe.dir\Debug\CheckSymbolExists.obj
+  cmTC_4c9fe.vcxproj -> I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\Debug\cmTC_4c9fe.exe
+FinalizeBuildStatus:
+  正在删除文件“cmTC_4c9fe.dir\Debug\cmTC_4c9fe.tlog\unsuccessfulbuild”。
+  正在对“cmTC_4c9fe.dir\Debug\cmTC_4c9fe.tlog\cmTC_4c9fe.lastbuildstate”执行 Touch 任务。
+已完成生成项目“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_4c9fe.vcxproj”(默认目标)的操作。
+
+已成功生成。
+
+“I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_4c9fe.vcxproj”(默认目标) (1) ->
+(ClCompile 目标) -> 
+  I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\CheckSymbolExists.c(8): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. [I:\xcast-demo\thirdpart\jansson\CMakeFiles\CMakeTmp\cmTC_4c9fe.vcxproj]
+
+    1 个警告
+    0 个错误
+
+已用时间 00:00:00.77
+
+File I:/xcast-demo/thirdpart/jansson/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdio.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _snprintf
+  return ((int*)(&_snprintf))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
