@@ -108,7 +108,7 @@ bool XCastObserver::needRoomCallbackLocalVideo()
 }
 void XCastObserver::onLocalVideoPreview(const XCastVideoFrame *frame)
 {
-
+	new_video_preview_event(&main_app, frame);
 }
 
 void XCastObserver::onVideoPreview(const XCastVideoFrame *frame)

@@ -152,6 +152,25 @@ public:
 	int enableSpeaker(bool enable, const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
 
 	/*
+	* 功能：操作扬声器，控制预览
+	* micid :  扬声器id,可以为空，为空则查默认扬声器的状态
+	* preview : 是否,预览, true : 预览 / false : 不预览
+	* callback ：操作回调
+	* 返回值 ：操作返回值
+	*/
+	int enableSpeakerPreview(bool preview, const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+
+	/*
+	* 功能：操作扬声器，控制预览以及开关
+	* micid :  麦克风id,可以为空，为空则查默认麦克风的状态
+	* preview : 是否,预览, true : 预览 / false : 不预览
+	* enableAudioOut : 是否上行音频, true ：上行 / false : 不上行
+	* callback ：操作回调
+	* 返回值 ：操作返回值
+	*/
+	int enableSpeaker(bool preview, bool enable, const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+
+	/*
 	* 功能 ：切换扬声器输出类型
 	* sid ：要操作的扬声器，可为空，为空时操作默认扬声器
 	* headphone : false : 外放 / true : 耳机
@@ -362,6 +381,7 @@ private:
 private:
 	int operaMic(const char *micid, bool preview, bool needExePreview, bool audioout, bool needExeAudioOut, bool needSetDefault, XCHCallBack callback = XCHNilCallBack);
 	int operaCamera(const char *camid, bool preview, bool needExePreview, bool videoout, bool needExeAudioOut, bool needSetDefault, XCHCallBack callback = XCHNilCallBack);
+	int operaSpeaker(const char *micid, bool preview, bool needExePreview, bool enable, bool needEnable , bool needSetDefault, XCHCallBack callback = XCHNilCallBack);
 
 
 private:

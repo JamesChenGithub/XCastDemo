@@ -3,14 +3,18 @@
 #include "jansson.h"
 #include <time.h>
 
-#include "Live/XCastHelper.h"
+#include <Windows.h>
+#include <MMSystem.h>
+
+
+#include "Live/XCastUtil.h"
 #include "Live/XCastData.h"
 #include "Live/XCastObserver.h"
 
 #include <vector>
 #include <algorithm>
 #pragma comment(lib, "comctl32.lib")
-
+#pragma comment(lib, "WINMM.LIB")
 
 #define MAX_LOADSTRING 100
 
@@ -254,7 +258,9 @@ static int32_t
 on_camera_preview(tree_item_data_t *item_data, HTREEITEM hItem)
 {
   item_data->start = !item_data->start;
-  xcast::set_property(XC_CAMERA_PREVIEW, item_data->text.c_str(), item_data->start);
+  //xcast::set_property(XC_CAMERA_PREVIEW, item_data->text.c_str(), item_data->start);
+
+  XCastUtil::enableCameraPreview(item_data->start);
 
   if (!item_data->start) {
     ClearTrackBuffer(item_data->text.c_str());
@@ -262,6 +268,50 @@ on_camera_preview(tree_item_data_t *item_data, HTREEITEM hItem)
   
   InvalidVideoView();
   return XCAST_OK;
+}
+
+static int32_t
+on_mic_preview(tree_item_data_t *item_data, HTREEITEM hItem)
+{
+	item_data->start = !item_data->start;
+	//xcast::set_property(XC_CAMERA_PREVIEW, item_data->text.c_str(), item_data->start);
+
+	XCastUtil::enableMicPreview(item_data->start);
+	XCastUtil::enableSpeakerPreview(item_data->start);
+
+
+	if (!item_data->start) {
+		ClearTrackBuffer(item_data->text.c_str());
+	}
+
+	InvalidVideoView();
+	return XCAST_OK;
+}
+
+static int32_t
+on_speaker_preview(tree_item_data_t *item_data, HTREEITEM hItem)
+{
+	item_data->start = !item_data->start;
+	//xcast::set_property(XC_CAMERA_PREVIEW, item_data->text.c_str(), item_data->start);
+
+	if (item_data->start)
+	{
+		PlaySound(L"SystemStart", NULL, SND_LOOP | SND_ASYNC);
+	}
+	else
+	{
+		PlaySound(NULL, NULL, 0);
+	}
+	
+	XCastUtil::enableSpeakerPreview(item_data->start);
+
+
+	if (!item_data->start) {
+		ClearTrackBuffer(item_data->text.c_str());
+	}
+
+	InvalidVideoView();
+	return XCAST_OK;
 }
 
 /* 树控件双击事件: start/stop track */
@@ -659,9 +709,10 @@ ui_device_added(const char *dev, int32_t clazz, bool add, void* user_data)
         item_data->db_click = on_screen_preview;
         break;
       case xc_device_mic:
+		  item_data->db_click = on_mic_preview;
         break;
       case xc_device_speaker:
-        item_data->db_click = on_default_speaker;
+		  item_data->db_click = on_speaker_preview;// on_default_speaker;
         break;
       case xc_device_external:
         break;
@@ -1693,7 +1744,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 		if (!is_initialized)
 		{
-			XCastHelper::getInstance()->setAccountHandler(main_observer);
+			XCastUtil::setAccountHandler(main_observer);
 			XCastStartParam *param = new XCastStartParam;
 			std::unique_ptr<XCastStartParam> up(param);
 			//up->tinyid = 67890;
@@ -1702,7 +1753,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			up->sdkappid = 1400036169;
 			up->accounttype = 14180;
 
-			XCastHelper::getInstance()->startContext(std::move(up), [&](int code, const char *err) {
+			XCastUtil::startContext(std::move(up), [&](int code, const char *err) {
 				is_initialized = code == 0;
 				new_ui_init_xcast(is_initialized, &main_app);
 
@@ -1726,13 +1777,13 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 				if (is_initialized)
 				{ 
-					XCastHelper::getInstance()->setGlobalHandler(main_observer);
+					XCastUtil::setGlobalHandler(main_observer);
 				}
 			});
 		}
 		else
 		{
-			XCastHelper::getInstance()->stopContext([&](int32_t errcode, const char *err){
+			XCastUtil::stopContext([&](int32_t errcode, const char *err){
 				is_stream_running = false;
 				is_initialized = false;
 				//new_ui_init_xcast(is_initialized, &main_app);
@@ -1745,22 +1796,40 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 					RemoveTreeItem(main_app.hTreeView, hItem);
 				}
 
+				{
+					HWND hToolbar = FindWindowEx(hWnd, NULL, TOOLBARCLASSNAME, NULL);
+					TBBUTTONINFO tbInfo;
+					tbInfo.cbSize = sizeof(TBBUTTONINFO);
+					tbInfo.dwMask = TBIF_TEXT | TBIF_IMAGE;
+					tbInfo.iImage = is_initialized ? MAKELONG(4, 0) : MAKELONG(3, 0);
+					tbInfo.pszText = is_initialized ? TEXT("停止") : TEXT("启动");
+					SendMessage(hToolbar, TB_SETBUTTONINFO, (WPARAM)ID_INIT, (LPARAM)&tbInfo);
 
-				HWND hToolbar = FindWindowEx(hWnd, NULL, TOOLBARCLASSNAME, NULL);
-				TBBUTTONINFO tbInfo;
-				tbInfo.cbSize = sizeof(TBBUTTONINFO);
-				tbInfo.dwMask = TBIF_TEXT | TBIF_IMAGE;
-				tbInfo.iImage = is_initialized ? MAKELONG(4, 0) : MAKELONG(3, 0);
-				tbInfo.pszText = is_initialized ? TEXT("停止") : TEXT("启动");
-				SendMessage(hToolbar, TB_SETBUTTONINFO, (WPARAM)ID_INIT, (LPARAM)&tbInfo);
+					if (!is_initialized) {
+						HTREEITEM         hItem;
+						char              path[XCAST_MAX_PATH] = { 0 };
+						snprintf(path, XCAST_MAX_PATH, "stream.%s", "stream1");
+						hItem = GetTreeItem(main_app.hTreeView, path, NULL);
+						if (hItem) {
+							RemoveTreeItem(main_app.hTreeView, hItem);
+						}
+					}
+				}
+				
 
-				if (!is_initialized) {
-					HTREEITEM         hItem;
-					char              path[XCAST_MAX_PATH] = { 0 };
-					snprintf(path, XCAST_MAX_PATH, "stream.%s", "stream1");
-					hItem = GetTreeItem(main_app.hTreeView, path, NULL);
-					if (hItem) {
-						RemoveTreeItem(main_app.hTreeView, hItem);
+				{
+					HWND hToolbar = FindWindowEx(hWnd, NULL, TOOLBARCLASSNAME, NULL);
+					TBBUTTONINFO tbInfo;
+					tbInfo.cbSize = sizeof(TBBUTTONINFO);
+					tbInfo.dwMask = TBIF_TEXT | TBIF_IMAGE;
+					tbInfo.iImage = is_stream_running ? MAKELONG(4, 0) : MAKELONG(3, 0);
+					tbInfo.pszText = is_stream_running ? TEXT("退房") : TEXT("进房");
+					SendMessage(hToolbar, TB_SETBUTTONINFO, (WPARAM)ID_STARTSTREAM, (LPARAM)&tbInfo);
+
+					if (!is_stream_running) {
+						/* 刷新界面 */
+						ClearTrackBuffer(NULL, false);
+						InvalidVideoView();
 					}
 				}
 			});
@@ -1791,7 +1860,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			param->roomOpera.autoSpeaker = false;
 
 
-			XCastHelper::getInstance()->enterRoom(std::move(param), main_observer, [&](int code, const char *err) {
+			XCastUtil::enterRoom(std::move(param), main_observer, [&](int code, const char *err) {
 				is_stream_running = code == XCAST_OK;
 				if (is_stream_running)
 				{
@@ -1818,7 +1887,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		}
 		else
 		{
-			XCastHelper::getInstance()->exitRoom([&](int32_t code, const char *err) {
+			XCastUtil::exitRoom([&](int32_t code, const char *err) {
 				is_stream_running = code == XCAST_OK ? false : true;
 				if (!is_stream_running)
 				{
@@ -1860,15 +1929,6 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     case IDM_ABOUT:
 	{
 		static bool req = false;
-		if (req)
-		{
-			XCastHelper::getInstance()->requestAllView();
-		}
-		else
-		{
-			XCastHelper::getInstance()->cancelAllView();
-		}
-		req = !req;
 		DialogBox(main_app.hInstance, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
 	}
 		

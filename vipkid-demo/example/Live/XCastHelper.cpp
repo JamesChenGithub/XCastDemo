@@ -62,7 +62,7 @@ bool xcast_data_to_videoframe(tencent::xcast_data data, XCastVideoFrame &frame, 
 		// 或数据有问题
 		return false;
 	}
-		
+
 
 	frame.deviceSrc = dev;
 
@@ -275,7 +275,7 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 				if (instance->isSupportIMAccount())
 				{
 					// imsdk帐号模式下，先通过tinyid查到帐号，然后再通通知
-					instance->getUserIDWithTinyid(uin, [=](std::string identifer, int errcode, std::string errmsg){
+					instance->getUserIDWithTinyid(uin, [=](std::string identifer, int errcode, std::string errmsg) {
 						if (errcode == 0)
 						{
 							instance->notifyTrackEndpointEvent(uin, identifer, event, has);
@@ -289,14 +289,14 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 				else
 				{
 					// tinyid模式下直接通知
-					instance->notifyTrackEndpointEvent(uin,"", event, has);
+					instance->notifyTrackEndpointEvent(uin, "", event, has);
 				}
 			}
 		}
 		break;
 		case xc_track_removed:
 		{
-			
+
 		}
 		break;
 		case xc_track_media:
@@ -329,7 +329,7 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 	{
 		return XCAST_OK;
 	}
-		
+
 	XCastHelper *instance = (XCastHelper *)contextinfo;
 	if (instance && instance->m_global_handler.get())
 	{
@@ -361,7 +361,7 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 				uint64_t tinyid = instance->m_startup_param->tinyid;
 				instance->earseVideoFrameBuffer(tinyid);
 			}
-			
+
 		}
 		break;
 		case xc_device_removed:
@@ -424,9 +424,9 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 			{
 				// TODO:处理其他非视频类数据
 			}
-			
+
 		}
-			break;
+		break;
 		default:
 			break;
 		}
@@ -455,7 +455,7 @@ int32_t XCastHelper::onXCastTipsEvent(void *contextinfo, tencent::xcast_data &da
 XCastHelper* XCastHelper::getInstance()
 {
 	static std::once_flag oc;//用于call_once的局部静态变量
-	std::call_once(oc, [&] { 
+	std::call_once(oc, [&] {
 		m_instance = new XCastHelper();
 	});
 	return m_instance;
@@ -531,7 +531,7 @@ int XCastHelper::startContextWithout(std::unique_ptr<XCastStartParam> param, XCH
 	{
 		// 登录成功后，直接可以拿到缓存列表
 		atomicAccountCache([&] {
-			m_account_cache.insert(std::make_pair(m_startup_param->tinyid, m_startup_param->identifier)); 
+			m_account_cache.insert(std::make_pair(m_startup_param->tinyid, m_startup_param->identifier));
 		});
 	}
 
@@ -593,7 +593,7 @@ int XCastHelper::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBac
 	{
 		return startContextWithout(std::move(param), callback);
 	}
-	
+
 }
 int XCastHelper::stopContext(XCHCallBack callback)
 {
@@ -641,12 +641,12 @@ int XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::shared_
 	std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 	if (stream_state != Room_Closed)
 	{
-		XCastHelperCallBack(callback,1003, "xcast is streaming");
+		XCastHelperCallBack(callback, 1003, "xcast is streaming");
 		return 1003;
 	}
-	if (!(param.get())||!(param->isVaild()))
+	if (!(param.get()) || !(param->isVaild()))
 	{
-		XCastHelperCallBack(callback,1004, "xcast start stream param error");
+		XCastHelperCallBack(callback, 1004, "xcast start stream param error");
 		return 1004;
 	}
 
@@ -693,7 +693,7 @@ int XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::shared_
 	params.put("auth_info", auth_info);
 
 
-	 //自定义采集（optional）,视频业务逻辑情况定
+	//自定义采集（optional）,视频业务逻辑情况定
 	track["ext-video-capture"] = m_stream_param->track.ext_video_capture;    /* allow video track to use external capture */
 	track["ext-audio-capture"] = m_stream_param->track.ext_audio_capture;    /* allow audio track to use external capture */
 	track["ext-audio-playback"] = m_stream_param->track.ext_audio_playback;   /* allow audio track to use external playback */
@@ -708,7 +708,7 @@ int XCastHelper::enterRoom(std::unique_ptr<XCastStreamParam> param, std::shared_
 	if (XCAST_OK != rt) {
 		// TODO：进房失败；
 		// ui_xcast_err(rt, xcast_err_msg(), user_data);
-		
+
 		XCastHelperCallBack(callback, code, (char *)xcast_err_msg());
 		clearAfterExitRoom();
 		return code;
@@ -730,7 +730,7 @@ int XCastHelper::exitRoom(XCHCallBack callback)
 
 	if (stream_state != Room_Connectted)
 	{
-		XCastHelperCallBack(callback,1004, "xcast isn't streaming");
+		XCastHelperCallBack(callback, 1004, "xcast isn't streaming");
 		return 1004;
 	}
 
@@ -738,7 +738,7 @@ int XCastHelper::exitRoom(XCHCallBack callback)
 	{
 		enableCameraPreview(false);
 	}
-	
+
 	// 添加退房时，关摄像头的操作
 
 	int32_t ret = tencent::xcast::close_stream(m_stream_param->streamID.c_str());
@@ -762,7 +762,7 @@ void XCastHelper::clearAfterExitRoom()
 	m_room_handler.reset();
 	m_stream_param.reset();
 
-	std::for_each(video_frame_map.begin(), video_frame_map.end(), [&] (std::pair<std::string, std::shared_ptr<XCastVideoFrame>> pair){
+	std::for_each(video_frame_map.begin(), video_frame_map.end(), [&](std::pair<std::string, std::shared_ptr<XCastVideoFrame>> pair) {
 		auto vfp = pair.second;
 		vfp.reset();
 	});
@@ -791,22 +791,19 @@ std::vector<std::string> XCastHelper::getSpeakerList() const
 // 同时进行enable操作
 int XCastHelper::enableSpeaker(bool enable, const char *sid, XCHCallBack callback)
 {
-	// 获取操作摄像头
-	std::string oidstr = getOperaSpeaker(sid);
-	
-	if (oidstr.length() == 0)
-	{
-		XCastHelperCallBack(callback,avsdkErrorCode(-104), "not camera param");
-		return avsdkErrorCode(-104);
-	}
-	const char *operdevID = oidstr.c_str();
-	// 房间外
-	tencent::xcast_data data;
-	data["params"] = enable;
-	int32_t ret = tencent::xcast::set_property(XC_SPEAKER_ENABLE, operdevID, data);
-	int retcode = avsdkErrorCode(ret);
-	XCastHelperCallBack(callback, retcode, ret != XCAST_OK ? tencent::xcast::err_msg() : "enable speaker succ");
-	return retcode;
+	return operaSpeaker(sid, false, false, enable, true, false, callback);
+}
+
+
+int XCastHelper::enableSpeakerPreview(bool preview, const char *sid, XCHCallBack callback)
+{
+	return operaSpeaker(sid, preview, true, false, false, false, callback);
+}
+
+
+int XCastHelper::enableSpeaker(bool preview, bool enable, const char *sid, XCHCallBack callback)
+{
+	return operaSpeaker(sid, preview, true, enable, true, false, callback);
 }
 // 切换输出类型 , speaker : 1 扬声器 0 耳机
 int XCastHelper::changeOutputMode(bool headphone, const char *sid)
@@ -824,7 +821,7 @@ int XCastHelper::changeOutputMode(bool headphone, const char *sid)
 int XCastHelper::speakerVolume(const char *sid) const
 {
 	std::string oidstr = getOperaSpeaker(sid);
-	
+
 	if (oidstr.length() == 0)
 	{
 		return avsdkErrorCode(-104);
@@ -887,15 +884,15 @@ XCastDeviceState XCastHelper::getMicState(const char *micid) const
 
 int XCastHelper::enableMic(bool enableAudioOut, const char *micid, XCHCallBack callback)
 {
-	return operaMic(micid, false, false, enableAudioOut,true, false, callback);
+	return operaMic(micid, false, false, enableAudioOut, true, false, callback);
 }
 
-int XCastHelper::enableMicPreview( bool preview, const char *micid, XCHCallBack callback)
+int XCastHelper::enableMicPreview(bool preview, const char *micid, XCHCallBack callback)
 {
 	return operaMic(micid, preview, true, false, false, false, callback);
 }
 
-int XCastHelper::enableMic( bool preview, bool enableAudioOut, const char *micid, XCHCallBack callback)
+int XCastHelper::enableMic(bool preview, bool enableAudioOut, const char *micid, XCHCallBack callback)
 {
 	return operaMic(micid, preview, true, enableAudioOut, true, false, callback);
 }
@@ -967,7 +964,7 @@ void XCastHelper::cancelView(XCastRequestViewItem item, XCHReqViewListCallBack c
 
 void XCastHelper::cancelViewList(std::vector<XCastRequestViewItem> itemList, XCHReqViewListCallBack callback)
 {
-	std::for_each(itemList.begin(), itemList.end(), [&](XCastRequestViewItem item){
+	std::for_each(itemList.begin(), itemList.end(), [&](XCastRequestViewItem item) {
 		cancelView(item, callback);
 	});
 }
@@ -993,7 +990,7 @@ int XCastHelper::getSpeakerDynamicVolume(uint64_t tinyid) const
 	return getSpeakerDynamicVolume(trackid);
 }
 
-std::string XCastHelper::getOperaDevice(XCastDeviceType type, const char *cameraid ) const
+std::string XCastHelper::getOperaDevice(XCastDeviceType type, const char *cameraid) const
 {
 	char operdevID[XCAST_MAX_PATH];
 	if (cameraid == nullptr || strlen(cameraid) == 0)
@@ -1054,12 +1051,12 @@ std::string XCastHelper::getOperaCamera(const char *cameraid) const
 	return getOperaDevice(XCastDeviceType_Camera, cameraid);
 }
 
-std::string XCastHelper::getOperaSpeaker( const char *cameraid) const
+std::string XCastHelper::getOperaSpeaker(const char *cameraid) const
 {
 	return getOperaDevice(XCastDeviceType_Speaker, cameraid);
 }
 
-std::string XCastHelper::getOperaMic( const char *cameraid) const
+std::string XCastHelper::getOperaMic(const char *cameraid) const
 {
 	return getOperaDevice(XCastDeviceType_Mic, cameraid);
 }
@@ -1180,7 +1177,7 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 	if (!needExePreview && !needExeAudioOut && !needSetDefault)
 	{
 		int ret = avsdkErrorCode(XCAST_OK);
-		XCastHelperCallBack(callback,ret, "do nothing");
+		XCastHelperCallBack(callback, ret, "do nothing");
 		return ret;
 	}
 
@@ -1190,7 +1187,7 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 	if (str.length() == 0)
 	{
 		int erc = avsdkErrorCode(-104);
-		XCastHelperCallBack(callback,erc, "not found opera mic device");
+		XCastHelperCallBack(callback, erc, "not found opera mic device");
 		return erc;
 	}
 	const char *operdevID = str.c_str();
@@ -1203,17 +1200,17 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 			if (preret != XCAST_OK)
 			{
 				int erc = avsdkErrorCode(preret);
-				XCastHelperCallBack(callback,erc, tencent::xcast::err_msg());
+				XCastHelperCallBack(callback, erc, tencent::xcast::err_msg());
 				return erc;
 			}
 		}
 		else
 		{
 			int erc = avsdkErrorCode(preret);
-			XCastHelperCallBack(callback,erc, tencent::xcast::err_msg());
+			XCastHelperCallBack(callback, erc, tencent::xcast::err_msg());
 			return erc;
 		}
-		
+
 	}
 
 	if (needExeAudioOut)
@@ -1221,19 +1218,19 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 		const char *streamid = m_stream_param->streamID.c_str();
 
 		{	// 房间内
-			
+
 			int32_t ret = tencent::xcast::set_property(XC_TRACK_CAPTURE, streamid, "audio-out", operdevID);
 			if (ret != XCAST_OK)
 			{
 				int erc = avsdkErrorCode(ret);
-				XCastHelperCallBack(callback,erc, tencent::xcast::err_msg());
+				XCastHelperCallBack(callback, erc, tencent::xcast::err_msg());
 				return erc;
 			}
 		}
 
 		if (stream_state == Room_Connectted)
 		{
-			tencent::xcast_data data,  params;
+			tencent::xcast_data data, params;
 			params["enable"] = audioout;
 			//data["params"] = params;
 			int32_t enret = tencent::xcast::set_property(XC_TRACK_ENABLE, streamid, "audio-out", params);
@@ -1243,14 +1240,14 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 				if (enret != XCAST_OK)
 				{
 					int erc = avsdkErrorCode(enret);
-					XCastHelperCallBack(callback,erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
+					XCastHelperCallBack(callback, erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
 					return erc;
 				}
 			}
 			else
 			{
 				int erc = avsdkErrorCode(enret);
-				XCastHelperCallBack(callback,erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
+				XCastHelperCallBack(callback, erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
 				return erc;
 			}
 		}
@@ -1261,14 +1258,14 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 		// 房间外
 		int32_t ret = tencent::xcast::set_property(XC_MIC_DEFAULT, operdevID);
 		int erc = avsdkErrorCode(ret);
-		XCastHelperCallBack(callback,erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "set defaul mic succ");
+		XCastHelperCallBack(callback, erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "set defaul mic succ");
 		return erc;
 	}
 
 	int erc = avsdkErrorCode(XCAST_OK);
-	XCastHelperCallBack(callback,erc, "opera mic succ");
+	XCastHelperCallBack(callback, erc, "opera mic succ");
 	return erc;
-	
+
 }
 
 int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePreview, bool videoout, bool needExeVideoOut, bool needSetDefault, XCHCallBack callback)
@@ -1276,7 +1273,7 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 	if (!needExePreview && !needExeVideoOut && !needSetDefault)
 	{
 		int erc = avsdkErrorCode(-104);
-		XCastHelperCallBack(callback,erc, "not found opera camera device");
+		XCastHelperCallBack(callback, erc, "not found opera camera device");
 		return erc;
 	}
 
@@ -1286,7 +1283,7 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 	if (str.length() == 0)
 	{
 		int erc = avsdkErrorCode(-104);
-		XCastHelperCallBack(callback,erc, "not found opera camera device");
+		XCastHelperCallBack(callback, erc, "not found opera camera device");
 		return erc;
 	}
 	const char *operdevID = str.c_str();
@@ -1299,18 +1296,18 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 			if (preret != XCAST_OK)
 			{
 				int erc = avsdkErrorCode(preret);
-				XCastHelperCallBack(callback,erc, tencent::xcast::err_msg());
+				XCastHelperCallBack(callback, erc, tencent::xcast::err_msg());
 				return erc;
 			}
 		}
 		else
 		{
 			int erc = avsdkErrorCode(preret);
-			XCastHelperCallBack(callback,erc, tencent::xcast::err_msg());
+			XCastHelperCallBack(callback, erc, tencent::xcast::err_msg());
 			return erc;
 		}
 	}
-	
+
 	if (needExeVideoOut)
 	{
 		// 房间内
@@ -1320,11 +1317,11 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 			if (ret != XCAST_OK)
 			{
 				int erc = avsdkErrorCode(ret);
-				XCastHelperCallBack(callback,erc, tencent::xcast::err_msg());
+				XCastHelperCallBack(callback, erc, tencent::xcast::err_msg());
 				return erc;
 			}
 		}
-		
+
 
 		if (stream_state == Room_Connectted)
 		{
@@ -1337,14 +1334,14 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 				if (enret != XCAST_OK)
 				{
 					int erc = avsdkErrorCode(enret);
-					XCastHelperCallBack(callback,erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
+					XCastHelperCallBack(callback, erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
 					return erc;
 				}
 			}
 			else
 			{
 				int erc = avsdkErrorCode(enret);
-				XCastHelperCallBack(callback,erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
+				XCastHelperCallBack(callback, erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable audio-out succ");
 				return erc;
 			}
 
@@ -1356,13 +1353,97 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 		// 房间外
 		int32_t ret = tencent::xcast::set_property(XC_CAMERA_DEFAULT, operdevID);
 		int erc = avsdkErrorCode(ret);
-		XCastHelperCallBack(callback,erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "set defaul mic succ");
+		XCastHelperCallBack(callback, erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "set defaul mic succ");
 		return erc;
 	}
 
 	int erc = avsdkErrorCode(XCAST_OK);
-	XCastHelperCallBack(callback,erc, "opera mic succ");
+	XCastHelperCallBack(callback, erc, "opera mic succ");
 	return erc;
+}
+
+int XCastHelper::operaSpeaker(const char *micid, bool preview, bool needExePreview, bool audioout, bool needExeAudioOut, bool needSetDefault, XCHCallBack callback)
+{
+	// 操作mic
+	if (!needExePreview && !needExeAudioOut && !needSetDefault)
+	{
+		int ret = avsdkErrorCode(XCAST_OK);
+		XCastHelperCallBack(callback, ret, "do nothing");
+		return ret;
+	}
+
+	// 在房间内时：打开摄像头，并预览，同时上行；
+	// 在房间外时：打开摄像头，并预览，并设置成默认摄像头；
+	std::string str = getOperaSpeaker(micid);
+	if (str.length() == 0)
+	{
+		int erc = avsdkErrorCode(-104);
+		XCastHelperCallBack(callback, erc, "not found opera speaker device");
+		return erc;
+	}
+	const char *operdevID = str.c_str();
+	if (needExePreview)
+	{
+		int32_t preret = tencent::xcast::set_property(XC_SPEAKER_PREVIEW, operdevID, tencent::xcast_data(preview));
+
+		if (needExeAudioOut || needSetDefault)
+		{
+			if (preret != XCAST_OK)
+			{
+				int erc = avsdkErrorCode(preret);
+				XCastHelperCallBack(callback, erc, tencent::xcast::err_msg());
+				return erc;
+			}
+		}
+		else
+		{
+			int erc = avsdkErrorCode(preret);
+			XCastHelperCallBack(callback, erc, tencent::xcast::err_msg());
+			return erc;
+		}
+
+	}
+
+	if (needExeAudioOut)
+	{
+		if (stream_state == Room_Connectted)
+		{
+			tencent::xcast_data data, params;
+			params["enable"] = audioout;
+			//data["params"] = params;
+			int32_t enret = tencent::xcast::set_property(XC_SPEAKER_ENABLE, params);
+
+			if (needSetDefault)
+			{
+				if (enret != XCAST_OK)
+				{
+					int erc = avsdkErrorCode(enret);
+					XCastHelperCallBack(callback, erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable speaker succ");
+					return erc;
+				}
+			}
+			else
+			{
+				int erc = avsdkErrorCode(enret);
+				XCastHelperCallBack(callback, erc, enret != XCAST_OK ? tencent::xcast::err_msg() : "enable speaker succ");
+				return erc;
+			}
+		}
+	}
+
+	if (needSetDefault)
+	{
+		// 房间外
+		int32_t ret = tencent::xcast::set_property(XC_SPEAKER_DEFAULT, operdevID);
+		int erc = avsdkErrorCode(ret);
+		XCastHelperCallBack(callback, erc, ret != XCAST_OK ? tencent::xcast::err_msg() : "set defaul mic succ");
+		return erc;
+	}
+
+	int erc = avsdkErrorCode(XCAST_OK);
+	XCastHelperCallBack(callback, erc, "opera mic succ");
+	return erc;
+
 }
 
 void XCastHelper::earseVideoFrameBuffer(uint64_t tinyid, XCastMediaSource source)
@@ -1499,7 +1580,7 @@ void XCastHelper::deleteEndpoint(uint64_t tinyid)
 	}
 }
 
-XCastRequestViewItem XCastHelper::getFromTrackID(std::string track) 
+XCastRequestViewItem XCastHelper::getFromTrackID(std::string track)
 {
 	const std::string videostr = kTRACK_CAMERA_IN;
 	const std::string subvideostr = kTRACK_SCREEN_CAPTURE_IN;
@@ -1566,7 +1647,7 @@ void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewL
 	if (isSupportIMAccount() && callback)
 	{
 		getTinyIDWithUserID(item.identifer, [&](uint64_t uin, int code, std::string msg) {
-			if (code == 0 && uin != 0 )
+			if (code == 0 && uin != 0)
 			{
 				item.tinyid = uin;
 				remoteViewWithTinyid(item, enable, callback);
@@ -1578,14 +1659,14 @@ void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewL
 					callback(item, 1004, "get tinyid failed");
 				}
 			}
-			
+
 		});
 	}
 	else
 	{
 		remoteViewWithTinyid(item, enable, callback);
 	}
-	
+
 }
 
 void XCastHelper::remoteAllView(bool enable, XCHReqViewListCallBack callback)
@@ -1612,7 +1693,7 @@ inline bool XCastHelper::isSupportIMAccount() const
 	return m_account_handler.get() ? m_account_handler->useIMSDKasAccount() : false;
 }
 
-std::string XCastHelper::syncGetUserid(uint64_t tinyid) 
+std::string XCastHelper::syncGetUserid(uint64_t tinyid)
 {
 	std::string ep = "";
 	atomicAccountCache([=, &ep] {
@@ -1699,7 +1780,7 @@ void XCastHelper::getUserIDWithTinyidFromIMSDK(uint64_t tinyid, std::function<vo
 		std::vector<uint64_t> tinyidvec;
 		tinyidvec.push_back(tinyid);
 		m_account_handler->tinyid_to_identifier(tinyidvec, [=](std::vector<uint64_t> tinyidlist, std::vector<std::string> identifierlist, int errcode, std::string errmsg) {
-			
+
 			if (errcode == 0 && tinyidlist.size() == identifierlist.size())
 			{
 				uint64_t uin = tinyidlist[0];
@@ -1713,11 +1794,11 @@ void XCastHelper::getUserIDWithTinyidFromIMSDK(uint64_t tinyid, std::function<vo
 					{
 						callback(identifier, 0, "");
 					}
-					
+
 					return;
 				}
 			}
-			
+
 			if (callback)
 			{
 				callback("", 1004, "get the  identifier of tinyid  failed");
@@ -1737,11 +1818,11 @@ void XCastHelper::getUserIDWithTinyidFromIMSDK(std::vector<uint64_t> tinyidlist,
 		}
 		std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
-		m_account_handler->tinyid_to_identifier(tinyidlist, [=](std::vector<uint64_t> tlist,std::vector<std::string> list, int errcode, std::string errmsg) {
+		m_account_handler->tinyid_to_identifier(tinyidlist, [=](std::vector<uint64_t> tlist, std::vector<std::string> list, int errcode, std::string errmsg) {
 
 			if (errcode == 0 && list.size() != 0 && list.size() == tlist.size())
 			{
-				
+
 				std::vector<std::pair<uint64_t, std::string>> pairs;
 
 				for (uint32_t i = 0; i < list.size(); i++)
@@ -1776,7 +1857,7 @@ void XCastHelper::getUserIDWithTinyidFromIMSDK(std::vector<uint64_t> tinyidlist,
 	}
 }
 
-uint64_t XCastHelper::syncGetTinyid(std::string userid) 
+uint64_t XCastHelper::syncGetTinyid(std::string userid)
 {
 	typedef std::map<uint64_t, std::string> AccoutCache;
 
@@ -1798,7 +1879,7 @@ uint64_t XCastHelper::syncGetTinyid(std::string userid)
 			m_cache_mutex.unlock();
 			return 0;
 		}
-		
+
 	}
 	return 0;
 }
@@ -1835,7 +1916,7 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::string userid, std::function
 		std::vector<std::string> useridlist;
 		useridlist.push_back(userid);
 		m_account_handler->identifier_to_tinyid(useridlist, [=](std::vector<uint64_t> list, std::vector<std::string> idlist, int errcode, std::string errmsg) {
-		
+
 			if (errcode == 0 && !list.empty() && list.size() == idlist.size())
 			{
 				uint64_t  tinyid = list[0];
@@ -1873,7 +1954,7 @@ void XCastHelper::getTinyIDWithUserID(std::vector<std::string> useridlist, std::
 			return false;
 		}
 
-		
+
 	});
 
 	if (useridlist.size() == tinyidlist.size())
@@ -1894,7 +1975,7 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::vector<std::string> useridli
 	{
 		std::lock_guard<std::recursive_mutex> lock(m_func_mutex);
 
-		m_account_handler->identifier_to_tinyid(useridlist, [=](std::vector<uint64_t> list, std::vector<std::string> idlist,int errcode, std::string errmsg) {
+		m_account_handler->identifier_to_tinyid(useridlist, [=](std::vector<uint64_t> list, std::vector<std::string> idlist, int errcode, std::string errmsg) {
 			if (errcode == 0 && list.size() == idlist.size() && !list.empty())
 			{
 				std::vector<std::pair<uint64_t, std::string>> pairs;
@@ -1912,7 +1993,7 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::vector<std::string> useridli
 					callback(list, 0, "");
 				}
 				atomicAccountCache([&] {
-					m_account_cache.insert(pairs.begin(),pairs.end());
+					m_account_cache.insert(pairs.begin(), pairs.end());
 				});
 			}
 			else
@@ -1988,10 +2069,10 @@ void XCastHelper::notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCa
 			{
 				m_room_handler->onEndpointsUpdateInfo(event, ep);
 			}
-			updateEndpointMap(uin,event);
+			updateEndpointMap(uin, event);
 		}
 	}
-	
+
 }
 
 

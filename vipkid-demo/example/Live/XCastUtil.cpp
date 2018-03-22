@@ -49,6 +49,16 @@ int XCastUtil::enableSpeaker(bool enable, const char *sid, XCHCallBack callback)
 {
 	return XCastHelper::getInstance()->enableSpeaker(enable,sid,callback);
 }
+int XCastUtil::enableSpeakerPreview(bool preview, const char *micid, XCHCallBack callback)
+{
+	return XCastHelper::getInstance()->enableSpeakerPreview(preview, micid, callback);
+}
+
+int XCastUtil::enableSpeaker(bool preview, bool enableAudioOut, const char *micid, XCHCallBack callback)
+{
+	return XCastHelper::getInstance()->enableSpeaker(preview, enableAudioOut, micid, callback);
+}
+
 
 int XCastUtil::changeOutputMode(bool headphone, const char *sid)
 {
