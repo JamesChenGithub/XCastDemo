@@ -9,6 +9,19 @@
 class XCastUtil
 {
 	/*
+	* 查看版本号
+	*/
+	static std::string version();
+
+	/*
+	* 功能：设置帐号逻辑（tinyid转identifier逻辑），必须在startContext前设置
+	*
+	* handler ：可为空
+	* 返回值 ：true 成功，false失败
+	*/
+	static bool setAccountHandler(std::shared_ptr<XCastAccountHandler> handler);
+
+	/*
 	* 功能: 初始始化XCast
 	* param : 初始化参数，内部会保存该值；
 	* callback ：初始化回调

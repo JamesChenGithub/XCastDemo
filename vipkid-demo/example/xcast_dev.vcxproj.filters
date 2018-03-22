@@ -74,4 +74,9 @@
       <UniqueIdentifier>{CE3EB191-2A8F-3DCC-AFEA-C0C7439EC163}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="xcast-dev.ico" />
+    <Image Include="small.ico" />
+    <Image Include="icons.bmp" />
+  </ItemGroup>
 </Project>

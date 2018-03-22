@@ -5,6 +5,16 @@
 #include <vector>
 #include <map>
 
+std::string XCastUtil::version()
+{
+	return XCastHelper::version();
+}
+
+bool XCastUtil::setAccountHandler(std::shared_ptr<XCastAccountHandler> handler)
+{
+	return XCastHelper::getInstance()->setAccountHandler(handler);
+}
+
 int XCastUtil::startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback)
 {
 	return XCastHelper::getInstance()->startContext(std::move(param), callback);

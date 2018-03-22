@@ -84,6 +84,8 @@ public:
 
 
 public:
+
+	static std::string version();
 	/*
 	* 功能：设置帐号逻辑（tinyid转identifier逻辑），必须在startContext前设置
 	*
@@ -91,6 +93,9 @@ public:
 	* 返回值 ：true 成功，false失败
 	*/
 	bool setAccountHandler(std::shared_ptr<XCastAccountHandler> handler);
+
+public:
+	const std::string getStreamID() const;
 
 public:
 	/*

@@ -5,6 +5,9 @@
 
 #include "XCastHelper.h"
 
+#include "../xcast-ui-handler.h"
+
+
 
 XCastObserver::XCastObserver()
 {
@@ -19,19 +22,24 @@ XCastObserver::~XCastObserver()
 // 设备回调
 void XCastObserver::onDeviceEvent_DeviceAdd(XCastDeviceHotPlugItem device)
 {
-	std::ostringstream stream;
-	stream << "onDeviceEvent_DeviceAdd" << " : class = " << device.deviceClass << "  , src = " << device.src << " , state = " << device.state << " , err = " << device.err << " , err_msg =" << device.err_msg << std::endl;
-	std::cout << stream.str() << std::endl;
+	if (device.deviceClass != XCastDeviceType_External)
+	{
+		ui_device_added(device.src.c_str(), device.deviceClass, true, &main_app);
+	}
+	
 }
 void XCastObserver::onDeviceEvent_DeviceUpdate(XCastDeviceHotPlugItem device)
 {
-	std::ostringstream stream;
-	stream << "onDeviceEvent_DeviceUpdate" << " : class = " << device.deviceClass << "  , src = " << device.src << " , state = " << device.state << " , err = " << device.err << " , err_msg =" << device.err_msg << std::endl;
-	std::cout << stream.str() << std::endl;
+	ui_device_update(device.src.c_str(), device.deviceClass, device.state, device.err, device.err_msg.c_str(), &main_app);
+
 }
 void XCastObserver::onDeviceEvent_DeviceRemoved(XCastDeviceHotPlugItem device)
 {
-
+	if (device.deviceClass != XCastDeviceType_External)
+	{
+		ui_device_added(device.src.c_str(), device.deviceClass, false, &main_app);
+	}
+	
 }
 
 void XCastObserver::onSystemEvent()
@@ -48,29 +56,43 @@ void XCastObserver::onSystemEvent()
 // 视频事件
 bool XCastObserver::needGlobalCallbackLocalVideo()
 {
-	return true;
+	return !has_enter_room;
 }
 void XCastObserver::onGlobalLocalVideoPreview(const XCastVideoFrame *frame)
 {
-
+	new_video_preview_event(&main_app, frame);
 }
 
 
 //===============================================
 void XCastObserver::onWillEnterRoom(int result, const char *error)
 {
-
+	const std::string streamid = XCastHelper::getInstance()->getStreamID();
+	if(streamid.length() > 0)
+	{
+		ui_stream_connecting(streamid.c_str(), &main_app);
+	}
 }
+	
 void XCastObserver::onDidEnterRoom(int result, const char *error)
 {
+	const std::string streamid = XCastHelper::getInstance()->getStreamID();
+	if (streamid.length() > 0)
+	{
+		ui_stream_connected(streamid.c_str(), &main_app);
+	}
 	has_enter_room = true;
 }
 void XCastObserver::onExitRoomComplete(int result, const char *error)
 {
+	const std::string streamid = XCastHelper::getInstance()->getStreamID();
+	ui_stream_closed(streamid.c_str(), result, error, &main_app);
 	has_enter_room = false;
 }
 void XCastObserver::onRoomDisconnected(int result, const char *error)
 {
+	const std::string streamid = XCastHelper::getInstance()->getStreamID();
+	ui_stream_closed(streamid.c_str(), result, error, &main_app);
 	has_enter_room = false;
 }
 

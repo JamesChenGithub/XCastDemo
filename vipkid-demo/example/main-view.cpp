@@ -787,7 +787,7 @@ static HWND
 CreateToolbar(HWND hwndParent, HINSTANCE hInst)
 {
   HWND hToolbar;
-  TBBUTTON tbb[7];
+  TBBUTTON tbb[2];
   HIMAGELIST hImageList, hHotImageList, hDisableImageList;
   HBITMAP hBitmap;
 
@@ -829,46 +829,11 @@ tbb[index].idCommand = ID_INIT;
 tbb[index].iString = (INT_PTR)TEXT("启动");
 index++;
 
-//tbb[index].iBitmap = MAKELONG(4, 0);
-//tbb[index].fsState = TBSTATE_ENABLED;
-//tbb[index].fsStyle = TBSTYLE_BUTTON | BTNS_AUTOSIZE;
-//tbb[index].idCommand = ID_CLOSESTREAM;
-//tbb[index].iString = (INT_PTR)TEXT("停止");
-//index++;
-
 tbb[index].iBitmap = MAKELONG(3, 0);
 tbb[index].fsState = TBSTATE_ENABLED;
 tbb[index].fsStyle = TBSTYLE_BUTTON | BTNS_AUTOSIZE;
 tbb[index].idCommand = ID_STARTSTREAM;
 tbb[index].iString = (INT_PTR)TEXT("进房");
-index++;
-
-//tbb[index].iBitmap = MAKELONG(4, 0);
-//tbb[index].fsState = TBSTATE_ENABLED;
-//tbb[index].fsStyle = TBSTYLE_BUTTON | BTNS_AUTOSIZE;
-//tbb[index].idCommand = ID_CLOSESTREAM;
-//tbb[index].iString = (INT_PTR)TEXT("退房");
-//index++;
-
-tbb[index].iBitmap = MAKELONG(3, 0);
-tbb[index].fsState = TBSTATE_ENABLED;
-tbb[index].fsStyle = TBSTYLE_BUTTON | BTNS_AUTOSIZE;
-tbb[index].idCommand = ID_STARTLANRELAY;
-tbb[index].iString = (INT_PTR)TEXT("开启局域网");
-index++;
-
-//tbb[index].iBitmap = MAKELONG(4, 0);
-//tbb[index].fsState = TBSTATE_ENABLED;
-//tbb[index].fsStyle = TBSTYLE_BUTTON | BTNS_AUTOSIZE;
-//tbb[index].idCommand = ID_STOPLANRELAY;
-//tbb[index].iString = (INT_PTR)TEXT("停止局域网");
-//index++;
-
-tbb[index].iBitmap = MAKELONG(6, 0);
-tbb[index].fsState = TBSTATE_ENABLED;
-tbb[index].fsStyle = TBSTYLE_BUTTON | BTNS_AUTOSIZE;
-tbb[index].idCommand = IDM_ABOUT;
-tbb[index].iString = (INT_PTR)TEXT("关于");
 index++;
 
 SendMessage(hToolbar, TB_ADDBUTTONS, sizeof(tbb) / sizeof(TBBUTTON), (LPARAM)&tbb); //配置工具栏按钮信息
@@ -1518,8 +1483,7 @@ ClearTrackBuffer(const char *track)
   }
 }
 
-void
-InvalidVideoView(const RECT *rc)
+void InvalidVideoView(const RECT *rc)
 {
   RECT rcUpdate;
   if (!main_app.hVideoView) {
@@ -1725,15 +1689,6 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     switch (wmId) {
     case ID_INIT:
 	{
-		//xcast_init(hWnd);
-		//break;
-
-		/*tencent::xcast_data settings;
-		settings["app_id"] = 1400036169;
-		settings["identifier"] = 12345654;
-		settings["test_env"] = false;
-		int32_t rt = tencent::xcast::startup(settings);*/
-
 		main_observer.reset(new XCastObserver());
 
 		if (!is_initialized)

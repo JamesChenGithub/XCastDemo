@@ -38,9 +38,6 @@ tree_item_data_t *CreateItemData(int32_t icon, const char *path, const char *tex
 TrackVideoBuffer *GetTrackBuffer(const char *track, int width, int height, bool bNoResize = false);
 void ClearTrackBuffer(const char *track);
 
-extern void InvalidVideoView(const RECT *rc = NULL);
-extern void RenderBuffer();
-
 /* XCAST属性树视图中插入新节点 */
 HTREEITEM AddTreeItem(HWND hTree, 
   LPCSTR pszFullPath, LPCSTR pszName, tree_item_data_t *item_data);

@@ -139,13 +139,8 @@ int32_t XCastHelper::onXCastSystemEvent(void *contextinfo, tencent::xcast_data &
 }
 int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &data)
 {
-#if kForVipKidTest
-	new_stream_event(NULL, data);
-#endif
 	//return XCAST_OK;
 	XCastHelper *instance = (XCastHelper *)contextinfo;
-
-
 #if kForVipKidTest
 	char * str = data.dump();
 	if (str)
@@ -240,13 +235,6 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 		{
 		case xc_track_added:
 		{
-			int i = 0;
-			/* 新增轨道 */
-			/*ui_track_add(e, true, user_data);*/
-			//instance->logtoFile("xc_track_added", data.dump());
-
-			/*XCastEndPoint info;
-			instance->m_room_handler->onEndpointsUpdateInfo(info);*/
 		}
 		break;
 		case xc_track_updated:
@@ -303,44 +291,13 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 					// tinyid模式下直接通知
 					instance->notifyTrackEndpointEvent(uin,"", event, has);
 				}
-
-				
 			}
 		}
-		/* 更新轨道 */
-		/*ui_track_update(e, user_data);*/
 		break;
 		case xc_track_removed:
 		{
-//			const char *str = data.dump();
-//			// 有流退出
-//			std::shared_ptr<XCastEndpoint> end = instance->getEndpoint(uin);
-//			if (end.get() && end->tinyid != instance->m_startup_param->tinyid)
-//			{
-//				// 只通知远程流断开
-//				XCastEndpoint ep;
-//				ep.tinyid = end->tinyid;
-//				ep.identifier = end->identifier;
-//				ep.is_audio = end->is_audio;
-//				ep.is_camera_video = end->is_camera_video;
-//				ep.is_screen_video = end->is_screen_video;
-//				ep.is_media_video = end->is_media_video;
-//				instance->m_room_handler->onEndpointsUpdateInfo(XCast_Endpoint_Removed, ep);
-//
-//				instance->deleteEndpoint(uin);
-//#if kForVipKidTest
-//				instance->logtoFile("xc_track_removed", data.dump());
-//#endif
-//				/*	XCastEndPoint info;
-//				instance->m_room_handler->onEndpointsUpdateInfo(info);*/
-//			}
-//			if (end.get())
-//			{
-//				instance->earseVideoFrameBuffer(end->tinyid);
-//			}
 			
 		}
-		//ui_track_add(e, false, user_data);
 		break;
 		case xc_track_media:
 		{
@@ -366,10 +323,6 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 }
 int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &e)
 {
-#if kForVipKidTest
-	new_device_event(NULL, e);
-#endif
-
 	const char *srcstr = e["src"];
 
 	if (srcstr == nullptr)
@@ -515,7 +468,11 @@ void XCastHelper::logtoFile(const char *tag, const char * info)
 	fflush(logFile);
 }
 #endif
-
+std::string XCastHelper::version()
+{
+	const char *ver = tencent::xcast::version();
+	return std::string(ver);
+}
 
 bool XCastHelper::setAccountHandler(std::shared_ptr<XCastAccountHandler> handler)
 {
@@ -528,6 +485,18 @@ bool XCastHelper::setAccountHandler(std::shared_ptr<XCastAccountHandler> handler
 		return true;
 	}
 	return false;
+}
+
+const std::string XCastHelper::getStreamID() const
+{
+	if (stream_state != Room_Closed)
+	{
+		if (m_stream_param.get())
+		{
+			return std::string(m_stream_param->streamID);
+		}
+	}
+	return "";
 }
 
 int XCastHelper::startContextWithout(std::unique_ptr<XCastStartParam> param, XCHCallBack callback)
