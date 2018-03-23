@@ -1736,6 +1736,24 @@ void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewL
 {
 	if (isSupportIMAccount() && callback)
 	{
+		if (item.video_src == XCastMediaSource_Unknown || item.identifer.length() == 0)
+		{
+			if (callback)
+			{
+				callback(item, 1004, "item is invaild");
+			}
+			return;
+		}
+
+		if (item.identifer == m_startup_param->identifier)
+		{
+			if (callback)
+			{
+				callback(item, 1004, "can't request self track");
+			}
+			return;
+		}
+
 		getTinyIDWithUserID(item.identifer, [&](uint64_t uin, int code, std::string msg) {
 			if (code == 0 && uin != 0)
 			{
@@ -1754,6 +1772,24 @@ void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewL
 	}
 	else
 	{
+
+		if (!item.isVaild())
+		{
+			if (callback)
+			{
+				callback(item, 1004, "item is invaild");
+			}
+			return;
+		}
+
+		if (item.tinyid == m_startup_param->tinyid)
+		{
+			if (callback)
+			{
+				callback(item, 1004, "can't request self track");
+			}
+			return;
+		}
 		remoteViewWithTinyid(item, enable, callback, isrequestVideo);
 	}
 
