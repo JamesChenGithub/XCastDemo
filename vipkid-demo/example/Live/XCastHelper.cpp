@@ -1026,7 +1026,7 @@ void XCastHelper::cancelView(XCastRequestViewItem item, XCHReqViewListCallBack c
 	remoteView(item, false, callback,true);
 }
 
-void XCastHelper::cancelAudio(XCastRequestViewItem item, XCHReqViewListCallBack callback = XCHNilCallBack)
+void XCastHelper::cancelAudio(XCastRequestViewItem item, XCHReqViewListCallBack callback)
 {
 	remoteView(item, false, callback, false);
 }
@@ -1747,7 +1747,7 @@ void XCastHelper::remoteViewWithTinyid(XCastRequestViewItem item, bool enable, X
 }
 void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback, bool isrequestVideo)
 {
-	if (isSupportIMAccount() && callback)
+	if (isSupportIMAccount())
 	{
 		if ((isrequestVideo && item.video_src == XCastMediaSource_Unknown) || item.identifer.length() == 0)
 		{
