@@ -4,6 +4,10 @@
 #include "xcast-dev.h"
 #include "xcast-ui-handler.h"
 
+extern  int32_t    appid;
+extern  uint64_t   account;
+extern  int32_t    relation_id;
+
 void utf16_to_utf8(const char16_t *wstr, uint32_t len, std::string& str);
 void utf8_to_utf16(const char *str, uint32_t len, std::wstring& wstr);
 

@@ -18,18 +18,21 @@
 #include <vector>
 #include <algorithm>
 #pragma comment(lib, "comctl32.lib")
+#pragma comment(lib, "winmm.lib")
 
 
 #define MAX_LOADSTRING 100
+
+  int32_t    appid = 0;
+  uint64_t   account = 0;
+  int32_t    relation_id = 0;
 
 // 3780 pixels per meter is equivalent to 96 DPI, typical on desktop monitors.
 static const int kPixelsPerMeter = 3780;
 // 32 bit RGBA is 4 bytes per pixel.
 static const int kBytesPerPixel = 4;
 static std::string role = "user";
-static int32_t    appid;
-static uint64_t   account;
-static int32_t    relation_id;
+
 static bool       test_env;
 
 static std::string peer_ip;
@@ -274,13 +277,13 @@ static int32_t on_create_popupmenu(HTREEITEM hItem, bool enterroom, XCastDeviceT
 	{
 
 	case XCastDeviceType_Camera:
-		defaultdev = XCastHelper::getInstance()->getDefaultCamera();
+		defaultdev = XCastUtil::getDefaultCamera();
 		break;
 	case XCastDeviceType_Mic:
-		defaultdev = XCastHelper::getInstance()->getDefaultMic();
+		defaultdev = XCastUtil::getDefaultMic();
 		break;
 	case XCastDeviceType_Speaker:
-		defaultdev = XCastHelper::getInstance()->getDefaultSpeaker();
+		defaultdev = XCastUtil::getDefaultSpeaker();
 		break;
 
 	default:
@@ -297,29 +300,35 @@ static int32_t on_create_popupmenu(HTREEITEM hItem, bool enterroom, XCastDeviceT
 
 		case XCastDeviceType_Camera:
 		{
-			AppendMenuW(hmenu, isdefault ? MF_STRING | MF_CHECKED : MF_STRING, 1, L"默认设备");
-			AppendMenuW(hmenu, MF_STRING, 2, L"摄像头预览");
-			AppendMenuW(hmenu, MF_STRING, 3, L"摄像头上行");
-			AppendMenuW(hmenu, MF_STRING, 4, L"摄像头上行并预览");
-			AppendMenuW(hmenu, MF_STRING, 5, L"摄像头上行并预览并切换成默认");
+			AppendMenuW(hmenu, MF_STRING, 1, L"打开摄像头预览");
+			AppendMenuW(hmenu, MF_STRING, 2, L"关闭摄像头预览");
+			AppendMenuW(hmenu, MF_STRING, 3, L"打开摄像头上行（自动打开预览）");
+			AppendMenuW(hmenu, MF_STRING, 4, L"关闭摄像头下行（同时关闭预览）");
+	
+			if (!isdefault)
+			{
+				AppendMenuW(hmenu, MF_STRING , 5, L"切换为该摄像头上行并预览（并关闭之前的摄像头预览）");
+			}
+
 		}
 		break;
 		case XCastDeviceType_Mic:
 		{
-			AppendMenuW(hmenu, isdefault ? MF_STRING | MF_CHECKED : MF_STRING, 1, L"默认设备");
-			AppendMenuW(hmenu, MF_STRING, 2, L"麦克风预览");
-			AppendMenuW(hmenu, MF_STRING, 3, L"麦克风上行");
-			AppendMenuW(hmenu, MF_STRING, 4, L"麦克风上行并预览");
-			AppendMenuW(hmenu, MF_STRING, 5, L"麦克风上行并预览并默认");
+			AppendMenuW(hmenu, MF_STRING, 1, L"打开麦克风预览");
+			AppendMenuW(hmenu, MF_STRING, 2, L"关闭麦克风预览");
+			AppendMenuW(hmenu, MF_STRING, 3, L"打开麦克风上行（不预览）");
+			AppendMenuW(hmenu, MF_STRING, 4, L"关闭麦克风下行（不预览）");
+
+			if (!isdefault)
+			{
+				AppendMenuW(hmenu, MF_STRING, 5, L"切换为该麦克风上行（并关闭之前的麦克风采集）");
+			}
 		}
 		break;
 		case XCastDeviceType_Speaker:
 		{
-			AppendMenuW(hmenu, isdefault ? MF_STRING | MF_CHECKED : MF_STRING, 1, L"默认设备");
-			AppendMenuW(hmenu, MF_STRING, 2, L"扬声器预览");
-			AppendMenuW(hmenu, MF_STRING, 3, L"扬声器开关");
-			AppendMenuW(hmenu, MF_STRING, 4, L"扬声器开关并预览");
-			AppendMenuW(hmenu, MF_STRING, 5, L"扬声器预览开关切换成默认");
+			AppendMenuW(hmenu, MF_STRING, 1, L"打开扬声器（听到所有声间）");
+			AppendMenuW(hmenu, MF_STRING, 2, L"关闭扬声器（听不到所有声间）"); 
 		}
 		break;
 
@@ -336,32 +345,23 @@ static int32_t on_create_popupmenu(HTREEITEM hItem, bool enterroom, XCastDeviceT
 
 		case XCastDeviceType_Camera:
 		{
-			AppendMenuW(hmenu, isdefault ? MF_STRING | MF_CHECKED : MF_STRING, 1, L"默认设备");
-			AppendMenuW(hmenu, MF_STRING, 2, L"摄像头预览");
-			if (isdefault)
-			{
-				AppendMenuW(hmenu, MF_STRING, 3, L"预览并默认");
-			}
+			AppendMenuW(hmenu, isdefault ? MF_STRING | MF_CHECKED : MF_STRING, 1, isdefault ? L"默认摄像头": L"设置为默认摄像头");
+			AppendMenuW(hmenu, MF_STRING, 2, L"打开摄像头预览" );
+			AppendMenuW(hmenu, MF_STRING, 3, L"关闭摄像头预览");
 		}
 		break;
 		case XCastDeviceType_Mic:
 		{
-			AppendMenuW(hmenu, isdefault ? MF_STRING | MF_CHECKED : MF_STRING, 1, L"默认设备");
-			AppendMenuW(hmenu, MF_STRING, 2, L"麦克风预览");
-			if (isdefault)
-			{
-				AppendMenuW(hmenu, MF_STRING, 3, L"麦克风预览并默认");
-			}
+			AppendMenuW(hmenu, isdefault ? MF_STRING | MF_CHECKED : MF_STRING, 1, isdefault ? L"默认麦克风" : L"设置为默认麦克风");
+			AppendMenuW(hmenu, MF_STRING, 2,  L"打开麦克风预览" );
+			AppendMenuW(hmenu, MF_STRING, 3,  L"关闭麦克风预览");
 		}
 		break;
 		case XCastDeviceType_Speaker:
 		{
-			AppendMenuW(hmenu, isdefault ? MF_STRING | MF_CHECKED : MF_STRING, 1, L"默认设备");
-			AppendMenuW(hmenu, MF_STRING, 2, L"扬声器预览");
-			if (isdefault)
-			{
-				AppendMenuW(hmenu, MF_STRING, 3, L"扬声器预览并默认");
-			}
+			AppendMenuW(hmenu, isdefault ? MF_STRING | MF_CHECKED : MF_STRING, 1, isdefault ? L"默认扬声器" : L"设置为默认扬声器");
+			AppendMenuW(hmenu, MF_STRING, 2, L"打开扬声器预览" ); 
+			AppendMenuW(hmenu, MF_STRING, 3, L"关闭扬声器预览");
 		}
 		break;
 
@@ -381,33 +381,29 @@ static int32_t on_create_popupmenu(HTREEITEM hItem, bool enterroom, XCastDeviceT
 		{
 			switch (type)
 			{
-				/*	AppendMenuW(hmenu, isdefault ? MF_STRING | MF_CHECKED : MF_STRING, 1, L"默认设备");
-				AppendMenuW(hmenu, MF_STRING, 2, L"摄像头预览");
-				AppendMenuW(hmenu, MF_STRING, 3, L"摄像头上行");
-				AppendMenuW(hmenu, MF_STRING, 4, L"摄像头上行并预览");
-				AppendMenuW(hmenu, MF_STRING, 5, L"摄像头上行并预览并切换成默认");
-				*/
 			case XCastDeviceType_Camera:
 			{
 				switch (n)
 				{
+				
 				case 1:
-					if (!isdefault)
-					{
-						XCastHelper::getInstance()->setDefaultCamera(deviceid.c_str());
-					}
+					XCastUtil::enableCameraPreview(true, deviceid.c_str());
 					break;
 				case 2:
-					XCastHelper::getInstance()->enableCameraPreview(enable, deviceid.c_str());
+					XCastUtil::enableCameraPreview(false, deviceid.c_str());
 					break;
 				case 3:
-					XCastHelper::getInstance()->enableCamera(enable, deviceid.c_str());
+					XCastUtil::enableCamera(true, true, deviceid.c_str());
+					break;
 				case 4:
-					XCastHelper::getInstance()->enableCamera(enable, enable, deviceid.c_str());
+					XCastUtil::enableCamera(false, false, deviceid.c_str());
 					break;
 				case 5:
-					XCastHelper::getInstance()->switchCamera(enable, enterroom, true, deviceid.c_str());
-					break;
+				{
+					XCastUtil::enableCameraPreview(false, defaultdev.c_str());
+					XCastUtil::switchCamera(true, true, false, deviceid.c_str());
+				}
+				break;
 				default:
 					break;
 				}
@@ -418,21 +414,20 @@ static int32_t on_create_popupmenu(HTREEITEM hItem, bool enterroom, XCastDeviceT
 				switch (n)
 				{
 				case 1:
-					if (!isdefault)
-					{
-						XCastHelper::getInstance()->setDefaultMic(deviceid.c_str());
-					}
+					// 房间内默认开了扬声器，不需要重复打开
+					XCastUtil::enableMicPreview(true, deviceid.c_str());
 					break;
 				case 2:
-					XCastHelper::getInstance()->enableMicPreview(enable, deviceid.c_str());
+					XCastUtil::enableMicPreview(false, deviceid.c_str());
 					break;
 				case 3:
-					XCastHelper::getInstance()->enableMic(enable, deviceid.c_str());
+					XCastUtil::enableMic(false, true, deviceid.c_str());
+					break;
 				case 4:
-					XCastHelper::getInstance()->enableMic(enable, enable, deviceid.c_str());
+					XCastUtil::enableMic(false, false, deviceid.c_str());
 					break;
 				case 5:
-					XCastHelper::getInstance()->switchMic(enable, enterroom, true, deviceid.c_str());
+					XCastUtil::switchMic(false, true, false, deviceid.c_str());
 					break;
 				default:
 					break;
@@ -444,26 +439,14 @@ static int32_t on_create_popupmenu(HTREEITEM hItem, bool enterroom, XCastDeviceT
 				switch (n)
 				{
 				case 1:
-					if (!isdefault)
-					{
-						XCastHelper::getInstance()->setDefaultSpeaker(deviceid.c_str());
-					}
+					XCastUtil::enableSpeaker(true, deviceid.c_str());
 					break;
 				case 2:
-					XCastHelper::getInstance()->enableSpeakerPreview(enable, deviceid.c_str());
-					break;
-				case 3:
-					XCastHelper::getInstance()->enableSpeaker(enable, deviceid.c_str());
-				case 4:
-					XCastHelper::getInstance()->enableSpeaker(enable, enable, deviceid.c_str());
-					break;
-				case 5:
-					XCastHelper::getInstance()->switchSpeaker(enable, enterroom, true, deviceid.c_str());
+					XCastUtil::enableSpeaker(false, deviceid.c_str());
 					break;
 				default:
 					break;
 				}
-
 			}
 			break;
 
@@ -483,14 +466,14 @@ static int32_t on_create_popupmenu(HTREEITEM hItem, bool enterroom, XCastDeviceT
 				case 1:
 					if (!isdefault)
 					{
-						XCastHelper::getInstance()->setDefaultCamera(deviceid.c_str());
+						XCastUtil::setDefaultCamera(deviceid.c_str());
 					}
 					break;
 				case 2:
-					XCastHelper::getInstance()->enableCameraPreview(enable, deviceid.c_str());
+					XCastUtil::enableCameraPreview(true, deviceid.c_str());
 					break;
 				case 3:
-					XCastHelper::getInstance()->switchCamera(enable, enterroom, true, deviceid.c_str());
+					XCastUtil::enableCameraPreview(false, deviceid.c_str());
 					break;
 				default:
 					break;
@@ -504,19 +487,22 @@ static int32_t on_create_popupmenu(HTREEITEM hItem, bool enterroom, XCastDeviceT
 				case 1:
 					if (!isdefault)
 					{
-						XCastHelper::getInstance()->setDefaultMic(deviceid.c_str());
+						XCastUtil::setDefaultMic(deviceid.c_str());
 					}
 					break;
 				case 2:
 				{
-					XCastHelper::getInstance()->enableSpeakerPreview(enable);
-					XCastHelper::getInstance()->enableMicPreview(enable, deviceid.c_str());
+					XCastUtil::enableSpeakerPreview(true);
+					XCastUtil::enableMicPreview(true, deviceid.c_str());
 				}
 
 				break;
 				case 3:
-					XCastHelper::getInstance()->switchMic(enable, enterroom, true, deviceid.c_str());
-					break;
+				{
+					XCastUtil::enableSpeakerPreview(false);
+					XCastUtil::enableMicPreview(false, deviceid.c_str());
+				}
+				break;
 				default:
 					break;
 				}
@@ -529,14 +515,20 @@ static int32_t on_create_popupmenu(HTREEITEM hItem, bool enterroom, XCastDeviceT
 				case 1:
 					if (!isdefault)
 					{
-						XCastHelper::getInstance()->setDefaultSpeaker(deviceid.c_str());
+						XCastUtil::setDefaultSpeaker(deviceid.c_str());
 					}
 					break;
 				case 2:
-					XCastHelper::getInstance()->enableSpeakerPreview(enable, deviceid.c_str());
+					{
+						PlaySound(L"SystemStart", NULL, SND_LOOP | SND_ASYNC);
+						XCastUtil::enableSpeakerPreview(true, deviceid.c_str());
+					}
 					break;
 				case 3:
-					XCastHelper::getInstance()->switchSpeaker(enable, enterroom, true, deviceid.c_str());
+				{
+					PlaySound(NULL, NULL, 0);
+					XCastUtil::enableSpeakerPreview(false, deviceid.c_str());
+				}
 					break;
 				default:
 					break;
@@ -2099,9 +2091,12 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			XCastStartParam *param = new XCastStartParam;
 			std::unique_ptr<XCastStartParam> up(param);
 			//up->tinyid = 67890;
-			up->identifier = "67890";
+
+			char identifier[XCAST_MAX_PATH];
+			sprintf(identifier, "%llu", account);
+			up->identifier = identifier;
 			up->isTestEvn = false;
-			up->sdkappid = 1400036169;
+			up->sdkappid = appid;
 			up->accounttype = 14180;
 
 			XCastUtil::startContext(std::move(up), [&](int code, const char *err) {
@@ -2198,7 +2193,7 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			std::unique_ptr<XCastStreamParam> param(new XCastStreamParam);
 
 			param->role = "user";
-			param->roomid = 100;
+			param->roomid = relation_id;
 			param->auto_recv = true;
 			param->streamID = "stream1";
 

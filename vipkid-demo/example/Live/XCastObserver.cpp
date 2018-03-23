@@ -6,7 +6,10 @@
 #include "XCastHelper.h"
 
 #include "../xcast-ui-handler.h"
+#include "../main-view.h"
 
+
+extern  uint64_t   account;
 
 
 XCastObserver::XCastObserver()
@@ -113,7 +116,7 @@ void XCastObserver::onLocalVideoPreview(const XCastVideoFrame *frame)
 
 void XCastObserver::onVideoPreview(const XCastVideoFrame *frame)
 {
-
+	new_video_preview_event(&main_app, frame);
 }
 
 bool XCastObserver::needRoomCallbackTips()
@@ -128,7 +131,7 @@ void XCastObserver::onStatTips()
 
 uint64_t XCastObserver::getTinyId()
 {
-	return 67890;
+	return account;
 }
 
 bool XCastObserver::useIMSDKasAccount() const
@@ -148,8 +151,6 @@ void XCastObserver::tinyid_to_identifier(std::vector<uint64_t> tinyidlist, XCast
 		std::thread([=] {
 
 			std::shared_ptr<std::vector<uint64_t>> tptr(new std::vector<uint64_t>(tinyidlist));
-		
-
 			std::this_thread::sleep_for(std::chrono::microseconds(500));
 			std::vector<std::string> idlist;
 			std::for_each(tptr->begin(), tptr->end(), [&](uint64_t tinyid) {

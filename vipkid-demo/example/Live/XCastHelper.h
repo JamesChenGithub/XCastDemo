@@ -185,7 +185,7 @@ public:
 	* 返回值 ：操作返回值
 	*/
 	int enableSpeaker(bool preview, bool enable, const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
-	int switchSpeaker(bool preview, bool enable, bool setsDefault , const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+	int switchSpeaker(bool preview, bool enable, bool setsDefault = false , const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
 
 	/*
 	* 功能 ：切换扬声器输出类型
@@ -270,7 +270,7 @@ public:
 	* 返回值 ：操作返回值
 	*/
 	int enableMic(bool preview, bool enableAudioOut, const char *micid = nullptr, XCHCallBack callback = XCHNilCallBack);
-	int switchMic(bool preview, bool enableAudioOut, bool setDefault, const char *micid = nullptr, XCHCallBack callback = XCHNilCallBack);
+	int switchMic(bool preview, bool enableAudioOut, bool setDefault = false, const char *micid = nullptr, XCHCallBack callback = XCHNilCallBack);
 
 
 public:
@@ -338,7 +338,7 @@ public:
 	* 返回值 ：操作返回值
 	*/
 	int enableCamera(bool preview, bool enableVideoOut, const char *cameraid = nullptr, XCHCallBack callback = XCHNilCallBack);
-	int switchCamera(bool preview, bool enableVideoOut, bool setDefault, const char *cameraid = nullptr, XCHCallBack callback = XCHNilCallBack);
+	int switchCamera(bool preview, bool enableVideoOut, bool setDefault = false, const char *cameraid = nullptr, XCHCallBack callback = XCHNilCallBack);
 public:
 	// 房间内上麦用户操作
 	/*
