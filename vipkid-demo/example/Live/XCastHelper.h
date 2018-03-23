@@ -374,6 +374,7 @@ public:
 	* 返回值 ：操作返回值, 0 请求成功，非零失败
 	*/
 	void cancelView(XCastRequestViewItem item, XCHReqViewListCallBack callback = XCHNilCallBack);
+	void cancelAudio(XCastRequestViewItem item, XCHReqViewListCallBack callback = XCHNilCallBack);
 
 	/*
 	* 功能：调用cancelView多次去取消请求itemList用户画面

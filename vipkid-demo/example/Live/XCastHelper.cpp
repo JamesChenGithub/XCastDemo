@@ -1023,7 +1023,12 @@ void XCastHelper::requestAllView(XCHReqViewListCallBack callback)
 
 void XCastHelper::cancelView(XCastRequestViewItem item, XCHReqViewListCallBack callback)
 {
-	remoteView(item, false, callback);
+	remoteView(item, false, callback,true);
+}
+
+void XCastHelper::cancelAudio(XCastRequestViewItem item, XCHReqViewListCallBack callback = XCHNilCallBack)
+{
+	remoteView(item, false, callback, false);
 }
 
 void XCastHelper::cancelViewList(std::vector<XCastRequestViewItem> itemList, XCHReqViewListCallBack callback)
@@ -1680,9 +1685,9 @@ XCastRequestViewItem XCastHelper::getFromTrackID(std::string track)
 	}
 	return item;
 }
-void XCastHelper::remoteViewWithTinyid(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback)
+void XCastHelper::remoteViewWithTinyid(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback, bool isrequestVideo)
 {
-	if (!item.isVaild())
+	if ((isrequestVideo && !item.isVaild()) || (!isrequestVideo && item.tinyid == 0))
 	{
 		if (callback)
 		{
@@ -1694,22 +1699,30 @@ void XCastHelper::remoteViewWithTinyid(XCastRequestViewItem item, bool enable, X
 
 	tencent::xcast_data data, params;
 	params["enable"] = enable;
-
+	
 	std::string trackid = "";
-	switch (item.video_src)
+	if (isrequestVideo)
 	{
-	case XCastMediaSource_Camera:
-		trackid = kTRACK_CAMERA_IN;
-		break;
-	case XCastMediaSource_Screen_Capture:
-		trackid = kTRACK_SCREEN_CAPTURE_IN;
-		break;
-	case XCastMediaSource_Media_Player:
-		trackid = kTRACK_MEDIA_IN;
-		break;
-	default:
-		break;
+		switch (item.video_src)
+		{
+		case XCastMediaSource_Camera:
+			trackid = kTRACK_CAMERA_IN;
+			break;
+		case XCastMediaSource_Screen_Capture:
+			trackid = kTRACK_SCREEN_CAPTURE_IN;
+			break;
+		case XCastMediaSource_Media_Player:
+			trackid = kTRACK_MEDIA_IN;
+			break;
+		default:
+			break;
+		}
 	}
+	else
+	{
+		trackid = kTRACK_AUDIO_IN;
+	}
+	
 
 	if (trackid.length() == 0)
 	{
@@ -1736,7 +1749,7 @@ void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewL
 {
 	if (isSupportIMAccount() && callback)
 	{
-		if (item.video_src == XCastMediaSource_Unknown || item.identifer.length() == 0)
+		if ((isrequestVideo && item.video_src == XCastMediaSource_Unknown) || item.identifer.length() == 0)
 		{
 			if (callback)
 			{
@@ -1773,7 +1786,7 @@ void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewL
 	else
 	{
 
-		if (!item.isVaild())
+		if (isrequestVideo && !item.isVaild())
 		{
 			if (callback)
 			{
@@ -1795,7 +1808,7 @@ void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewL
 
 }
 
-void XCastHelper::remoteAllView(bool enable, XCHReqViewListCallBack callback, bool isrequestVideo)
+void XCastHelper::remoteAllView(bool enable, XCHReqViewListCallBack callback)
 {
 	const char *streamid = m_stream_param->streamID.c_str();
 	tencent::xcast_data tracklist = tencent::xcast::get_property(XC_STREAM_TRACK, streamid);
@@ -1809,7 +1822,7 @@ void XCastHelper::remoteAllView(bool enable, XCHReqViewListCallBack callback, bo
 		XCastRequestViewItem item = getFromTrackID(track);
 		if (item.isVaild())
 		{
-			remoteView(item, enable, callback);
+			remoteView(item, enable, callback,true);
 		}
 	}
 }

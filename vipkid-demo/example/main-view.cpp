@@ -252,14 +252,39 @@ ui_stream_closed(const char *stream, int32_t err, const char *err_msg, void* use
 static int32_t
 on_start_track(tree_item_data_t *item_data, HTREEITEM hItem)
 {
+	std::string streamid = item_data->id2;
+	std::string outstr = item_data->id;
+	std::string path = item_data->path;
 
-  xcast_data        data;
-  char              prop[XCAST_MAX_PATH] = { 0 };
 
-  item_data->start = !item_data->start;
-  data["enable"] = item_data->start;
-  xcast::set_property(XC_TRACK_ENABLE, item_data->id2.c_str(), item_data->id.c_str(), data);
+	char sid[XCAST_MAX_PATH];
+	uint64_t uin;
+	char outs[32];
+	sscanf(path.c_str(), "stream.%s.%llu.%s", sid, uin, outs);
 
+	if (uin != account)
+	{
+		std::string type = outs;
+		if (type == "video-in")
+		{
+			xcast_data        data;
+			char              prop[XCAST_MAX_PATH] = { 0 };
+			item_data->start = !item_data->start;
+			data["enable"] = item_data->start;
+			xcast::set_property(XC_TRACK_ENABLE, item_data->id2.c_str(), item_data->id.c_str(), data);
+		}
+		else if (type == "audio-in")
+		{
+			xcast_data        data;
+			char              prop[XCAST_MAX_PATH] = { 0 };
+			item_data->start = !item_data->start;
+			data["enable"] = item_data->start;
+			xcast::set_property(XC_TRACK_ENABLE, item_data->id2.c_str(), item_data->id.c_str(), data);
+		}
+	}
+
+
+  
   return XCAST_OK;
 }
 
