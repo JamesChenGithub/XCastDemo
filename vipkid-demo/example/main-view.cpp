@@ -252,6 +252,7 @@ ui_stream_closed(const char *stream, int32_t err, const char *err_msg, void* use
 static int32_t
 on_start_track(tree_item_data_t *item_data, HTREEITEM hItem)
 {
+
   xcast_data        data;
   char              prop[XCAST_MAX_PATH] = { 0 };
 
@@ -835,7 +836,7 @@ ui_track_add(xcast_data &evt, bool add, void* user_data)
       item_data = CreateItemData(9, path, track);
       item_data->id = track;
       item_data->id2 = stream;
-	 // item_data->db_click =  on_start_track;
+	  item_data->db_click =  on_start_track;
       AddTreeItem(app->hTreeView, path, track, item_data);
       TreeView_Expand(app->hTreeView, hParent, TVE_EXPAND);
 

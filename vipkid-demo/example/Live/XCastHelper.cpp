@@ -1690,7 +1690,32 @@ void XCastHelper::remoteViewWithTinyid(XCastRequestViewItem item, bool enable, X
 	tencent::xcast_data data, params;
 	params["enable"] = enable;
 
-	std::string trackid = kTRACK_CAMERA_IN;
+	std::string trackid = "";
+	switch (item.video_src)
+	{
+	case XCastMediaSource_Camera:
+		trackid = kTRACK_CAMERA_IN;
+		break;
+	case XCastMediaSource_Screen_Capture:
+		trackid = kTRACK_SCREEN_CAPTURE_IN;
+		break;
+	case XCastMediaSource_Media_Player:
+		trackid = kTRACK_MEDIA_IN;
+		break;
+	default:
+		break;
+	}
+
+	if (trackid.length() == 0)
+	{
+		if (callback)
+		{
+			callback(item, 1004, "item is invaild");
+		}
+		return;
+	}
+
+	
 	trackid += "-";
 	trackid += std::to_string(item.tinyid);
 	int32_t enret = tencent::xcast::set_property(XC_TRACK_ENABLE, m_stream_param->streamID.c_str(), trackid.c_str(), params);
