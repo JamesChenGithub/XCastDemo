@@ -999,7 +999,12 @@ int XCastHelper::switchCamera(bool preview, bool enableVideoOut, bool setDefault
 
 void XCastHelper::requestView(XCastRequestViewItem item, XCHReqViewListCallBack callback)
 {
-	remoteView(item, true, callback);
+	remoteView(item, true, callback, true);
+}
+
+void XCastHelper::requestAudio(XCastRequestViewItem item, XCHReqViewListCallBack callback)
+{
+	remoteView(item, true, callback, false);
 }
 
 
@@ -1727,7 +1732,7 @@ void XCastHelper::remoteViewWithTinyid(XCastRequestViewItem item, bool enable, X
 	}
 
 }
-void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback)
+void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback, bool isrequestVideo)
 {
 	if (isSupportIMAccount() && callback)
 	{
@@ -1735,7 +1740,7 @@ void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewL
 			if (code == 0 && uin != 0)
 			{
 				item.tinyid = uin;
-				remoteViewWithTinyid(item, enable, callback);
+				remoteViewWithTinyid(item, enable, callback, isrequestVideo);
 			}
 			else
 			{
@@ -1749,12 +1754,12 @@ void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewL
 	}
 	else
 	{
-		remoteViewWithTinyid(item, enable, callback);
+		remoteViewWithTinyid(item, enable, callback, isrequestVideo);
 	}
 
 }
 
-void XCastHelper::remoteAllView(bool enable, XCHReqViewListCallBack callback)
+void XCastHelper::remoteAllView(bool enable, XCHReqViewListCallBack callback, bool isrequestVideo)
 {
 	const char *streamid = m_stream_param->streamID.c_str();
 	tencent::xcast_data tracklist = tencent::xcast::get_property(XC_STREAM_TRACK, streamid);

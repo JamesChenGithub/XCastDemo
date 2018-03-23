@@ -349,7 +349,7 @@ public:
 	* 返回值 ：操作返回值, 0 请求成功，非零失败
 	*/
 	void requestView(XCastRequestViewItem item, XCHReqViewListCallBack callback = XCHNilCallBack);
-
+	void requestAudio(XCastRequestViewItem item, XCHReqViewListCallBack callback = XCHNilCallBack);
 	/*
 	* 功能：调用requestView多次去请求itemList用户画面
 	* 参数：
@@ -445,8 +445,8 @@ private:
 	void deleteEndpoint(uint64_t tinyid);
 
 	XCastRequestViewItem getFromTrackID(std::string trackid);
-	void remoteView(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);
-	void remoteViewWithTinyid(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);
+	void remoteView(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback = XCHNilCallBack, bool isrequestVideo = true);
+	void remoteViewWithTinyid(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback = XCHNilCallBack, bool isrequestVideo = true);
 	void remoteAllView(bool enable, XCHReqViewListCallBack callback = XCHNilCallBack);
 	int getSpeakerDynamicVolume(std::string trackid) const;
 
