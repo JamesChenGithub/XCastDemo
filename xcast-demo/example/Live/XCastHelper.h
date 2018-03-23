@@ -84,6 +84,8 @@ public:
 
 
 public:
+
+	static std::string version();
 	/*
 	* 功能：设置帐号逻辑（tinyid转identifier逻辑），必须在startContext前设置
 	*
@@ -91,6 +93,9 @@ public:
 	* 返回值 ：true 成功，false失败
 	*/
 	bool setAccountHandler(std::shared_ptr<XCastAccountHandler> handler);
+
+public:
+	const std::string getStreamID() const;
 
 public:
 	/*
@@ -137,6 +142,21 @@ public:
 	*/
 	std::vector<std::string> getSpeakerList() const;
 
+	/* 
+	* 功能：设置默认扬声器
+	* sid ：为空或为错误的，默认扬声明器不会变更，业务上层保证传入值的合法性
+	* 返回值 : 0 成功，非0失败
+	*/
+	int setDefaultSpeaker(const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+
+	/*
+	* 功能：获取默认扬声器
+	* 返回：默认扬声器（UTF-8格式串），为空即没有扬声器设备
+	*/
+	std::string getDefaultSpeaker() const;
+
+
+
 	/*
 	* 功能：对sid扬声器进行打开/关闭操作
 	* sid : 要操作的扬声器，可为空，为空时操作默认扬声器
@@ -145,6 +165,27 @@ public:
 	* 返回：操作是否成功，0成功，非0失败
 	*/
 	int enableSpeaker(bool enable, const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+
+	/*
+	* 功能：操作扬声器，控制预览
+	* micid :  扬声器id,可以为空，为空则查默认扬声器的状态
+	* preview : 是否,预览, true : 预览 / false : 不预览
+	* callback ：操作回调
+	* 返回值 ：操作返回值
+	*/
+	int enableSpeakerPreview(bool preview, const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+
+	/*
+	* 功能：操作扬声器，控制预览以及开关
+	* micid :  麦克风id,可以为空，为空则查默认麦克风的状态
+	* preview : 是否,预览, true : 预览 / false : 不预览
+	* enableAudioOut : 是否上行音频, true ：上行 / false : 不上行
+	* setsDefault : 是否设置sid为默认扬声器(为空或为错误的，默认扬声明器不会变更，业务上层保证传入值的合法性)，等同于切换扬声器
+	* callback ：操作回调
+	* 返回值 ：操作返回值
+	*/
+	int enableSpeaker(bool preview, bool enable, const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+	int switchSpeaker(bool preview, bool enable, bool setsDefault = false , const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
 
 	/*
 	* 功能 ：切换扬声器输出类型
@@ -179,6 +220,19 @@ public:
 	std::vector<std::string> getMicList() const;
 
 	/*
+	* 功能：设置默认麦克风
+	* sid ：为空或为错误的，默认麦克风不会变更，业务上层保证传入值的合法性
+	* 返回值 : 0 成功，非0失败
+	*/
+	int setDefaultMic(const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+
+	/*
+	* 功能：获取默认麦克风
+	* 返回：默认麦克风（UTF-8格式串），为空即没有麦克风设备
+	*/
+	std::string getDefaultMic() const;
+
+	/*
 	* 功能：获取麦克风状态
 	* micid :  麦克风id,可以为空，为空则查默认麦克风的状态
 	* 返回值 ：
@@ -211,10 +265,12 @@ public:
 	* micid :  麦克风id,可以为空，为空则查默认麦克风的状态
 	* preview : 是否,预览, true : 预览 / false : 不预览
 	* enableAudioOut : 是否上行音频, true ：上行 / false : 不上行
+	* setsDefault : 是否设置sid为默认麦克风(为空或为错误的，默认麦克风不会变更，业务上层保证传入值的合法性)，等同于切换麦克风
 	* callback ：操作回调
 	* 返回值 ：操作返回值
 	*/
 	int enableMic(bool preview, bool enableAudioOut, const char *micid = nullptr, XCHCallBack callback = XCHNilCallBack);
+	int switchMic(bool preview, bool enableAudioOut, bool setDefault = false, const char *micid = nullptr, XCHCallBack callback = XCHNilCallBack);
 
 
 public:
@@ -225,6 +281,20 @@ public:
 	* 返回：摄像头列表（UTF-8格式串，外部进行转码）
 	*/
 	std::vector<std::string> getCameraList() const;
+
+	/*
+	* 功能：设置默认摄像头
+	* sid ：为空或为错误的，默认摄像头不会变更，业务上层保证传入值的合法性
+	* 返回值 : 0 成功，非0失败
+	*/
+	int setDefaultCamera(const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+
+	/*
+	* 功能：获取默认摄像头
+	* 返回：默认摄像头（UTF-8格式串），为空即没有摄像头设备
+	*/
+	std::string getDefaultCamera() const;
+
 
 	/*
 	* 功能：获取摄像头状态
@@ -263,11 +333,12 @@ public:
 	* micid :  摄像头id,可以为空，为空则查默认摄像头
 	* preview : 是否,预览, true : 预览 / false : 不预览
 	* enableVideoOut : 是否上行音频, true ：上行 / false : 不上行
+	* setsDefault : 是否设置sid为默认麦克风(为空或为错误的，默认麦克风不会变更，业务上层保证传入值的合法性)，等同于切换麦克风
 	* callback ：操作回调
 	* 返回值 ：操作返回值
 	*/
 	int enableCamera(bool preview, bool enableVideoOut, const char *cameraid = nullptr, XCHCallBack callback = XCHNilCallBack);
-
+	int switchCamera(bool preview, bool enableVideoOut, bool setDefault = false, const char *cameraid = nullptr, XCHCallBack callback = XCHNilCallBack);
 public:
 	// 房间内上麦用户操作
 	/*
@@ -357,6 +428,7 @@ private:
 private:
 	int operaMic(const char *micid, bool preview, bool needExePreview, bool audioout, bool needExeAudioOut, bool needSetDefault, XCHCallBack callback = XCHNilCallBack);
 	int operaCamera(const char *camid, bool preview, bool needExePreview, bool videoout, bool needExeAudioOut, bool needSetDefault, XCHCallBack callback = XCHNilCallBack);
+	int operaSpeaker(const char *micid, bool preview, bool needExePreview, bool enable, bool needEnable , bool needSetDefault, XCHCallBack callback = XCHNilCallBack);
 
 
 private:

@@ -15,3 +15,10 @@ onXCastTipsEvent : ["tips":"Send: 0kbps @ 0pkt @ 0.00% 0.00..."]
 onXCastTipsEvent : ["tips":"Send: 0kbps @ 0pkt @ 0.00% 0.00..."] 
 onXCastTipsEvent : ["tips":"Send: 0kbps @ 0pkt @ 0.00% 0.00..."] 
 onXCastTipsEvent : ["tips":"Send: 0kbps @ 0pkt @ 0.00% 0.00..."] 
+onXCastTipsEvent : ["tips":"Send: 0kbps @ 0pkt @ 0.00% 0.00..."] 
+onXCastTipsEvent : ["tips":"Send: 0kbps @ 0pkt @ 0.00% 0.00..."] 
+onXCastTipsEvent : ["tips":"Send: 0kbps @ 0pkt @ 0.00% 0.00..."] 
+onXCastTipsEvent : ["tips":"Send: 0kbps @ 0pkt @ 0.00% 0.00..."] 
+onXCastTipsEvent : ["tips":"Send: 0kbps @ 0pkt @ 0.00% 0.00..."] 
+onXCastTipsEvent : ["tips":"Send: 0kbps @ 0pkt @ 0.00% 0.00..."] 
+onXCastTipsEvent : ["tips":"Send: 0kbps @ 0pkt @ 0.00% 0.00..."] 

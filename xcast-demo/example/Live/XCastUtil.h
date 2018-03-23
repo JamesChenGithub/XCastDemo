@@ -8,6 +8,20 @@
 
 class XCastUtil
 {
+public:
+	/*
+	* 查看版本号
+	*/
+	static std::string version();
+
+	/*
+	* 功能：设置帐号逻辑（tinyid转identifier逻辑），必须在startContext前设置
+	*
+	* handler ：可为空
+	* 返回值 ：true 成功，false失败
+	*/
+	static bool setAccountHandler(std::shared_ptr<XCastAccountHandler> handler);
+
 	/*
 	* 功能: 初始始化XCast
 	* param : 初始化参数，内部会保存该值；
@@ -53,6 +67,20 @@ public:
 	static std::vector<std::string> getSpeakerList();
 
 	/*
+	* 功能：设置默认扬声器
+	* sid ：为空或为错误的，默认扬声明器不会变更，业务上层保证传入值的合法性
+	* 返回值 : 0 成功，非0失败
+	*/
+	static int setDefaultSpeaker(const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+
+	/*
+	* 功能：获取默认扬声器
+	* 返回：默认扬声器（UTF-8格式串），为空即没有扬声器设备
+	*/
+	static std::string getDefaultSpeaker();
+
+
+	/*
 	* 功能：对sid扬声器进行打开/关闭操作
 	* sid : 要操作的扬声器，可为空，为空时操作默认扬声器
 	* enable : true : 打开 / false : 关闭
@@ -60,6 +88,27 @@ public:
 	* 返回：操作是否成功，0成功，非0失败
 	*/
 	static int enableSpeaker(bool enable, const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+
+
+	/*
+	* 功能：操作扬声器，控制预览
+	* micid :  扬声器id,可以为空，为空则查默认扬声器的状态
+	* preview : 是否,预览, true : 预览 / false : 不预览
+	* callback ：操作回调
+	* 返回值 ：操作返回值
+	*/
+	static int enableSpeakerPreview(bool preview, const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+
+	/*
+	* 功能：操作扬声器，控制预览以及开关
+	* micid :  麦克风id,可以为空，为空则查默认麦克风的状态
+	* preview : 是否,预览, true : 预览 / false : 不预览
+	* enableAudioOut : 是否上行音频, true ：上行 / false : 不上行
+	* callback ：操作回调
+	* 返回值 ：操作返回值
+	*/
+	static int enableSpeaker(bool preview, bool enable, const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+	
 
 	/*
 	* 功能 ：切换扬声器输出类型
@@ -94,6 +143,19 @@ public:
 	static std::vector<std::string> getMicList();
 
 	/*
+	* 功能：设置默认麦克风
+	* sid ：为空或为错误的，默认麦克风不会变更，业务上层保证传入值的合法性
+	* 返回值 : 0 成功，非0失败
+	*/
+	static int setDefaultMic(const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+
+	/*
+	* 功能：获取默认麦克风
+	* 返回：默认麦克风（UTF-8格式串），为空即没有麦克风设备
+	*/
+	static std::string getDefaultMic();
+
+	/*
 	* 功能：获取麦克风状态
 	* micid :  麦克风id,可以为空，为空则查默认麦克风的状态
 	* 返回值 ：
@@ -126,11 +188,12 @@ public:
 	* micid :  麦克风id,可以为空，为空则查默认麦克风的状态
 	* preview : 是否,预览, true : 预览 / false : 不预览
 	* enableAudioOut : 是否上行音频, true ：上行 / false : 不上行
+	* setsDefault : 是否设置sid为默认麦克风(为空或为错误的，默认麦克风不会变更，业务上层保证传入值的合法性)，等同于切换麦克风
 	* callback ：操作回调
 	* 返回值 ：操作返回值
 	*/
 	static int enableMic(bool preview, bool enableAudioOut, const char *micid = nullptr, XCHCallBack callback = XCHNilCallBack);
-
+	static int switchMic(bool preview, bool enableAudioOut, bool setDefault = false, const char *micid = nullptr, XCHCallBack callback = XCHNilCallBack);
 
 public:
 	// 摄像头操作
@@ -140,6 +203,19 @@ public:
 	* 返回：摄像头列表（UTF-8格式串，外部进行转码）
 	*/
 	static std::vector<std::string> getCameraList();
+
+	/*
+	* 功能：设置默认摄像头
+	* sid ：为空或为错误的，默认摄像头不会变更，业务上层保证传入值的合法性
+	* 返回值 : 0 成功，非0失败
+	*/
+	static int setDefaultCamera(const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+
+	/*
+	* 功能：获取默认摄像头
+	* 返回：默认摄像头（UTF-8格式串），为空即没有摄像头设备
+	*/
+	static std::string getDefaultCamera();
 
 	/*
 	* 功能：获取摄像头状态
@@ -177,12 +253,16 @@ public:
 	* 功能：操作摄像头，控制预览(自己说话自己可以听到)以及上行
 	* micid :  摄像头id,可以为空，为空则查默认摄像头
 	* preview : 是否,预览, true : 预览 / false : 不预览
-	* enableVideoOut : 是否上行音频, true ：上行 / false : 不上行
+	* enableVideoOut : 是否上行视频, true ：上行 / false : 不上行
+	* setsDefault : 是否设置sid为默认摄像头(为空或为错误的，默认麦克风不会变更，业务上层保证传入值的合法性)，等同于切换摄像头
 	* callback ：操作回调
 	* 返回值 ：操作返回值
 	*/
 	static int enableCamera(bool preview, bool enableVideoOut, const char *cameraid = nullptr, XCHCallBack callback = XCHNilCallBack);
+	static int switchCamera(bool preview, bool enableVideoOut, bool setDefault, const char *cameraid = nullptr, XCHCallBack callback = XCHNilCallBack);
 
+	
+	
 public:
 	// 房间内上麦用户操作
 	/*
