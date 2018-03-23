@@ -67,6 +67,13 @@ public:
 	static std::vector<std::string> getSpeakerList();
 
 	/*
+	* 功能：设置默认扬声器
+	* sid ：为空或为错误的，默认扬声明器不会变更，业务上层保证传入值的合法性
+	* 返回值 : 0 成功，非0失败
+	*/
+	static int setDefaultSpeaker(const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
+
+	/*
 	* 功能：对sid扬声器进行打开/关闭操作
 	* sid : 要操作的扬声器，可为空，为空时操作默认扬声器
 	* enable : true : 打开 / false : 关闭
@@ -94,7 +101,7 @@ public:
 	* 返回值 ：操作返回值
 	*/
 	static int enableSpeaker(bool preview, bool enable, const char *sid = nullptr, XCHCallBack callback = XCHNilCallBack);
-
+	
 
 	/*
 	* 功能 ：切换扬声器输出类型

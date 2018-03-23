@@ -44,6 +44,11 @@ std::vector<std::string> XCastUtil::getSpeakerList()
 {
 	return XCastHelper::getInstance()->getSpeakerList();
  }
+ 
+int XCastUtil::setDefaultSpeaker(const char *sid , XCHCallBack callback )
+{
+	return XCastHelper::getInstance()->setDefaultSpeaker(sid,callback);
+}
 
 int XCastUtil::enableSpeaker(bool enable, const char *sid, XCHCallBack callback)
 {
@@ -58,7 +63,10 @@ int XCastUtil::enableSpeaker(bool preview, bool enableAudioOut, const char *mici
 {
 	return XCastHelper::getInstance()->enableSpeaker(preview, enableAudioOut, micid, callback);
 }
-
+//int XCastUtil::switchSpeaker(bool preview, bool enable, bool setSidAsDefault, const char *sid, XCHCallBack callback )
+//{
+//	return XCastHelper::getInstance()->switchSpeaker(preview, enable, setSidAsDefault, sid, callback);
+//}
 
 int XCastUtil::changeOutputMode(bool headphone, const char *sid)
 {

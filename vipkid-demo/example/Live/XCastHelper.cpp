@@ -787,6 +787,17 @@ std::vector<std::string> XCastHelper::getSpeakerList() const
 	return getDeviceList(XCastDeviceType_Speaker);
 }
 
+// 设置默认扬声器
+int XCastHelper::setDefaultSpeaker(const char *sid, XCHCallBack callback)
+{
+	return operaSpeaker(sid, false, false, false, false, false, callback);
+}
+
+std::string XCastHelper::getDefaultSpeaker() const
+{
+	return getOperaSpeaker();
+}
+
 // 指定默认的speaker 为 sid
 // 同时进行enable操作
 int XCastHelper::enableSpeaker(bool enable, const char *sid, XCHCallBack callback)
@@ -804,6 +815,10 @@ int XCastHelper::enableSpeakerPreview(bool preview, const char *sid, XCHCallBack
 int XCastHelper::enableSpeaker(bool preview, bool enable, const char *sid, XCHCallBack callback)
 {
 	return operaSpeaker(sid, preview, true, enable, true, false, callback);
+}
+int XCastHelper::switchSpeaker(bool preview, bool enable, bool setSidAsDefault, const char *sid, XCHCallBack callback)
+{
+	return operaSpeaker(sid, preview, true, enable, true, setSidAsDefault, callback);
 }
 // 切换输出类型 , speaker : 1 扬声器 0 耳机
 int XCastHelper::changeOutputMode(bool headphone, const char *sid)
@@ -865,6 +880,21 @@ std::vector<std::string> XCastHelper::getMicList() const
 }
 
 
+int XCastHelper::setDefaultMic(const char *sid, XCHCallBack callback)
+{
+	return operaMic(sid, false, false, false, false, true, callback);
+}
+
+/*
+* 功能：获取默认麦克风
+* 返回：默认麦克风（UTF-8格式串），为空即没有麦克风设备
+*/
+std::string XCastHelper::getDefaultMic() const
+{
+	return getOperaMic();
+}
+
+
 // 在房间内时，获取采集mic状态；
 // 在房间外时，获取default mic状态;
 XCastDeviceState XCastHelper::getMicState(const char *micid) const
@@ -897,11 +927,35 @@ int XCastHelper::enableMic(bool preview, bool enableAudioOut, const char *micid,
 	return operaMic(micid, preview, true, enableAudioOut, true, false, callback);
 }
 
+int XCastHelper::switchMic(bool preview, bool enableAudioOut, bool setDefault, const char *micid, XCHCallBack callback)
+{
+	return operaMic(micid, preview, true, enableAudioOut, true, setDefault, callback);
+}
+
 // 摄像头操作
 
 std::vector<std::string> XCastHelper::getCameraList() const
 {
 	return getDeviceList(XCastDeviceType_Camera);
+}
+
+/*
+* 功能：设置默认摄像头
+* sid ：为空或为错误的，默认摄像头不会变更，业务上层保证传入值的合法性
+* 返回值 : 0 成功，非0失败
+*/
+int XCastHelper::setDefaultCamera(const char *sid, XCHCallBack callback)
+{
+	return operaCamera(sid, false, false, false, false, true, callback);
+}
+
+/*
+* 功能：获取默认摄像头
+* 返回：默认麦克风（UTF-8格式串），为空即没有麦克风设备
+*/
+std::string XCastHelper::getDefaultCamera() const
+{
+	return getOperaCamera();
 }
 
 

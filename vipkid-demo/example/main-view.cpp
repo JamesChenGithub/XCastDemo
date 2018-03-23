@@ -3,18 +3,22 @@
 #include "jansson.h"
 #include <time.h>
 
-#include <Windows.h>
+//#include <Windows.h>
 #include <MMSystem.h>
 
 
-#include "Live/XCastUtil.h"
+
+
 #include "Live/XCastData.h"
+
+#include "Live/XCastHelper.h"
+#include "Live/XCastUtil.h"
 #include "Live/XCastObserver.h"
 
 #include <vector>
 #include <algorithm>
 #pragma comment(lib, "comctl32.lib")
-#pragma comment(lib, "WINMM.LIB")
+
 
 #define MAX_LOADSTRING 100
 
@@ -27,8 +31,7 @@ static int32_t    appid;
 static uint64_t   account;
 static int32_t    relation_id;
 static bool       test_env;
-static bool       is_initialized = false;
-static bool       is_stream_running = false;
+
 static std::string peer_ip;
 static uint16_t      peer_port = 0;
 static bool       is_lan_start = false;
@@ -58,6 +61,9 @@ std::shared_ptr<XCastObserver> main_observer;
 //#define UDT_TEST    1
 //#define SPEED
 //#define  AUTH_BUFFER_TEST
+
+static bool       is_initialized = false;
+static bool       is_stream_running = false;
 
 xcast_data
 xcast_get_start_param(void *user_data)
@@ -257,10 +263,21 @@ on_start_track(tree_item_data_t *item_data, HTREEITEM hItem)
 static int32_t
 on_camera_preview(tree_item_data_t *item_data, HTREEITEM hItem)
 {
-  item_data->start = !item_data->start;
-  //xcast::set_property(XC_CAMERA_PREVIEW, item_data->text.c_str(), item_data->start);
+	if (!is_stream_running)
+	{
+		item_data->start = !item_data->start;
+		//xcast::set_property(XC_CAMERA_PREVIEW, item_data->text.c_str(), item_data->start);
 
-  XCastUtil::enableCameraPreview(item_data->start);
+		XCastUtil::enableCameraPreview(item_data->start);
+	}
+	else
+	{
+		item_data->start = !item_data->start;
+		//xcast::set_property(XC_CAMERA_PREVIEW, item_data->text.c_str(), item_data->start);
+
+		XCastUtil::enableCamera(item_data->start, item_data->start);
+	}
+  
 
   if (!item_data->start) {
     ClearTrackBuffer(item_data->text.c_str());
@@ -273,11 +290,22 @@ on_camera_preview(tree_item_data_t *item_data, HTREEITEM hItem)
 static int32_t
 on_mic_preview(tree_item_data_t *item_data, HTREEITEM hItem)
 {
-	item_data->start = !item_data->start;
-	//xcast::set_property(XC_CAMERA_PREVIEW, item_data->text.c_str(), item_data->start);
+	if (!is_stream_running)
+	{
+		item_data->start = !item_data->start;
+		//xcast::set_property(XC_CAMERA_PREVIEW, item_data->text.c_str(), item_data->start);
 
-	XCastUtil::enableMicPreview(item_data->start);
-	XCastUtil::enableSpeakerPreview(item_data->start);
+		XCastUtil::enableMicPreview(item_data->start);
+		XCastUtil::enableSpeakerPreview(item_data->start);
+	}
+	else
+	{
+		item_data->start = !item_data->start;
+		//xcast::set_property(XC_CAMERA_PREVIEW, item_data->text.c_str(), item_data->start);
+
+		XCastUtil::enableMic(item_data->start);
+	}
+	
 
 
 	if (!item_data->start) {
@@ -291,20 +319,27 @@ on_mic_preview(tree_item_data_t *item_data, HTREEITEM hItem)
 static int32_t
 on_speaker_preview(tree_item_data_t *item_data, HTREEITEM hItem)
 {
-	item_data->start = !item_data->start;
-	//xcast::set_property(XC_CAMERA_PREVIEW, item_data->text.c_str(), item_data->start);
-
-	if (item_data->start)
+	if (!is_stream_running)
 	{
-		PlaySound(L"SystemStart", NULL, SND_LOOP | SND_ASYNC);
+		item_data->start = !item_data->start;
+		//xcast::set_property(XC_CAMERA_PREVIEW, item_data->text.c_str(), item_data->start);
+
+		if (item_data->start)
+		{
+			PlaySound(L"SystemStart", NULL, SND_LOOP | SND_ASYNC);
+		}
+		else
+		{
+			PlaySound(NULL, NULL, 0);
+		}
+
+		XCastUtil::enableSpeakerPreview(item_data->start);
 	}
 	else
 	{
-		PlaySound(NULL, NULL, 0);
+		item_data->start = !item_data->start;
+		XCastUtil::enableSpeaker(item_data->start);
 	}
-	
-	XCastUtil::enableSpeakerPreview(item_data->start);
-
 
 	if (!item_data->start) {
 		ClearTrackBuffer(item_data->text.c_str());
@@ -329,10 +364,74 @@ on_screen_preview(tree_item_data_t *item_data, HTREEITEM hItem)
   return XCAST_OK;
 }
 
+
+static int32_t on_create_popupmenu(HTREEITEM hItem, bool enterroom, XCastDeviceType type, const char *deviceid)
+{
+	
+	POINT           pt;
+	HMENU           hmenu;   // handle to capture menu  
+	const char     *dev;
+	std::string		defaultdev;
+	uint32_t        n;
+
+	hmenu = CreatePopupMenu();
+
+	switch (type)
+	{
+
+	case XCastDeviceType_Camera:
+		defaultdev = XCastHelper::getInstance()->getDefaultCamera();
+		break;
+	case XCastDeviceType_Mic:
+		defaultdev = XCastHelper::getInstance()->getDefaultMic();
+		break;
+	case XCastDeviceType_Speaker:
+		defaultdev = XCastHelper::getInstance()->getDefaultSpeaker();
+		break;
+
+	default:
+		break;
+	}
+
+	bool  isdefault = defaultdev.c_str() == deviceid;
+
+	if (enterroom)
+	{
+		AppendMenuW(hmenu, isdefault ? MF_STRING | MF_CHECKED : MF_STRING, 1, L"默认设备");
+		AppendMenuW(hmenu, MF_STRING,  2, L"只预览");
+		AppendMenuW(hmenu, MF_STRING,  3, L"只上行");
+		AppendMenuW(hmenu, MF_STRING, 4, L"上行并预览");
+		AppendMenuW(hmenu, MF_STRING, 5, L"上行并预览并默认");
+	}
+	else
+	{
+		AppendMenuW(hmenu, isdefault ? MF_STRING | MF_CHECKED : MF_STRING, 1, L"默认设备");
+		AppendMenuW(hmenu, MF_STRING, 2, L"只预览");
+		AppendMenuW(hmenu, MF_STRING, 3, L"预览并默认");
+	}
+	GetCursorPos(&pt);
+	n = TrackPopupMenu(hmenu, TPM_LEFTALIGN | TPM_LEFTBUTTON | TPM_RETURNCMD | TPM_NONOTIFY,
+		pt.x, pt.y, 0, main_app.hTreeView, NULL);
+	DestroyMenu(hmenu);
+
+	if (n != 0)
+	{
+		// TODO：add click event
+		int i = n;
+	}
+
+	return XCAST_OK;
+
+}
+
+
 /* 树控件双击事件: start/stop track */
 static int32_t
 on_default_speaker(tree_item_data_t *item_data, HTREEITEM hItem)
 {
+	std::string dev = item_data->text;
+	return on_create_popupmenu(hItem, is_stream_running, XCastDeviceType_Speaker, dev.c_str());
+
   POINT           pt;
   HMENU           hmenu;   // handle to capture menu  
   xcast_data      speakers, def_speaker;
@@ -350,6 +449,8 @@ on_default_speaker(tree_item_data_t *item_data, HTREEITEM hItem)
       if (def_speaker == dev) {
         strSpeaker = L"(默认)" + strSpeaker;
         AppendMenuW(hmenu, MF_STRING | MF_CHECKED, n + 1, strSpeaker.c_str());
+		AppendMenuW(hmenu, MF_STRING, n + 1, strSpeaker.c_str());
+		AppendMenuW(hmenu, MF_STRING, n + 1, strSpeaker.c_str());
       } else {
         AppendMenuW(hmenu, MF_STRING, n + 1, strSpeaker.c_str());
       }
@@ -492,7 +593,7 @@ ui_track_add(xcast_data &evt, bool add, void* user_data)
       item_data = CreateItemData(9, path, track);
       item_data->id = track;
       item_data->id2 = stream;
-      item_data->db_click = on_start_track;
+	 // item_data->db_click =  on_start_track;
       AddTreeItem(app->hTreeView, path, track, item_data);
       TreeView_Expand(app->hTreeView, hParent, TVE_EXPAND);
 
@@ -712,7 +813,7 @@ ui_device_added(const char *dev, int32_t clazz, bool add, void* user_data)
 		  item_data->db_click = on_mic_preview;
         break;
       case xc_device_speaker:
-		  item_data->db_click = on_speaker_preview;// on_default_speaker;
+		  item_data->db_click = on_default_speaker;
         break;
       case xc_device_external:
         break;

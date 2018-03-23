@@ -27,6 +27,7 @@ struct tree_item_data_s {
   const char               *prop;       /* property path of item in xcast */
   bool                      start;
   tree_item_pt              db_click;   /* double click event handle */
+  tree_item_pt              right_click;   /* double click event handle */
   capture_data_t           *cap_data;
 
   bool                      is_stream;
