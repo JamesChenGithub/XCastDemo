@@ -790,7 +790,7 @@ std::vector<std::string> XCastHelper::getSpeakerList() const
 // 设置默认扬声器
 int XCastHelper::setDefaultSpeaker(const char *sid, XCHCallBack callback)
 {
-	return operaSpeaker(sid, false, false, false, false, false, callback);
+	return operaSpeaker(sid, false, false, false, false, true, callback);
 }
 
 std::string XCastHelper::getDefaultSpeaker() const
@@ -802,7 +802,7 @@ std::string XCastHelper::getDefaultSpeaker() const
 // 同时进行enable操作
 int XCastHelper::enableSpeaker(bool enable, const char *sid, XCHCallBack callback)
 {
-	return operaSpeaker(sid, false, false, enable, true, false, callback);
+	return operaSpeaker(sid, false, false, enable, stream_state == Room_Connectted, false, callback);
 }
 
 
@@ -814,11 +814,11 @@ int XCastHelper::enableSpeakerPreview(bool preview, const char *sid, XCHCallBack
 
 int XCastHelper::enableSpeaker(bool preview, bool enable, const char *sid, XCHCallBack callback)
 {
-	return operaSpeaker(sid, preview, true, enable, true, false, callback);
+	return operaSpeaker(sid, preview, true, enable, stream_state == Room_Connectted, false, callback);
 }
 int XCastHelper::switchSpeaker(bool preview, bool enable, bool setSidAsDefault, const char *sid, XCHCallBack callback)
 {
-	return operaSpeaker(sid, preview, true, enable, true, setSidAsDefault, callback);
+	return operaSpeaker(sid, preview, true, enable, stream_state == Room_Connectted, setSidAsDefault, callback);
 }
 // 切换输出类型 , speaker : 1 扬声器 0 耳机
 int XCastHelper::changeOutputMode(bool headphone, const char *sid)
@@ -914,7 +914,7 @@ XCastDeviceState XCastHelper::getMicState(const char *micid) const
 
 int XCastHelper::enableMic(bool enableAudioOut, const char *micid, XCHCallBack callback)
 {
-	return operaMic(micid, false, false, enableAudioOut, true, false, callback);
+	return operaMic(micid, false, false, enableAudioOut, stream_state == Room_Connectted, false, callback);
 }
 
 int XCastHelper::enableMicPreview(bool preview, const char *micid, XCHCallBack callback)
@@ -924,12 +924,12 @@ int XCastHelper::enableMicPreview(bool preview, const char *micid, XCHCallBack c
 
 int XCastHelper::enableMic(bool preview, bool enableAudioOut, const char *micid, XCHCallBack callback)
 {
-	return operaMic(micid, preview, true, enableAudioOut, true, false, callback);
+	return operaMic(micid, preview, true, enableAudioOut, stream_state == Room_Connectted, false, callback);
 }
 
 int XCastHelper::switchMic(bool preview, bool enableAudioOut, bool setDefault, const char *micid, XCHCallBack callback)
 {
-	return operaMic(micid, preview, true, enableAudioOut, true, setDefault, callback);
+	return operaMic(micid, preview, true, enableAudioOut, stream_state == Room_Connectted, setDefault, callback);
 }
 
 // 摄像头操作
@@ -980,7 +980,7 @@ XCastDeviceState XCastHelper::getCameraState(const char *cameraid) const
 
 int XCastHelper::enableCamera(bool campture, const char *cameraid, XCHCallBack callback)
 {
-	return operaCamera(cameraid, false, false, campture, true, false, callback);
+	return operaCamera(cameraid, false, false, campture, stream_state == Room_Connectted, false, callback);
 }
 int XCastHelper::enableCameraPreview(bool preview, const char *cameraid, XCHCallBack callback)
 {
@@ -989,7 +989,12 @@ int XCastHelper::enableCameraPreview(bool preview, const char *cameraid, XCHCall
 
 int XCastHelper::enableCamera(bool preview, bool enableVideoOut, const char *cameraid, XCHCallBack callback)
 {
-	return operaCamera(cameraid, preview, true, enableVideoOut, true, false, callback);
+	return operaCamera(cameraid, preview, true, enableVideoOut, stream_state == Room_Connectted, false, callback);
+}
+
+int XCastHelper::switchCamera(bool preview, bool enableVideoOut, bool setDefault, const char *cameraid, XCHCallBack callback)
+{
+	return operaCamera(cameraid, preview, true, enableVideoOut, stream_state == Room_Connectted, setDefault, callback);
 }
 
 void XCastHelper::requestView(XCastRequestViewItem item, XCHReqViewListCallBack callback)
@@ -1366,6 +1371,7 @@ int XCastHelper::operaCamera(const char *cameraid, bool preview, bool needExePre
 	{
 		// 房间内
 		const char *streamid = m_stream_param->streamID.c_str();
+		
 		{
 			int32_t ret = tencent::xcast::set_property(XC_TRACK_CAPTURE, streamid, kTRACK_CAMERA_OUT, operdevID);
 			if (ret != XCAST_OK)

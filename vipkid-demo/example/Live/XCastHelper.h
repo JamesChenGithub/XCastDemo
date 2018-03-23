@@ -333,11 +333,12 @@ public:
 	* micid :  摄像头id,可以为空，为空则查默认摄像头
 	* preview : 是否,预览, true : 预览 / false : 不预览
 	* enableVideoOut : 是否上行音频, true ：上行 / false : 不上行
+	* setsDefault : 是否设置sid为默认麦克风(为空或为错误的，默认麦克风不会变更，业务上层保证传入值的合法性)，等同于切换麦克风
 	* callback ：操作回调
 	* 返回值 ：操作返回值
 	*/
 	int enableCamera(bool preview, bool enableVideoOut, const char *cameraid = nullptr, XCHCallBack callback = XCHNilCallBack);
-
+	int switchCamera(bool preview, bool enableVideoOut, bool setDefault, const char *cameraid = nullptr, XCHCallBack callback = XCHNilCallBack);
 public:
 	// 房间内上麦用户操作
 	/*
