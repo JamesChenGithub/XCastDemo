@@ -115,6 +115,10 @@ std::string XCastUtil::getDefaultMic()
 	return XCastHelper::getInstance()->getDefaultMic();
 }
 
+std::string XCastUtil::getCaptureMic()
+{
+	return XCastHelper::getInstance()->getCaptureMic();
+}
 
 int XCastUtil::enableMic(bool enableAudioOut, const char *micid, XCHCallBack callback)
 {
@@ -150,6 +154,12 @@ std::string XCastUtil::getDefaultCamera()
 {
 	return XCastHelper::getInstance()->getDefaultCamera();
 }
+
+std::string XCastUtil::getCaptureCamera()
+{
+	return XCastHelper::getInstance()->getCaptureCamera();
+}
+
 XCastDeviceState XCastUtil::getCameraState(const char *cameraid)
 {
 	return XCastHelper::getInstance()->getCameraState(cameraid);

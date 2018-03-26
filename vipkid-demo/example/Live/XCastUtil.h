@@ -156,6 +156,12 @@ public:
 	static std::string getDefaultMic();
 
 	/*
+	* 功能：获取采集麦克风
+	* 返回：默认麦克风（UTF-8格式串），为空即没有进行采集
+	*/
+	static std::string getCaptureMic();
+
+	/*
 	* 功能：获取麦克风状态
 	* micid :  麦克风id,可以为空，为空则查默认麦克风的状态
 	* 返回值 ：
@@ -217,6 +223,11 @@ public:
 	*/
 	static std::string getDefaultCamera();
 
+	/*
+	* 功能：获取采集摄像头
+	* 返回：默认摄像头（UTF-8格式串），为空即没有摄像头设备
+	*/
+	static std::string getCaptureCamera();
 	/*
 	* 功能：获取摄像头状态
 	* micid :  摄像头id,可以为空，为空则查默认摄像头的状态

@@ -31,15 +31,15 @@ utf8_to_utf16(const char *str, uint32_t len, std::wstring& wstr)
 
 static LRESULT CALLBACK TreeViewProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
-/* 树控件双击事件 */
-static int32_t
-on_start_stream(tree_item_data_t *item_data, HTREEITEM hItem)
-{
-  item_data->start = !item_data->start;
-  ui_start_stream(item_data->id.c_str(), item_data->start, &main_app);
-
-  return XCAST_OK;
-}
+///* 树控件双击事件 */
+//static int32_t
+//on_start_stream(tree_item_data_t *item_data, HTREEITEM hItem)
+//{
+//  item_data->start = !item_data->start;
+//  ui_start_stream(item_data->id.c_str(), item_data->start, &main_app);
+//
+//  return XCAST_OK;
+//}
 
 static int32_t
 on_device_set_default(tree_item_data_t *item_data, HTREEITEM hItem)

@@ -25,7 +25,7 @@ enum XCastEndpointEvent;
 /* 启动/停止XCAST */
 int32_t  new_ui_init_xcast(bool succ, void* user_data);
 //int32_t ui_init_xcast(bool start, void *user_data);
-int32_t ui_start_stream(const char *stream, bool start, void* user_data);
+//int32_t ui_start_stream(const char *stream, bool start, void* user_data);
 
 /* 从APP中获取XCAST启动参数 */
 //xcast_data xcast_get_start_param(void* user_data);
@@ -40,13 +40,13 @@ void ui_stream_connected(const char *stream, void* user_data);
 void ui_stream_closed(const char *stream, int32_t err, const char *err_msg, void* user_data);
 
 /* 刷新UI上媒体流轨道状态 */
-void ui_track_add(xcast_data &evt, bool add, void *user_data);
+//void ui_track_add(xcast_data &evt, bool add, void *user_data);
 //void ui_track_update(xcast_data &evt, void *user_data);
 
 void ui_track_update(const char *streamid, XCastEndpointEvent event,XCastEndpoint &endpoint, void *user_data);
 
-/* 在UI上绘制视频流媒体数据 */
-int32_t ui_track_media(xcast_data &evt, void *user_data);
+///* 在UI上绘制视频流媒体数据 */
+//int32_t ui_track_media(xcast_data &evt, void *user_data);
 
 /* 刷新UI上设备状态 */
 void ui_device_added(const char *dev, int32_t clazz, bool add, void* user_data);

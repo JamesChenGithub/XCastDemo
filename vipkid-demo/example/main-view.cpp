@@ -645,236 +645,11 @@ on_speaker_preview(tree_item_data_t *item_data, HTREEITEM hItem)
 }
 
 /* 树控件双击事件: start/stop track */
-static int32_t
-on_screen_preview(tree_item_data_t *item_data, HTREEITEM hItem)
-{
-	item_data->start = !item_data->start;
-	xcast::set_property(XC_SCREEN_CAPTURE_PREVIEW, item_data->start);
-
-	if (!item_data->start) {
-		ClearTrackBuffer(item_data->text.c_str());
-	}
-
-	InvalidVideoView();
-	return XCAST_OK;
-}
-
-
-
-
-/* 树控件双击事件: start/stop track */
 static int32_t on_default_speaker(tree_item_data_t *item_data, HTREEITEM hItem)
 {
 	std::string devid = item_data->text;
 	item_data->start = !item_data->start;
 	return on_create_popupmenu(hItem, is_stream_running, XCastDeviceType_Speaker, item_data->start, devid);
-
-	POINT           pt;
-	HMENU           hmenu;   // handle to capture menu  
-	xcast_data      speakers, def_speaker;
-	const char     *dev;
-	uint32_t        n;
-
-	hmenu = CreatePopupMenu();
-	def_speaker = xcast::get_property(XC_SPEAKER_DEFAULT);
-	speakers = xcast::get_property(XC_SPEAKER);
-	if (speakers.size()) {
-		for (n = 0; n < speakers.size(); ++n) {
-			dev = speakers[n].str_val();
-			std::wstring strSpeaker;
-			utf8_to_utf16(dev, strlen(dev), strSpeaker);
-			if (def_speaker == dev) {
-				strSpeaker = L"(默认)" + strSpeaker;
-				AppendMenuW(hmenu, MF_STRING | MF_CHECKED, n + 1, strSpeaker.c_str());
-				AppendMenuW(hmenu, MF_STRING, n + 1, strSpeaker.c_str());
-				AppendMenuW(hmenu, MF_STRING, n + 1, strSpeaker.c_str());
-			}
-			else {
-				AppendMenuW(hmenu, MF_STRING, n + 1, strSpeaker.c_str());
-			}
-		}
-	}
-	else {
-		AppendMenuW(hmenu, MF_STRING | MF_CHECKED, 0, L"null");
-	}
-
-	GetCursorPos(&pt);
-	n = TrackPopupMenu(hmenu, TPM_LEFTALIGN | TPM_LEFTBUTTON | TPM_RETURNCMD | TPM_NONOTIFY,
-		pt.x, pt.y, 0, main_app.hTreeView, NULL);
-	DestroyMenu(hmenu);
-
-	if (n && speakers.size() && n - 1 < speakers.size()) {
-		xcast::set_property(XC_SPEAKER_DEFAULT, speakers[n - 1].str_val());
-	}
-
-	return XCAST_OK;
-}
-
-/* popup a capture select menu */
-static int32_t
-popup_capture_select(tree_item_data_t *item_data, HTREEITEM hItem)
-{
-	POINT           pt;
-	HMENU           hmenu;   // handle to capture menu  
-	xcast_data      captures;
-	capture_data_t *data = (capture_data_t *)item_data->cap_data;
-	const char     *cap;
-	uint32_t        n;
-
-	hmenu = CreatePopupMenu();
-
-	if (data->track_type == xc_track_audio) {
-		captures = xcast::get_property(XC_MIC);
-		for (n = 0; n < captures.size(); ++n) {
-			cap = captures[n].str_val();
-			std::wstring strCap;
-			utf8_to_utf16(cap, strlen(cap), strCap);
-			if (data->current_capture == cap) {
-				AppendMenuW(hmenu, MF_STRING | MF_CHECKED, n + 1, strCap.c_str());
-			}
-			else {
-				AppendMenuW(hmenu, MF_STRING, n + 1, strCap.c_str());
-			}
-		}
-	}
-	else if (data->track_type == xc_track_video) {
-		if (0 == data->track_index) {
-			captures = xcast::get_property(XC_CAMERA);
-			for (n = 0; n < captures.size(); ++n) {
-				cap = captures[n].str_val();
-				std::wstring strCap;
-				utf8_to_utf16(cap, strlen(cap), strCap);
-				if (data->current_capture == cap) {
-					AppendMenuW(hmenu, MF_STRING | MF_CHECKED, n + 1, strCap.c_str());
-				}
-				else {
-					AppendMenuW(hmenu, MF_STRING, n + 1, strCap.c_str());
-				}
-			}
-		}
-		else {
-			AppendMenuW(hmenu, MF_STRING | MF_CHECKED, 0, L"screen-capture");
-		}
-	}
-
-	GetCursorPos(&pt);
-	n = TrackPopupMenu(hmenu, TPM_LEFTALIGN | TPM_LEFTBUTTON | TPM_RETURNCMD | TPM_NONOTIFY,
-		pt.x, pt.y, 0, main_app.hTreeView, NULL);
-	DestroyMenu(hmenu);
-
-
-	//xcast::set_property(XC_TRACK_CAPTURE, data->stream.c_str(), data->track.c_str(), captures[n].str_val());
-	if (n && captures.size() && n - 1 < captures.size()) {
-		xcast::set_property(XC_TRACK_CAPTURE, data->stream.c_str(), data->track.c_str(), captures[n - 1].str_val());
-	}
-
-	return XCAST_OK;
-}
-
-/* add/remove track in tree view */
-void
-ui_track_add(xcast_data &evt, bool add, void* user_data)
-{
-	char              path[XCAST_MAX_PATH] = { 0 };
-	char              name[XCAST_MAX_PATH] = { 0 };
-	XCastApp         *app = (XCastApp *)user_data;
-	tree_item_data_t *item_data;
-	HTREEITEM         hItem, hParent;
-	const char       *track = evt["src"];
-	const char       *stream = evt["stream"];
-	uint64_t          uin = evt["uin"];
-	int32_t           clazz = evt["class"];
-	int32_t           index = evt["index"];
-	int32_t           dir = evt["direction"];
-
-	if (add) {
-#if defined(XCAST_EXTERNAL_VIDEO)
-		if (clazz == xc_track_video && dir == xc_track_out && index) {
-			/* set 'ext1' as external capture for sub-video-out */
-			path.format(XC_TRACK_CAPTURE, stream, track);
-			rt = xcast_set_property(path, xcast_data_t("ext1"));
-			printf("xcast_set_property '%s'='ext1', rt(%d)\n", path.str_val(), rt);
-		}
-#endif
-		//if (clazz == xc_track_audio && dir == xc_track_out) {
-		//  path.format(XC_TRACK_CAPTURE, stream, track);
-		//  /* 设置ext1为外部采集,设置之后使用 */
-		//  int32_t rt = xcast_set_property(path, xcast_data_t("ext1"));
-		//  printf("ui_track_add path(%s) rt(%d)\n", path.str_val(), rt);
-		//}
-
-	 //#ifdef _DEBUG
-	 //    if (dir == xc_track_out) {
-	 //      xcast_data_t enable;
-	 //      enable["enable"] = true;
-	 //      path.format(XC_TRACK_ENABLE, stream, track);
-	 //      xcast_set_property(path, enable);
-	 //    }
-	 //#else
-	 //    if (dir == xc_track_in) {
-	 //      xcast_data_t enable;
-	 //      enable["enable"] = true;
-	 //      path.format(XC_TRACK_ENABLE, stream, track);
-	 //      xcast_set_property(path, enable);
-	 //    }
-	 //#endif
-
-		 /* create user node under 'stream' */
-		snprintf(path, XCAST_MAX_PATH, "stream.%s.%llu", stream, uin);
-		hItem = GetTreeItem(app->hTreeView, path, &hParent);
-		if (!hItem) {
-			snprintf(name, XCAST_MAX_PATH, "%llu", uin);
-			item_data = CreateItemData(main_app.uin == uin ? 13 : 14, path, name);
-			AddTreeItem(app->hTreeView, path, name, item_data);
-			TreeView_Expand(app->hTreeView, hParent, TVE_EXPAND);
-		}
-
-		/* create track node under 'stream.user' */
-		snprintf(path, XCAST_MAX_PATH, "stream.%s.%llu.%s", stream, uin, track);
-		hItem = GetTreeItem(app->hTreeView, path, &hParent);
-		if (!hItem) {
-			item_data = CreateItemData(9, path, track);
-			item_data->id = track;
-			item_data->id2 = stream;
-			item_data->db_click = on_start_track;
-			AddTreeItem(app->hTreeView, path, track, item_data);
-			TreeView_Expand(app->hTreeView, hParent, TVE_EXPAND);
-
-			/* create capture node for output track */
-			if (xc_track_out == dir) {
-				xcast_data        cap;
-				const char       *capture = "null";
-				capture_data_t   *data;
-				hParent = hItem;
-				snprintf(path, XCAST_MAX_PATH, XC_TRACK_CAPTURE, stream, track);
-				cap = xcast::get_property(path);
-				if (cap.size()) capture = cap.str_val();
-
-				snprintf(path, XCAST_MAX_PATH, "stream.%s.%llu.%s.%s", stream, uin, track, capture);
-				item_data = CreateItemData(clazz == xc_track_audio ? 5 : 12, path, capture);
-				item_data->id = stream;
-				item_data->id2 = track;
-				data = new capture_data_t();
-				data->stream = stream;
-				data->track = track;
-				data->current_capture = capture;
-				data->track_index = evt["index"];
-				data->track_type = clazz;
-				item_data->cap_data = data;
-				item_data->db_click = popup_capture_select;
-				AddTreeItem(app->hTreeView, path, capture, item_data);
-				TreeView_Expand(app->hTreeView, hParent, TVE_EXPAND);
-			}
-		}
-	}
-	else {
-		snprintf(path, XCAST_MAX_PATH, "stream.%s.%llu.%s", stream, uin, track);
-		hItem = GetTreeItem(app->hTreeView, path, &hParent);
-		if (hItem) {
-			RemoveTreeItem(app->hTreeView, hItem);
-			InvalidateRect(main_app.hVideoView, NULL, TRUE);
-		}
-	}
 }
 
 /* 更新轨道状态 */
@@ -901,28 +676,28 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 			case XCast_Endpoint_No_Camera_Video:
 			{
 				track = "video-out";
-				clazz == xc_track_video;
+				clazz = xc_track_video;
 				break;
 			}
 			case XCast_Endpoint_Has_Audio:
 			case XCast_Endpoint_No_Audio:
 			{
 				track = "audio-out";
-				clazz == xc_track_audio;
+				clazz = xc_track_audio;
 				break;
 			}
 			case XCast_Endpoint_Has_Screen_Video:
 			case XCast_Endpoint_No_Screen_Video:
 			{
 				track = "sub-video-out";
-				clazz == xc_track_video;
+				clazz = xc_track_video;
 				break;
 			}
 			case XCast_Endpoint_Has_Media_Video:
 			case XCast_Endpoint_No_Media_Video:
 			{
 				track = "media-file-out";
-				clazz == xc_track_video;
+				clazz = xc_track_video;
 				break;
 			}
 				
@@ -941,28 +716,28 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 			case XCast_Endpoint_No_Camera_Video:
 			{
 				track = "video-in";
-				clazz == xc_track_video;
+				clazz = xc_track_video;
 				break;
 			}
 			case XCast_Endpoint_Has_Audio:
 			case XCast_Endpoint_No_Audio:
 			{
 				track = "audio-in";
-				clazz == xc_track_audio;
+				clazz = xc_track_audio;
 				break;
 			}
 			case XCast_Endpoint_Has_Screen_Video:
 			case XCast_Endpoint_No_Screen_Video:
 			{
 				track = "sub-video-in";
-				clazz == xc_track_video;
+				clazz = xc_track_video;
 				break;
 			}
 			case XCast_Endpoint_Has_Media_Video:
 			case XCast_Endpoint_No_Media_Video:
 			{
 				track = "media-file-in";
-				clazz == xc_track_video;
+				clazz = xc_track_video;
 				break;
 			}
 
@@ -1018,7 +793,7 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 					data->track_index = index;
 					data->track_type = clazz;
 					item_data->cap_data = data;
-					item_data->db_click = popup_capture_select;
+					//item_data->db_click = popup_capture_select;
 					AddTreeItem(app->hTreeView, path, capture, item_data);
 					TreeView_Expand(app->hTreeView, hParent, TVE_EXPAND);
 				}
@@ -1058,28 +833,28 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 			case XCast_Endpoint_No_Camera_Video:
 			{
 				track = "video-out";
-				clazz == xc_track_video;
+				clazz = xc_track_video;
 				break;
 			}
 			case XCast_Endpoint_Has_Audio:
 			case XCast_Endpoint_No_Audio:
 			{
 				track = "audio-out";
-				clazz == xc_track_audio;
+				clazz = xc_track_audio;
 				break;
 			}
 			case XCast_Endpoint_Has_Screen_Video:
 			case XCast_Endpoint_No_Screen_Video:
 			{
 				track = "sub-video-out";
-				clazz == xc_track_video;
+				clazz = xc_track_video;
 				break;
 			}
 			case XCast_Endpoint_Has_Media_Video:
 			case XCast_Endpoint_No_Media_Video:
 			{
 				track = "media-file-out";
-				clazz == xc_track_video;
+				clazz = xc_track_video;
 				break;
 			}
 
@@ -1098,28 +873,28 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 			case XCast_Endpoint_No_Camera_Video:
 			{
 				track = "video-in";
-				clazz == xc_track_video;
+				clazz = xc_track_video;
 				break;
 			}
 			case XCast_Endpoint_Has_Audio:
 			case XCast_Endpoint_No_Audio:
 			{
 				track = "audio-in";
-				clazz == xc_track_audio;
+				clazz = xc_track_audio;
 				break;
 			}
 			case XCast_Endpoint_Has_Screen_Video:
 			case XCast_Endpoint_No_Screen_Video:
 			{
 				track = "sub-video-in";
-				clazz == xc_track_video;
+				clazz = xc_track_video;
 				break;
 			}
 			case XCast_Endpoint_Has_Media_Video:
 			case XCast_Endpoint_No_Media_Video:
 			{
 				track = "media-file-in";
-				clazz == xc_track_video;
+				clazz = xc_track_video;
 				break;
 			}
 
@@ -1174,7 +949,7 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 			data->track_index = 0;// evt["index"];
 			data->track_type = clazz;
 			item_data->cap_data = data;
-			item_data->db_click = popup_capture_select;
+			//item_data->db_click = popup_capture_select;
 			TreeView_SelectItem(app->hTreeView, AddTreeItem(app->hTreeView, path, capture, item_data));
 
 			return;
@@ -1187,54 +962,54 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 }
 
 
-/* 媒体流轨道数据通知 */
-int32_t
-ui_track_media(xcast_data &evt, void *user_data)
-{
-	TrackVideoBuffer *buffer;
-	const char        *src = evt["src"];
-	int32_t           type = evt["type"];
-	int32_t           clazz = evt["class"];
-	int32_t           direction = evt["direction"];
-
-	if (clazz == xc_track_audio) {
-		if (direction == xc_track_in) {
-			/* 在这里播放音频数据 */
-			const char* pcm_data = evt["data"];
-			uint32_t     pcm_size = evt["size"];
-			uint32_t     sample_rate = evt["sample-rate"];
-			uint32_t     channel = evt["channel"];
-			uint32_t     bits = evt["bits"];
-			uint64_t     uin = evt["uin"];
-			printf("ui_track_media: pcm_size(%u) sample_rate(%u) channel(%u) bits(%u) uin(%llu)\n",
-				pcm_size, sample_rate, channel, bits, uin);
-		}
-	}
-	else if (clazz == xc_track_video) {
-		int32_t fmt = (int32_t)evt["format"];
-		if (fmt == xc_media_argb32) {
-			buffer = GetTrackBuffer(evt["src"], evt["width"], evt["height"]);
-			memcpy(buffer->data, (const uint8_t *)evt["data"], (uint32_t)evt["size"]);
-			InvalidVideoView(&buffer->rcOut);
-		}
-		else if (fmt == xc_media_layer) {
-			TrackVideoBuffer *buffer = GetTrackBuffer(evt["src"], evt["width"], evt["height"], true);
-			TrackBufferRefreshLayers(buffer, evt["data"]);
-		}
-	}
-	return XCAST_OK;
-}
-
-
-
-int32_t
-ui_mic_preprocess(const char *camera, const char *format,
-	const uint8_t *frame_data, uint32_t frame_size,
-	int32_t width, void *user_data)
-{
-
-	return XCAST_OK;
-}
+///* 媒体流轨道数据通知 */
+//int32_t
+//ui_track_media(xcast_data &evt, void *user_data)
+//{
+//	TrackVideoBuffer *buffer;
+//	const char        *src = evt["src"];
+//	int32_t           type = evt["type"];
+//	int32_t           clazz = evt["class"];
+//	int32_t           direction = evt["direction"];
+//
+//	if (clazz == xc_track_audio) {
+//		if (direction == xc_track_in) {
+//			/* 在这里播放音频数据 */
+//			const char* pcm_data = evt["data"];
+//			uint32_t     pcm_size = evt["size"];
+//			uint32_t     sample_rate = evt["sample-rate"];
+//			uint32_t     channel = evt["channel"];
+//			uint32_t     bits = evt["bits"];
+//			uint64_t     uin = evt["uin"];
+//			printf("ui_track_media: pcm_size(%u) sample_rate(%u) channel(%u) bits(%u) uin(%llu)\n",
+//				pcm_size, sample_rate, channel, bits, uin);
+//		}
+//	}
+//	else if (clazz == xc_track_video) {
+//		int32_t fmt = (int32_t)evt["format"];
+//		if (fmt == xc_media_argb32) {
+//			buffer = GetTrackBuffer(evt["src"], evt["width"], evt["height"]);
+//			memcpy(buffer->data, (const uint8_t *)evt["data"], (uint32_t)evt["size"]);
+//			InvalidVideoView(&buffer->rcOut);
+//		}
+//		else if (fmt == xc_media_layer) {
+//			TrackVideoBuffer *buffer = GetTrackBuffer(evt["src"], evt["width"], evt["height"], true);
+//			TrackBufferRefreshLayers(buffer, evt["data"]);
+//		}
+//	}
+//	return XCAST_OK;
+//}
+//
+//
+//
+//int32_t
+//ui_mic_preprocess(const char *camera, const char *format,
+//	const uint8_t *frame_data, uint32_t frame_size,
+//	int32_t width, void *user_data)
+//{
+//
+//	return XCAST_OK;
+//}
 
 /* get device path in tree view and proper icon */
 static bool
@@ -1281,29 +1056,20 @@ ui_device_added(const char *dev, int32_t clazz, bool add, void* user_data)
 	if (!dev || !get_dev_path(dev, clazz, xc_device_stopped, &icon, path)) return;
 
 	hItem = GetTreeItem(app->hTreeView, path, &hParent);
-	if (add) {
-		if (clazz == xc_device_screen_capture) {
-			xcast_data    screen_conf;
-			screen_conf["fps"] = 30;
-			xcast::set_property(XC_SCREEN_CAPTURE_SETTING, screen_conf);
-		}
-
+	if (add) 
+	{
 		if (!hItem) {
 			item_data = CreateItemData(icon, path, dev);
 			switch (clazz) {
-			case xc_device_camera:
+			case XCastDeviceType_Camera:
 				item_data->db_click = on_camera_preview;
 				break;
-			case xc_device_screen_capture:
-				item_data->db_click = on_screen_preview;
-				break;
-			case xc_device_mic:
+			
+			case XCastDeviceType_Mic:
 				item_data->db_click = on_mic_preview;
 				break;
-			case xc_device_speaker:
+			case XCastDeviceType_Speaker:
 				item_data->db_click = on_default_speaker;
-				break;
-			case xc_device_external:
 				break;
 			default:
 				break;
@@ -1356,25 +1122,25 @@ ui_device_update(const char *dev, int32_t clazz, int32_t state,
 	}
 }
 
-int32_t
-ui_device_preprocess(xcast_data &evt, void *user_data)
-{
-	const char       *dev = evt["src"];
-
-	if (!dev) return XCAST_ERR_INVALID_ARGUMENT;
-
-	switch ((int32_t)evt["class"]) {
-	case xc_device_mic:
-		/* 麦克风数据预处理 */
-		//ui_mic_preprocess(evt["src"], evt["format"],
-		//  evt["data"], evt["size"], evt["width"], evt["height"], user_data);
-		break;
-	default:
-		break;
-	}
-
-	return XCAST_OK;
-}
+//int32_t
+//ui_device_preprocess(xcast_data &evt, void *user_data)
+//{
+//	const char       *dev = evt["src"];
+//
+//	if (!dev) return XCAST_ERR_INVALID_ARGUMENT;
+//
+//	switch ((int32_t)evt["class"]) {
+//	case xc_device_mic:
+//		/* 麦克风数据预处理 */
+//		//ui_mic_preprocess(evt["src"], evt["format"],
+//		//  evt["data"], evt["size"], evt["width"], evt["height"], user_data);
+//		break;
+//	default:
+//		break;
+//	}
+//
+//	return XCAST_OK;
+//}
 
 int32_t
 ui_device_preview(xcast_data &evt, void *user_data)

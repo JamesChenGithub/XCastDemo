@@ -233,6 +233,11 @@ public:
 	std::string getDefaultMic() const;
 
 	/*
+	* 功能：获取采集麦克风
+	* 返回：默认麦克风（UTF-8格式串），为空即没有进行采集
+	*/
+	std::string getCaptureMic() const;
+	/*
 	* 功能：获取麦克风状态
 	* micid :  麦克风id,可以为空，为空则查默认麦克风的状态
 	* 返回值 ：
@@ -291,10 +296,15 @@ public:
 
 	/*
 	* 功能：获取默认摄像头
-	* 返回：默认摄像头（UTF-8格式串），为空即没有摄像头设备
+	* 返回：默认摄像头（UTF-8格式串），为空即没有进行采集
 	*/
 	std::string getDefaultCamera() const;
 
+	/*
+	* 功能：获取采集摄像头
+	* 返回：默认摄像头（UTF-8格式串），为空即没有摄像头设备
+	*/
+	std::string getCaptureCamera() const;
 
 	/*
 	* 功能：获取摄像头状态
@@ -421,8 +431,8 @@ private:
 private:
 	// 本地获取
 	std::string getCaptureDevice(XCastDeviceType type) const;
-	std::string getCaptureCamera() const;
-	std::string getCaptureMic() const;
+
+	
 
 	bool isDevicePreview(XCastDeviceType type, const char *devic = nullptr) const;
 	std::vector<std::string> getPreviewCameraList() const;
