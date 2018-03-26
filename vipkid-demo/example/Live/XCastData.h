@@ -209,9 +209,9 @@ typedef struct XCastStreamTrackInfo
 
 
 typedef struct XCastRoomOption {
-	std::string defaultCamera = "";
-	std::string defaultMic = "";
-	std::string defaultSpeaker = "";
+	std::string captureCamera = "";
+	std::string captureMic = "";
+	std::string outputSpeaker = "";
 
 	bool autoCameraCapture = true;
 	bool autoCameraPreview = true;

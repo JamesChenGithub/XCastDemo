@@ -418,6 +418,17 @@ private:
 	std::string getOperaMic(const char *micid = nullptr) const;
 	std::string getOperaSpeaker(const char *speakerid = nullptr) const;
 
+private:
+	// 本地获取
+	std::string getCaptureDevice(XCastDeviceType type) const;
+	std::string getCaptureCamera() const;
+	std::string getCaptureMic() const;
+
+	bool isDevicePreview(XCastDeviceType type, const char *devic = nullptr) const;
+	std::vector<std::string> getPreviewCameraList() const;
+	std::vector<std::string> getPreviewMicList() const;
+	std::vector<std::string> getPreviewSpeakerList() const;
+
 	// 获取要操作的设备
 	std::vector<std::string> getDeviceList(XCastDeviceType type) const;
 	XCastDeviceState getDeviceState(XCastDeviceType type, const char *devid = nullptr) const;

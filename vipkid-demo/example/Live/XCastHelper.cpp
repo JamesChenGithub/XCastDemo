@@ -172,11 +172,11 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 				const XCastRoomOption opera = instance->m_stream_param->roomOpera;
 
 				// 打开摄像头
-				instance->enableCamera(opera.autoCameraPreview, opera.autoCameraCapture, opera.defaultCamera.c_str());
+				instance->enableCamera(opera.autoCameraPreview, opera.autoCameraCapture, opera.captureCamera.c_str());
 				// 打开麦克风
-				instance->enableMic(opera.autoMic);
+				instance->enableMic(opera.autoMic, opera.autoMic, opera.captureMic.c_str());
 				// 打开扬声器
-				instance->enableSpeaker(opera.autoSpeaker);
+				instance->enableSpeaker(opera.autoSpeaker, opera.autoSpeaker, opera.outputSpeaker.c_str());
 
 			}
 		}
@@ -1129,7 +1129,168 @@ std::string XCastHelper::getOperaMic(const char *cameraid) const
 {
 	return getOperaDevice(XCastDeviceType_Mic, cameraid);
 }
+std::string XCastHelper::getCaptureDevice(XCastDeviceType type) const 
+{
+	if (stream_state == Room_Connectted && m_stream_param.get())
+	{
+		const char *tracktye = nullptr;
+		switch (type)
+		{
 
+		case XCastDeviceType_Camera:
+			tracktye = kTRACK_CAMERA_OUT;
+			break;
+		case XCastDeviceType_Screen_Capture:
+			tracktye = kTRACK_SCREEN_CAPTURE_OUT;
+			break;
+		case XCastDeviceType_Player:
+			tracktye = kTRACK_MEDIA_OUT;
+			break;
+		case XCastDeviceType_Mic:
+			tracktye = kTRACK_AUDIO_OUT;
+			break;
+		case XCastDeviceType_Speaker:
+			// devicetyep = XC_SPEAKER_DEFAULT;
+			break;
+		case XCastDeviceType_Accompany:
+			break;
+		case XCastDeviceType_External:
+			break;
+		default:
+			break;
+		}
+
+		if (tracktye == nullptr)
+		{
+			return "";
+		}
+
+		tencent::xcast_data data = tencent::xcast::get_property(XC_TRACK_CAPTURE, m_stream_param->streamID.c_str(), tracktye);
+		const char *str_val = data.str_val();
+		if (str_val == nullptr)
+		{
+			return "";
+		}
+		else
+		{
+			return std::string(str_val);
+		}
+	}
+	
+	return "";
+}
+
+std::string XCastHelper::getCaptureCamera() const
+{
+	return getCaptureDevice(XCastDeviceType_Camera);
+	
+}
+std::string XCastHelper::getCaptureMic() const
+{
+	return getCaptureDevice(XCastDeviceType_Mic);
+}
+
+
+bool XCastHelper::isDevicePreview(XCastDeviceType type, const char *devic) const
+{
+	std::string checkdev = getOperaDevice(type, devic);
+
+	if (checkdev.length() == 0)
+	{
+		return false;
+	}
+	const char *formatkey = nullptr;
+	switch (type)
+	{
+
+	case XCastDeviceType_Camera:
+		formatkey = XC_CAMERA_PREVIEW;
+		break;
+	case XCastDeviceType_Screen_Capture:
+		formatkey = XC_SCREEN_CAPTURE_PREVIEW;
+		break;
+	case XCastDeviceType_Player:
+		// tracktye = xc_media_file_;
+		break;
+	case XCastDeviceType_Mic:
+		formatkey = XC_MIC_PREVIEW;
+		break;
+	case XCastDeviceType_Speaker:
+		formatkey = XC_SPEAKER_PREVIEW;
+		break;
+	case XCastDeviceType_Accompany:
+		break;
+	case XCastDeviceType_External:
+		break;
+	default:
+		break;
+	}
+
+	if (formatkey == nullptr)
+	{
+		return false;
+	}
+
+	if (type == XCastDeviceType_Screen_Capture)
+	{
+		tencent::xcast_data data = tencent::xcast::get_property(XC_SCREEN_CAPTURE_PREVIEW);
+		return data.bool_val();
+	}
+	else
+	{
+		tencent::xcast_data data = tencent::xcast::get_property(formatkey, checkdev.c_str());
+		return data.bool_val();
+
+	}
+
+
+
+
+	return false;
+}
+
+std::vector<std::string> XCastHelper::getPreviewCameraList() const
+{
+	std::vector<std::string> vec;
+	std::vector<std::string> list = getCameraList();
+	std::for_each(list.begin(), list.end(), [=, &vec](std::string dev) {
+		bool isp = isDevicePreview(XCastDeviceType_Camera);
+		if (isp)
+		{
+			vec.push_back(dev);
+		}
+	});
+
+	return vec;
+}
+std::vector<std::string> XCastHelper::getPreviewMicList() const
+{
+	std::vector<std::string> vec;
+	std::vector<std::string> list = getMicList();
+	std::for_each(list.begin(), list.end(), [=, &vec](std::string dev) {
+		bool isp = isDevicePreview(XCastDeviceType_Mic);
+		if (isp)
+		{
+			vec.push_back(dev);
+		}
+	});
+
+	return vec;
+}
+std::vector<std::string> XCastHelper::getPreviewSpeakerList() const
+{
+	std::vector<std::string> vec;
+	std::vector<std::string> list = getSpeakerList();
+	std::for_each(list.begin(), list.end(), [=, &vec](std::string dev) {
+		bool isp = isDevicePreview(XCastDeviceType_Speaker);
+		if (isp)
+		{
+			vec.push_back(dev);
+		}
+	});
+
+	return vec;
+}
 
 int XCastHelper::avsdkErrorCode(int xcast_err_code)
 {
@@ -1288,7 +1449,7 @@ int XCastHelper::operaMic(const char *micid, bool preview, bool needExePreview, 
 
 		{	// 房间内
 
-			int32_t ret = tencent::xcast::set_property(XC_TRACK_CAPTURE, streamid, "audio-out", operdevID);
+			int32_t ret = tencent::xcast::set_property(XC_TRACK_CAPTURE, streamid, kTRACK_AUDIO_OUT, operdevID);
 			if (ret != XCAST_OK)
 			{
 				int erc = avsdkErrorCode(ret);

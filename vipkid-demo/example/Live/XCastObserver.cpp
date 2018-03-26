@@ -25,7 +25,7 @@ XCastObserver::~XCastObserver()
 // 设备回调
 void XCastObserver::onDeviceEvent_DeviceAdd(XCastDeviceHotPlugItem device)
 {
-	if (device.deviceClass != XCastDeviceType_External)
+	if (!(device.deviceClass == XCastDeviceType_External || device.deviceClass == XCastDeviceType_Screen_Capture))
 	{
 		ui_device_added(device.src.c_str(), device.deviceClass, true, &main_app);
 	}
