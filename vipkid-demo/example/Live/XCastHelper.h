@@ -8,7 +8,7 @@
 #include "xcast.hh"
 #include "XCastData.h"
 
-#define kForVipKidTest 1
+#define kForVipKidTest 0
 
 class XCastHelper
 {
@@ -103,13 +103,13 @@ public:
 	* param : 初始化参数，内部会保存该值；
 	* callback ：初始化回调
 	*/
-	int startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback);
+	int startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback = nullptr);
 
 	/*
 	* 功能: 反初始始化XCast，
 	* callback ：反初始化回调
 	*/
-	int stopContext(XCHCallBack callback);
+	int stopContext(XCHCallBack callback = nullptr);
 
 public:
 	/*

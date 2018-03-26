@@ -260,6 +260,7 @@ class xcast {
 
   static int32_t set_property(
     const char *prop, const char *id1, const char *id2, xcast_data val) {
+	  const char *path = format(prop, id1, id2);
     return xcast_set_property(format(prop, id1, id2), val);
   }
 

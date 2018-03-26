@@ -27,13 +27,13 @@ public:
 	* param : 初始化参数，内部会保存该值；
 	* callback ：初始化回调
 	*/
-	static int startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback);
+	static int startContext(std::unique_ptr<XCastStartParam> param, XCHCallBack callback = nullptr);
 
 	/*
 	* 功能: 反初始始化XCast，
 	* callback ：反初始化回调
 	*/
-	static int stopContext(XCHCallBack callback);
+	static int stopContext(XCHCallBack callback = nullptr);
 
 public:
 	/*

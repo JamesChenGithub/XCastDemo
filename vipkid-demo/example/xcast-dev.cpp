@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "xcast-dev.h"
 #include "xcast-ui-handler.h"
+#include "Live/XCastUtil.h"
 
 #pragma comment(linker,"/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='x86' publicKeyToken='6595b64144ccf1df' language='*'\"")
 
@@ -30,8 +31,7 @@ wWinMain(_In_ HINSTANCE hInstance,
     return FALSE;
   }
 
-  /* 启动XCAST */
-  //ui_init_xcast(true, &main_app);
+
   
   HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_XCASTDEV));
   MSG msg;
@@ -43,8 +43,6 @@ wWinMain(_In_ HINSTANCE hInstance,
       DispatchMessage(&msg);
     }
   }
-
-  ui_init_xcast(false, NULL);
-
+  XCastUtil::stopContext();
   return (int) msg.wParam;
 }

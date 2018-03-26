@@ -4,17 +4,14 @@
 #include "xcast-dev.h"
 
 struct XCastVideoFrame;
- //static int32_t on_xcast_event(void *user_data, xcast_data &e);
- //static int32_t on_stream_event(void *user_data, xcast_data &e);
- //static int32_t on_track_event(void *user_data, xcast_data &e);
- //static int32_t on_device_event(void *user_data, xcast_data &e);
- //static int32_t on_stat_tips(void *user_data, xcast_data &e);
+struct XCastEndpoint;
+enum XCastEndpointEvent;
 
- int32_t new_xcast_event(void *user_data, xcast_data &e);
- int32_t new_stream_event(void *user_data, xcast_data &e);
+ //int32_t new_xcast_event(void *user_data, xcast_data &e);
+ //int32_t new_stream_event(void *user_data, xcast_data &e);
  int32_t new_track_event(void *user_data, xcast_data &e);
- int32_t new_device_event(void *user_data, xcast_data &e);
- int32_t new_stat_tips(void *user_data, xcast_data &e);
+ //int32_t new_device_event(void *user_data, xcast_data &e);
+ //int32_t new_stat_tips(void *user_data, xcast_data &e);
 
  int32_t new_video_preview_event(void *user_data,const XCastVideoFrame *frame);
 
@@ -27,13 +24,13 @@ struct XCastVideoFrame;
 
 /* 启动/停止XCAST */
 int32_t  new_ui_init_xcast(bool succ, void* user_data);
-int32_t ui_init_xcast(bool start, void *user_data);
+//int32_t ui_init_xcast(bool start, void *user_data);
 int32_t ui_start_stream(const char *stream, bool start, void* user_data);
 
 /* 从APP中获取XCAST启动参数 */
-xcast_data xcast_get_start_param(void* user_data);
+//xcast_data xcast_get_start_param(void* user_data);
 /* 从APP中获取媒体流启动参数 */
-xcast_data xcast_get_stream_param(void* user_data);
+//xcast_data xcast_get_stream_param(void* user_data);
 /* 刷新UI中XCAST错误信息 */
 void ui_xcast_err(int32_t err, const char *err_msg, void* user_data);
 
@@ -44,7 +41,9 @@ void ui_stream_closed(const char *stream, int32_t err, const char *err_msg, void
 
 /* 刷新UI上媒体流轨道状态 */
 void ui_track_add(xcast_data &evt, bool add, void *user_data);
-void ui_track_update(xcast_data &evt, void *user_data);
+//void ui_track_update(xcast_data &evt, void *user_data);
+
+void ui_track_update(const char *streamid, XCastEndpointEvent event,XCastEndpoint &endpoint, void *user_data);
 
 /* 在UI上绘制视频流媒体数据 */
 int32_t ui_track_media(xcast_data &evt, void *user_data);
@@ -53,15 +52,15 @@ int32_t ui_track_media(xcast_data &evt, void *user_data);
 void ui_device_added(const char *dev, int32_t clazz, bool add, void* user_data);
 void ui_device_update(const char *camera, int32_t clazz,
   int32_t state, int32_t err, const char *err_msg, void* user_data);
-/* 设备预处理 */
-int32_t ui_device_preprocess(xcast_data &evt, void *user_data);
-/* 设备预览 */
-int32_t ui_device_preview(xcast_data &evt, void *user_data);
+///* 设备预处理 */
+//int32_t ui_device_preprocess(xcast_data &evt, void *user_data);
+///* 设备预览 */
+//int32_t ui_device_preview(xcast_data &evt, void *user_data);
 
 /* 注入外部数据 */
-int32_t xcast_inject_video(const uint8_t *frame_data, uint32_t frame_size, int32_t width, int32_t height);
-int32_t xcast_inject_audio(const uint8_t *audio_data, uint32_t data_size, uint32_t sample_rate, uint32_t channels, uint32_t bits);
-
-int32_t ui_start_lan_relay(bool start, const char* ip, uint16_t port);
+//int32_t xcast_inject_video(const uint8_t *frame_data, uint32_t frame_size, int32_t width, int32_t height);
+//int32_t xcast_inject_audio(const uint8_t *audio_data, uint32_t data_size, uint32_t sample_rate, uint32_t channels, uint32_t bits);
+//
+//int32_t ui_start_lan_relay(bool start, const char* ip, uint16_t port);
 
 #endif  /* #ifndef XCAST_UI_HANDLER_H_ */

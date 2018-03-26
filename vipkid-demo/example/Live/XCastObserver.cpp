@@ -89,21 +89,29 @@ void XCastObserver::onDidEnterRoom(int result, const char *error)
 void XCastObserver::onExitRoomComplete(int result, const char *error)
 {
 	const std::string streamid = XCastHelper::getInstance()->getStreamID();
-	ui_stream_closed(streamid.c_str(), result, error, &main_app);
+	if (streamid.length() > 0)
+	{
+		ui_stream_closed(streamid.c_str(), result, error, &main_app);
+	}
 	has_enter_room = false;
 }
 void XCastObserver::onRoomDisconnected(int result, const char *error)
 {
 	const std::string streamid = XCastHelper::getInstance()->getStreamID();
-	ui_stream_closed(streamid.c_str(), result, error, &main_app);
+	if (streamid.length() > 0)
+	{
+		ui_stream_closed(streamid.c_str(), result, error, &main_app);
+	}
 	has_enter_room = false;
 }
 
 void XCastObserver::onEndpointsUpdateInfo(XCastEndpointEvent event, XCastEndpoint infos)
 {
-	std::ostringstream stream;
-	stream << "onEndpointsUpdateInfo" << " : event = " << event << "  , infos.tinyid = " << infos.tinyid << std::endl;
-	std::cout << stream.str() << std::endl;
+	const std::string streamid = XCastHelper::getInstance()->getStreamID();
+	if (streamid.length() > 0)
+	{
+		ui_track_update(streamid.c_str(), event, infos, &main_app);
+	}
 }
 bool XCastObserver::needRoomCallbackLocalVideo()
 {

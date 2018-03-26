@@ -288,6 +288,12 @@ typedef struct XCastEndpoint {
 	bool is_camera_video = false;
 	bool is_screen_video = false;
 	bool is_media_video = false;
+	
+
+	bool isHas() const {
+		return is_audio || is_camera_video || is_screen_video || is_media_video;
+	}
+
 }XCastEndpoint;
 
 

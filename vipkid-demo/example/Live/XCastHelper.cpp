@@ -125,7 +125,7 @@ XCastHelper::~XCastHelper()
 int32_t XCastHelper::onXCastSystemEvent(void *contextinfo, tencent::xcast_data &data)
 {
 #if kForVipKidTest
-	new_xcast_event(NULL, data);
+	//new_xcast_event(NULL, data);
 #endif
 	XCastHelper *instance = (XCastHelper *)contextinfo;
 
@@ -174,9 +174,9 @@ int32_t XCastHelper::onXCastStreamEvent(void *contextinfo, tencent::xcast_data &
 				// 打开摄像头
 				instance->enableCamera(opera.autoCameraPreview, opera.autoCameraCapture, opera.captureCamera.c_str());
 				// 打开麦克风
-				instance->enableMic(opera.autoMic, opera.autoMic, opera.captureMic.c_str());
+				instance->enableMic(false, opera.autoMic, opera.captureMic.c_str());
 				// 打开扬声器
-				instance->enableSpeaker(opera.autoSpeaker, opera.autoSpeaker, opera.outputSpeaker.c_str());
+				instance->enableSpeaker(false, opera.autoSpeaker, opera.outputSpeaker.c_str());
 
 			}
 		}
@@ -438,7 +438,7 @@ int32_t XCastHelper::onXCastDeviceEvent(void *contextinfo, tencent::xcast_data &
 int32_t XCastHelper::onXCastTipsEvent(void *contextinfo, tencent::xcast_data &data)
 {
 #if kForVipKidTest
-	new_stat_tips(NULL, data);
+	//new_stat_tips(NULL, data);
 #endif
 	XCastHelper *instance = (XCastHelper *)contextinfo;
 #if kForVipKidTest
@@ -1639,10 +1639,7 @@ int XCastHelper::operaSpeaker(const char *micid, bool preview, bool needExePrevi
 	{
 		if (stream_state == Room_Connectted)
 		{
-			tencent::xcast_data data, params;
-			params["enable"] = audioout;
-			//data["params"] = params;
-			int32_t enret = tencent::xcast::set_property(XC_SPEAKER_ENABLE, params);
+			int32_t enret = tencent::xcast::set_property(XC_SPEAKER_ENABLE, audioout);
 
 			if (needSetDefault)
 			{
@@ -2322,6 +2319,7 @@ void XCastHelper::notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCa
 			{
 				end->is_camera_video = has;
 				notify = true;
+				updateEndpointMap(uin, event);
 			}
 			break;
 		case XCast_Endpoint_Has_Audio:
@@ -2330,6 +2328,7 @@ void XCastHelper::notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCa
 			{
 				end->is_audio = has;
 				notify = true;
+				updateEndpointMap(uin, event);
 			}
 
 			break;
@@ -2339,6 +2338,7 @@ void XCastHelper::notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCa
 			{
 				end->is_screen_video = has;
 				notify = true;
+				updateEndpointMap(uin, event);
 			}
 
 			break;
@@ -2348,6 +2348,7 @@ void XCastHelper::notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCa
 			{
 				end->is_media_video = has;
 				notify = true;
+				updateEndpointMap(uin, event);
 			}
 			break;
 		default:
@@ -2360,16 +2361,58 @@ void XCastHelper::notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCa
 			XCastEndpoint ep;
 			ep.tinyid = end->tinyid;
 			ep.identifier = userid;
-			ep.is_audio = end->is_audio;
-			ep.is_camera_video = end->is_camera_video;
-			ep.is_screen_video = end->is_screen_video;
-			ep.is_media_video = end->is_media_video;
+
+			switch (event)
+			{
+			case XCast_Endpoint_Has_Camera_Video:
+			case XCast_Endpoint_No_Camera_Video:
+			{
+				ep.is_audio = false;
+				ep.is_camera_video = has;
+				ep.is_screen_video = false;
+				ep.is_media_video = false;
+			}
+				
+				break;
+			case XCast_Endpoint_Has_Audio:
+			case XCast_Endpoint_No_Audio:
+			{
+				ep.is_audio = has;
+				ep.is_camera_video = false;
+				ep.is_screen_video = false;
+				ep.is_media_video = false;
+			}
+
+				break;
+			case XCast_Endpoint_Has_Screen_Video:
+			case XCast_Endpoint_No_Screen_Video:
+			{
+				ep.is_audio = false;
+				ep.is_camera_video = false;
+				ep.is_screen_video = has;
+				ep.is_media_video = false;
+			}
+				break;
+			case XCast_Endpoint_Has_Media_Video:
+			case XCast_Endpoint_No_Media_Video:
+			{
+				ep.is_audio = false;
+				ep.is_camera_video = false;
+				ep.is_screen_video = false;
+				ep.is_media_video = has;
+			}
+				break;
+			default:
+				break;
+			}
+
+
 
 			if (m_room_handler.get())
 			{
 				m_room_handler->onEndpointsUpdateInfo(event, ep);
 			}
-			updateEndpointMap(uin, event);
+			
 		}
 	}
 
