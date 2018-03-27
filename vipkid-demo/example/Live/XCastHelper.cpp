@@ -1165,6 +1165,8 @@ std::string XCastHelper::getCaptureDevice(XCastDeviceType type) const
 			return "";
 		}
 
+	
+
 		tencent::xcast_data data = tencent::xcast::get_property(XC_TRACK_CAPTURE, m_stream_param->streamID.c_str(), tracktye);
 		const char *str_val = data.str_val();
 		if (str_val == nullptr)
@@ -1175,6 +1177,7 @@ std::string XCastHelper::getCaptureDevice(XCastDeviceType type) const
 		{
 			return std::string(str_val);
 		}
+
 	}
 	
 	return "";

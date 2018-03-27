@@ -655,101 +655,78 @@ static int32_t on_default_speaker(tree_item_data_t *item_data, HTREEITEM hItem)
 /* 更新轨道状态 */
 void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoint &endpoint, void *user_data)
 {
-	static int trackindex = 0;
+	char              path[XCAST_MAX_PATH] = { 0 };
+	char              name[XCAST_MAX_PATH] = { 0 };
+	XCastApp         *app = (XCastApp *)user_data;
+	tree_item_data_t *item_data;
+	HTREEITEM         hItem, hParent;
+	const char       *track = nullptr;
+	int32_t           clazz = 0;
+	int32_t           index = 0;// evt["index"];
+	int32_t           dir = 0;
+	bool isself = endpoint.tinyid == account;
+	dir = isself ? 1 : 2;
+	const char       *stream = streamid;
+	uint64_t          uin = endpoint.tinyid;
+	int32_t           state = endpoint.isHas() ? xc_track_running : xc_track_stopped;// evt["state"];
+
+
+	std::string capdev;
+
+	switch (event)
 	{
-		char              path[XCAST_MAX_PATH] = { 0 };
-		char              name[XCAST_MAX_PATH] = { 0 };
-		XCastApp         *app = (XCastApp *)user_data;
-		tree_item_data_t *item_data;
-		HTREEITEM         hItem, hParent;
-		const char       *track = nullptr;
-		int32_t           clazz = 0;
-		int32_t           index = trackindex;// evt["index"];
-		int32_t           dir = 0;
-
-		if (endpoint.tinyid == account)
+	case XCast_Endpoint_Has_Camera_Video:
+	case XCast_Endpoint_No_Camera_Video:
+	{
+		track = isself ? "video-out" : "video-in";
+		clazz = xc_track_video;
+		if (isself)
 		{
-			dir = 1;
-			switch (event)
+			std::string capcamer = XCastUtil::getCaptureCamera();
+			if (capcamer.length())
 			{
-			case XCast_Endpoint_Has_Camera_Video:
-			case XCast_Endpoint_No_Camera_Video:
-			{
-				track = "video-out";
-				clazz = xc_track_video;
-				break;
-			}
-			case XCast_Endpoint_Has_Audio:
-			case XCast_Endpoint_No_Audio:
-			{
-				track = "audio-out";
-				clazz = xc_track_audio;
-				break;
-			}
-			case XCast_Endpoint_Has_Screen_Video:
-			case XCast_Endpoint_No_Screen_Video:
-			{
-				track = "sub-video-out";
-				clazz = xc_track_video;
-				break;
-			}
-			case XCast_Endpoint_Has_Media_Video:
-			case XCast_Endpoint_No_Media_Video:
-			{
-				track = "media-file-out";
-				clazz = xc_track_video;
-				break;
-			}
-				
-			default:
-				break;
-			}
-
-			
-		}
-		else
-		{
-			dir = 2;
-			switch (event)
-			{
-			case XCast_Endpoint_Has_Camera_Video:
-			case XCast_Endpoint_No_Camera_Video:
-			{
-				track = "video-in";
-				clazz = xc_track_video;
-				break;
-			}
-			case XCast_Endpoint_Has_Audio:
-			case XCast_Endpoint_No_Audio:
-			{
-				track = "audio-in";
-				clazz = xc_track_audio;
-				break;
-			}
-			case XCast_Endpoint_Has_Screen_Video:
-			case XCast_Endpoint_No_Screen_Video:
-			{
-				track = "sub-video-in";
-				clazz = xc_track_video;
-				break;
-			}
-			case XCast_Endpoint_Has_Media_Video:
-			case XCast_Endpoint_No_Media_Video:
-			{
-				track = "media-file-in";
-				clazz = xc_track_video;
-				break;
-			}
-
-			default:
-				break;
+				capdev = capcamer;
 			}
 		}
+		break;
+	}
+	case XCast_Endpoint_Has_Audio:
+	case XCast_Endpoint_No_Audio:
+	{
+		track = isself ? "audio-out" : "audio-n";
+		clazz = xc_track_audio;
+		std::string capcamer = XCastUtil::getCaptureMic();
+		if (capcamer.length())
+		{
+			capdev = capcamer;
+		}
+		break;
+	}
+	case XCast_Endpoint_Has_Screen_Video:
+	case XCast_Endpoint_No_Screen_Video:
+	{
+		track = isself ? "sub-video-out" : "sub-video-in";
+		clazz = xc_track_video;
+		break;
+	}
+	case XCast_Endpoint_Has_Media_Video:
+	case XCast_Endpoint_No_Media_Video:
+	{
+		track = isself ? "media-file-out" : "media-file-out";
+		clazz = xc_track_video;
+		break;
+	}
 
-		const char       *stream = streamid;
-		uint64_t          uin = endpoint.tinyid;
+	default:
+		break;
+	}
+	const char  *capture = "null";
+	if(capdev.length())
+	{
+		capture = capdev.c_str();
+	}
 
-
+	{
 		if (endpoint.isHas()) {
 			/* create user node under 'stream' */
 			snprintf(path, XCAST_MAX_PATH, "stream.%s.%llu", stream, uin);
@@ -774,14 +751,8 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 
 				/* create capture node for output track */
 				if (xc_track_out == dir) {
-					xcast_data        cap;
-					const char       *capture = "null";
 					capture_data_t   *data;
 					hParent = hItem;
-					snprintf(path, XCAST_MAX_PATH, XC_TRACK_CAPTURE, stream, track);
-					cap = xcast::get_property(path);
-					if (cap.size()) capture = cap.str_val();
-
 					snprintf(path, XCAST_MAX_PATH, "stream.%s.%llu.%s.%s", stream, uin, track, capture);
 					item_data = CreateItemData(clazz == xc_track_audio ? 5 : 12, path, capture);
 					item_data->id = stream;
@@ -812,98 +783,6 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 
 
 	{
-		char              path[XCAST_MAX_PATH] = { 0 };
-		XCastApp         *app = (XCastApp *)user_data;
-		const char       *track = nullptr;// evt["src"];
-		const char       *stream = streamid; //evt["stream"];
-		int32_t           clazz = 0;// evt["class"];
-		int32_t           state = endpoint.isHas() ? xc_track_running : xc_track_stopped;// evt["state"];
-		int32_t           dir = 0;// evt["direction"];
-		uint64_t          uin = endpoint.tinyid;
-		int32_t           err = 0; //evt["err"];
-		HTREEITEM         hItem, hParent;
-
-
-		if (endpoint.tinyid == account)
-		{
-			dir = 1;
-			switch (event)
-			{
-			case XCast_Endpoint_Has_Camera_Video:
-			case XCast_Endpoint_No_Camera_Video:
-			{
-				track = "video-out";
-				clazz = xc_track_video;
-				break;
-			}
-			case XCast_Endpoint_Has_Audio:
-			case XCast_Endpoint_No_Audio:
-			{
-				track = "audio-out";
-				clazz = xc_track_audio;
-				break;
-			}
-			case XCast_Endpoint_Has_Screen_Video:
-			case XCast_Endpoint_No_Screen_Video:
-			{
-				track = "sub-video-out";
-				clazz = xc_track_video;
-				break;
-			}
-			case XCast_Endpoint_Has_Media_Video:
-			case XCast_Endpoint_No_Media_Video:
-			{
-				track = "media-file-out";
-				clazz = xc_track_video;
-				break;
-			}
-
-			default:
-				break;
-			}
-
-
-		}
-		else
-		{
-			dir = 2;
-			switch (event)
-			{
-			case XCast_Endpoint_Has_Camera_Video:
-			case XCast_Endpoint_No_Camera_Video:
-			{
-				track = "video-in";
-				clazz = xc_track_video;
-				break;
-			}
-			case XCast_Endpoint_Has_Audio:
-			case XCast_Endpoint_No_Audio:
-			{
-				track = "audio-in";
-				clazz = xc_track_audio;
-				break;
-			}
-			case XCast_Endpoint_Has_Screen_Video:
-			case XCast_Endpoint_No_Screen_Video:
-			{
-				track = "sub-video-in";
-				clazz = xc_track_video;
-				break;
-			}
-			case XCast_Endpoint_Has_Media_Video:
-			case XCast_Endpoint_No_Media_Video:
-			{
-				track = "media-file-in";
-				clazz = xc_track_video;
-				break;
-			}
-
-			default:
-				break;
-			}
-		}
-
-
 
 		snprintf(path, XCAST_MAX_PATH, "stream.%s.%llu.%s", stream, uin, track);
 		hItem = GetTreeItem(app->hTreeView, path, &hParent);
@@ -926,15 +805,9 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 
 		/* create capture node for output track */
 		if (/*(int32_t)evt["type"] == xc_track_capture_changed &&*/ xc_track_out == dir) {
-			const char       *capture = "null";
+
 			capture_data_t   *data;
-			xcast_data      name;
-
 			hParent = hItem;
-			snprintf(path, XCAST_MAX_PATH, XC_TRACK_CAPTURE, stream, track);
-			name = xcast::get_property(path);
-			if (name.size()) capture = name.str_val();
-
 			hItem = TreeView_GetChild(app->hTreeView, hParent);
 			if (hItem) RemoveTreeItem(app->hTreeView, hItem);
 
@@ -961,55 +834,6 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 	}
 }
 
-
-///* 媒体流轨道数据通知 */
-//int32_t
-//ui_track_media(xcast_data &evt, void *user_data)
-//{
-//	TrackVideoBuffer *buffer;
-//	const char        *src = evt["src"];
-//	int32_t           type = evt["type"];
-//	int32_t           clazz = evt["class"];
-//	int32_t           direction = evt["direction"];
-//
-//	if (clazz == xc_track_audio) {
-//		if (direction == xc_track_in) {
-//			/* 在这里播放音频数据 */
-//			const char* pcm_data = evt["data"];
-//			uint32_t     pcm_size = evt["size"];
-//			uint32_t     sample_rate = evt["sample-rate"];
-//			uint32_t     channel = evt["channel"];
-//			uint32_t     bits = evt["bits"];
-//			uint64_t     uin = evt["uin"];
-//			printf("ui_track_media: pcm_size(%u) sample_rate(%u) channel(%u) bits(%u) uin(%llu)\n",
-//				pcm_size, sample_rate, channel, bits, uin);
-//		}
-//	}
-//	else if (clazz == xc_track_video) {
-//		int32_t fmt = (int32_t)evt["format"];
-//		if (fmt == xc_media_argb32) {
-//			buffer = GetTrackBuffer(evt["src"], evt["width"], evt["height"]);
-//			memcpy(buffer->data, (const uint8_t *)evt["data"], (uint32_t)evt["size"]);
-//			InvalidVideoView(&buffer->rcOut);
-//		}
-//		else if (fmt == xc_media_layer) {
-//			TrackVideoBuffer *buffer = GetTrackBuffer(evt["src"], evt["width"], evt["height"], true);
-//			TrackBufferRefreshLayers(buffer, evt["data"]);
-//		}
-//	}
-//	return XCAST_OK;
-//}
-//
-//
-//
-//int32_t
-//ui_mic_preprocess(const char *camera, const char *format,
-//	const uint8_t *frame_data, uint32_t frame_size,
-//	int32_t width, void *user_data)
-//{
-//
-//	return XCAST_OK;
-//}
 
 /* get device path in tree view and proper icon */
 static bool
