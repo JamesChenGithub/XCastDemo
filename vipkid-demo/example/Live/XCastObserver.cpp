@@ -122,6 +122,15 @@ void XCastObserver::onEndpointCaptureUpdate(XCastEndpointEvent event, XCastEndpo
 		ui_track_update(streamid.c_str(), event, infos, &main_app);
 	}
 }
+
+void XCastObserver::onEndpointRemoved(XCastEndpointEvent event, XCastEndpoint infos)
+{
+	const std::string streamid = XCastHelper::getInstance()->getStreamID();
+	if (streamid.length() > 0)
+	{
+		ui_track_update(streamid.c_str(), event, infos, &main_app, true);
+	}
+}
 bool XCastObserver::needRoomCallbackLocalVideo()
 {
 	return has_enter_room;

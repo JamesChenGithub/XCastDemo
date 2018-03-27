@@ -1,3 +1,11 @@
 ﻿  XCastHelper.cpp
+  XCastObserver.cpp
+  XCastUtil.cpp
+  main-view.cpp
+  tab-view.cpp
+  tree-view.cpp
+  xcast-dev.cpp
+  xcast-ui-handler.cc
+  正在生成代码...
   xcast_dev.vcxproj -> E:\GitHub\XCastDemo\xcast-demo\bin\Debug\xcast_dev.exe
   xcast_dev.vcxproj -> E:/GitHub/XCastDemo/xcast-demo/bin/Debug/xcast_dev.pdb (Full PDB)

@@ -1,1 +1,1 @@
-{"lan": {"peer_port": 0, "peer_ip": ""}, "base": {"test_env": false, "appid": 1400046799, "account": 4294951337, "relation_id": 200019}}
+{"lan": {"peer_port": 0, "peer_ip": ""}, "base": {"test_env": false, "appid": 1400036169, "account": 12345, "relation_id": 100}}

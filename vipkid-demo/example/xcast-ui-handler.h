@@ -31,7 +31,7 @@ void ui_stream_connecting(const char *stream, void* user_data);
 void ui_stream_connected(const char *stream, void* user_data);
 void ui_stream_closed(const char *stream, int32_t err, const char *err_msg, void* user_data);
 
-void ui_track_update(const char *streamid, XCastEndpointEvent event,XCastEndpoint &endpoint, void *user_data);
+void ui_track_update(const char *streamid, XCastEndpointEvent event,XCastEndpoint &endpoint, void *user_data, bool isremove = false);
 
 /* 刷新UI上设备状态 */
 void ui_device_added(const char *dev, int32_t clazz, bool add, void* user_data);

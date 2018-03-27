@@ -299,6 +299,27 @@ int32_t XCastHelper::onXCastTrackEvent(void *contextinfo, tencent::xcast_data &d
 		case xc_track_removed:
 		{
 
+			XCastEndpointEvent event = XCast_Endpoint_Removed;
+			if (instance->isSupportIMAccount())
+			{
+				// imsdk帐号模式下，先通过tinyid查到帐号，然后再通通知
+
+				instance->getUserIDWithTinyid(uin, [=](std::string identifer, int errcode, std::string errmsg) {
+					if (errcode == 0)
+					{
+						instance->notifyTrackEndpointEvent(uin, identifer, event, false, false, true);
+					}
+					else
+					{
+						// TODO: 获取userid失败情况下，如何处理
+					}
+				});
+			}
+			else
+			{
+				// tinyid模式下直接通知
+				instance->notifyTrackEndpointEvent(uin, "", event, false, false, true);
+			}
 		}
 		break;
 		case xc_track_media:
@@ -2310,7 +2331,7 @@ void XCastHelper::getTinyIDWithUserIDFromIMSDK(std::vector<std::string> useridli
 
 }
 
-void XCastHelper::notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCastEndpointEvent event, const bool has, bool isCaptureChanged)
+void XCastHelper::notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCastEndpointEvent event, const bool has, bool isCaptureChanged, bool isRemove)
 {
 	bool notify = false;
 	std::shared_ptr<XCastEndpoint> end = getEndpoint(uin);
@@ -2361,7 +2382,7 @@ void XCastHelper::notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCa
 		}
 
 		// TODO: dump endpoint and callback
-		if (notify || isCaptureChanged)
+		if (notify || isCaptureChanged || isRemove)
 		{
 			XCastEndpoint ep;
 			ep.tinyid = end->tinyid;
@@ -2420,6 +2441,9 @@ void XCastHelper::notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCa
 
 				if(isCaptureChanged)
 					m_room_handler->onEndpointCaptureUpdate(event, ep);
+
+				if (isRemove)
+					m_room_handler->onEndpointRemoved(event, ep);
 			}
 
 		

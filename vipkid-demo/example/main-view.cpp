@@ -653,7 +653,7 @@ static int32_t on_default_speaker(tree_item_data_t *item_data, HTREEITEM hItem)
 }
 
 /* 更新轨道状态 */
-void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoint &endpoint, void *user_data)
+void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoint &endpoint, void *user_data, bool isRemove)
 {
 	char              path[XCAST_MAX_PATH] = { 0 };
 	char              name[XCAST_MAX_PATH] = { 0 };
@@ -693,7 +693,7 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 	case XCast_Endpoint_Has_Audio:
 	case XCast_Endpoint_No_Audio:
 	{
-		track = isself ? "audio-out" : "audio-n";
+		track = isself ? "audio-out" : "audio-in";
 		clazz = xc_track_audio;
 		std::string capcamer = XCastUtil::getCaptureMic();
 		if (capcamer.length())
@@ -712,7 +712,7 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 	case XCast_Endpoint_Has_Media_Video:
 	case XCast_Endpoint_No_Media_Video:
 	{
-		track = isself ? "media-file-out" : "media-file-out";
+		track = isself ? "media-file-out" : "media-file-in";
 		clazz = xc_track_video;
 		break;
 	}
@@ -725,6 +725,23 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 	{
 		capture = capdev.c_str();
 	}
+
+	if (isRemove)
+	{
+		// 移除掉画面
+
+		char trackpath[250];
+		sprintf(trackpath, "%s-%llu", "video-in", uin);
+		ClearTrackBuffer(track);
+		snprintf(path, XCAST_MAX_PATH, "stream.%s.%llu", stream, uin);
+		hItem = GetTreeItem(app->hTreeView, path, &hParent);
+		if (hItem) {
+			RemoveTreeItem(app->hTreeView, hItem);
+			InvalidateRect(main_app.hVideoView, NULL, TRUE);
+		}
+		return;
+	}
+
 
 	{
 		if (endpoint.isHas()) {
@@ -770,15 +787,7 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 				}
 			}
 		}
-		else 
-		{
-			/*snprintf(path, XCAST_MAX_PATH, "stream.%s.%llu.%s", stream, uin, track);
-			hItem = GetTreeItem(app->hTreeView, path, &hParent);
-			if (hItem) {
-				RemoveTreeItem(app->hTreeView, hItem);
-				InvalidateRect(main_app.hVideoView, NULL, TRUE);
-			}*/
-		}
+		
 	}
 
 
@@ -799,7 +808,18 @@ void ui_track_update(const char *streamid, XCastEndpointEvent event, XCastEndpoi
 		else if (state == xc_track_stopped) {
 			/* set 'stopped' icon */
 			item_data->start = false;
-			ClearTrackBuffer(track);
+
+			
+			if (dir == 2)
+			{
+				char trackpatha[250];
+				sprintf(trackpatha, "%s-%llu", track, uin);
+				ClearTrackBuffer(trackpatha);
+			}
+			else
+			{
+				ClearTrackBuffer(track);
+			}
 			SetTreeItemIcon(app->hTreeView, hItem, 9);
 		}
 
@@ -1985,8 +2005,8 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 				param->roomOpera.captureMic = lastMicId;
 				param->roomOpera.outputSpeaker = lastSpeakerId;
 
-				param->roomOpera.autoCameraPreview = false;
-				param->roomOpera.autoCameraCapture = false;
+				param->roomOpera.autoCameraPreview = true;
+				param->roomOpera.autoCameraCapture = true;
 				param->roomOpera.autoMic = true;
 				param->roomOpera.autoSpeaker = true;
 

@@ -294,7 +294,7 @@ typedef struct XCastEndpoint {
 typedef struct XCastRequestViewItem
 {
 	uint64_t tinyid = 0;
-	std::string identifer;
+	std::string identifer = "";
 	XCastMediaSource video_src = XCastMediaSource_Unknown;
 
 	bool isVaild() const

@@ -1,0 +1,1656 @@
+************************************************************************ xcast new proccess ************************************************************************
+xcast version : RDM_v1.0.0_b1.0.0.23_4029
+[2018-03-26 19:09:03.731][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'stream':'0x007A62A8' of 'default'.
+[2018-03-26 19:09:03.732][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'logger':'0x007A6318' of 'default'.
+[2018-03-26 19:09:03.732][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'event':'0x007A6388' of 'default'.
+[2018-03-26 19:09:03.732][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'account':'0x007A63F8' of 'default'.
+[2018-03-26 19:09:03.732][I][xcast.c:45][setup_account][t:13904]: xcast app id is 1400036169, account is 67890
+[2018-03-26 19:09:03.732][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'device':'0x007A6468' of 'device_root'.
+[2018-03-26 19:09:03.732][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'device' add child 'camera':'0x007A64D8' of 'default'.
+[2018-03-26 19:09:03.732][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'device' add child 'mic':'0x007A6548' of 'default'.
+[2018-03-26 19:09:03.732][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'device' add child 'speaker':'0x007A65B8' of 'default'.
+[2018-03-26 19:09:03.732][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'device' add child 'external':'0x007A6628' of 'default'.
+[2018-03-26 19:09:03.732][E][xc_cell.c:325][xc_set_err_msg:xc_cell_lookup][t:13904]: invalid path of preference:preference.
+[2018-03-26 19:09:03.732][E][xc_cast.c:202][xc_set_err_msg:xc_get_property][t:13904]: no property supported for preference.external-device
+[2018-03-26 19:09:03.732][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'external' add child 'ext1':'0x007A6698' of 'device'.
+[2018-03-26 19:09:03.732][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ext1' state:1
+[2018-03-26 19:09:03.732][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'ext1' of type 'device' added.
+[2018-03-26 19:09:03.732][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'external' add child 'ext2':'0x007A6778' of 'device'.
+[2018-03-26 19:09:03.732][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ext2' state:1
+[2018-03-26 19:09:03.732][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'ext2' of type 'device' added.
+[2018-03-26 19:09:03.734][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'external' add child 'ext3':'0x007D2C58' of 'device'.
+[2018-03-26 19:09:03.734][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ext3' state:1
+[2018-03-26 19:09:03.734][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'ext3' of type 'device' added.
+[2018-03-26 19:09:03.734][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'external' add child 'ext4':'0x007D2D38' of 'device'.
+[2018-03-26 19:09:03.734][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ext4' state:1
+[2018-03-26 19:09:03.734][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'ext4' of type 'device' added.
+[2018-03-26 19:09:03.734][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'preference':'0x007D2E18' of 'default'.
+[2018-03-26 19:09:03.734][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'audio':'0x007D2E88' of 'default'.
+[2018-03-26 19:09:03.734][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'video':'0x007D2EF8' of 'default'.
+[2018-03-26 19:09:03.735][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'net':'0x007D2F68' of 'default'.
+[2018-03-26 19:09:03.735][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'misc':'0x007D2FD8' of 'default'.
+[2018-03-26 19:09:03.736][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'profile':'0x007D3048' of 'default'.
+[2018-03-26 19:09:03.736][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'plugin':'0x007D30B8' of 'default'.
+[2018-03-26 19:09:03.736][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'driver':'0x007D3128' of 'default'.
+[2018-03-26 19:09:03.736][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'driver' add child 'loader':'0x007D3198' of 'driver.loader'.
+[2018-03-26 19:09:03.736][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'driver' add child 'network':'0x007D3208' of 'default'.
+[2018-03-26 19:09:03.736][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'thread-pool':'0x007D3278' of 'default'.
+[2018-03-26 19:09:03.736][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'thread-pool' add child 'default':'0x007D32E8' of 'thread-pool'.
+[2018-03-26 19:09:03.736][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'thread-pool' add child 'report':'0x007D33C8' of 'report'.
+[2018-03-26 19:09:03.736][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'network' add child 'libuv':'0x007D3438' of 'driver.network.libuv'.
+[2018-03-26 19:09:03.737][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'module.libuv':'0x007D34A8' of 'module'.
+[2018-03-26 19:09:03.737][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'profile' add child 'observer':'0x007D3518' of 'av_profile'.
+[2018-03-26 19:09:03.737][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'profile' add child 'report':'0x007D3588' of 'profile_report'.
+[2018-03-26 19:09:03.737][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'av_profile':'0x007D35F8' of 'module'.
+[2018-03-26 19:09:03.737][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'lan-relay':'0x007D3668' of 'lan_relay_driver'.
+[2018-03-26 19:09:03.737][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lan-relay' add child 'lan-relay-host':'0x007D36D8' of 'channel'.
+[2018-03-26 19:09:03.737][I][uv_connection.c:1094][conn_new][t:13904]: ====>[CONN-NEW] 'uv_conn_1' 0x007D3748
+[2018-03-26 19:09:03.737][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'libuv' add child 'uv_conn_1':'0x007D3748' of 'conn.libuv'.
+[2018-03-26 19:09:03.750][I][lan_relay_driver.c:174][get_host_addr][t:13904]: get host addr:ip(10.10.107.39) port(9079) gateway(10.10.107.1) name({716F0C8F-9674-48D2-B2B1-05CA3A04CD29}) desc(Realtek PCIe GBE Family Controller) mac(3464A9159DBC)
+
+[2018-03-26 19:09:03.750][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'lan_relay_module':'0x007D3898' of 'module'.
+[2018-03-26 19:09:03.750][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'module.http':'0x007D3908' of 'module'.
+[2018-03-26 19:09:03.750][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'network' add child 'app_channel':'0x007D3978' of 'http_channel_driver_class'.
+[2018-03-26 19:09:03.750][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'app_channel' add child 'http':'0x007D39E8' of 'network.http'.
+[2018-03-26 19:09:03.750][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'http' add child 'http-chn':'0x007D3A58' of 'channel'.
+[2018-03-26 19:09:03.751][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'av_http_channel_module':'0x007D3AC8' of 'module'.
+[2018-03-26 19:09:03.751][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'driver' add child 'sys_info':'0x007D3B38' of 'sys_info'.
+[2018-03-26 19:09:03.751][I][sys_info.cc:202][sys_info_update][t:13904]: current platform(windows)
+[2018-03-26 19:09:03.751][I][sys_info.cc:233][sys_info_update][t:13904]: get screen width(1920) height(1080)
+[2018-03-26 19:09:03.778][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'sys_info_module':'0x007EB238' of 'module'.
+[2018-03-26 19:09:03.778][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'module.udt':'0x007EB2A8' of 'module'.
+[2018-03-26 19:09:03.792][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'av_common_module':'0x007F9008' of 'module'.
+[2018-03-26 19:09:03.792][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'preference' add child 'spear_ctrl':'0x007F95B8' of 'spear_ctrl'.
+[2018-03-26 19:09:03.792][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'preference' add child 'video':'0x007F9078' of 'default'.
+[2018-03-26 19:09:03.792][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'preference' add child 'audio':'0x007F90E8' of 'default'.
+[2018-03-26 19:09:03.792][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'preference' add child 'net':'0x007F9548' of 'default'.
+[2018-03-26 19:09:03.792][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'preference' add child 'custom':'0x007F9628' of 'default'.
+[2018-03-26 19:09:03.793][D][spear_ctrl.cc:826][load_json_conf][t:13904]: load spear config(E:\GitHub\XCastDemo\xcast-demo\bin\Debug\1400036169.conf)
+[2018-03-26 19:09:03.795][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'preference' add child 'spear':'0x007F9D28' of 'spear-config'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'spear' add child 'audio':'0x007F9E08' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'spear' add child 'video':'0x007F9698' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'spear' add child 'net':'0x007F9D98' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'spear' add child 'roles':'0x007F9158' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child 'user':'0x007F91C8' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'user' add child 'audio':'0x007F9238' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'user' add child 'video':'0x007F9468' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'user' add child 'net':'0x007F94D8' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '32024010':'0x007EBD98' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '32024010' add child 'audio':'0x007EBD28' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '32024010' add child 'video':'0x007EBCB8' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '32024010' add child 'net':'0x007EBC48' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '480360':'0x007EBBD8' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '480360' add child 'audio':'0x007EBB68' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '480360' add child 'video':'0x007EBA88' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '480360' add child 'net':'0x007EBA18' of 'default'.
+[2018-03-26 19:09:03.796][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '64036815':'0x007EB9A8' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64036815' add child 'audio':'0x007EB938' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64036815' add child 'video':'0x007EB8C8' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64036815' add child 'net':'0x007EB858' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '64048025':'0x007EB7E8' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64048025' add child 'audio':'0x007EB778' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64048025' add child 'video':'0x007EB3F8' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64048025' add child 'net':'0x007EB708' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '96054025':'0x007EB698' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054025' add child 'audio':'0x007EB628' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054025' add child 'video':'0x007EB5B8' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054025' add child 'net':'0x007EB468' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '12872020':'0x007EB388' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '12872020' add child 'audio':'0x007EB4D8' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '12872020' add child 'video':'0x007EB548' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '12872020' add child 'net':'0x0081B038' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '32024015':'0x0081B0A8' of 'default'.
+[2018-03-26 19:09:03.797][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '32024015' add child 'audio':'0x0081B118' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '32024015' add child 'video':'0x0081B188' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '32024015' add child 'net':'0x0081B1F8' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '64036820':'0x0081B268' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64036820' add child 'audio':'0x0081B2D8' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64036820' add child 'video':'0x0081B348' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64036820' add child 'net':'0x0081B3B8' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '64048015':'0x0081B428' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64048015' add child 'audio':'0x0081B498' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64048015' add child 'video':'0x0081B508' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64048015' add child 'net':'0x0081B578' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '96054015':'0x0081B5E8' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054015' add child 'audio':'0x0081B658' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054015' add child 'video':'0x0081B6C8' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054015' add child 'net':'0x0081B738' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '12872030':'0x0081B7A8' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '12872030' add child 'audio':'0x0081B818' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '12872030' add child 'video':'0x0081B888' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '12872030' add child 'net':'0x0081B8F8' of 'default'.
+[2018-03-26 19:09:03.798][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '96054020':'0x0081B968' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054020' add child 'audio':'0x0081B9D8' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054020' add child 'video':'0x0081BA48' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054020' add child 'net':'0x0081BAB8' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '48036015':'0x0081BB28' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '48036015' add child 'audio':'0x0081BB98' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '48036015' add child 'video':'0x0081BC08' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '48036015' add child 'net':'0x0081BC78' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '7640152400':'0x0081BCE8' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '7640152400' add child 'audio':'0x0081BD58' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '7640152400' add child 'video':'0x0081BDC8' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '7640152400' add child 'net':'0x0081BE38' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '640480bp':'0x0081BEA8' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '640480bp' add child 'audio':'0x0081BF18' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '640480bp' add child 'video':'0x0081BF88' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '640480bp' add child 'net':'0x007FF008' of 'default'.
+[2018-03-26 19:09:03.799][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child 'wawa640':'0x007FF078' of 'default'.
+[2018-03-26 19:09:03.800][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'wawa640' add child 'audio':'0x007FF0E8' of 'default'.
+[2018-03-26 19:09:03.800][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'wawa640' add child 'video':'0x007FF158' of 'default'.
+[2018-03-26 19:09:03.800][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'wawa640' add child 'net':'0x007FF1C8' of 'default'.
+[2018-03-26 19:09:03.800][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child 'lx320':'0x007FF238' of 'default'.
+[2018-03-26 19:09:03.800][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx320' add child 'audio':'0x007FF2A8' of 'default'.
+[2018-03-26 19:09:03.800][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx320' add child 'video':'0x007FF318' of 'default'.
+[2018-03-26 19:09:03.800][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx320' add child 'net':'0x007FF388' of 'default'.
+[2018-03-26 19:09:03.800][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child 'lx640':'0x007FF3F8' of 'default'.
+[2018-03-26 19:09:03.800][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx640' add child 'audio':'0x007FF468' of 'default'.
+[2018-03-26 19:09:03.800][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx640' add child 'video':'0x007FF4D8' of 'default'.
+[2018-03-26 19:09:03.800][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx640' add child 'net':'0x007FF548' of 'default'.
+[2018-03-26 19:09:03.800][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child 'lx64015':'0x007FF5B8' of 'default'.
+[2018-03-26 19:09:03.801][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx64015' add child 'audio':'0x007FF628' of 'default'.
+[2018-03-26 19:09:03.801][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx64015' add child 'video':'0x007FF698' of 'default'.
+[2018-03-26 19:09:03.801][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx64015' add child 'net':'0x007FF708' of 'default'.
+[2018-03-26 19:09:03.801][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child 'lx960':'0x007FF778' of 'default'.
+[2018-03-26 19:09:03.801][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx960' add child 'audio':'0x007FF7E8' of 'default'.
+[2018-03-26 19:09:03.801][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx960' add child 'video':'0x007FF858' of 'default'.
+[2018-03-26 19:09:03.801][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx960' add child 'net':'0x007FF8C8' of 'default'.
+[2018-03-26 19:09:03.801][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child 'fancy':'0x007FF938' of 'default'.
+[2018-03-26 19:09:03.801][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'fancy' add child 'audio':'0x007FF9A8' of 'default'.
+[2018-03-26 19:09:03.801][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'fancy' add child 'video':'0x007FFA18' of 'default'.
+[2018-03-26 19:09:03.801][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'fancy' add child 'net':'0x007FFA88' of 'default'.
+[2018-03-26 19:09:03.802][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'preference' add child 'adapter':'0x007FFAF8' of 'adapter_config_class'.
+[2018-03-26 19:09:03.802][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'av_config':'0x007FFB68' of 'module'.
+[2018-03-26 19:09:03.802][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'module.udt':'0x007FFBD8' of 'module'.
+[2018-03-26 19:09:03.802][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'driver' add child 'trae':'0x007FFC48' of 'driver.trae'.
+[2018-03-26 19:09:03.803][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'trae_module':'0x007FFCB8' of 'module'.
+[2018-03-26 19:09:03.803][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'driver' add child 'videocore':'0x007FFD28' of 'tve driver'.
+[2018-03-26 19:09:04.071][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelDecLib][47]preload intel dec lib ok!
+[2018-03-26 19:09:04.071][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelEncLib][65]preload intel enc ok
+[2018-03-26 19:09:04.071][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::SetSendMode][1066]SetSendMode 4
+[2018-03-26 19:09:04.071][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelDecLib][47]preload intel dec lib ok!
+[2018-03-26 19:09:04.071][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelEncLib][65]preload intel enc ok
+[2018-03-26 19:09:04.071][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::SetSendMode][1066]SetSendMode 4
+[2018-03-26 19:09:04.072][D][tve_driver.cc:491][read_ability][t:13904]: cpu name is Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz
+[2018-03-26 19:09:04.072][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.hw-enc'= 1)
+[2018-03-26 19:09:04.072][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.hw-dec'= 1)
+[2018-03-26 19:09:04.072][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelDecLib][47]preload intel dec lib ok!
+[2018-03-26 19:09:04.072][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelEncLib][65]preload intel enc ok
+[2018-03-26 19:09:04.105][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.sub-hw-enc'= 1)
+[2018-03-26 19:09:04.105][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.sub-hw-dec'= 1)
+[2018-03-26 19:09:04.105][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelDecLib][47]preload intel dec lib ok!
+[2018-03-26 19:09:04.106][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelEncLib][65]preload intel enc ok
+[2018-03-26 19:09:04.110][E][tve_driver.cc:537][read_ability][t:13904]: CPU Level is 157
+[2018-03-26 19:09:04.110][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'tve_module':'0x007FFD98' of 'module'.
+[2018-03-26 19:09:04.110][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'driver' add child 'adv_video':'0x007FFE08' of 'driver.adv_video'.
+[2018-03-26 19:09:04.110][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'adv-video module':'0x007FFE78' of 'module'.
+[2018-03-26 19:09:04.110][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'av_renderer':'0x007FFEE8' of 'module'.
+[2018-03-26 19:09:04.110][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'av_session_module':'0x007FFF58' of 'module'.
+[2018-03-26 19:09:04.110][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'driver' add child 'screen_capture':'0x00824038' of 'driver.screen_capture'.
+[2018-03-26 19:09:04.111][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'video-capture module':'0x00824188' of 'module'.
+[2018-03-26 19:09:04.111][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'screen preprocor module':'0x008241F8' of 'module'.
+[2018-03-26 19:09:04.111][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.force-aec'= 0)
+[2018-03-26 19:09:04.111][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.force-agc'= 0)
+[2018-03-26 19:09:04.111][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.force-ans'= 0)
+[2018-03-26 19:09:04.112][E][xc_cell.c:325][xc_set_err_msg:xc_cell_lookup][t:13904]: invalid path of device.screen-capture:screen-capture.
+[2018-03-26 19:09:04.112][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'device' add child 'screen-capture':'0x00824268' of 'camera.video-capture'.
+[2018-03-26 19:09:04.112][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'screen-capture' state:1
+[2018-03-26 19:09:04.112][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'screen-capture' of type 'camera.video-capture' added.
+[2018-03-26 19:09:04.122][I][uv_connection.c:708][uv_conn_open][t:8844]: 'uv_conn_1' tcp try listen after bind(9079:0).
+[2018-03-26 19:09:04.173][D][adapter_config.cc:475][parse_rspbody][t:13904]: ["voip_enable":false,"lc":false,"auto_rotate_video":true,"standard_hev2":false,"pstn_enable":false,"strong_pstn_enable":false,"pb_cmd_enable":false,"init":true,"open_max_enable":false,"all_pstn_enable":false,"audio_switch_enable":false,"howling_enbale":true]
+[2018-03-26 19:09:04.173][I][adapter_config.cc:742][driver_cycle_once][t:13904]: load local adapter config rt(0)
+[2018-03-26 19:09:04.174][I][http_channel_driver.c:148][http_channel_pack_msg][t:13904]: pack msg rt(0)
+[2018-03-26 19:09:04.179][I][xc_connection.c:185][xc_conn_cycle_once][t:13904]: 'uv_conn_1' connected
+[2018-03-26 19:09:04.179][I][uv_connection.c:1094][conn_new][t:13904]: ====>[CONN-NEW] 'uv_conn_2' 0x007EB318
+[2018-03-26 19:09:04.179][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'libuv' add child 'uv_conn_2':'0x007EB318' of 'conn.libuv'.
+[2018-03-26 19:09:04.179][I][lan_relay_driver.c:471][on_host_ready][t:13904]: ====>[LAN-RELAY] lan host ready rt(0) err(Unknown system error 0)
+[2018-03-26 19:09:04.181][I][lan_relay_driver.c:174][get_host_addr][t:13904]: get host addr:ip(10.10.107.39) port(9079) gateway(10.10.107.1) name({716F0C8F-9674-48D2-B2B1-05CA3A04CD29}) desc(Realtek PCIe GBE Family Controller) mac(3464A9159DBC)
+
+[2018-03-26 19:09:04.192][D][uv_driver.c:189][on_resolved][t:8844]: get dns ipv4 address (59.37.116.121:15000)
+[2018-03-26 19:09:04.199][D][uv_connection.c:52][uv_keepalive][t:8844]: use keepalive mode, ret(0)
+[2018-03-26 19:09:04.199][D][uv_connection.c:55][uv_keepalive][t:8844]: uv_fileno ret(0) fd(984)
+[2018-03-26 19:09:04.213][I][xc_connection.c:185][xc_conn_cycle_once][t:13904]: 'uv_conn_2' connected
+[2018-03-26 19:09:04.214][D][http_connection.c:203][on_connected][t:13904]: http connection success
+[2018-03-26 19:09:04.214][D][http_connection.c:339][request][t:13904]: send http request:len(508) str(
+POST http://openmsf.3g.qq.com:15000 HTTP/1.1
+Host: openmsf.3g.qq.com:15000
+Content-Length: 271
+Accept: */*
+User-Agent: xcast/0 CFNetwork/868.2 Darwin/16.7.0
+Content-Type: application/x-www-form-urlencoded
+Connection: keep-alive
+
+)
+[2018-03-26 19:09:04.214][I][http_channel_driver.c:588][driver_cycle_once][t:13904]: http channel send rt(0)
+[2018-03-26 19:09:04.257][D][adv_video.cc:298][dump_cap][t:13136]: camera 160*120@30
+[2018-03-26 19:09:04.257][D][adv_video.cc:298][dump_cap][t:13136]: camera 176*144@30
+[2018-03-26 19:09:04.257][D][adv_video.cc:298][dump_cap][t:13136]: camera 320*176@30
+[2018-03-26 19:09:04.257][D][adv_video.cc:298][dump_cap][t:13136]: camera 320*240@30
+[2018-03-26 19:09:04.257][D][adv_video.cc:298][dump_cap][t:13136]: camera 352*288@30
+[2018-03-26 19:09:04.257][D][adv_video.cc:298][dump_cap][t:13136]: camera 432*240@30
+[2018-03-26 19:09:04.257][D][adv_video.cc:298][dump_cap][t:13136]: camera 544*288@30
+[2018-03-26 19:09:04.257][D][adv_video.cc:298][dump_cap][t:13136]: camera 640*360@30
+[2018-03-26 19:09:04.257][D][adv_video.cc:298][dump_cap][t:13136]: camera 640*480@30
+[2018-03-26 19:09:04.257][D][adv_video.cc:298][dump_cap][t:13136]: camera 800*480@30
+[2018-03-26 19:09:04.257][D][adv_video.cc:298][dump_cap][t:13136]: camera 1024*768@30
+[2018-03-26 19:09:04.258][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'camera' add child 'Webcam C170':'0x048B3AD8' of 'camera.adv'.
+[2018-03-26 19:09:04.258][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'Webcam C170' state:1
+[2018-03-26 19:09:04.258][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'Webcam C170' of type 'camera.adv' added.
+[2018-03-26 19:09:04.258][I][xc_device_root.c:39][set_camera_default][t:13904]: [DEVICE] set default camera to 'Webcam C170'
+[2018-03-26 19:09:04.345][I][trae_driver.cc:2677][trae_start][t:13136]: trae_start m_argAudio{nPlayDevId[0] nRecDevId[0]},audioCategory = 0
+[2018-03-26 19:09:04.368][D][trae_driver.cc:1062][SelectDevice][t:13136]: select device playback(1) nDevId(0)
+[2018-03-26 19:09:04.369][I][trae_driver.cc:1066][SelectDevice][t:13136]: trae select speaker [0:0]
+[2018-03-26 19:09:04.369][D][trae_driver.cc:1062][SelectDevice][t:13136]: select device playback(0) nDevId(0)
+[2018-03-26 19:09:04.373][I][trae_driver.cc:1076][SelectDevice][t:13136]: trae select mic [0:0]
+[2018-03-26 19:09:04.426][I][http_connection.c:390][on_channel_read][t:13904]: on http channel read erroce(0) status(200) headlen(57) contentlen(163)
+[2018-03-26 19:09:04.426][D][http_channel_driver.c:185][http_parse_msg][t:13904]: preparse_msg size :163
+[2018-03-26 19:09:04.426][I][http_channel_driver.c:187][http_parse_msg][t:13904]: sso unpack rt(0)
+[2018-03-26 19:09:04.427][I][http_channel_driver.c:223][http_parse_msg][t:13904]: putinfo preparse rt(0)
+[2018-03-26 19:09:04.427][D][http_channel_driver.c:238][http_parse_msg][t:13904]: http parse msg rt(0)
+[2018-03-26 19:09:04.427][I][http_connection.c:415][on_channel_read][t:13904]: http connection response seq(1) remain msgs(0)
+[2018-03-26 19:09:04.427][I][http_channel_driver.c:306][http_response][t:13904]: http response type(21) seq(1) err(0)
+[2018-03-26 19:09:04.427][D][adapter_config.cc:475][parse_rspbody][t:13904]: ["voip_enable":false,"lc":false,"auto_rotate_video":true,"standard_hev2":false,"pstn_enable":false,"strong_pstn_enable":false,"pb_cmd_enable":false,"init":true,"open_max_enable":false,"all_pstn_enable":false,"audio_switch_enable":false,"howling_enbale":true]
+[2018-03-26 19:09:04.576][I][trae_driver.cc:1308][enum_devices][t:13136]: start mic device enum
+[2018-03-26 19:09:04.581][I][trae_driver.cc:1323][enum_devices][t:13136]: mic: [Âó¿Ë·ç (3- Webcam C170)]
+[2018-03-26 19:09:04.581][I][trae_driver.cc:1308][enum_devices][t:13136]: start speaker device enum
+[2018-03-26 19:09:04.583][I][trae_driver.cc:1323][enum_devices][t:13136]: speaker: [ÑïÉùÆ÷ (Realtek High Definition Audio)]
+[2018-03-26 19:09:04.583][I][trae_driver.cc:2786][trae_start_done][t:13904]: trae start done rt(0)
+[2018-03-26 19:09:04.583][I][trae_driver.cc:1421][enum_devs_done][t:13904]: new mic: [Âó¿Ë·ç (3- Webcam C170):{0.0.1.00000000}.{47983834-477e-4870-8afc-91a3c8e1ab74}] index[->0]
+[2018-03-26 19:09:04.583][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'mic' add child 'éº¦å…‹é£Ž (3- Webcam C170)':'0x048B40F8' of 'device.mic.trae'.
+[2018-03-26 19:09:04.583][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'Âó¿Ë·ç (3- Webcam C170)' state:1
+[2018-03-26 19:09:04.583][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'Âó¿Ë·ç (3- Webcam C170)' of type 'device.mic.trae' added.
+[2018-03-26 19:09:04.583][I][xc_device_root.c:99][set_mic_default][t:13904]: [DEVICE] set default mic to 'éº¦å…‹é£Ž (3- Webcam C170)'
+[2018-03-26 19:09:04.583][I][trae_driver.cc:1421][enum_devs_done][t:13904]: new speaker: [ÑïÉùÆ÷ (Realtek High Definition Audio):{0.0.0.00000000}.{1a89c4ca-dc50-4aae-9afa-f93e66c38aac}] index[->0]
+[2018-03-26 19:09:04.583][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'speaker' add child 'æ‰¬å£°å™¨ (Realtek High Definition Audio)':'0x048B4248' of 'device.speaker.trae'.
+[2018-03-26 19:09:04.584][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ÑïÉùÆ÷ (Realtek High Definition Audio)' state:1
+[2018-03-26 19:09:04.584][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'ÑïÉùÆ÷ (Realtek High Definition Audio)' of type 'device.speaker.trae' added.
+[2018-03-26 19:09:04.584][I][xc_device_root.c:129][set_speaker_default][t:13904]: [DEVICE] set default speaker to 'æ‰¬å£°å™¨ (Realtek High Definition Audio)'
+[2018-03-26 19:09:05.578][I][uv_driver.c:359][worker_proc][t:8844]: uv worker_proc will end
+[2018-03-26 19:09:05.578][I][uv_driver.c:374][worker_proc][t:8844]: uv worker_proc end
+[2018-03-26 19:09:05.579][I][xc_channel.c:432][xc_channel_cycle_stop][t:13904]: [CONNECTOR] 0x007D3A58 0x007A8828.
+[2018-03-26 19:09:05.579][D][xc_thread_pool.c:144][xc_thread_task_cancel][t:13904]: cancel 'trae-task' 0x007CC910 in thread pool 'default'
+[2018-03-26 19:09:05.579][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::StopStream][223]StopStream(VideoDec) 0082FB48
+[2018-03-26 19:09:05.579][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::StopStream][210]StopStream(VideoEnc) 0082FB48
+[2018-03-26 19:09:05.579][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEncSessionHelper::DestoryVideoEncSession][778]DestoryVideoEncSession DoNothing!
+[2018-03-26 19:09:05.579][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::StopStream][223]StopStream(VideoDec) 0082F250
+[2018-03-26 19:09:05.579][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::StopStream][210]StopStream(VideoEnc) 0082F250
+[2018-03-26 19:09:05.580][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEncSessionHelper::DestoryVideoEncSession][778]DestoryVideoEncSession DoNothing!
+[2018-03-26 19:09:05.580][E][trae_driver.cc:2812][trae_stop][t:13136]: trae_stop m_pAudioEngine[02512EE0]
+[2018-03-26 19:09:05.580][D][xc_thread_pool.c:144][xc_thread_task_cancel][t:13904]: cancel 'adv-task' 0x007CE658 in thread pool 'default'
+[2018-03-26 19:09:05.664][D][trae_driver.cc:2827][trae_stop][t:13136]: trae stopped!!!
+[2018-03-26 19:09:05.665][D][xc_thread_pool.c:81][xc_thread_task_free][t:13136]: destroy thread pool task trae-task 0x007CC910
+[2018-03-26 19:09:05.666][D][xc_thread_pool.c:81][xc_thread_task_free][t:13136]: destroy thread pool task adv-task 0x007CE658
+[2018-03-26 19:09:05.666][D][xc_thread_pool.c:268][thread_pool_cycle][t:13136]: thread pool 'default' quit, 
+[2018-03-26 19:09:05.667][I][xc_channel.c:432][xc_channel_cycle_stop][t:13904]: [CONNECTOR] 0x007D36D8 0x007A8758.
+[2018-03-26 19:09:05.667][D][xc_cell.c:594][xc_cell_destroy_child][t:13904]: 'lan-relay' destroy child 'lan-relay-host':'0x007D36D8' of 'channel'.
+[2018-03-26 19:09:05.667][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] stream:0x007A62A8 of 'default'.
+[2018-03-26 19:09:05.667][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] logger:0x007A6318 of 'default'.
+[2018-03-26 19:09:05.667][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] event:0x007A6388 of 'default'.
+[2018-03-26 19:09:05.667][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] account:0x007A63F8 of 'default'.
+[2018-03-26 19:09:05.667][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] device:0x007A6468 of 'device_root'.
+[2018-03-26 19:09:05.667][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] camera:0x007A64D8 of 'default'.
+[2018-03-26 19:09:05.667][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] Webcam C170:0x048B3AD8 of 'camera.adv'.
+[2018-03-26 19:09:05.667][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'Webcam C170' state:1
+[2018-03-26 19:09:05.668][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] mic:0x007A6548 of 'default'.
+[2018-03-26 19:09:05.668][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] éº¦å…‹é£Ž (3- Webcam C170):0x048B40F8 of 'device.mic.trae'.
+[2018-03-26 19:09:05.668][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'Âó¿Ë·ç (3- Webcam C170)' state:1
+[2018-03-26 19:09:05.668][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] speaker:0x007A65B8 of 'default'.
+[2018-03-26 19:09:05.668][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] æ‰¬å£°å™¨ (Realtek High Definition Audio):0x048B4248 of 'device.speaker.trae'.
+[2018-03-26 19:09:05.668][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ÑïÉùÆ÷ (Realtek High Definition Audio)' state:1
+[2018-03-26 19:09:05.668][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] external:0x007A6628 of 'default'.
+[2018-03-26 19:09:05.668][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] ext1:0x007A6698 of 'device'.
+[2018-03-26 19:09:05.668][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ext1' state:1
+[2018-03-26 19:09:05.668][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] ext2:0x007A6778 of 'device'.
+[2018-03-26 19:09:05.668][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ext2' state:1
+[2018-03-26 19:09:05.669][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] ext3:0x007D2C58 of 'device'.
+[2018-03-26 19:09:05.669][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ext3' state:1
+[2018-03-26 19:09:05.669][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] ext4:0x007D2D38 of 'device'.
+[2018-03-26 19:09:05.669][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ext4' state:1
+[2018-03-26 19:09:05.669][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] screen-capture:0x00824268 of 'camera.video-capture'.
+[2018-03-26 19:09:05.669][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] preference:0x007D2E18 of 'default'.
+[2018-03-26 19:09:05.669][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] spear_ctrl:0x007F95B8 of 'spear_ctrl'.
+[2018-03-26 19:09:05.669][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007F9078 of 'default'.
+[2018-03-26 19:09:05.669][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007F90E8 of 'default'.
+[2018-03-26 19:09:05.670][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007F9548 of 'default'.
+[2018-03-26 19:09:05.670][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] custom:0x007F9628 of 'default'.
+[2018-03-26 19:09:05.670][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] spear:0x007F9D28 of 'spear-config'.
+[2018-03-26 19:09:05.670][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007F9E08 of 'default'.
+[2018-03-26 19:09:05.670][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007F9698 of 'default'.
+[2018-03-26 19:09:05.670][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007F9D98 of 'default'.
+[2018-03-26 19:09:05.670][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] roles:0x007F9158 of 'default'.
+[2018-03-26 19:09:05.670][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] user:0x007F91C8 of 'default'.
+[2018-03-26 19:09:05.670][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007F9238 of 'default'.
+[2018-03-26 19:09:05.670][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007F9468 of 'default'.
+[2018-03-26 19:09:05.670][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007F94D8 of 'default'.
+[2018-03-26 19:09:05.671][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 32024010:0x007EBD98 of 'default'.
+[2018-03-26 19:09:05.671][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007EBD28 of 'default'.
+[2018-03-26 19:09:05.671][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007EBCB8 of 'default'.
+[2018-03-26 19:09:05.671][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007EBC48 of 'default'.
+[2018-03-26 19:09:05.671][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 480360:0x007EBBD8 of 'default'.
+[2018-03-26 19:09:05.671][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007EBB68 of 'default'.
+[2018-03-26 19:09:05.671][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007EBA88 of 'default'.
+[2018-03-26 19:09:05.671][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007EBA18 of 'default'.
+[2018-03-26 19:09:05.671][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 64036815:0x007EB9A8 of 'default'.
+[2018-03-26 19:09:05.671][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007EB938 of 'default'.
+[2018-03-26 19:09:05.671][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007EB8C8 of 'default'.
+[2018-03-26 19:09:05.672][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007EB858 of 'default'.
+[2018-03-26 19:09:05.672][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 64048025:0x007EB7E8 of 'default'.
+[2018-03-26 19:09:05.672][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007EB778 of 'default'.
+[2018-03-26 19:09:05.672][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007EB3F8 of 'default'.
+[2018-03-26 19:09:05.672][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007EB708 of 'default'.
+[2018-03-26 19:09:05.672][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 96054025:0x007EB698 of 'default'.
+[2018-03-26 19:09:05.672][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007EB628 of 'default'.
+[2018-03-26 19:09:05.672][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007EB5B8 of 'default'.
+[2018-03-26 19:09:05.672][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007EB468 of 'default'.
+[2018-03-26 19:09:05.672][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 12872020:0x007EB388 of 'default'.
+[2018-03-26 19:09:05.673][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007EB4D8 of 'default'.
+[2018-03-26 19:09:05.673][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007EB548 of 'default'.
+[2018-03-26 19:09:05.673][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x0081B038 of 'default'.
+[2018-03-26 19:09:05.673][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 32024015:0x0081B0A8 of 'default'.
+[2018-03-26 19:09:05.673][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x0081B118 of 'default'.
+[2018-03-26 19:09:05.673][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x0081B188 of 'default'.
+[2018-03-26 19:09:05.673][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x0081B1F8 of 'default'.
+[2018-03-26 19:09:05.673][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 64036820:0x0081B268 of 'default'.
+[2018-03-26 19:09:05.673][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x0081B2D8 of 'default'.
+[2018-03-26 19:09:05.673][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x0081B348 of 'default'.
+[2018-03-26 19:09:05.674][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x0081B3B8 of 'default'.
+[2018-03-26 19:09:05.674][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 64048015:0x0081B428 of 'default'.
+[2018-03-26 19:09:05.674][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x0081B498 of 'default'.
+[2018-03-26 19:09:05.674][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x0081B508 of 'default'.
+[2018-03-26 19:09:05.674][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x0081B578 of 'default'.
+[2018-03-26 19:09:05.674][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 96054015:0x0081B5E8 of 'default'.
+[2018-03-26 19:09:05.674][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x0081B658 of 'default'.
+[2018-03-26 19:09:05.674][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x0081B6C8 of 'default'.
+[2018-03-26 19:09:05.674][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x0081B738 of 'default'.
+[2018-03-26 19:09:05.674][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 12872030:0x0081B7A8 of 'default'.
+[2018-03-26 19:09:05.674][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x0081B818 of 'default'.
+[2018-03-26 19:09:05.675][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x0081B888 of 'default'.
+[2018-03-26 19:09:05.675][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x0081B8F8 of 'default'.
+[2018-03-26 19:09:05.675][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 96054020:0x0081B968 of 'default'.
+[2018-03-26 19:09:05.675][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x0081B9D8 of 'default'.
+[2018-03-26 19:09:05.675][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x0081BA48 of 'default'.
+[2018-03-26 19:09:05.675][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x0081BAB8 of 'default'.
+[2018-03-26 19:09:05.675][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 48036015:0x0081BB28 of 'default'.
+[2018-03-26 19:09:05.675][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x0081BB98 of 'default'.
+[2018-03-26 19:09:05.675][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x0081BC08 of 'default'.
+[2018-03-26 19:09:05.675][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x0081BC78 of 'default'.
+[2018-03-26 19:09:05.676][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 7640152400:0x0081BCE8 of 'default'.
+[2018-03-26 19:09:05.676][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x0081BD58 of 'default'.
+[2018-03-26 19:09:05.676][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x0081BDC8 of 'default'.
+[2018-03-26 19:09:05.676][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x0081BE38 of 'default'.
+[2018-03-26 19:09:05.676][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] 640480bp:0x0081BEA8 of 'default'.
+[2018-03-26 19:09:05.676][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x0081BF18 of 'default'.
+[2018-03-26 19:09:05.676][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x0081BF88 of 'default'.
+[2018-03-26 19:09:05.676][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007FF008 of 'default'.
+[2018-03-26 19:09:05.676][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] wawa640:0x007FF078 of 'default'.
+[2018-03-26 19:09:05.676][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007FF0E8 of 'default'.
+[2018-03-26 19:09:05.676][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007FF158 of 'default'.
+[2018-03-26 19:09:05.677][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007FF1C8 of 'default'.
+[2018-03-26 19:09:05.677][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] lx320:0x007FF238 of 'default'.
+[2018-03-26 19:09:05.677][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007FF2A8 of 'default'.
+[2018-03-26 19:09:05.677][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007FF318 of 'default'.
+[2018-03-26 19:09:05.677][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007FF388 of 'default'.
+[2018-03-26 19:09:05.677][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] lx640:0x007FF3F8 of 'default'.
+[2018-03-26 19:09:05.677][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007FF468 of 'default'.
+[2018-03-26 19:09:05.677][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007FF4D8 of 'default'.
+[2018-03-26 19:09:05.677][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007FF548 of 'default'.
+[2018-03-26 19:09:05.677][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] lx64015:0x007FF5B8 of 'default'.
+[2018-03-26 19:09:05.677][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007FF628 of 'default'.
+[2018-03-26 19:09:05.677][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007FF698 of 'default'.
+[2018-03-26 19:09:05.678][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007FF708 of 'default'.
+[2018-03-26 19:09:05.678][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] lx960:0x007FF778 of 'default'.
+[2018-03-26 19:09:05.678][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007FF7E8 of 'default'.
+[2018-03-26 19:09:05.678][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007FF858 of 'default'.
+[2018-03-26 19:09:05.678][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007FF8C8 of 'default'.
+[2018-03-26 19:09:05.678][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] fancy:0x007FF938 of 'default'.
+[2018-03-26 19:09:05.678][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007FF9A8 of 'default'.
+[2018-03-26 19:09:05.678][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007FFA18 of 'default'.
+[2018-03-26 19:09:05.678][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007FFA88 of 'default'.
+[2018-03-26 19:09:05.678][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] adapter:0x007FFAF8 of 'adapter_config_class'.
+[2018-03-26 19:09:05.679][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] audio:0x007D2E88 of 'default'.
+[2018-03-26 19:09:05.679][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video:0x007D2EF8 of 'default'.
+[2018-03-26 19:09:05.679][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] net:0x007D2F68 of 'default'.
+[2018-03-26 19:09:05.679][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] misc:0x007D2FD8 of 'default'.
+[2018-03-26 19:09:05.679][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] profile:0x007D3048 of 'default'.
+[2018-03-26 19:09:05.679][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] observer:0x007D3518 of 'av_profile'.
+[2018-03-26 19:09:05.679][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] report:0x007D3588 of 'profile_report'.
+[2018-03-26 19:09:05.679][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] plugin:0x007D30B8 of 'default'.
+[2018-03-26 19:09:05.679][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] module.libuv:0x007D34A8 of 'module'.
+[2018-03-26 19:09:05.679][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] av_profile:0x007D35F8 of 'module'.
+[2018-03-26 19:09:05.679][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] lan_relay_module:0x007D3898 of 'module'.
+[2018-03-26 19:09:05.679][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] module.http:0x007D3908 of 'module'.
+[2018-03-26 19:09:05.679][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] av_http_channel_module:0x007D3AC8 of 'module'.
+[2018-03-26 19:09:05.680][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] sys_info_module:0x007EB238 of 'module'.
+[2018-03-26 19:09:05.680][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] module.udt:0x007EB2A8 of 'module'.
+[2018-03-26 19:09:05.680][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] av_common_module:0x007F9008 of 'module'.
+[2018-03-26 19:09:05.680][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] av_config:0x007FFB68 of 'module'.
+[2018-03-26 19:09:05.680][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] module.udt:0x007FFBD8 of 'module'.
+[2018-03-26 19:09:05.680][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] trae_module:0x007FFCB8 of 'module'.
+[2018-03-26 19:09:05.680][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] tve_module:0x007FFD98 of 'module'.
+[2018-03-26 19:09:05.680][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::StopStream][210]StopStream(VideoEnc) 0082FB48
+[2018-03-26 19:09:05.680][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEncSessionHelper::DestoryVideoEncSession][778]DestoryVideoEncSession DoNothing!
+[2018-03-26 19:09:05.680][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::StopStream][223]StopStream(VideoDec) 0082FB48
+[2018-03-26 19:09:05.681][D][tve_driver.cc:163][Renderer::~Renderer][t:13904]: render 0 m34552671
+[2018-03-26 19:09:05.681][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::StopStream][210]StopStream(VideoEnc) 0082F250
+[2018-03-26 19:09:05.681][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEncSessionHelper::DestoryVideoEncSession][778]DestoryVideoEncSession DoNothing!
+[2018-03-26 19:09:05.682][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::StopStream][223]StopStream(VideoDec) 0082F250
+[2018-03-26 19:09:05.682][D][tve_driver.cc:163][Renderer::~Renderer][t:13904]: render 0 m34552673
+[2018-03-26 19:09:05.682][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] adv-video module:0x007FFE78 of 'module'.
+[2018-03-26 19:09:05.682][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] av_renderer:0x007FFEE8 of 'module'.
+[2018-03-26 19:09:05.683][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] av_session_module:0x007FFF58 of 'module'.
+[2018-03-26 19:09:05.683][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] video-capture module:0x00824188 of 'module'.
+[2018-03-26 19:09:05.683][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] screen preprocor module:0x008241F8 of 'module'.
+[2018-03-26 19:09:05.683][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] driver:0x007D3128 of 'default'.
+[2018-03-26 19:09:05.683][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] loader:0x007D3198 of 'driver.loader'.
+[2018-03-26 19:09:05.683][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] network:0x007D3208 of 'default'.
+[2018-03-26 19:09:05.683][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] libuv:0x007D3438 of 'driver.network.libuv'.
+[2018-03-26 19:09:05.683][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] uv_conn_1:0x007D3748 of 'conn.libuv'.
+[2018-03-26 19:09:05.683][I][uv_connection.c:1106][conn_free][t:13904]: ====>[CONN-FREE] 'uv_conn_1' 0x007D3748
+[2018-03-26 19:09:05.683][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] uv_conn_2:0x007EB318 of 'conn.libuv'.
+[2018-03-26 19:09:05.683][I][uv_connection.c:1106][conn_free][t:13904]: ====>[CONN-FREE] 'uv_conn_2' 0x007EB318
+[2018-03-26 19:09:05.683][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] app_channel:0x007D3978 of 'http_channel_driver_class'.
+[2018-03-26 19:09:05.684][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] http:0x007D39E8 of 'network.http'.
+[2018-03-26 19:09:05.684][D][xc_cell.c:594][xc_cell_destroy_child][t:13904]: 'http' destroy child 'http-chn':'0x007D3A58' of 'channel'.
+[2018-03-26 19:09:05.684][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] sys_info:0x007D3B38 of 'sys_info'.
+[2018-03-26 19:09:05.684][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] trae:0x007FFC48 of 'driver.trae'.
+[2018-03-26 19:09:05.684][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] videocore:0x007FFD28 of 'tve driver'.
+[2018-03-26 19:09:05.684][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] adv_video:0x007FFE08 of 'driver.adv_video'.
+[2018-03-26 19:09:05.684][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] screen_capture:0x00824038 of 'driver.screen_capture'.
+[2018-03-26 19:09:05.684][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] thread-pool:0x007D3278 of 'default'.
+[2018-03-26 19:09:05.684][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] default:0x007D32E8 of 'thread-pool'.
+[2018-03-26 19:09:05.684][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] report:0x007D33C8 of 'report'.
+[2018-03-26 19:09:05.684][D][xc_cell.c:268][xc_cell_free][t:13904]: ****[xc_core cleanup] lan-relay:0x007D3668 of 'lan_relay_driver'.
+************************************************************************ xcast new proccess ************************************************************************
+xcast version : RDM_v1.0.0_b1.0.0.23_4029
+[2018-03-26 19:09:11.155][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'stream':'0x048B4248' of 'default'.
+[2018-03-26 19:09:11.155][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'logger':'0x048B40F8' of 'default'.
+[2018-03-26 19:09:11.155][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'event':'0x048B3AD8' of 'default'.
+[2018-03-26 19:09:11.155][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'account':'0x048B3A68' of 'default'.
+[2018-03-26 19:09:11.155][I][xcast.c:45][setup_account][t:13904]: xcast app id is 1400036169, account is 67890
+[2018-03-26 19:09:11.156][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'device':'0x048B3BB8' of 'device_root'.
+[2018-03-26 19:09:11.156][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'device' add child 'camera':'0x048B41D8' of 'default'.
+[2018-03-26 19:09:11.156][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'device' add child 'mic':'0x048B3C28' of 'default'.
+[2018-03-26 19:09:11.156][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'device' add child 'speaker':'0x048B3C98' of 'default'.
+[2018-03-26 19:09:11.156][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'device' add child 'external':'0x048B3D08' of 'default'.
+[2018-03-26 19:09:11.156][E][xc_cell.c:325][xc_set_err_msg:xc_cell_lookup][t:13904]: invalid path of preference:preference.
+[2018-03-26 19:09:11.156][E][xc_cast.c:202][xc_set_err_msg:xc_get_property][t:13904]: no property supported for preference.external-device
+[2018-03-26 19:09:11.157][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'external' add child 'ext1':'0x048B3D78' of 'device'.
+[2018-03-26 19:09:11.157][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ext1' state:1
+[2018-03-26 19:09:11.157][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'ext1' of type 'device' added.
+[2018-03-26 19:09:11.158][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'external' add child 'ext2':'0x048B3E58' of 'device'.
+[2018-03-26 19:09:11.158][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ext2' state:1
+[2018-03-26 19:09:11.158][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'ext2' of type 'device' added.
+[2018-03-26 19:09:11.158][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'external' add child 'ext3':'0x048B3FA8' of 'device'.
+[2018-03-26 19:09:11.158][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ext3' state:1
+[2018-03-26 19:09:11.158][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'ext3' of type 'device' added.
+[2018-03-26 19:09:11.158][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'external' add child 'ext4':'0x007D3278' of 'device'.
+[2018-03-26 19:09:11.158][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ext4' state:1
+[2018-03-26 19:09:11.158][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'ext4' of type 'device' added.
+[2018-03-26 19:09:11.158][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'preference':'0x007D32E8' of 'default'.
+[2018-03-26 19:09:11.158][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'audio':'0x007D3358' of 'default'.
+[2018-03-26 19:09:11.158][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'video':'0x007D3128' of 'default'.
+[2018-03-26 19:09:11.158][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'net':'0x007D3B38' of 'default'.
+[2018-03-26 19:09:11.159][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'misc':'0x007D3208' of 'default'.
+[2018-03-26 19:09:11.159][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'profile':'0x007D3978' of 'default'.
+[2018-03-26 19:09:11.159][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'plugin':'0x007D39E8' of 'default'.
+[2018-03-26 19:09:11.159][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'driver':'0x007D3A58' of 'default'.
+[2018-03-26 19:09:11.159][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'driver' add child 'loader':'0x007D3438' of 'driver.loader'.
+[2018-03-26 19:09:11.159][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'driver' add child 'network':'0x007D3748' of 'default'.
+[2018-03-26 19:09:11.159][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'thread-pool':'0x007D3198' of 'default'.
+[2018-03-26 19:09:11.159][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'thread-pool' add child 'default':'0x007D30B8' of 'thread-pool'.
+[2018-03-26 19:09:11.159][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'thread-pool' add child 'report':'0x007D3908' of 'report'.
+[2018-03-26 19:09:11.160][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'network' add child 'libuv':'0x007D3898' of 'driver.network.libuv'.
+[2018-03-26 19:09:11.160][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'module.libuv':'0x007D35F8' of 'module'.
+[2018-03-26 19:09:11.160][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'profile' add child 'observer':'0x007D34A8' of 'av_profile'.
+[2018-03-26 19:09:11.160][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'profile' add child 'report':'0x007D3048' of 'profile_report'.
+[2018-03-26 19:09:11.160][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'av_profile':'0x007D3588' of 'module'.
+[2018-03-26 19:09:11.161][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'core' add child 'lan-relay':'0x007D3518' of 'lan_relay_driver'.
+[2018-03-26 19:09:11.161][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lan-relay' add child 'lan-relay-host':'0x007D2FD8' of 'channel'.
+[2018-03-26 19:09:11.161][I][uv_connection.c:1094][conn_new][t:13904]: ====>[CONN-NEW] 'uv_conn_3' 0x007D2F68
+[2018-03-26 19:09:11.161][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'libuv' add child 'uv_conn_3':'0x007D2F68' of 'conn.libuv'.
+[2018-03-26 19:09:11.162][I][lan_relay_driver.c:174][get_host_addr][t:13904]: get host addr:ip(10.10.107.39) port(9036) gateway(10.10.107.1) name({716F0C8F-9674-48D2-B2B1-05CA3A04CD29}) desc(Realtek PCIe GBE Family Controller) mac(3464A9159DBC)
+
+[2018-03-26 19:09:11.162][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'lan_relay_module':'0x007D2EF8' of 'module'.
+[2018-03-26 19:09:11.162][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'module.http':'0x007D2E88' of 'module'.
+[2018-03-26 19:09:11.163][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'network' add child 'app_channel':'0x007D2E18' of 'http_channel_driver_class'.
+[2018-03-26 19:09:11.163][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'app_channel' add child 'http':'0x007D2D38' of 'network.http'.
+[2018-03-26 19:09:11.163][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'http' add child 'http-chn':'0x007D2DA8' of 'channel'.
+[2018-03-26 19:09:11.163][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'av_http_channel_module':'0x007D2C58' of 'module'.
+[2018-03-26 19:09:11.163][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'driver' add child 'sys_info':'0x007D2CC8' of 'sys_info'.
+[2018-03-26 19:09:11.163][I][sys_info.cc:202][sys_info_update][t:13904]: current platform(windows)
+[2018-03-26 19:09:11.163][I][sys_info.cc:233][sys_info_update][t:13904]: get screen width(1920) height(1080)
+[2018-03-26 19:09:11.164][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'sys_info_module':'0x007D36D8' of 'module'.
+[2018-03-26 19:09:11.165][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'module.udt':'0x007EB1C8' of 'module'.
+[2018-03-26 19:09:11.165][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'av_common_module':'0x007EB2A8' of 'module'.
+[2018-03-26 19:09:11.165][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'preference' add child 'spear_ctrl':'0x007EB238' of 'spear_ctrl'.
+[2018-03-26 19:09:11.165][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'preference' add child 'video':'0x007EB388' of 'default'.
+[2018-03-26 19:09:11.165][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'preference' add child 'audio':'0x007EB548' of 'default'.
+[2018-03-26 19:09:11.165][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'preference' add child 'net':'0x007EB4D8' of 'default'.
+[2018-03-26 19:09:11.165][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'preference' add child 'custom':'0x007EB698' of 'default'.
+[2018-03-26 19:09:11.166][D][spear_ctrl.cc:826][load_json_conf][t:13904]: load spear config(E:\GitHub\XCastDemo\xcast-demo\bin\Debug\1400036169.conf)
+[2018-03-26 19:09:11.168][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'preference' add child 'spear':'0x007EB468' of 'spear-config'.
+[2018-03-26 19:09:11.169][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'spear' add child 'audio':'0x007EB5B8' of 'default'.
+[2018-03-26 19:09:11.169][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'spear' add child 'video':'0x007EB628' of 'default'.
+[2018-03-26 19:09:11.169][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'spear' add child 'net':'0x007EB7E8' of 'default'.
+[2018-03-26 19:09:11.169][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'spear' add child 'roles':'0x007EB708' of 'default'.
+[2018-03-26 19:09:11.169][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child 'user':'0x007EB3F8' of 'default'.
+[2018-03-26 19:09:11.169][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'user' add child 'audio':'0x007EB778' of 'default'.
+[2018-03-26 19:09:11.169][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'user' add child 'video':'0x007EB9A8' of 'default'.
+[2018-03-26 19:09:11.169][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'user' add child 'net':'0x007EB858' of 'default'.
+[2018-03-26 19:09:11.169][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '32024010':'0x007EB8C8' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '32024010' add child 'audio':'0x007EB938' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '32024010' add child 'video':'0x007EBBD8' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '32024010' add child 'net':'0x007EBA18' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '480360':'0x007EBA88' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '480360' add child 'audio':'0x007EBB68' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '480360' add child 'video':'0x007EBD98' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '480360' add child 'net':'0x007EBC48' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '64036815':'0x007EBCB8' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64036815' add child 'audio':'0x007EBD28' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64036815' add child 'video':'0x00824038' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64036815' add child 'net':'0x00824118' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '64048025':'0x008240A8' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64048025' add child 'audio':'0x008241F8' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64048025' add child 'video':'0x00824188' of 'default'.
+[2018-03-26 19:09:11.170][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64048025' add child 'net':'0x00824968' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '96054025':'0x00824578' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054025' add child 'audio':'0x00824268' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054025' add child 'video':'0x00824888' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054025' add child 'net':'0x008248F8' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '12872020':'0x00824738' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '12872020' add child 'audio':'0x008247A8' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '12872020' add child 'video':'0x00824818' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '12872020' add child 'net':'0x008246C8' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '32024015':'0x00824658' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '32024015' add child 'audio':'0x008245E8' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '32024015' add child 'video':'0x00824508' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '32024015' add child 'net':'0x00824498' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '64036820':'0x00824428' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64036820' add child 'audio':'0x008243B8' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64036820' add child 'video':'0x00824348' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64036820' add child 'net':'0x00824AB8' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '64048015':'0x00824A48' of 'default'.
+[2018-03-26 19:09:11.171][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64048015' add child 'audio':'0x00824B28' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64048015' add child 'video':'0x00824B98' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '64048015' add child 'net':'0x007A60E8' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '96054015':'0x007A6158' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054015' add child 'audio':'0x007A6238' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054015' add child 'video':'0x007A61C8' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054015' add child 'net':'0x007A6468' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '12872030':'0x007A6628' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '12872030' add child 'audio':'0x007A6778' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '12872030' add child 'video':'0x007A6698' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '12872030' add child 'net':'0x007A6708' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '96054020':'0x007A65B8' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054020' add child 'audio':'0x007A6548' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054020' add child 'video':'0x007A64D8' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '96054020' add child 'net':'0x007A63F8' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '48036015':'0x007A6388' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '48036015' add child 'audio':'0x007A6318' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '48036015' add child 'video':'0x007A62A8' of 'default'.
+[2018-03-26 19:09:11.172][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '48036015' add child 'net':'0x007F9008' of 'default'.
+[2018-03-26 19:09:11.173][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '7640152400':'0x007F9D28' of 'default'.
+[2018-03-26 19:09:11.173][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '7640152400' add child 'audio':'0x007F9158' of 'default'.
+[2018-03-26 19:09:11.174][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '7640152400' add child 'video':'0x007F91C8' of 'default'.
+[2018-03-26 19:09:11.174][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '7640152400' add child 'net':'0x007F94D8' of 'default'.
+[2018-03-26 19:09:11.174][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child '640480bp':'0x007F9468' of 'default'.
+[2018-03-26 19:09:11.175][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '640480bp' add child 'audio':'0x007F9238' of 'default'.
+[2018-03-26 19:09:11.175][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '640480bp' add child 'video':'0x007F9D98' of 'default'.
+[2018-03-26 19:09:11.175][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  '640480bp' add child 'net':'0x007F9698' of 'default'.
+[2018-03-26 19:09:11.175][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child 'wawa640':'0x007F9E08' of 'default'.
+[2018-03-26 19:09:11.175][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'wawa640' add child 'audio':'0x007F9628' of 'default'.
+[2018-03-26 19:09:11.175][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'wawa640' add child 'video':'0x007F9548' of 'default'.
+[2018-03-26 19:09:11.175][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'wawa640' add child 'net':'0x007F90E8' of 'default'.
+[2018-03-26 19:09:11.175][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child 'lx320':'0x007F9078' of 'default'.
+[2018-03-26 19:09:11.176][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx320' add child 'audio':'0x007F95B8' of 'default'.
+[2018-03-26 19:09:11.176][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx320' add child 'video':'0x0080E008' of 'default'.
+[2018-03-26 19:09:11.176][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx320' add child 'net':'0x0080E078' of 'default'.
+[2018-03-26 19:09:11.176][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child 'lx640':'0x0080E0E8' of 'default'.
+[2018-03-26 19:09:11.176][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx640' add child 'audio':'0x0080E158' of 'default'.
+[2018-03-26 19:09:11.176][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx640' add child 'video':'0x0080E1C8' of 'default'.
+[2018-03-26 19:09:11.176][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx640' add child 'net':'0x0080E238' of 'default'.
+[2018-03-26 19:09:11.176][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child 'lx64015':'0x0080E2A8' of 'default'.
+[2018-03-26 19:09:11.177][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx64015' add child 'audio':'0x0080E318' of 'default'.
+[2018-03-26 19:09:11.177][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx64015' add child 'video':'0x0080E388' of 'default'.
+[2018-03-26 19:09:11.177][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx64015' add child 'net':'0x0080E3F8' of 'default'.
+[2018-03-26 19:09:11.177][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child 'lx960':'0x0080E468' of 'default'.
+[2018-03-26 19:09:11.177][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx960' add child 'audio':'0x0080E4D8' of 'default'.
+[2018-03-26 19:09:11.177][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx960' add child 'video':'0x0080E548' of 'default'.
+[2018-03-26 19:09:11.177][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'lx960' add child 'net':'0x0080E5B8' of 'default'.
+[2018-03-26 19:09:11.177][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'roles' add child 'fancy':'0x0080E628' of 'default'.
+[2018-03-26 19:09:11.177][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'fancy' add child 'audio':'0x0080E698' of 'default'.
+[2018-03-26 19:09:11.178][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'fancy' add child 'video':'0x0080E708' of 'default'.
+[2018-03-26 19:09:11.178][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'fancy' add child 'net':'0x0080E778' of 'default'.
+[2018-03-26 19:09:11.178][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'preference' add child 'adapter':'0x0080E7E8' of 'adapter_config_class'.
+[2018-03-26 19:09:11.178][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'av_config':'0x0080E858' of 'module'.
+[2018-03-26 19:09:11.178][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'module.udt':'0x0080E8C8' of 'module'.
+[2018-03-26 19:09:11.179][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'driver' add child 'trae':'0x0080E938' of 'driver.trae'.
+[2018-03-26 19:09:11.179][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'trae_module':'0x0080E9A8' of 'module'.
+[2018-03-26 19:09:11.179][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'driver' add child 'videocore':'0x0080EA18' of 'tve driver'.
+[2018-03-26 19:09:11.179][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelDecLib][47]preload intel dec lib ok!
+[2018-03-26 19:09:11.179][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelEncLib][65]preload intel enc ok
+[2018-03-26 19:09:11.179][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::SetSendMode][1066]SetSendMode 4
+[2018-03-26 19:09:11.179][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelDecLib][47]preload intel dec lib ok!
+[2018-03-26 19:09:11.179][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelEncLib][65]preload intel enc ok
+[2018-03-26 19:09:11.179][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::SetSendMode][1066]SetSendMode 4
+[2018-03-26 19:09:11.180][D][tve_driver.cc:491][read_ability][t:13904]: cpu name is Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz
+[2018-03-26 19:09:11.180][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.hw-enc'= 1)
+[2018-03-26 19:09:11.180][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.hw-dec'= 1)
+[2018-03-26 19:09:11.180][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelDecLib][47]preload intel dec lib ok!
+[2018-03-26 19:09:11.180][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelEncLib][65]preload intel enc ok
+[2018-03-26 19:09:11.184][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.sub-hw-enc'= 1)
+[2018-03-26 19:09:11.185][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.sub-hw-dec'= 1)
+[2018-03-26 19:09:11.185][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelDecLib][47]preload intel dec lib ok!
+[2018-03-26 19:09:11.185][E][tve_driver.cc:78][LVE][t:13904]: [PreLoadIntelEncLib][65]preload intel enc ok
+[2018-03-26 19:09:11.188][E][tve_driver.cc:537][read_ability][t:13904]: CPU Level is 157
+[2018-03-26 19:09:11.188][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'tve_module':'0x0080EA88' of 'module'.
+[2018-03-26 19:09:11.188][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'driver' add child 'adv_video':'0x0080EAF8' of 'driver.adv_video'.
+[2018-03-26 19:09:11.188][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'adv-video module':'0x0080EB68' of 'module'.
+[2018-03-26 19:09:11.189][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'av_renderer':'0x0080EBD8' of 'module'.
+[2018-03-26 19:09:11.189][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'av_session_module':'0x0080EC48' of 'module'.
+[2018-03-26 19:09:11.189][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'driver' add child 'screen_capture':'0x0080ECB8' of 'driver.screen_capture'.
+[2018-03-26 19:09:11.189][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'video-capture module':'0x0080EE08' of 'module'.
+[2018-03-26 19:09:11.189][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'plugin' add child 'screen preprocor module':'0x0080EE78' of 'module'.
+[2018-03-26 19:09:11.189][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.force-aec'= 0)
+[2018-03-26 19:09:11.190][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.force-agc'= 0)
+[2018-03-26 19:09:11.190][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.force-ans'= 0)
+[2018-03-26 19:09:11.191][E][xc_cell.c:325][xc_set_err_msg:xc_cell_lookup][t:13904]: invalid path of device.screen-capture:screen-capture.
+[2018-03-26 19:09:11.191][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'device' add child 'screen-capture':'0x0080EEE8' of 'camera.video-capture'.
+[2018-03-26 19:09:11.191][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'screen-capture' state:1
+[2018-03-26 19:09:11.191][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'screen-capture' of type 'camera.video-capture' added.
+[2018-03-26 19:09:11.192][D][adapter_config.cc:475][parse_rspbody][t:13904]: ["voip_enable":false,"lc":false,"auto_rotate_video":true,"standard_hev2":false,"pstn_enable":false,"strong_pstn_enable":false,"pb_cmd_enable":false,"init":true,"open_max_enable":false,"all_pstn_enable":false,"audio_switch_enable":false,"howling_enbale":true]
+[2018-03-26 19:09:11.192][I][adapter_config.cc:742][driver_cycle_once][t:13904]: load local adapter config rt(0)
+[2018-03-26 19:09:11.193][I][uv_connection.c:708][uv_conn_open][t:11064]: 'uv_conn_3' tcp try listen after bind(9036:0).
+[2018-03-26 19:09:11.194][I][http_channel_driver.c:148][http_channel_pack_msg][t:13904]: pack msg rt(0)
+[2018-03-26 19:09:11.194][I][xc_connection.c:185][xc_conn_cycle_once][t:13904]: 'uv_conn_3' connected
+[2018-03-26 19:09:11.194][I][uv_connection.c:1094][conn_new][t:13904]: ====>[CONN-NEW] 'uv_conn_4' 0x007EB318
+[2018-03-26 19:09:11.195][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'libuv' add child 'uv_conn_4':'0x007EB318' of 'conn.libuv'.
+[2018-03-26 19:09:11.195][I][lan_relay_driver.c:471][on_host_ready][t:13904]: ====>[LAN-RELAY] lan host ready rt(0) err(Unknown system error 0)
+[2018-03-26 19:09:11.195][D][uv_driver.c:189][on_resolved][t:11064]: get dns ipv4 address (59.37.116.121:15000)
+[2018-03-26 19:09:11.196][I][lan_relay_driver.c:174][get_host_addr][t:13904]: get host addr:ip(10.10.107.39) port(9036) gateway(10.10.107.1) name({716F0C8F-9674-48D2-B2B1-05CA3A04CD29}) desc(Realtek PCIe GBE Family Controller) mac(3464A9159DBC)
+
+[2018-03-26 19:09:11.202][D][uv_connection.c:52][uv_keepalive][t:11064]: use keepalive mode, ret(0)
+[2018-03-26 19:09:11.202][I][xc_connection.c:185][xc_conn_cycle_once][t:13904]: 'uv_conn_4' connected
+[2018-03-26 19:09:11.202][D][uv_connection.c:55][uv_keepalive][t:11064]: uv_fileno ret(0) fd(1364)
+[2018-03-26 19:09:11.202][D][http_connection.c:203][on_connected][t:13904]: http connection success
+[2018-03-26 19:09:11.202][D][http_connection.c:339][request][t:13904]: send http request:len(508) str(
+POST http://openmsf.3g.qq.com:15000 HTTP/1.1
+Host: openmsf.3g.qq.com:15000
+Content-Length: 271
+Accept: */*
+User-Agent: xcast/0 CFNetwork/868.2 Darwin/16.7.0
+Content-Type: application/x-www-form-urlencoded
+Connection: keep-alive
+
+)
+[2018-03-26 19:09:11.202][I][http_channel_driver.c:588][driver_cycle_once][t:13904]: http channel send rt(0)
+[2018-03-26 19:09:11.234][D][adv_video.cc:298][dump_cap][t:9488]: camera 160*120@30
+[2018-03-26 19:09:11.234][D][adv_video.cc:298][dump_cap][t:9488]: camera 176*144@30
+[2018-03-26 19:09:11.234][D][adv_video.cc:298][dump_cap][t:9488]: camera 320*176@30
+[2018-03-26 19:09:11.234][D][adv_video.cc:298][dump_cap][t:9488]: camera 320*240@30
+[2018-03-26 19:09:11.235][D][adv_video.cc:298][dump_cap][t:9488]: camera 352*288@30
+[2018-03-26 19:09:11.235][D][adv_video.cc:298][dump_cap][t:9488]: camera 432*240@30
+[2018-03-26 19:09:11.235][D][adv_video.cc:298][dump_cap][t:9488]: camera 544*288@30
+[2018-03-26 19:09:11.235][D][adv_video.cc:298][dump_cap][t:9488]: camera 640*360@30
+[2018-03-26 19:09:11.235][D][adv_video.cc:298][dump_cap][t:9488]: camera 640*480@30
+[2018-03-26 19:09:11.235][D][adv_video.cc:298][dump_cap][t:9488]: camera 800*480@30
+[2018-03-26 19:09:11.235][D][adv_video.cc:298][dump_cap][t:9488]: camera 1024*768@30
+[2018-03-26 19:09:11.235][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'camera' add child 'Webcam C170':'0x0081F3B8' of 'camera.adv'.
+[2018-03-26 19:09:11.236][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'Webcam C170' state:1
+[2018-03-26 19:09:11.236][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'Webcam C170' of type 'camera.adv' added.
+[2018-03-26 19:09:11.236][I][xc_device_root.c:39][set_camera_default][t:13904]: [DEVICE] set default camera to 'Webcam C170'
+[2018-03-26 19:09:11.292][I][trae_driver.cc:2677][trae_start][t:9488]: trae_start m_argAudio{nPlayDevId[0] nRecDevId[0]},audioCategory = 0
+[2018-03-26 19:09:11.307][D][trae_driver.cc:1062][SelectDevice][t:9488]: select device playback(1) nDevId(0)
+[2018-03-26 19:09:11.308][I][trae_driver.cc:1066][SelectDevice][t:9488]: trae select speaker [0:0]
+[2018-03-26 19:09:11.308][D][trae_driver.cc:1062][SelectDevice][t:9488]: select device playback(0) nDevId(0)
+[2018-03-26 19:09:11.311][I][trae_driver.cc:1076][SelectDevice][t:9488]: trae select mic [0:0]
+[2018-03-26 19:09:11.415][I][http_connection.c:390][on_channel_read][t:13904]: on http channel read erroce(0) status(200) headlen(57) contentlen(163)
+[2018-03-26 19:09:11.415][D][http_channel_driver.c:185][http_parse_msg][t:13904]: preparse_msg size :163
+[2018-03-26 19:09:11.415][I][http_channel_driver.c:187][http_parse_msg][t:13904]: sso unpack rt(0)
+[2018-03-26 19:09:11.416][I][http_channel_driver.c:223][http_parse_msg][t:13904]: putinfo preparse rt(0)
+[2018-03-26 19:09:11.416][D][http_channel_driver.c:238][http_parse_msg][t:13904]: http parse msg rt(0)
+[2018-03-26 19:09:11.416][I][http_connection.c:415][on_channel_read][t:13904]: http connection response seq(1) remain msgs(0)
+[2018-03-26 19:09:11.416][I][http_channel_driver.c:306][http_response][t:13904]: http response type(21) seq(1) err(0)
+[2018-03-26 19:09:11.416][I][adapter_config.cc:365][parse_rspbody][t:13904]: same config version, do not need parse anymore
+[2018-03-26 19:09:11.436][I][trae_driver.cc:1308][enum_devices][t:9488]: start mic device enum
+[2018-03-26 19:09:11.440][I][trae_driver.cc:1323][enum_devices][t:9488]: mic: [Âó¿Ë·ç (3- Webcam C170)]
+[2018-03-26 19:09:11.440][I][trae_driver.cc:1308][enum_devices][t:9488]: start speaker device enum
+[2018-03-26 19:09:11.441][I][trae_driver.cc:1323][enum_devices][t:9488]: speaker: [ÑïÉùÆ÷ (Realtek High Definition Audio)]
+[2018-03-26 19:09:11.441][I][trae_driver.cc:2786][trae_start_done][t:13904]: trae start done rt(0)
+[2018-03-26 19:09:11.441][I][trae_driver.cc:1421][enum_devs_done][t:13904]: new mic: [Âó¿Ë·ç (3- Webcam C170):{0.0.1.00000000}.{47983834-477e-4870-8afc-91a3c8e1ab74}] index[->0]
+[2018-03-26 19:09:11.441][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'mic' add child 'éº¦å…‹é£Ž (3- Webcam C170)':'0x0081F508' of 'device.mic.trae'.
+[2018-03-26 19:09:11.442][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'Âó¿Ë·ç (3- Webcam C170)' state:1
+[2018-03-26 19:09:11.442][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'Âó¿Ë·ç (3- Webcam C170)' of type 'device.mic.trae' added.
+[2018-03-26 19:09:11.442][I][xc_device_root.c:99][set_mic_default][t:13904]: [DEVICE] set default mic to 'éº¦å…‹é£Ž (3- Webcam C170)'
+[2018-03-26 19:09:11.442][I][trae_driver.cc:1421][enum_devs_done][t:13904]: new speaker: [ÑïÉùÆ÷ (Realtek High Definition Audio):{0.0.0.00000000}.{1a89c4ca-dc50-4aae-9afa-f93e66c38aac}] index[->0]
+[2018-03-26 19:09:11.442][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'speaker' add child 'æ‰¬å£°å™¨ (Realtek High Definition Audio)':'0x0081FAB8' of 'device.speaker.trae'.
+[2018-03-26 19:09:11.442][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ÑïÉùÆ÷ (Realtek High Definition Audio)' state:1
+[2018-03-26 19:09:11.442][I][xc_device_root.c:179][xc_device_add][t:13904]: [DEVICE] device 'ÑïÉùÆ÷ (Realtek High Definition Audio)' of type 'device.speaker.trae' added.
+[2018-03-26 19:09:11.442][I][xc_device_root.c:129][set_speaker_default][t:13904]: [DEVICE] set default speaker to 'æ‰¬å£°å™¨ (Realtek High Definition Audio)'
+[2018-03-26 19:09:12.162][E][xc_cell.c:325][xc_set_err_msg:xc_cell_lookup][t:13904]: invalid path of stream.stream1:stream1.
+[2018-03-26 19:09:12.163][I][spear_ctrl.cc:1141][pref_set_role][t:13904]: ****** xcast role is 'user'.
+[2018-03-26 19:09:12.163][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'stream' add child 'stream1':'0x0081FB28' of 'stream'.
+[2018-03-26 19:09:12.164][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'stream1' add child 'session':'0x0081F118' of 'av_session'.
+[2018-03-26 19:09:12.164][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'session' add child 'conn':'0x0081F2D8' of 'av_connector'.
+[2018-03-26 19:09:12.164][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.au_scheme'= 1)
+[2018-03-26 19:09:12.164][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.role-type'= 1)
+[2018-03-26 19:09:12.165][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.scheme'= 4)
+[2018-03-26 19:09:12.165][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.recv-mode'= 0)
+[2018-03-26 19:09:12.165][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.sub-recv-mode'= 0)
+[2018-03-26 19:09:12.165][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.hw-enc'= 1)
+[2018-03-26 19:09:12.165][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.hw-dec'= 1)
+[2018-03-26 19:09:12.165][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.sub-hw-enc'= 1)
+[2018-03-26 19:09:12.165][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.sub-hw-dec'= 1)
+[2018-03-26 19:09:12.165][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'conn' add child 'udt-channel1':'0x0081F268' of 'udt-channel'.
+[2018-03-26 19:09:12.166][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'session' add child 'qos':'0x0081F578' of 'av.sess.qos'.
+[2018-03-26 19:09:12.166][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'session' add child 'users':'0x0081F5E8' of 'av.track.users'.
+[2018-03-26 19:09:12.166][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.auto-recv'= 1)
+[2018-03-26 19:09:12.166][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'session' add child 'reporter':'0x0081F658' of 'av.sess.reporter'.
+[2018-03-26 19:09:12.166][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'stream1' add child 'controller':'0x0081F6C8' of 'stream.ctrl.video'.
+[2018-03-26 19:09:12.166][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'stream1' add child 'display':'0x0081F738' of 'display.raw'.
+[2018-03-26 19:09:12.167][I][lan_relay_driver.c:174][get_host_addr][t:13904]: get host addr:ip(10.10.107.39) port(9036) gateway(10.10.107.1) name({716F0C8F-9674-48D2-B2B1-05CA3A04CD29}) desc(Realtek PCIe GBE Family Controller) mac(3464A9159DBC)
+
+[2018-03-26 19:09:12.168][I][xc_connector.c:431][xc_connector_cycle_start][t:13904]: [CONNECTOR] conn cycle start.
+[2018-03-26 19:09:12.168][I][xc_connector.c:287][xc_connector_loop][t:13904]: [CONNECTOR LOOP] rt(0), next state(0).
+[2018-03-26 19:09:12.168][I][xc_connector.c:93][conn_init][t:13904]: [CONNECTOR] conn connector init.
+[2018-03-26 19:09:12.168][I][av_connector.cc:203][app_query][t:13904]: [AV_CONNECTOR] 'conn' query room start.
+[2018-03-26 19:09:12.168][D][cs0x01_0x02.c:125][req_serialize][t:13904]: req->auth_bits(4294967295)auth_bits(18446744069414584320)
+[2018-03-26 19:09:12.168][I][http_channel_driver.c:148][http_channel_pack_msg][t:13904]: pack msg rt(0)
+[2018-03-26 19:09:12.168][I][av_connector.cc:253][app_query][t:13904]: xcast(RDM_v1.0.0_b1.0.0.23_4029) appid(1400036169), account(67890), relation_id(100)
+[2018-03-26 19:09:12.168][D][xcast.c:466][xcast_start_stream][t:13904]: 
+
+*****---+[cell] 'stream' of 'default' 0x048B4248--- 
+*****     +-vprop:'id'
+*****----+[cell] 'stream1' of 'stream' 0x0081FB28--- 
+*****-     +-prop:'state'
+*****-     +-prop:'track'
+*****-     +-vprop:'id'
+*****-     +-vprop:'track-conf'
+*****-----+[cell] 'session' of 'av_session' 0x0081F118--- 
+*****--     +-prop:'udt'
+*****--     +-vprop:'id'
+*****--     +-vprop:'room_info'
+*****--     +-sig 's_in' 0x04FDD448
+*****--     +-sig 's_udt' 0x04FDD490
+*****--     +--handle:0x0FBDE3A0 data:0x0081F118
+*****--     +-sig 's_video_fastctrl' 0x04FDD520
+*****--     +--handle:0x0FB9CA04 data:0x0081F118
+*****------+[cell] 'conn' of 'av_connector' 0x0081F2D8--- 
+*****---     +-vprop:'id'
+*****---     +-sig 's_tips' 0x007E2C80
+*****---     +--handle:0x0FB91014 data:0x0079E510
+*****---     +-sig 's_out' 0x04FDD3B8
+*****---     +-sig 's_conn' 0x04FDD400
+*****---     +--handle:0x047F0A30 data:0x10046C94
+*****---     +--handle:0x007BB1E8 data:0x008085A8
+*****-------+[cell] 'udt-channel1' of 'udt-channel' 0x0081F268--- 
+*****----     +-vprop:'id'
+*****----     +-sig 's_conn' 0x00826560
+*****----     +-sig 's_read' 0x008265A8
+*****----     +-sig 's_update' 0x008265F0
+*****----     +--handle:0x0FC5D9E0 data:0x04FDDBA0
+*****----     +-sig 's_set0' 0x00826710
+*****----     +--handle:0x0FEBA1B0 data:0x04FDDBA0
+*****----     +-sig 's_set1' 0x00826758
+*****----     +--handle:0x0FEBAD00 data:0x04FDDBA0
+*****----     +-sig 's_setrtt' 0x008267A0
+*****----     +--handle:0x0FEBAD50 data:0x04FDDBA0
+*****----     +-sig 's_calcLoss' 0x008267E8
+*****----     +--handle:0x0FEBA8D0 data:0x04FDDBA0
+*****----     +-sig 's_skip_udt' 0x00826830
+*****----     +--handle:0x0FEBAE70 data:0x04FDDBA0
+*****----     +-sig 's_skip_mic' 0x00826878
+*****----     +--handle:0x0FEBAEE0 data:0x04FDDBA0
+*****------+[cell] 'qos' of 'av.sess.qos' 0x0081F578--- 
+*****---     +-vprop:'video_qos'
+*****---     +-vprop:'id'
+*****---     +-vprop:'sub_video_qos'
+*****---     +-vprop:'audio_qos'
+*****---   
+[2018-03-26 19:09:12.169][D][http_connection.c:339][request][t:13904]: send http request:len(444) str(
+POST http://openmsf.3g.qq.com:15000 HTTP/1.1
+Host: openmsf.3g.qq.com:15000
+Content-Length: 207
+Accept: */*
+User-Agent: xcast/0 CFNetwork/868.2 Darwin/16.7.0
+Content-Type: application/x-www-form-urlencoded
+Connection: keep-alive
+
+)
+[2018-03-26 19:09:12.169][I][http_channel_driver.c:588][driver_cycle_once][t:13904]: http channel send rt(0)
+[2018-03-26 19:09:12.402][I][http_connection.c:390][on_channel_read][t:13904]: on http channel read erroce(0) status(200) headlen(57) contentlen(251)
+[2018-03-26 19:09:12.402][D][http_channel_driver.c:185][http_parse_msg][t:13904]: preparse_msg size :251
+[2018-03-26 19:09:12.402][I][http_channel_driver.c:187][http_parse_msg][t:13904]: sso unpack rt(0)
+[2018-03-26 19:09:12.402][I][http_channel_driver.c:200][http_parse_msg][t:13904]: app cs preparse rt(0)
+[2018-03-26 19:09:12.403][D][http_channel_driver.c:238][http_parse_msg][t:13904]: http parse msg rt(0)
+[2018-03-26 19:09:12.403][I][http_connection.c:415][on_channel_read][t:13904]: http connection response seq(2) remain msgs(0)
+[2018-03-26 19:09:12.403][I][http_channel_driver.c:306][http_response][t:13904]: http response type(7) seq(2) err(0)
+[2018-03-26 19:09:12.403][I][av_connector.cc:299][query_room_done][t:13904]: [AV_CONNECTOR] 'conn' query room done[0].
+[2018-03-26 19:09:12.403][I][xc_connector.c:287][xc_connector_loop][t:13904]: [CONNECTOR LOOP] rt(0), next state(1).
+[2018-03-26 19:09:12.403][I][xc_connector.c:108][conn_connect][t:13904]: [CONNECTOR] conn start connecting[0]...
+[2018-03-26 19:09:12.404][I][av_connector.cc:421][channel_prepare][t:13904]: [CONNECTOR] 'conn' use interface svr[183.36.112.54:8000:udp].
+[2018-03-26 19:09:12.404][I][xc_connector.c:139][conn_connect][t:13904]: [CONNECTOR] conn start channel udt-channel1.
+[2018-03-26 19:09:12.404][I][uv_connection.c:1094][conn_new][t:13904]: ====>[CONN-NEW] 'uv_conn_5' 0x0081F8F8
+[2018-03-26 19:09:12.405][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'libuv' add child 'uv_conn_5':'0x0081F8F8' of 'conn.libuv'.
+[2018-03-26 19:09:12.405][I][xc_connection.c:185][xc_conn_cycle_once][t:13904]: 'uv_conn_5' connected
+[2018-03-26 19:09:12.405][I][xc_connector.c:77][channel_state][t:13904]: [CONNECTOR] conn channel connected.
+[2018-03-26 19:09:12.405][I][xc_connector.c:287][xc_connector_loop][t:13904]: [CONNECTOR LOOP] rt(0), next state(2).
+[2018-03-26 19:09:12.405][I][xc_connector.c:151][conn_handshake][t:13904]: [CONNECTOR] conn start handshaking[0]...
+[2018-03-26 19:09:12.405][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.auto-recv'= 1)
+[2018-03-26 19:09:12.405][I][av_connector.cc:583][create_room][t:13904]: [AV_CONNECTOR] 'conn' create room start.
+[2018-03-26 19:09:12.406][E][xc_cast.c:202][xc_set_err_msg:xc_get_property][t:13904]: no property supported for device.camera.caps
+[2018-03-26 19:09:12.406][W][session_qos.cc:618][client::multi::qos::SessionQos::FillCameraLimit][t:13904]: no camera exist!!!
+[2018-03-26 19:09:12.406][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.aec'= 1)
+[2018-03-26 19:09:12.406][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.agc'= 1)
+[2018-03-26 19:09:12.406][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.ans'= 1)
+[2018-03-26 19:09:12.406][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.frame'= 20)
+[2018-03-26 19:09:12.406][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.silence_detect'= 1)
+[2018-03-26 19:09:12.407][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.anti_dropout'= 1)
+[2018-03-26 19:09:12.407][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.sample_rate'= 16000)
+[2018-03-26 19:09:12.407][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.channel'= 1)
+[2018-03-26 19:09:12.407][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.codec_prof'= 4129)
+[2018-03-26 19:09:12.407][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.sample_rate'= 16000)
+[2018-03-26 19:09:12.407][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.kbps'= 30000)
+[2018-03-26 19:09:12.407][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.min_antishake'= 80)
+[2018-03-26 19:09:12.407][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.min_antishake'= 80)
+[2018-03-26 19:09:12.408][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.max_antishake_max'= 1000)
+[2018-03-26 19:09:12.408][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.max_antishake_max'= 1000)
+[2018-03-26 19:09:12.408][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.max_antishake_min'= 400)
+[2018-03-26 19:09:12.408][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.audio.max_antishake_min'= 400)
+[2018-03-26 19:09:12.408][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.qclear'= -1)
+[2018-03-26 19:09:12.408][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.anti_dropout'= 1)
+[2018-03-26 19:09:12.408][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.fps'= 15)
+[2018-03-26 19:09:12.408][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.maxqp'= -1)
+[2018-03-26 19:09:12.409][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.minqp'= -1)
+[2018-03-26 19:09:12.409][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.maxkbps'= 350)
+[2018-03-26 19:09:12.409][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.minkbps'= 300)
+[2018-03-26 19:09:12.409][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.fqueue_time'= -1)
+[2018-03-26 19:09:12.409][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.small_video_upload'= -1)
+[2018-03-26 19:09:12.409][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.live_adapt'= -1)
+[2018-03-26 19:09:12.409][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.format_fix_width'= 864)
+[2018-03-26 19:09:12.409][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.format_fix_height'= 480)
+[2018-03-26 19:09:12.409][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.format_max_width'= -1)
+[2018-03-26 19:09:12.409][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.video.format_max_height'= -1)
+[2018-03-26 19:09:12.410][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.role-type'= 1)
+[2018-03-26 19:09:12.410][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.net.rc_anti_dropout'= 1)
+[2018-03-26 19:09:12.410][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.net.rc_max_delay'= -1)
+[2018-03-26 19:09:12.410][D][spear_ctrl.cc:256][av_preference_int32][t:13904]: ****** pref('preference.net.rc_init_delay'= -1)
+[2018-03-26 19:09:12.575][I][av_connector.cc:613][create_room_done][t:13904]: [CONNECTOR] 'conn' create room done[0].
+[2018-03-26 19:09:12.575][I][track_users.cc:507][on_auto_recv][t:13904]: =====>[TRACK-USER] set_auto_tracks list count:1
+[2018-03-26 19:09:12.575][I][track_users.cc:521][on_auto_recv][t:13904]: =====>[TRACK-USER] set_auto_tracks info[0] uin[12345] video[1] sub_video[0] flag[1]
+[2018-03-26 19:09:12.575][I][track_users.cc:299][update_merge_result][t:13904]: =====>[TRACK-USER] user video add[12345]
+[2018-03-26 19:09:12.576][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'stream1' add child 'video-in-12345':'0x04877430' of 'track'.
+[2018-03-26 19:09:12.576][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'video-in-12345' add child 'codec':'0x048774A0' of 'codec.tve'.
+[2018-03-26 19:09:12.576][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::SetVidDecHwFlag][597]SetVidDecHwFlag 1
+[2018-03-26 19:09:12.576][I][xc_track.c:547][set_codec][t:13904]: [TRACK] 'video-in-12345' add decode 'codec' of type 'codec.tve'.
+[2018-03-26 19:09:12.576][I][stream_tracks.cc:427][track_add][t:13904]: [STREAM] add in track[stream1.video-in-12345.12345].
+[2018-03-26 19:09:12.576][I][stream_tracks.cc:725][av_track_start][t:13904]: [STREAM] start track[stream1.video-in-12345.12345].
+[2018-03-26 19:09:12.576][E][xc_track.c:772][xc_set_err_msg:xc_track_cycle_start][t:13904]: [TRACK] 'video-in-12345:s_in' link to 'session:s_out'!
+[2018-03-26 19:09:12.576][E][xc_track.c:784][xc_set_err_msg:xc_track_cycle_start][t:13904]: [TRACK] 'video-in-12345' start 'display'!
+[2018-03-26 19:09:12.576][E][xc_track.c:792][xc_set_err_msg:xc_track_cycle_start][t:13904]: [TRACK] 'video-in-12345' started!
+[2018-03-26 19:09:12.576][D][tve_video_codec.cc:669][video_codec_cycle_start][t:13904]: video_codec_cycle_start
+[2018-03-26 19:09:12.577][I][xc_connector.c:287][xc_connector_loop][t:13904]: [CONNECTOR LOOP] rt(0), next state(3).
+[2018-03-26 19:09:12.577][I][xc_connector.c:182][conn_established][t:13904]: [CONNECTOR] conn connect done[0].
+[2018-03-26 19:09:12.577][I][av_session.cc:158][concector_done][t:13904]: [SESSION] session connected.
+[2018-03-26 19:09:12.577][I][stream_tracks.cc:193][av_tracks_setup][t:13904]: [STREAM] add out track[stream1.audio_out].
+[2018-03-26 19:09:12.577][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'stream1' add child 'audio-out':'0x050C1348' of 'track'.
+[2018-03-26 19:09:12.577][I][xc_track.c:165][on_capture_change][t:13904]: [TRACK] 'audio-out' apply capture 'éº¦å…‹é£Ž (3- Webcam C170)'.
+[2018-03-26 19:09:12.577][I][stream_tracks.cc:218][av_tracks_setup][t:13904]: [STREAM] add out track[stream1.audio_out].
+[2018-03-26 19:09:12.578][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'stream1' add child 'audio-in':'0x050C1428' of 'track'.
+[2018-03-26 19:09:12.578][E][xc_track.c:772][xc_set_err_msg:xc_track_cycle_start][t:13904]: [TRACK] 'audio-in:s_in' link to 'session:s_out'!
+[2018-03-26 19:09:12.578][E][xc_track.c:784][xc_set_err_msg:xc_track_cycle_start][t:13904]: [TRACK] 'audio-in' start 'æ‰¬å£°å™¨ (Realtek High Definition Audio)'!
+[2018-03-26 19:09:12.578][I][xc_device.c:58][on_dev_start][t:13904]: [DEVICE] 'ÑïÉùÆ÷ (Realtek High Definition Audio)' start 1
+[2018-03-26 19:09:12.578][D][trae_driver.cc:1062][SelectDevice][t:9488]: select device playback(1) nDevId(4294967295)
+[2018-03-26 19:09:12.578][E][xc_track.c:792][xc_set_err_msg:xc_track_cycle_start][t:13904]: [TRACK] 'audio-in' started!
+[2018-03-26 19:09:12.578][I][stream_tracks.cc:234][av_tracks_setup][t:13904]: [STREAM] add out track[stream1.video_out].
+[2018-03-26 19:09:12.578][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'stream1' add child 'video-out':'0x050C1508' of 'track'.
+[2018-03-26 19:09:12.578][I][xc_track.c:165][on_capture_change][t:13904]: [TRACK] 'video-out' apply capture 'Webcam C170'.
+[2018-03-26 19:09:12.579][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'video-out' add child 'codec':'0x050C1658' of 'codec.tve'.
+[2018-03-26 19:09:12.579][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::SetVidDecHwFlag][597]SetVidDecHwFlag 1
+[2018-03-26 19:09:12.579][I][xc_track.c:547][set_codec][t:13904]: [TRACK] 'video-out' add encode 'codec' of type 'codec.tve'.
+[2018-03-26 19:09:12.579][I][stream_tracks.cc:265][av_tracks_setup][t:13904]: [STREAM] add out track[stream1.sub_video_out].
+[2018-03-26 19:09:12.579][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'stream1' add child 'sub-video-out':'0x050C16C8' of 'track'.
+[2018-03-26 19:09:12.579][I][xc_track.c:235][on_capture_change][t:13904]: [TRACK] 'sub-video-out' apply capture 'screen-capture'.
+[2018-03-26 19:09:12.579][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'sub-video-out' add child 'codec':'0x050C17A8' of 'codec.tve'.
+[2018-03-26 19:09:12.579][E][tve_driver.cc:78][LVE][t:13904]: [CVideoEngine::SetVidDecHwFlag][597]SetVidDecHwFlag 1
+[2018-03-26 19:09:12.580][I][xc_track.c:547][set_codec][t:13904]: [TRACK] 'sub-video-out' add encode 'codec' of type 'codec.tve'.
+[2018-03-26 19:09:12.580][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'sub-video-out' add child 'sub-video-out-preprocor':'0x050C1818' of 'screen.preprocor'.
+[2018-03-26 19:09:12.580][I][track_users.cc:651][req_view_proc][t:13904]: =====>[TRACK-USER] req_view_proc seq:27423 0x00000000:0
+[2018-03-26 19:09:12.581][I][trae_driver.cc:1066][SelectDevice][t:9488]: trae select speaker [4294967295:0]
+[2018-03-26 19:09:12.581][D][trae_driver.cc:1062][SelectDevice][t:9488]: select device playback(1) nDevId(0)
+[2018-03-26 19:09:12.582][I][trae_driver.cc:1066][SelectDevice][t:9488]: trae select speaker [0:0]
+[2018-03-26 19:09:12.583][E][trae_driver.cc:1587][start_dev_internal][t:9488]: ===>[TRAE-DEV] start speaker ÑïÉùÆ÷ (Realtek High Definition Audio):0
+[2018-03-26 19:09:12.585][I][xc_device.c:140][on_dev_preview][t:13904]: [DEVICE] 'Webcam C170' preview 0
+[2018-03-26 19:09:12.585][I][xc_device.c:58][on_dev_start][t:13904]: [DEVICE] 'Webcam C170' start 0
+[2018-03-26 19:09:12.586][I][xc_track.c:165][on_capture_change][t:13904]: [TRACK] 'video-out' apply capture 'Webcam C170'.
+[2018-03-26 19:09:12.586][I][av_session.cc:631][av_session_video_out_req][t:13904]: [SESSION] session change video state[0].
+[2018-03-26 19:09:12.586][I][av_session.cc:547][change_state][t:13904]: [CONNECTOR] 'conn' change av state start. state[1]
+[2018-03-26 19:09:12.586][I][stream_tracks.cc:87][start_video_out_track][t:13904]: [STREAM] stop track[stream1].
+[2018-03-26 19:09:12.586][I][xc_track.c:165][on_capture_change][t:13904]: [TRACK] 'audio-out' apply capture 'éº¦å…‹é£Ž (3- Webcam C170)'.
+[2018-03-26 19:09:12.586][I][stream_tracks.cc:43][start_audio_track][t:13904]: [STREAM] stop track[stream1.audio-out].
+[2018-03-26 19:09:12.586][D][trae_driver.cc:1062][SelectDevice][t:9488]: select device playback(1) nDevId(0)
+[2018-03-26 19:09:12.588][I][trae_driver.cc:1066][SelectDevice][t:9488]: trae select speaker [0:0]
+[2018-03-26 19:09:12.588][E][trae_driver.cc:1607][start_dev_internal][t:9488]: ===>[TRAE-DEV] stop speaker ÑïÉùÆ÷ (Realtek High Definition Audio):0
+[2018-03-26 19:09:12.592][D][xc_device.c:308][xc_device_notify][t:13904]: [DEVICE] 'ÑïÉùÆ÷ (Realtek High Definition Audio)' state:1
+[2018-03-26 19:09:12.637][I][av_session.cc:240][cs0x25_0x26_rsp_handler][t:13904]: [SESSION] session change av state done[0].
+[2018-03-26 19:09:12.637][I][stream_tracks.cc:730][av_track_start][t:13904]: [STREAM] stop track[stream1.video-out.0].
+[2018-03-26 19:09:12.637][I][av_session.cc:294][sc0x64_0x65_req_handler][t:13904]: [SESSION] sc0x64_0x65_req_handler. subcmd[12]
+[2018-03-26 19:09:12.637][I][av_session.cc:294][sc0x64_0x65_req_handler][t:13904]: [SESSION] sc0x64_0x65_req_handler. subcmd[6]
+[2018-03-26 19:09:12.638][D][tve_video_codec.cc:347][set_decode_param][t:13904]: [TVE-VIDEO2]type:0 score:0,br:0,fps:0,w:0
+[2018-03-26 19:09:12.638][I][session_reporter.cc:918][client::StatisticMgrMulti::DoReportInternal][t:13904]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:0.00% RTT:0
+TotalMem:16306MB FreeMem:9658MB ProcUsed:0.00MB
+Audio:
+Codec:0 SampleRate:0 bitR:0 packMS:0 NM:0+0 MTU:0 INFEC:0 JC:0 [0,0] DS:0
+UDTQos: mode[3452816845] sendq[3452816845] recvq[3452816845]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.23_4029 
+host: 10.10.107.39:9036 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-26 19:09:12.652][E][udt_channel.cc:1061][set_udt_params][t:13904]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-26 19:09:12.653][E][udt_channel.cc:1070][set_udt_params][t:13904]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-26 19:09:12.653][E][udt_channel.cc:1081][set_udt_params][t:13904]: =====>[UDT-STARTED-MAIN]
+[2018-03-26 19:09:12.653][D][video_ctrl.cc:50][set_sub_video_qos][t:13904]: start set_sub_video_qos.... udt: 1 lan 0
+[2018-03-26 19:09:12.653][E][udt_channel.cc:453][udt_thread_proc][t:13964]: =====>[UDT-STARTED-WORKER]
+[2018-03-26 19:09:12.654][W][session_qos.cc:1317][client::multi::qos::SessionQos::apply_video_qos_internal][t:13904]: track video-out is not running.
+[2018-03-26 19:09:12.654][D][track_users.cc:850][track_dispatch_audio][t:13964]: =====>[AUDIO-IN] 12345 notify!
+[2018-03-26 19:09:12.654][D][xc_cell.c:535][xc_cell_add_child][t:13904]:  'stream1' add child 'audio-in-12345':'0x048770B0' of 'track'.
+[2018-03-26 19:09:12.655][D][track_users.cc:1116][track_users_cycle_once][t:13904]: =====>[AUDIO-IN] 12345 track added!
+[2018-03-26 19:09:12.655][E][xc_track.c:792][xc_set_err_msg:xc_track_cycle_start][t:13904]: [TRACK] 'audio-in-12345' started!
+[2018-03-26 19:09:12.655][D][track_users.cc:1126][track_users_cycle_once][t:13904]: =====>[AUDIO-IN] 12345 track timer set!
+[2018-03-26 19:09:12.670][E][udt_channel.cc:1061][set_udt_params][t:13904]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-26 19:09:12.671][E][udt_channel.cc:1070][set_udt_params][t:13904]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-26 19:09:12.671][D][video_ctrl.cc:50][set_sub_video_qos][t:13904]: start set_sub_video_qos.... udt: 1 lan 0
+[2018-03-26 19:09:12.766][E][tve_driver.cc:78][LVE][t:13964]: [CVideoEngine::ReceiveNetData][634]Create video session 1
+[2018-03-26 19:09:12.832][E][tve_driver.cc:78][LVE][t:13964]: [CVideoJitterBuf::WriteData][1948]Recv first I Frame nSubType: 2 
+[2018-03-26 19:09:12.914][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2175]CanReturnFrame 1, UDT 0 HeadTimeStamp 15745391 Timeline 2166298016 TimelineDelta 97 GOP 138 FrameType 7 FrameIndex 203 FrameCount 2 Diff 18814514
+[2018-03-26 19:09:12.914][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34559905][2166298016][15745391], gidx 138 fidx 203 ft 7 cnt 0
+[2018-03-26 19:09:12.915][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::LoadDecLib][196]load intel decoder suc!
+[2018-03-26 19:09:12.985][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::Init][428]Init.Sucess[1] CodecType=5 HwDec=1 
+[2018-03-26 19:09:12.985][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::RequestKeyFrame][1362]Require I/GF GOPIdx[138] GopIdxLastNack[4294967295]
+[2018-03-26 19:09:12.986][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34559976][2166298002][15745455], gidx 138 fidx 204 ft 0 cnt 1
+[2018-03-26 19:09:12.993][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::CodecDoneCallback][1204]nFrmType[0], GopIdx[138], Idx[0] Width[864] Height[480] decode[8ms]
+[2018-03-26 19:09:12.994][E][tve_driver.cc:277][Renderer::Render][t:14412]: Render in 10 sec frame 1 width 864 height 480
+[2018-03-26 19:09:12.995][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    1 gIdx 138 fIdx 204 ftype 0, reffrmidx  0 last-: god  0 ifrm  0 gffrm  0 spfrm  0.
+[2018-03-26 19:09:12.995][I][av_msg_format.cc:717][int_pb_preparse][t:11064]: [MSG] unsupported pb msg[1794].
+[2018-03-26 19:09:21.205][D][udt_channel.cc:1160][udt_calcLoss][t:13904]: LossRateSend 0 UnsendTick 0
+[2018-03-26 19:09:21.206][D][tve_video_codec.cc:347][set_decode_param][t:13904]: [TVE-VIDEO2]type:0 score:0,br:0,fps:0,w:864
+[2018-03-26 19:09:21.206][I][session_reporter.cc:918][client::StatisticMgrMulti::DoReportInternal][t:13904]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 21.54% 7.33
+CPU:0.47% RTT:13
+TotalMem:16306MB FreeMem:9658MB ProcUsed:0.00MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+UDTRecv: @ 0.00% 0.00 total[0] realrecv[0]
+VideoRecv Uin:12345
+BR: 17kbps(R) 0kbps(Dec) Loss: 0.00% Jitter: 0
+FPS: 0fps size:864x480 type:0 hw:1 Pkg:17 Delay:0
+AvgQua:0 VideoQuality: 0:0 1:0
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.23_4029 
+host: 10.10.107.39:9036 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-26 19:09:21.217][I][av_msg_format.cc:717][int_pb_preparse][t:11064]: [MSG] unsupported pb msg[1794].
+[2018-03-26 19:09:21.218][E][udt_channel.cc:1061][set_udt_params][t:13904]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-26 19:09:21.219][E][udt_channel.cc:1070][set_udt_params][t:13904]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-26 19:09:21.220][D][video_ctrl.cc:50][set_sub_video_qos][t:13904]: start set_sub_video_qos.... udt: 1 lan 0
+[2018-03-26 19:09:21.388][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34568378][2166298002][15745535], gidx 138 fidx 205 ft 7 cnt 2
+[2018-03-26 19:09:21.393][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    2 gIdx 138 fIdx 205 ftype 7, reffrmidx 204 last-: god 138 ifrm 204 gffrm  0 spfrm  0.
+[2018-03-26 19:09:21.393][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34568383][2166298010][15745600], gidx 138 fidx 206 ft 7 cnt 3
+[2018-03-26 19:09:21.397][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    3 gIdx 138 fIdx 206 ftype 7, reffrmidx 204 last-: god 138 ifrm 204 gffrm  0 spfrm  0.
+[2018-03-26 19:09:21.515][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2175]CanReturnFrame 1, UDT 0 HeadTimeStamp 15754016 Timeline 2166297991 TimelineDelta 97 GOP 139 FrameType 7 FrameIndex 69 FrameCount 2 Diff 18818659
+[2018-03-26 19:09:21.515][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34568505][2166297991][15754016], gidx 139 fidx 69 ft 7 cnt 4
+[2018-03-26 19:09:21.516][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::RequestKeyFrame][1362]Require I/GF GOPIdx[139] GopIdxLastNack[138]
+[2018-03-26 19:09:21.526][I][av_msg_format.cc:717][int_pb_preparse][t:11064]: [MSG] unsupported pb msg[1794].
+[2018-03-26 19:09:21.602][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2175]CanReturnFrame 1, UDT 0 HeadTimeStamp 15754095 Timeline 2166297995 TimelineDelta 96 GOP 139 FrameType 0 FrameIndex 70 FrameCount 2 Diff 18814497
+[2018-03-26 19:09:21.602][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34568592][2166297995][15754095], gidx 139 fidx 70 ft 0 cnt 5
+[2018-03-26 19:09:21.606][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::CodecDoneCallback][1204]nFrmType[0], GopIdx[139], Idx[3] Width[864] Height[480] decode[4ms]
+[2018-03-26 19:09:21.607][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    4 gIdx 139 fIdx 70 ftype 0, reffrmidx  0 last-: god 138 ifrm 204 gffrm  0 spfrm  0.
+[2018-03-26 19:09:21.654][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34568644][2166298000][15754159], gidx 139 fidx 71 ft 7 cnt 6
+[2018-03-26 19:09:21.656][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    5 gIdx 139 fIdx 71 ftype 7, reffrmidx 70 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:21.715][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34568705][2166297984][15754240], gidx 139 fidx 72 ft 7 cnt 7
+[2018-03-26 19:09:21.717][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    6 gIdx 139 fIdx 72 ftype 7, reffrmidx 71 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:21.785][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34568775][2166297986][15754304], gidx 139 fidx 73 ft 7 cnt 8
+[2018-03-26 19:09:21.787][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    7 gIdx 139 fIdx 73 ftype 7, reffrmidx 72 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:21.855][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34568845][2166297981][15754367], gidx 139 fidx 74 ft 7 cnt 9
+[2018-03-26 19:09:21.860][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    8 gIdx 139 fIdx 74 ftype 7, reffrmidx 73 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:21.912][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34568902][2166297981][15754447], gidx 139 fidx 75 ft 7 cnt 10
+[2018-03-26 19:09:21.917][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    9 gIdx 139 fIdx 75 ftype 7, reffrmidx 74 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:21.996][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34568986][2166297966][15754512], gidx 139 fidx 76 ft 7 cnt 11
+[2018-03-26 19:09:22.001][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   10 gIdx 139 fIdx 76 ftype 7, reffrmidx 75 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.058][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569048][2166297978][15754575], gidx 139 fidx 77 ft 7 cnt 12
+[2018-03-26 19:09:22.063][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   11 gIdx 139 fIdx 77 ftype 7, reffrmidx 76 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.117][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569107][2166297942][15754656], gidx 139 fidx 78 ft 7 cnt 13
+[2018-03-26 19:09:22.122][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   12 gIdx 139 fIdx 78 ftype 7, reffrmidx 77 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.123][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569113][2166297942][15754720], gidx 139 fidx 79 ft 7 cnt 14
+[2018-03-26 19:09:22.127][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   13 gIdx 139 fIdx 79 ftype 7, reffrmidx 78 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.236][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569226][2166297933][15754800], gidx 139 fidx 80 ft 7 cnt 15
+[2018-03-26 19:09:22.241][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   14 gIdx 139 fIdx 80 ftype 7, reffrmidx 79 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.319][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569309][2166297933][15754864], gidx 139 fidx 81 ft 7 cnt 16
+[2018-03-26 19:09:22.323][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   15 gIdx 139 fIdx 81 ftype 7, reffrmidx 80 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.323][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569313][2166297949][15754928], gidx 139 fidx 82 ft 7 cnt 17
+[2018-03-26 19:09:22.327][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   16 gIdx 139 fIdx 82 ftype 7, reffrmidx 81 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.442][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569432][2166297914][15755008], gidx 139 fidx 83 ft 7 cnt 18
+[2018-03-26 19:09:22.445][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   17 gIdx 139 fIdx 83 ftype 7, reffrmidx 82 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.445][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569435][2166297914][15755071], gidx 139 fidx 84 ft 7 cnt 19
+[2018-03-26 19:09:22.447][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   18 gIdx 139 fIdx 84 ftype 7, reffrmidx 83 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.564][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569554][2166297915][15755151], gidx 139 fidx 85 ft 7 cnt 20
+[2018-03-26 19:09:22.569][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   19 gIdx 139 fIdx 85 ftype 7, reffrmidx 84 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.650][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569640][2166297929][15755215], gidx 139 fidx 86 ft 7 cnt 21
+[2018-03-26 19:09:22.652][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   20 gIdx 139 fIdx 86 ftype 7, reffrmidx 85 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.708][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569698][2166297929][15755280], gidx 139 fidx 87 ft 7 cnt 22
+[2018-03-26 19:09:22.710][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   21 gIdx 139 fIdx 87 ftype 7, reffrmidx 86 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.773][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569763][2166297913][15755359], gidx 139 fidx 88 ft 7 cnt 23
+[2018-03-26 19:09:22.776][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   22 gIdx 139 fIdx 88 ftype 7, reffrmidx 87 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.863][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569853][2166297924][15755423], gidx 139 fidx 89 ft 7 cnt 24
+[2018-03-26 19:09:22.866][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   23 gIdx 139 fIdx 89 ftype 7, reffrmidx 88 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.903][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569893][2166297934][15755487], gidx 139 fidx 90 ft 7 cnt 25
+[2018-03-26 19:09:22.908][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   24 gIdx 139 fIdx 90 ftype 7, reffrmidx 89 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:22.983][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34569973][2166297918][15755567], gidx 139 fidx 91 ft 7 cnt 26
+[2018-03-26 19:09:22.985][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   25 gIdx 139 fIdx 91 ftype 7, reffrmidx 90 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:23.066][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34570056][2166297899][15755632], gidx 139 fidx 92 ft 7 cnt 27
+[2018-03-26 19:09:23.068][E][tve_driver.cc:277][Renderer::Render][t:14412]: Render in 10 sec frame 25 width 864 height 480
+[2018-03-26 19:09:23.069][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   26 gIdx 139 fIdx 92 ftype 7, reffrmidx 91 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:23.101][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34570091][2166297928][15755711], gidx 139 fidx 93 ft 7 cnt 28
+[2018-03-26 19:09:23.103][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   27 gIdx 139 fIdx 93 ftype 7, reffrmidx 92 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:23.183][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34570173][2166297913][15755776], gidx 139 fidx 94 ft 7 cnt 29
+[2018-03-26 19:09:23.185][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   28 gIdx 139 fIdx 94 ftype 7, reffrmidx 93 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:23.189][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt   29 gIdx 139 fIdx 95 ftype 7, reffrmidx 94 last-: god 139 ifrm 70 gffrm  0 spfrm  0.
+[2018-03-26 19:09:23.209][D][udt_channel.cc:1160][udt_calcLoss][t:13904]: LossRateSend 0 UnsendTick 0
+[2018-03-26 19:09:23.209][D][tve_video_codec.cc:347][set_decode_param][t:13904]: [TVE-VIDEO2]type:0 score:0,br:9,fps:2,w:864
+[2018-03-26 19:09:23.209][I][session_reporter.cc:918][client::StatisticMgrMulti::DoReportInternal][t:13904]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 21kbps @ 6pkt @ 66.91% 13.56
+CPU:2.53% RTT:11
+TotalMem:16306MB FreeMem:9678MB ProcUsed:0.00MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+UDTRecv: @ 44.73% 0.00 total[0] realrecv[0]
+VideoRecv Uin:12345
+BR: 371kbps(R) 9kbps(Dec) Loss: 0.00% Jitter: 0
+FPS: 2fps size:864x480 type:0 hw:1 Pkg:371 Delay:0
+AvgQua:5 VideoQuality: 0:5 1:0
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.23_4029 
+host: 10.10.107.39:9036 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-26 19:09:23.220][I][av_msg_format.cc:717][int_pb_preparse][t:11064]: [MSG] unsupported pb msg[1794].
+[2018-03-26 19:09:23.467][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2175]CanReturnFrame 1, UDT 0 HeadTimeStamp 15756064 Timeline 2166297910 TimelineDelta 89 GOP 139 FrameType 0 FrameIndex 98 FrameCount 2 Diff 18814418
+[2018-03-26 19:09:23.467][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34570457][2166297910][15756064], gidx 139 fidx 98 ft 0 cnt 33
+[2018-03-26 19:09:23.469][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::CodecDoneCallback][1204]nFrmType[0], GopIdx[139], Idx[31] Width[864] Height[480] decode[2ms]
+[2018-03-26 19:09:23.526][I][av_msg_format.cc:717][int_pb_preparse][t:11064]: [MSG] unsupported pb msg[1794].
+[2018-03-26 19:09:25.212][D][udt_channel.cc:1160][udt_calcLoss][t:13904]: LossRateSend 0 UnsendTick 0
+[2018-03-26 19:09:25.214][D][tve_video_codec.cc:347][set_decode_param][t:13904]: [TVE-VIDEO2]type:0 score:0,br:297,fps:144,w:864
+[2018-03-26 19:09:25.214][I][session_reporter.cc:918][client::StatisticMgrMulti::DoReportInternal][t:13904]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 552kbps @ 250pkt @ 1.64% 6.00
+CPU:2.62% RTT:11
+TotalMem:16306MB FreeMem:9651MB ProcUsed:67.95MB
+UDTSend: @ 0.00% 0.00 Cwnd[0] UnsendTick[0] total[0] realsend[0] resnd[0]
+UDTRecv: @ 0.00% 23.01 total[252] realrecv[194]
+VideoRecv Uin:12345
+BR: 354kbps(R) 297kbps(Dec) Loss: 0.00% Jitter: 0
+FPS: 144fps size:864x480 type:0 hw:1 Pkg:354 Delay:0
+AvgQua:5 VideoQuality: 0:5 1:0
+Audio:
+Codec:4129 SampleRate:16000 bitR:30000 packMS:20 NM:4+1 MTU:0 INFEC:0 JC:120 [400,1000] DS:0
+UDTQos: mode[13] sendq[800] recvq[300]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.23_4029 
+host: 10.10.107.39:9036 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-26 19:09:25.226][I][av_msg_format.cc:717][int_pb_preparse][t:11064]: [MSG] unsupported pb msg[1794].
+[2018-03-26 19:09:25.229][E][udt_channel.cc:1061][set_udt_params][t:13904]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-26 19:09:25.229][E][udt_channel.cc:1070][set_udt_params][t:13904]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-26 19:09:25.229][D][video_ctrl.cc:50][set_sub_video_qos][t:13904]: start set_sub_video_qos.... udt: 1 lan 0
+[2018-03-26 19:09:25.370][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2175]CanReturnFrame 1, UDT 0 HeadTimeStamp 15758016 Timeline 2166297898 TimelineDelta 82 GOP 139 FrameType 7 FrameIndex 126 FrameCount 2 Diff 18814402
+[2018-03-26 19:09:25.446][E][tve_driver.cc:78][LVE][t:14412]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34572436][2166297898][15758096], gidx 139 fidx 127 ft 0 cnt 62
+[2018-03-26 19:09:25.448][E][tve_driver.cc:78][LVE][t:14412]: [CVideoDecoder::CodecDoneCallback][1204************************************************************************ xcast new proccess ************************************************************************
+xcast version : RDM_v1.0.0_b1.0.0.23_4029
+[2018-03-26 19:10:09.740][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'stream':'0x005362A8' of 'default'.
+[2018-03-26 19:10:09.740][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'logger':'0x00536318' of 'default'.
+[2018-03-26 19:10:09.740][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'event':'0x00536388' of 'default'.
+[2018-03-26 19:10:09.740][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'account':'0x005363F8' of 'default'.
+[2018-03-26 19:10:09.740][I][xcast.c:45][setup_account][t:14348]: xcast app id is 1400036169, account is 67890
+[2018-03-26 19:10:09.740][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'device':'0x00536468' of 'device_root'.
+[2018-03-26 19:10:09.740][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'device' add child 'camera':'0x005364D8' of 'default'.
+[2018-03-26 19:10:09.740][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'device' add child 'mic':'0x00536548' of 'default'.
+[2018-03-26 19:10:09.740][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'device' add child 'speaker':'0x005365B8' of 'default'.
+[2018-03-26 19:10:09.740][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'device' add child 'external':'0x00536628' of 'default'.
+[2018-03-26 19:10:09.740][E][xc_cell.c:325][xc_set_err_msg:xc_cell_lookup][t:14348]: invalid path of preference:preference.
+[2018-03-26 19:10:09.740][E][xc_cast.c:202][xc_set_err_msg:xc_get_property][t:14348]: no property supported for preference.external-device
+[2018-03-26 19:10:09.740][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'external' add child 'ext1':'0x00536698' of 'device'.
+[2018-03-26 19:10:09.741][D][xc_device.c:308][xc_device_notify][t:14348]: [DEVICE] 'ext1' state:1
+[2018-03-26 19:10:09.741][I][xc_device_root.c:179][xc_device_add][t:14348]: [DEVICE] device 'ext1' of type 'device' added.
+[2018-03-26 19:10:09.741][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'external' add child 'ext2':'0x00536778' of 'device'.
+[2018-03-26 19:10:09.741][D][xc_device.c:308][xc_device_notify][t:14348]: [DEVICE] 'ext2' state:1
+[2018-03-26 19:10:09.741][I][xc_device_root.c:179][xc_device_add][t:14348]: [DEVICE] device 'ext2' of type 'device' added.
+[2018-03-26 19:10:09.741][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'external' add child 'ext3':'0x00562C58' of 'device'.
+[2018-03-26 19:10:09.741][D][xc_device.c:308][xc_device_notify][t:14348]: [DEVICE] 'ext3' state:1
+[2018-03-26 19:10:09.741][I][xc_device_root.c:179][xc_device_add][t:14348]: [DEVICE] device 'ext3' of type 'device' added.
+[2018-03-26 19:10:09.741][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'external' add child 'ext4':'0x00562D38' of 'device'.
+[2018-03-26 19:10:09.741][D][xc_device.c:308][xc_device_notify][t:14348]: [DEVICE] 'ext4' state:1
+[2018-03-26 19:10:09.741][I][xc_device_root.c:179][xc_device_add][t:14348]: [DEVICE] device 'ext4' of type 'device' added.
+[2018-03-26 19:10:09.741][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'preference':'0x00562E18' of 'default'.
+[2018-03-26 19:10:09.741][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'audio':'0x00562E88' of 'default'.
+[2018-03-26 19:10:09.741][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'video':'0x00562EF8' of 'default'.
+[2018-03-26 19:10:09.741][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'net':'0x00562F68' of 'default'.
+[2018-03-26 19:10:09.741][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'misc':'0x00562FD8' of 'default'.
+[2018-03-26 19:10:09.791][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'profile':'0x00563048' of 'default'.
+[2018-03-26 19:10:09.791][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'plugin':'0x005630B8' of 'default'.
+[2018-03-26 19:10:09.792][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'driver':'0x00563128' of 'default'.
+[2018-03-26 19:10:09.792][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'driver' add child 'loader':'0x00563198' of 'driver.loader'.
+[2018-03-26 19:10:09.792][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'driver' add child 'network':'0x00563208' of 'default'.
+[2018-03-26 19:10:09.792][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'thread-pool':'0x00563278' of 'default'.
+[2018-03-26 19:10:09.792][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'thread-pool' add child 'default':'0x005632E8' of 'thread-pool'.
+[2018-03-26 19:10:09.792][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'thread-pool' add child 'report':'0x005633C8' of 'report'.
+[2018-03-26 19:10:09.792][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'network' add child 'libuv':'0x00563438' of 'driver.network.libuv'.
+[2018-03-26 19:10:09.793][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'module.libuv':'0x005634A8' of 'module'.
+[2018-03-26 19:10:09.793][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'profile' add child 'observer':'0x00563518' of 'av_profile'.
+[2018-03-26 19:10:09.793][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'profile' add child 'report':'0x00563588' of 'profile_report'.
+[2018-03-26 19:10:09.793][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'av_profile':'0x005635F8' of 'module'.
+[2018-03-26 19:10:09.793][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'core' add child 'lan-relay':'0x00563668' of 'lan_relay_driver'.
+[2018-03-26 19:10:09.793][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'lan-relay' add child 'lan-relay-host':'0x005636D8' of 'channel'.
+[2018-03-26 19:10:09.793][I][uv_connection.c:1094][conn_new][t:14348]: ====>[CONN-NEW] 'uv_conn_1' 0x00563748
+[2018-03-26 19:10:09.793][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'libuv' add child 'uv_conn_1':'0x00563748' of 'conn.libuv'.
+[2018-03-26 19:10:09.797][I][lan_relay_driver.c:174][get_host_addr][t:14348]: get host addr:ip(10.10.107.39) port(9057) gateway(10.10.107.1) name({716F0C8F-9674-48D2-B2B1-05CA3A04CD29}) desc(Realtek PCIe GBE Family Controller) mac(3464A9159DBC)
+
+[2018-03-26 19:10:09.797][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'lan_relay_module':'0x00563898' of 'module'.
+[2018-03-26 19:10:09.797][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'module.http':'0x00563908' of 'module'.
+[2018-03-26 19:10:09.797][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'network' add child 'app_channel':'0x00563978' of 'http_channel_driver_class'.
+[2018-03-26 19:10:09.797][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'app_channel' add child 'http':'0x005639E8' of 'network.http'.
+[2018-03-26 19:10:09.797][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'http' add child 'http-chn':'0x00563A58' of 'channel'.
+[2018-03-26 19:10:09.797][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'av_http_channel_module':'0x00563AC8' of 'module'.
+[2018-03-26 19:10:09.797][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'driver' add child 'sys_info':'0x00563B38' of 'sys_info'.
+[2018-03-26 19:10:09.797][I][sys_info.cc:202][sys_info_update][t:14348]: current platform(windows)
+[2018-03-26 19:10:09.797][I][sys_info.cc:233][sys_info_update][t:14348]: get screen width(1920) height(1080)
+[2018-03-26 19:10:09.803][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'sys_info_module':'0x0057E500' of 'module'.
+[2018-03-26 19:10:09.803][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'module.udt':'0x0057E570' of 'module'.
+[2018-03-26 19:10:09.824][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'av_common_module':'0x00589C48' of 'module'.
+[2018-03-26 19:10:09.824][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'preference' add child 'spear_ctrl':'0x0058A1F8' of 'spear_ctrl'.
+[2018-03-26 19:10:09.824][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'preference' add child 'video':'0x00589CB8' of 'default'.
+[2018-03-26 19:10:09.824][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'preference' add child 'audio':'0x00589D28' of 'default'.
+[2018-03-26 19:10:09.824][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'preference' add child 'net':'0x0058A188' of 'default'.
+[2018-03-26 19:10:09.824][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'preference' add child 'custom':'0x0058A268' of 'default'.
+[2018-03-26 19:10:09.825][D][spear_ctrl.cc:826][load_json_conf][t:14348]: load spear config(E:\GitHub\XCastDemo\xcast-demo\bin\Debug\1400036169.conf)
+[2018-03-26 19:10:09.828][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'preference' add child 'spear':'0x0058A968' of 'spear-config'.
+[2018-03-26 19:10:09.828][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'spear' add child 'audio':'0x0058AA48' of 'default'.
+[2018-03-26 19:10:09.828][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'spear' add child 'video':'0x0058A2D8' of 'default'.
+[2018-03-26 19:10:09.828][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'spear' add child 'net':'0x0058A9D8' of 'default'.
+[2018-03-26 19:10:09.828][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'spear' add child 'roles':'0x00589D98' of 'default'.
+[2018-03-26 19:10:09.828][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child 'user':'0x00589E08' of 'default'.
+[2018-03-26 19:10:09.828][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'user' add child 'audio':'0x00589E78' of 'default'.
+[2018-03-26 19:10:09.828][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'user' add child 'video':'0x0058A0A8' of 'default'.
+[2018-03-26 19:10:09.828][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'user' add child 'net':'0x0058A118' of 'default'.
+[2018-03-26 19:10:09.828][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '32024010':'0x0057F060' of 'default'.
+[2018-03-26 19:10:09.829][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '32024010' add child 'audio':'0x0057EFF0' of 'default'.
+[2018-03-26 19:10:09.829][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '32024010' add child 'video':'0x0057EF80' of 'default'.
+[2018-03-26 19:10:09.829][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '32024010' add child 'net':'0x0057EF10' of 'default'.
+[2018-03-26 19:10:09.829][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '480360':'0x0057EEA0' of 'default'.
+[2018-03-26 19:10:09.829][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '480360' add child 'audio':'0x0057EE30' of 'default'.
+[2018-03-26 19:10:09.829][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '480360' add child 'video':'0x0057ED50' of 'default'.
+[2018-03-26 19:10:09.829][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '480360' add child 'net':'0x0057ECE0' of 'default'.
+[2018-03-26 19:10:09.829][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '64036815':'0x0057EC70' of 'default'.
+[2018-03-26 19:10:09.829][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '64036815' add child 'audio':'0x0057EC00' of 'default'.
+[2018-03-26 19:10:09.829][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '64036815' add child 'video':'0x0057EB90' of 'default'.
+[2018-03-26 19:10:09.829][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '64036815' add child 'net':'0x0057EB20' of 'default'.
+[2018-03-26 19:10:09.830][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '64048025':'0x0057EAB0' of 'default'.
+[2018-03-26 19:10:09.830][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '64048025' add child 'audio':'0x0057EA40' of 'default'.
+[2018-03-26 19:10:09.830][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '64048025' add child 'video':'0x0057E6C0' of 'default'.
+[2018-03-26 19:10:09.830][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '64048025' add child 'net':'0x0057E9D0' of 'default'.
+[2018-03-26 19:10:09.830][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '96054025':'0x0057E960' of 'default'.
+[2018-03-26 19:10:09.830][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '96054025' add child 'audio':'0x0057E8F0' of 'default'.
+[2018-03-26 19:10:09.830][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '96054025' add child 'video':'0x0057E880' of 'default'.
+[2018-03-26 19:10:09.830][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '96054025' add child 'net':'0x0057E730' of 'default'.
+[2018-03-26 19:10:09.830][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '12872020':'0x0057E650' of 'default'.
+[2018-03-26 19:10:09.830][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '12872020' add child 'audio':'0x0057E7A0' of 'default'.
+[2018-03-26 19:10:09.830][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '12872020' add child 'video':'0x0057E810' of 'default'.
+[2018-03-26 19:10:09.830][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '12872020' add child 'net':'0x005ACC78' of 'default'.
+[2018-03-26 19:10:09.831][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '32024015':'0x005ACCE8' of 'default'.
+[2018-03-26 19:10:09.831][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '32024015' add child 'audio':'0x005ACD58' of 'default'.
+[2018-03-26 19:10:09.831][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '32024015' add child 'video':'0x005ACDC8' of 'default'.
+[2018-03-26 19:10:09.831][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '32024015' add child 'net':'0x005ACE38' of 'default'.
+[2018-03-26 19:10:09.831][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '64036820':'0x005ACEA8' of 'default'.
+[2018-03-26 19:10:09.831][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '64036820' add child 'audio':'0x005ACF18' of 'default'.
+[2018-03-26 19:10:09.831][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '64036820' add child 'video':'0x005ACF88' of 'default'.
+[2018-03-26 19:10:09.831][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '64036820' add child 'net':'0x005ACFF8' of 'default'.
+[2018-03-26 19:10:09.831][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '64048015':'0x005AD068' of 'default'.
+[2018-03-26 19:10:09.831][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '64048015' add child 'audio':'0x005AD0D8' of 'default'.
+[2018-03-26 19:10:09.831][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '64048015' add child 'video':'0x005AD148' of 'default'.
+[2018-03-26 19:10:09.832][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '64048015' add child 'net':'0x005AD1B8' of 'default'.
+[2018-03-26 19:10:09.832][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '96054015':'0x005AD228' of 'default'.
+[2018-03-26 19:10:09.832][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '96054015' add child 'audio':'0x005AD298' of 'default'.
+[2018-03-26 19:10:09.832][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '96054015' add child 'video':'0x005AD308' of 'default'.
+[2018-03-26 19:10:09.832][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '96054015' add child 'net':'0x005AD378' of 'default'.
+[2018-03-26 19:10:09.832][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '12872030':'0x005AD3E8' of 'default'.
+[2018-03-26 19:10:09.832][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '12872030' add child 'audio':'0x005AD458' of 'default'.
+[2018-03-26 19:10:09.832][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '12872030' add child 'video':'0x005AD4C8' of 'default'.
+[2018-03-26 19:10:09.832][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '12872030' add child 'net':'0x005AD538' of 'default'.
+[2018-03-26 19:10:09.832][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '96054020':'0x005AD5A8' of 'default'.
+[2018-03-26 19:10:09.832][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '96054020' add child 'audio':'0x005AD618' of 'default'.
+[2018-03-26 19:10:09.832][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '96054020' add child 'video':'0x005AD688' of 'default'.
+[2018-03-26 19:10:09.833][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '96054020' add child 'net':'0x005AD6F8' of 'default'.
+[2018-03-26 19:10:09.833][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '48036015':'0x005AD768' of 'default'.
+[2018-03-26 19:10:09.833][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '48036015' add child 'audio':'0x005AD7D8' of 'default'.
+[2018-03-26 19:10:09.833][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '48036015' add child 'video':'0x005AD848' of 'default'.
+[2018-03-26 19:10:09.833][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '48036015' add child 'net':'0x005AD8B8' of 'default'.
+[2018-03-26 19:10:09.833][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '7640152400':'0x005AD928' of 'default'.
+[2018-03-26 19:10:09.833][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '7640152400' add child 'audio':'0x005AD998' of 'default'.
+[2018-03-26 19:10:09.833][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '7640152400' add child 'video':'0x005ADA08' of 'default'.
+[2018-03-26 19:10:09.833][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '7640152400' add child 'net':'0x005ADA78' of 'default'.
+[2018-03-26 19:10:09.833][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child '640480bp':'0x005ADAE8' of 'default'.
+[2018-03-26 19:10:09.833][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '640480bp' add child 'audio':'0x005ADB58' of 'default'.
+[2018-03-26 19:10:09.833][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '640480bp' add child 'video':'0x005ADBC8' of 'default'.
+[2018-03-26 19:10:09.833][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  '640480bp' add child 'net':'0x0058FC48' of 'default'.
+[2018-03-26 19:10:09.834][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child 'wawa640':'0x0058FCB8' of 'default'.
+[2018-03-26 19:10:09.834][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'wawa640' add child 'audio':'0x0058FD28' of 'default'.
+[2018-03-26 19:10:09.834][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'wawa640' add child 'video':'0x0058FD98' of 'default'.
+[2018-03-26 19:10:09.834][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'wawa640' add child 'net':'0x0058FE08' of 'default'.
+[2018-03-26 19:10:09.834][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child 'lx320':'0x0058FE78' of 'default'.
+[2018-03-26 19:10:09.834][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'lx320' add child 'audio':'0x0058FEE8' of 'default'.
+[2018-03-26 19:10:09.834][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'lx320' add child 'video':'0x0058FF58' of 'default'.
+[2018-03-26 19:10:09.834][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'lx320' add child 'net':'0x0058FFC8' of 'default'.
+[2018-03-26 19:10:09.834][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child 'lx640':'0x00590038' of 'default'.
+[2018-03-26 19:10:09.834][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'lx640' add child 'audio':'0x005900A8' of 'default'.
+[2018-03-26 19:10:09.835][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'lx640' add child 'video':'0x00590118' of 'default'.
+[2018-03-26 19:10:09.835][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'lx640' add child 'net':'0x00590188' of 'default'.
+[2018-03-26 19:10:09.835][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child 'lx64015':'0x005901F8' of 'default'.
+[2018-03-26 19:10:09.835][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'lx64015' add child 'audio':'0x00590268' of 'default'.
+[2018-03-26 19:10:09.835][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'lx64015' add child 'video':'0x005902D8' of 'default'.
+[2018-03-26 19:10:09.835][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'lx64015' add child 'net':'0x00590348' of 'default'.
+[2018-03-26 19:10:09.835][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child 'lx960':'0x005903B8' of 'default'.
+[2018-03-26 19:10:09.835][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'lx960' add child 'audio':'0x00590428' of 'default'.
+[2018-03-26 19:10:09.835][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'lx960' add child 'video':'0x00590498' of 'default'.
+[2018-03-26 19:10:09.835][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'lx960' add child 'net':'0x00590508' of 'default'.
+[2018-03-26 19:10:09.835][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'roles' add child 'fancy':'0x00590578' of 'default'.
+[2018-03-26 19:10:09.835][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'fancy' add child 'audio':'0x005905E8' of 'default'.
+[2018-03-26 19:10:09.835][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'fancy' add child 'video':'0x00590658' of 'default'.
+[2018-03-26 19:10:09.836][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'fancy' add child 'net':'0x005906C8' of 'default'.
+[2018-03-26 19:10:09.836][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'preference' add child 'adapter':'0x00590738' of 'adapter_config_class'.
+[2018-03-26 19:10:09.836][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'av_config':'0x005907A8' of 'module'.
+[2018-03-26 19:10:09.836][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'module.udt':'0x00590818' of 'module'.
+[2018-03-26 19:10:09.836][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'driver' add child 'trae':'0x00590888' of 'driver.trae'.
+[2018-03-26 19:10:09.837][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'trae_module':'0x005908F8' of 'module'.
+[2018-03-26 19:10:09.837][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'driver' add child 'videocore':'0x00590968' of 'tve driver'.
+[2018-03-26 19:10:09.899][E][tve_driver.cc:78][LVE][t:14348]: [PreLoadIntelDecLib][47]preload intel dec lib ok!
+[2018-03-26 19:10:09.899][E][tve_driver.cc:78][LVE][t:14348]: [PreLoadIntelEncLib][65]preload intel enc ok
+[2018-03-26 19:10:09.899][E][tve_driver.cc:78][LVE][t:14348]: [CVideoEngine::SetSendMode][1066]SetSendMode 4
+[2018-03-26 19:10:09.900][E][tve_driver.cc:78][LVE][t:14348]: [PreLoadIntelDecLib][47]preload intel dec lib ok!
+[2018-03-26 19:10:09.900][E][tve_driver.cc:78][LVE][t:14348]: [PreLoadIntelEncLib][65]preload intel enc ok
+[2018-03-26 19:10:09.900][E][tve_driver.cc:78][LVE][t:14348]: [CVideoEngine::SetSendMode][1066]SetSendMode 4
+[2018-03-26 19:10:09.900][D][tve_driver.cc:491][read_ability][t:14348]: cpu name is Intel(R) Core(TM) i7-4790 CPU @ 3.60GHz
+[2018-03-26 19:10:09.900][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.hw-enc'= 1)
+[2018-03-26 19:10:09.900][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.hw-dec'= 1)
+[2018-03-26 19:10:09.900][E][tve_driver.cc:78][LVE][t:14348]: [PreLoadIntelDecLib][47]preload intel dec lib ok!
+[2018-03-26 19:10:09.900][E][tve_driver.cc:78][LVE][t:14348]: [PreLoadIntelEncLib][65]preload intel enc ok
+[2018-03-26 19:10:09.905][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.sub-hw-enc'= 1)
+[2018-03-26 19:10:09.905][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.sub-hw-dec'= 1)
+[2018-03-26 19:10:09.905][E][tve_driver.cc:78][LVE][t:14348]: [PreLoadIntelDecLib][47]preload intel dec lib ok!
+[2018-03-26 19:10:09.906][E][tve_driver.cc:78][LVE][t:14348]: [PreLoadIntelEncLib][65]preload intel enc ok
+[2018-03-26 19:10:09.909][E][tve_driver.cc:537][read_ability][t:14348]: CPU Level is 157
+[2018-03-26 19:10:09.909][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'tve_module':'0x005909D8' of 'module'.
+[2018-03-26 19:10:09.909][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'driver' add child 'adv_video':'0x00590A48' of 'driver.adv_video'.
+[2018-03-26 19:10:09.910][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'adv-video module':'0x00590AB8' of 'module'.
+[2018-03-26 19:10:09.910][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'av_renderer':'0x00590B28' of 'module'.
+[2018-03-26 19:10:09.910][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'av_session_module':'0x00590B98' of 'module'.
+[2018-03-26 19:10:09.910][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'driver' add child 'screen_capture':'0x04609600' of 'driver.screen_capture'.
+[2018-03-26 19:10:09.910][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'video-capture module':'0x04609750' of 'module'.
+[2018-03-26 19:10:09.910][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'plugin' add child 'screen preprocor module':'0x046097C0' of 'module'.
+[2018-03-26 19:10:09.910][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.force-aec'= 0)
+[2018-03-26 19:10:09.910][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.force-agc'= 0)
+[2018-03-26 19:10:09.910][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.force-ans'= 0)
+[2018-03-26 19:10:09.911][E][xc_cell.c:325][xc_set_err_msg:xc_cell_lookup][t:14348]: invalid path of device.screen-capture:screen-capture.
+[2018-03-26 19:10:09.911][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'device' add child 'screen-capture':'0x04609830' of 'camera.video-capture'.
+[2018-03-26 19:10:09.912][D][xc_device.c:308][xc_device_notify][t:14348]: [DEVICE] 'screen-capture' state:1
+[2018-03-26 19:10:09.912][I][xc_device_root.c:179][xc_device_add][t:14348]: [DEVICE] device 'screen-capture' of type 'camera.video-capture' added.
+[2018-03-26 19:10:09.917][I][uv_connection.c:708][uv_conn_open][t:11076]: 'uv_conn_1' tcp try listen after bind(9057:0).
+[2018-03-26 19:10:09.955][D][adapter_config.cc:475][parse_rspbody][t:14348]: ["voip_enable":false,"lc":false,"auto_rotate_video":true,"standard_hev2":false,"pstn_enable":false,"strong_pstn_enable":false,"pb_cmd_enable":false,"init":true,"open_max_enable":false,"all_pstn_enable":false,"audio_switch_enable":false,"howling_enbale":true]
+[2018-03-26 19:10:09.955][I][adapter_config.cc:742][driver_cycle_once][t:14348]: load local adapter config rt(0)
+[2018-03-26 19:10:09.956][I][http_channel_driver.c:148][http_channel_pack_msg][t:14348]: pack msg rt(0)
+[2018-03-26 19:10:09.959][I][xc_connection.c:185][xc_conn_cycle_once][t:14348]: 'uv_conn_1' connected
+[2018-03-26 19:10:09.959][I][uv_connection.c:1094][conn_new][t:14348]: ====>[CONN-NEW] 'uv_conn_2' 0x0057E5E0
+[2018-03-26 19:10:09.959][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'libuv' add child 'uv_conn_2':'0x0057E5E0' of 'conn.libuv'.
+[2018-03-26 19:10:09.959][I][lan_relay_driver.c:471][on_host_ready][t:14348]: ====>[LAN-RELAY] lan host ready rt(0) err(Unknown system error 0)
+[2018-03-26 19:10:09.963][I][lan_relay_driver.c:174][get_host_addr][t:14348]: get host addr:ip(10.10.107.39) port(9057) gateway(10.10.107.1) name({716F0C8F-9674-48D2-B2B1-05CA3A04CD29}) desc(Realtek PCIe GBE Family Controller) mac(3464A9159DBC)
+
+[2018-03-26 19:10:09.968][D][uv_driver.c:189][on_resolved][t:11076]: get dns ipv4 address (59.37.116.121:15000)
+[2018-03-26 19:10:09.974][D][uv_connection.c:52][uv_keepalive][t:11076]: use keepalive mode, ret(0)
+[2018-03-26 19:10:09.974][D][uv_connection.c:55][uv_keepalive][t:11076]: uv_fileno ret(0) fd(992)
+[2018-03-26 19:10:09.999][I][xc_connection.c:185][xc_conn_cycle_once][t:14348]: 'uv_conn_2' connected
+[2018-03-26 19:10:09.999][D][http_connection.c:203][on_connected][t:14348]: http connection success
+[2018-03-26 19:10:09.999][D][http_connection.c:339][request][t:14348]: send http request:len(508) str(
+POST http://openmsf.3g.qq.com:15000 HTTP/1.1
+Host: openmsf.3g.qq.com:15000
+Content-Length: 271
+Accept: */*
+User-Agent: xcast/0 CFNetwork/868.2 Darwin/16.7.0
+Content-Type: application/x-www-form-urlencoded
+Connection: keep-alive
+
+)
+[2018-03-26 19:10:09.999][I][http_channel_driver.c:588][driver_cycle_once][t:14348]: http channel send rt(0)
+[2018-03-26 19:10:10.009][D][adv_video.cc:298][dump_cap][t:12112]: camera 160*120@30
+[2018-03-26 19:10:10.009][D][adv_video.cc:298][dump_cap][t:12112]: camera 176*144@30
+[2018-03-26 19:10:10.009][D][adv_video.cc:298][dump_cap][t:12112]: camera 320*176@30
+[2018-03-26 19:10:10.009][D][adv_video.cc:298][dump_cap][t:12112]: camera 320*240@30
+[2018-03-26 19:10:10.009][D][adv_video.cc:298][dump_cap][t:12112]: camera 352*288@30
+[2018-03-26 19:10:10.010][D][adv_video.cc:298][dump_cap][t:12112]: camera 432*240@30
+[2018-03-26 19:10:10.010][D][adv_video.cc:298][dump_cap][t:12112]: camera 544*288@30
+[2018-03-26 19:10:10.010][D][adv_video.cc:298][dump_cap][t:12112]: camera 640*360@30
+[2018-03-26 19:10:10.010][D][adv_video.cc:298][dump_cap][t:12112]: camera 640*480@30
+[2018-03-26 19:10:10.010][D][adv_video.cc:298][dump_cap][t:12112]: camera 800*480@30
+[2018-03-26 19:10:10.010][D][adv_video.cc:298][dump_cap][t:12112]: camera 1024*768@30
+[2018-03-26 19:10:10.010][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'camera' add child 'Webcam C170':'0x046FED30' of 'camera.adv'.
+[2018-03-26 19:10:10.010][D][xc_device.c:308][xc_device_notify][t:14348]: [DEVICE] 'Webcam C170' state:1
+[2018-03-26 19:10:10.010][I][xc_device_root.c:179][xc_device_add][t:14348]: [DEVICE] device 'Webcam C170' of type 'camera.adv' added.
+[2018-03-26 19:10:10.010][I][xc_device_root.c:39][set_camera_default][t:14348]: [DEVICE] set default camera to 'Webcam C170'
+[2018-03-26 19:10:10.074][I][trae_driver.cc:2677][trae_start][t:12112]: trae_start m_argAudio{nPlayDevId[0] nRecDevId[0]},audioCategory = 0
+[2018-03-26 19:10:10.092][D][trae_driver.cc:1062][SelectDevice][t:12112]: select device playback(1) nDevId(0)
+[2018-03-26 19:10:10.093][I][trae_driver.cc:1066][SelectDevice][t:12112]: trae select speaker [0:0]
+[2018-03-26 19:10:10.093][D][trae_driver.cc:1062][SelectDevice][t:12112]: select device playback(0) nDevId(0)
+[2018-03-26 19:10:10.096][I][trae_driver.cc:1076][SelectDevice][t:12112]: trae select mic [0:0]
+[2018-03-26 19:10:10.214][I][http_connection.c:390][on_channel_read][t:14348]: on http channel read erroce(0) status(200) headlen(57) contentlen(163)
+[2018-03-26 19:10:10.215][D][http_channel_driver.c:185][http_parse_msg][t:14348]: preparse_msg size :163
+[2018-03-26 19:10:10.215][I][http_channel_driver.c:187][http_parse_msg][t:14348]: sso unpack rt(0)
+[2018-03-26 19:10:10.215][I][http_channel_driver.c:223][http_parse_msg][t:14348]: putinfo preparse rt(0)
+[2018-03-26 19:10:10.215][D][http_channel_driver.c:238][http_parse_msg][t:14348]: http parse msg rt(0)
+[2018-03-26 19:10:10.216][I][http_connection.c:415][on_channel_read][t:14348]: http connection response seq(1) remain msgs(0)
+[2018-03-26 19:10:10.216][I][http_channel_driver.c:306][http_response][t:14348]: http response type(21) seq(1) err(0)
+[2018-03-26 19:10:10.216][I][adapter_config.cc:365][parse_rspbody][t:14348]: same config version, do not need parse anymore
+[2018-03-26 19:10:10.230][I][trae_driver.cc:1308][enum_devices][t:12112]: start mic device enum
+[2018-03-26 19:10:10.233][I][trae_driver.cc:1323][enum_devices][t:12112]: mic: [Âó¿Ë·ç (3- Webcam C170)]
+[2018-03-26 19:10:10.234][I][trae_driver.cc:1308][enum_devices][t:12112]: start speaker device enum
+[2018-03-26 19:10:10.235][I][trae_driver.cc:1323][enum_devices][t:12112]: speaker: [ÑïÉùÆ÷ (Realtek High Definition Audio)]
+[2018-03-26 19:10:10.235][I][trae_driver.cc:2786][trae_start_done][t:14348]: trae start done rt(0)
+[2018-03-26 19:10:10.235][I][trae_driver.cc:1421][enum_devs_done][t:14348]: new mic: [Âó¿Ë·ç (3- Webcam C170):{0.0.1.00000000}.{47983834-477e-4870-8afc-91a3c8e1ab74}] index[->0]
+[2018-03-26 19:10:10.235][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'mic' add child 'éº¦å…‹é£Ž (3- Webcam C170)':'0x046FEE10' of 'device.mic.trae'.
+[2018-03-26 19:10:10.235][D][xc_device.c:308][xc_device_notify][t:14348]: [DEVICE] 'Âó¿Ë·ç (3- Webcam C170)' state:1
+[2018-03-26 19:10:10.235][I][xc_device_root.c:179][xc_device_add][t:14348]: [DEVICE] device 'Âó¿Ë·ç (3- Webcam C170)' of type 'device.mic.trae' added.
+[2018-03-26 19:10:10.235][I][xc_device_root.c:99][set_mic_default][t:14348]: [DEVICE] set default mic to 'éº¦å…‹é£Ž (3- Webcam C170)'
+[2018-03-26 19:10:10.235][I][trae_driver.cc:1421][enum_devs_done][t:14348]: new speaker: [ÑïÉùÆ÷ (Realtek High Definition Audio):{0.0.0.00000000}.{1a89c4ca-dc50-4aae-9afa-f93e66c38aac}] index[->0]
+[2018-03-26 19:10:10.236][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'speaker' add child 'æ‰¬å£°å™¨ (Realtek High Definition Audio)':'0x046FF4A0' of 'device.speaker.trae'.
+[2018-03-26 19:10:10.236][D][xc_device.c:308][xc_device_notify][t:14348]: [DEVICE] 'ÑïÉùÆ÷ (Realtek High Definition Audio)' state:1
+[2018-03-26 19:10:10.236][I][xc_device_root.c:179][xc_device_add][t:14348]: [DEVICE] device 'ÑïÉùÆ÷ (Realtek High Definition Audio)' of type 'device.speaker.trae' added.
+[2018-03-26 19:10:10.236][I][xc_device_root.c:129][set_speaker_default][t:14348]: [DEVICE] set default speaker to 'æ‰¬å£°å™¨ (Realtek High Definition Audio)'
+[2018-03-26 19:10:10.557][E][xc_cell.c:325][xc_set_err_msg:xc_cell_lookup][t:14348]: invalid path of stream.stream1:stream1.
+[2018-03-26 19:10:10.559][I][spear_ctrl.cc:1141][pref_set_role][t:14348]: ****** xcast role is 'user'.
+[2018-03-26 19:10:10.559][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'stream' add child 'stream1':'0x046FEE80' of 'stream'.
+[2018-03-26 19:10:10.559][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'stream1' add child 'session':'0x046FEEF0' of 'av_session'.
+[2018-03-26 19:10:10.559][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'session' add child 'conn':'0x046FEF60' of 'av_connector'.
+[2018-03-26 19:10:10.559][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.au_scheme'= 1)
+[2018-03-26 19:10:10.559][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.role-type'= 1)
+[2018-03-26 19:10:10.559][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.scheme'= 4)
+[2018-03-26 19:10:10.560][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.recv-mode'= 0)
+[2018-03-26 19:10:10.560][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.sub-recv-mode'= 0)
+[2018-03-26 19:10:10.560][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.hw-enc'= 1)
+[2018-03-26 19:10:10.560][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.hw-dec'= 1)
+[2018-03-26 19:10:10.560][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.sub-hw-enc'= 1)
+[2018-03-26 19:10:10.560][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.sub-hw-dec'= 1)
+[2018-03-26 19:10:10.560][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'conn' add child 'udt-channel1':'0x046FEFD0' of 'udt-channel'.
+[2018-03-26 19:10:10.560][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'session' add child 'qos':'0x046FF0B0' of 'av.sess.qos'.
+[2018-03-26 19:10:10.560][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'session' add child 'users':'0x046FF200' of 'av.track.users'.
+[2018-03-26 19:10:10.560][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.auto-recv'= 1)
+[2018-03-26 19:10:10.560][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'session' add child 'reporter':'0x046FF120' of 'av.sess.reporter'.
+[2018-03-26 19:10:10.561][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'stream1' add child 'controller':'0x046098A0' of 'stream.ctrl.video'.
+[2018-03-26 19:10:10.561][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'stream1' add child 'display':'0x04609EC0' of 'display.raw'.
+[2018-03-26 19:10:10.562][I][lan_relay_driver.c:174][get_host_addr][t:14348]: get host addr:ip(10.10.107.39) port(9057) gateway(10.10.107.1) name({716F0C8F-9674-48D2-B2B1-05CA3A04CD29}) desc(Realtek PCIe GBE Family Controller) mac(3464A9159DBC)
+
+[2018-03-26 19:10:10.562][I][xc_connector.c:431][xc_connector_cycle_start][t:14348]: [CONNECTOR] conn cycle start.
+[2018-03-26 19:10:10.562][I][xc_connector.c:287][xc_connector_loop][t:14348]: [CONNECTOR LOOP] rt(0), next state(0).
+[2018-03-26 19:10:10.562][I][xc_connector.c:93][conn_init][t:14348]: [CONNECTOR] conn connector init.
+[2018-03-26 19:10:10.562][I][av_connector.cc:203][app_query][t:14348]: [AV_CONNECTOR] 'conn' query room start.
+[2018-03-26 19:10:10.563][D][cs0x01_0x02.c:125][req_serialize][t:14348]: req->auth_bits(4294967295)auth_bits(18446744069414584320)
+[2018-03-26 19:10:10.563][I][http_channel_driver.c:148][http_channel_pack_msg][t:14348]: pack msg rt(0)
+[2018-03-26 19:10:10.563][I][av_connector.cc:253][app_query][t:14348]: xcast(RDM_v1.0.0_b1.0.0.23_4029) appid(1400036169), account(67890), relation_id(100)
+[2018-03-26 19:10:10.563][D][xcast.c:466][xcast_start_stream][t:14348]: 
+
+*****---+[cell] 'stream' of 'default' 0x005362A8--- 
+*****     +-vprop:'id'
+*****----+[cell] 'stream1' of 'stream' 0x046FEE80--- 
+*****-     +-prop:'state'
+*****-     +-prop:'track'
+*****-     +-vprop:'id'
+*****-     +-vprop:'track-conf'
+*****-----+[cell] 'session' of 'av_session' 0x046FEEF0--- 
+*****--     +-prop:'udt'
+*****--     +-vprop:'id'
+*****--     +-vprop:'room_info'
+*****--     +-sig 's_in' 0x05361BC0
+*****--     +-sig 's_udt' 0x05361C08
+*****--     +--handle:0x0FD5E3A0 data:0x046FEEF0
+*****--     +-sig 's_video_fastctrl' 0x05361C98
+*****--     +--handle:0x0FD1CA04 data:0x046FEEF0
+*****------+[cell] 'conn' of 'av_connector' 0x046FEF60--- 
+*****---     +-vprop:'id'
+*****---     +-sig 's_tips' 0x05361740
+*****---     +--handle:0x0FD11014 data:0x053FAB10
+*****---     +-sig 's_out' 0x05361B30
+*****---     +-sig 's_conn' 0x05361B78
+*****---     +--handle:0x04613388 data:0x101C6C94
+*****---     +--handle:0x0054B1E8 data:0x005991E8
+*****-------+[cell] 'udt-channel1' of 'udt-channel' 0x046FEFD0--- 
+*****----     +-vprop:'id'
+*****----     +-sig 's_conn' 0x053617D0
+*****----     +-sig 's_read' 0x05361818
+*****----     +-sig 's_update' 0x05361860
+*****----     +--handle:0x0FDDD9E0 data:0x0542A4E8
+*****----     +-sig 's_set0' 0x05361980
+*****----     +--handle:0x1003A1B0 data:0x0542A4E8
+*****----     +-sig 's_set1' 0x053619C8
+*****----     +--handle:0x1003AD00 data:0x0542A4E8
+*****----     +-sig 's_setrtt' 0x05361A10
+*****----     +--handle:0x1003AD50 data:0x0542A4E8
+*****----     +-sig 's_calcLoss' 0x05361A58
+*****----     +--handle:0x1003A8D0 data:0x0542A4E8
+*****----     +-sig 's_skip_udt' 0x05361AA0
+*****----     +--handle:0x1003AE70 data:0x0542A4E8
+*****----     +-sig 's_skip_mic' 0x05361AE8
+*****----     +--handle:0x1003AEE0 data:0x0542A4E8
+*****------+[cell] 'qos' of 'av.sess.qos' 0x046FF0B0--- 
+*****---     +-vprop:'video_qos'
+*****---     +-vprop:'id'
+*****---     +-vprop:'sub_video_qos'
+*****---     +-vprop:'audio_qos'
+*****---   
+[2018-03-26 19:10:10.564][D][http_connection.c:339][request][t:14348]: send http request:len(444) str(
+POST http://openmsf.3g.qq.com:15000 HTTP/1.1
+Host: openmsf.3g.qq.com:15000
+Content-Length: 207
+Accept: */*
+User-Agent: xcast/0 CFNetwork/868.2 Darwin/16.7.0
+Content-Type: application/x-www-form-urlencoded
+Connection: keep-alive
+
+)
+[2018-03-26 19:10:10.564][I][http_channel_driver.c:588][driver_cycle_once][t:14348]: http channel send rt(0)
+[2018-03-26 19:10:10.799][I][http_connection.c:390][on_channel_read][t:14348]: on http channel read erroce(0) status(200) headlen(57) contentlen(251)
+[2018-03-26 19:10:10.799][D][http_channel_driver.c:185][http_parse_msg][t:14348]: preparse_msg size :251
+[2018-03-26 19:10:10.799][I][http_channel_driver.c:187][http_parse_msg][t:14348]: sso unpack rt(0)
+[2018-03-26 19:10:10.800][I][http_channel_driver.c:200][http_parse_msg][t:14348]: app cs preparse rt(0)
+[2018-03-26 19:10:10.800][D][http_channel_driver.c:238][http_parse_msg][t:14348]: http parse msg rt(0)
+[2018-03-26 19:10:10.800][I][http_connection.c:415][on_channel_read][t:14348]: http connection response seq(2) remain msgs(0)
+[2018-03-26 19:10:10.800][I][http_channel_driver.c:306][http_response][t:14348]: http response type(7) seq(2) err(0)
+[2018-03-26 19:10:10.800][I][av_connector.cc:299][query_room_done][t:14348]: [AV_CONNECTOR] 'conn' query room done[0].
+[2018-03-26 19:10:10.800][I][xc_connector.c:287][xc_connector_loop][t:14348]: [CONNECTOR LOOP] rt(0), next state(1).
+[2018-03-26 19:10:10.800][I][xc_connector.c:108][conn_connect][t:14348]: [CONNECTOR] conn start connecting[0]...
+[2018-03-26 19:10:10.800][I][av_connector.cc:421][channel_prepare][t:14348]: [CONNECTOR] 'conn' use interface svr[183.36.112.54:8000:udp].
+[2018-03-26 19:10:10.800][I][xc_connector.c:139][conn_connect][t:14348]: [CONNECTOR] conn start channel udt-channel1.
+[2018-03-26 19:10:10.800][I][uv_connection.c:1094][conn_new][t:14348]: ====>[CONN-NEW] 'uv_conn_3' 0x04609D70
+[2018-03-26 19:10:10.801][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'libuv' add child 'uv_conn_3':'0x04609D70' of 'conn.libuv'.
+[2018-03-26 19:10:10.801][I][xc_connection.c:185][xc_conn_cycle_once][t:14348]: 'uv_conn_3' connected
+[2018-03-26 19:10:10.801][I][xc_connector.c:77][channel_state][t:14348]: [CONNECTOR] conn channel connected.
+[2018-03-26 19:10:10.801][I][xc_connector.c:287][xc_connector_loop][t:14348]: [CONNECTOR LOOP] rt(0), next state(2).
+[2018-03-26 19:10:10.801][I][xc_connector.c:151][conn_handshake][t:14348]: [CONNECTOR] conn start handshaking[0]...
+[2018-03-26 19:10:10.801][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.auto-recv'= 1)
+[2018-03-26 19:10:10.801][I][av_connector.cc:583][create_room][t:14348]: [AV_CONNECTOR] 'conn' create room start.
+[2018-03-26 19:10:10.801][E][xc_cast.c:202][xc_set_err_msg:xc_get_property][t:14348]: no property supported for device.camera.caps
+[2018-03-26 19:10:10.801][W][session_qos.cc:618][client::multi::qos::SessionQos::FillCameraLimit][t:14348]: no camera exist!!!
+[2018-03-26 19:10:10.802][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.aec'= 1)
+[2018-03-26 19:10:10.802][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.agc'= 1)
+[2018-03-26 19:10:10.802][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.ans'= 1)
+[2018-03-26 19:10:10.802][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.frame'= 20)
+[2018-03-26 19:10:10.802][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.silence_detect'= 1)
+[2018-03-26 19:10:10.802][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.anti_dropout'= 1)
+[2018-03-26 19:10:10.802][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.sample_rate'= 16000)
+[2018-03-26 19:10:10.802][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.channel'= 1)
+[2018-03-26 19:10:10.803][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.codec_prof'= 4129)
+[2018-03-26 19:10:10.803][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.sample_rate'= 16000)
+[2018-03-26 19:10:10.803][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.kbps'= 30000)
+[2018-03-26 19:10:10.803][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.min_antishake'= 80)
+[2018-03-26 19:10:10.803][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.min_antishake'= 80)
+[2018-03-26 19:10:10.803][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.max_antishake_max'= 1000)
+[2018-03-26 19:10:10.803][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.max_antishake_max'= 1000)
+[2018-03-26 19:10:10.803][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.max_antishake_min'= 400)
+[2018-03-26 19:10:10.803][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.audio.max_antishake_min'= 400)
+[2018-03-26 19:10:10.803][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.qclear'= -1)
+[2018-03-26 19:10:10.804][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.anti_dropout'= 1)
+[2018-03-26 19:10:10.804][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.fps'= 15)
+[2018-03-26 19:10:10.804][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.maxqp'= -1)
+[2018-03-26 19:10:10.804][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.minqp'= -1)
+[2018-03-26 19:10:10.804][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.maxkbps'= 350)
+[2018-03-26 19:10:10.804][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.minkbps'= 300)
+[2018-03-26 19:10:10.804][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.fqueue_time'= -1)
+[2018-03-26 19:10:10.804][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.small_video_upload'= -1)
+[2018-03-26 19:10:10.804][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.live_adapt'= -1)
+[2018-03-26 19:10:10.804][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.format_fix_width'= 864)
+[2018-03-26 19:10:10.804][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.format_fix_height'= 480)
+[2018-03-26 19:10:10.805][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.format_max_width'= -1)
+[2018-03-26 19:10:10.805][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.video.format_max_height'= -1)
+[2018-03-26 19:10:10.805][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.role-type'= 1)
+[2018-03-26 19:10:10.805][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.net.rc_anti_dropout'= 1)
+[2018-03-26 19:10:10.805][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.net.rc_max_delay'= -1)
+[2018-03-26 19:10:10.805][D][spear_ctrl.cc:256][av_preference_int32][t:14348]: ****** pref('preference.net.rc_init_delay'= -1)
+[2018-03-26 19:10:10.970][I][av_connector.cc:613][create_room_done][t:14348]: [CONNECTOR] 'conn' create room done[0].
+[2018-03-26 19:10:10.970][I][track_users.cc:507][on_auto_recv][t:14348]: =====>[TRACK-USER] set_auto_tracks list count:1
+[2018-03-26 19:10:10.970][I][track_users.cc:521][on_auto_recv][t:14348]: =====>[TRACK-USER] set_auto_tracks info[0] uin[12345] video[1] sub_video[0] flag[1]
+[2018-03-26 19:10:10.971][I][track_users.cc:299][update_merge_result][t:14348]: =====>[TRACK-USER] user video add[12345]
+[2018-03-26 19:10:10.971][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'stream1' add child 'video-in-12345':'0x05455C88' of 'track'.
+[2018-03-26 19:10:10.971][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'video-in-12345' add child 'codec':'0x05455CF8' of 'codec.tve'.
+[2018-03-26 19:10:10.971][E][tve_driver.cc:78][LVE][t:14348]: [CVideoEngine::SetVidDecHwFlag][597]SetVidDecHwFlag 1
+[2018-03-26 19:10:10.971][I][xc_track.c:547][set_codec][t:14348]: [TRACK] 'video-in-12345' add decode 'codec' of type 'codec.tve'.
+[2018-03-26 19:10:10.971][I][stream_tracks.cc:427][track_add][t:14348]: [STREAM] add in track[stream1.video-in-12345.12345].
+[2018-03-26 19:10:10.971][I][stream_tracks.cc:725][av_track_start][t:14348]: [STREAM] start track[stream1.video-in-12345.12345].
+[2018-03-26 19:10:10.971][E][xc_track.c:772][xc_set_err_msg:xc_track_cycle_start][t:14348]: [TRACK] 'video-in-12345:s_in' link to 'session:s_out'!
+[2018-03-26 19:10:10.971][E][xc_track.c:784][xc_set_err_msg:xc_track_cycle_start][t:14348]: [TRACK] 'video-in-12345' start 'display'!
+[2018-03-26 19:10:10.972][E][xc_track.c:792][xc_set_err_msg:xc_track_cycle_start][t:14348]: [TRACK] 'video-in-12345' started!
+[2018-03-26 19:10:10.972][D][tve_video_codec.cc:669][video_codec_cycle_start][t:14348]: video_codec_cycle_start
+[2018-03-26 19:10:10.972][I][xc_connector.c:287][xc_connector_loop][t:14348]: [CONNECTOR LOOP] rt(0), next state(3).
+[2018-03-26 19:10:10.972][I][xc_connector.c:182][conn_established][t:14348]: [CONNECTOR] conn connect done[0].
+[2018-03-26 19:10:10.972][I][av_session.cc:158][concector_done][t:14348]: [SESSION] session connected.
+[2018-03-26 19:10:10.972][I][stream_tracks.cc:193][av_tracks_setup][t:14348]: [STREAM] add out track[stream1.audio_out].
+[2018-03-26 19:10:10.972][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'stream1' add child 'audio-out':'0x054A8818' of 'track'.
+[2018-03-26 19:10:10.972][I][xc_track.c:165][on_capture_change][t:14348]: [TRACK] 'audio-out' apply capture 'éº¦å…‹é£Ž (3- Webcam C170)'.
+[2018-03-26 19:10:10.973][I][stream_tracks.cc:218][av_tracks_setup][t:14348]: [STREAM] add out track[stream1.audio_out].
+[2018-03-26 19:10:10.973][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'stream1' add child 'audio-in':'0x054A88F8' of 'track'.
+[2018-03-26 19:10:10.973][E][xc_track.c:772][xc_set_err_msg:xc_track_cycle_start][t:14348]: [TRACK] 'audio-in:s_in' link to 'session:s_out'!
+[2018-03-26 19:10:10.973][E][xc_track.c:784][xc_set_err_msg:xc_track_cycle_start][t:14348]: [TRACK] 'audio-in' start 'æ‰¬å£°å™¨ (Realtek High Definition Audio)'!
+[2018-03-26 19:10:10.973][I][xc_device.c:58][on_dev_start][t:14348]: [DEVICE] 'ÑïÉùÆ÷ (Realtek High Definition Audio)' start 1
+[2018-03-26 19:10:10.973][E][xc_track.c:792][xc_set_err_msg:xc_track_cycle_start][t:14348]: [TRACK] 'audio-in' started!
+[2018-03-26 19:10:10.973][D][trae_driver.cc:1062][SelectDevice][t:12112]: select device playback(1) nDevId(4294967295)
+[2018-03-26 19:10:10.973][I][stream_tracks.cc:234][av_tracks_setup][t:14348]: [STREAM] add out track[stream1.video_out].
+[2018-03-26 19:10:10.973][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'stream1' add child 'video-out':'0x054A89D8' of 'track'.
+[2018-03-26 19:10:10.973][I][xc_track.c:165][on_capture_change][t:14348]: [TRACK] 'video-out' apply capture 'Webcam C170'.
+[2018-03-26 19:10:10.974][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'video-out' add child 'codec':'0x054A8AB8' of 'codec.tve'.
+[2018-03-26 19:10:10.974][E][tve_driver.cc:78][LVE][t:14348]: [CVideoEngine::SetVidDecHwFlag][597]SetVidDecHwFlag 1
+[2018-03-26 19:10:10.974][I][xc_track.c:547][set_codec][t:14348]: [TRACK] 'video-out' add encode 'codec' of type 'codec.tve'.
+[2018-03-26 19:10:10.974][I][stream_tracks.cc:265][av_tracks_setup][t:14348]: [STREAM] add out track[stream1.sub_video_out].
+[2018-03-26 19:10:10.974][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'stream1' add child 'sub-video-out':'0x054A8B28' of 'track'.
+[2018-03-26 19:10:10.974][I][xc_track.c:235][on_capture_change][t:14348]: [TRACK] 'sub-video-out' apply capture 'screen-capture'.
+[2018-03-26 19:10:10.974][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'sub-video-out' add child 'codec':'0x054A8C78' of 'codec.tve'.
+[2018-03-26 19:10:10.974][E][tve_driver.cc:78][LVE][t:14348]: [CVideoEngine::SetVidDecHwFlag][597]SetVidDecHwFlag 1
+[2018-03-26 19:10:10.975][I][xc_track.c:547][set_codec][t:14348]: [TRACK] 'sub-video-out' add encode 'codec' of type 'codec.tve'.
+[2018-03-26 19:10:10.975][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'sub-video-out' add child 'sub-video-out-preprocor':'0x054A8CE8' of 'screen.preprocor'.
+[2018-03-26 19:10:10.975][I][track_users.cc:651][req_view_proc][t:14348]: =====>[TRACK-USER] req_view_proc seq:25920 0x00000000:0
+[2018-03-26 19:10:10.976][I][trae_driver.cc:1066][SelectDevice][t:12112]: trae select speaker [4294967295:0]
+[2018-03-26 19:10:10.976][D][trae_driver.cc:1062][SelectDevice][t:12112]: select device playback(1) nDevId(0)
+[2018-03-26 19:10:10.977][I][trae_driver.cc:1066][SelectDevice][t:12112]: trae select speaker [0:0]
+[2018-03-26 19:10:10.977][E][trae_driver.cc:1587][start_dev_internal][t:12112]: ===>[TRAE-DEV] start speaker ÑïÉùÆ÷ (Realtek High Definition Audio):0
+[2018-03-26 19:10:10.979][I][xc_device.c:140][on_dev_preview][t:14348]: [DEVICE] 'Webcam C170' preview 0
+[2018-03-26 19:10:10.979][I][xc_device.c:58][on_dev_start][t:14348]: [DEVICE] 'Webcam C170' start 0
+[2018-03-26 19:10:10.979][I][xc_track.c:165][on_capture_change][t:14348]: [TRACK] 'video-out' apply capture 'Webcam C170'.
+[2018-03-26 19:10:10.979][I][av_session.cc:631][av_session_video_out_req][t:14348]: [SESSION] session change video state[0].
+[2018-03-26 19:10:10.979][I][av_session.cc:547][change_state][t:14348]: [CONNECTOR] 'conn' change av state start. state[1]
+[2018-03-26 19:10:10.979][I][stream_tracks.cc:87][start_video_out_track][t:14348]: [STREAM] stop track[stream1].
+[2018-03-26 19:10:10.979][I][xc_track.c:165][on_capture_change][t:14348]: [TRACK] 'audio-out' apply capture 'éº¦å…‹é£Ž (3- Webcam C170)'.
+[2018-03-26 19:10:10.979][I][stream_tracks.cc:43][start_audio_track][t:14348]: [STREAM] stop track[stream1.audio-out].
+[2018-03-26 19:10:10.983][D][xc_device.c:308][xc_device_notify][t:14348]: [DEVICE] 'ÑïÉùÆ÷ (Realtek High Definition Audio)' state:2
+[2018-03-26 19:10:11.032][I][av_session.cc:240][cs0x25_0x26_rsp_handler][t:14348]: [SESSION] session change av state done[0].
+[2018-03-26 19:10:11.032][I][stream_tracks.cc:730][av_track_start][t:14348]: [STREAM] stop track[stream1.video-out.0].
+[2018-03-26 19:10:11.032][I][av_session.cc:294][sc0x64_0x65_req_handler][t:14348]: [SESSION] sc0x64_0x65_req_handler. subcmd[12]
+[2018-03-26 19:10:11.032][I][av_session.cc:294][sc0x64_0x65_req_handler][t:14348]: [SESSION] sc0x64_0x65_req_handler. subcmd[6]
+[2018-03-26 19:10:11.033][D][tve_video_codec.cc:347][set_decode_param][t:14348]: [TVE-VIDEO2]type:0 score:0,br:0,fps:0,w:0
+[2018-03-26 19:10:11.033][I][session_reporter.cc:918][client::StatisticMgrMulti::DoReportInternal][t:14348]: Send: 0kbps @ 0pkt @ 0.00% 0.00
+Recv: 0kbps @ 0pkt @ 0.00% 0.00
+CPU:524.28% RTT:0
+TotalMem:16306MB FreeMem:9676MB ProcUsed:0.00MB
+Audio:
+Codec:0 SampleRate:0 bitR:0 packMS:0 NM:0+0 MTU:0 INFEC:0 JC:0 [0,0] DS:0
+UDTQos: mode[3452816845] sendq[3452816845] recvq[3452816845]
+ 
+ connector ip:183.36.112.54 port:8000 udp 
+ 
+ xcast version:RDM_v1.0.0_b1.0.0.23_4029 
+host: 10.10.107.39:9057 OK
+peer: 0.0.0.0:0 - 0us
+lan-relay: send: 0kbps, recv: 0kbps, nsend: 0, nrecv: 0
+
+[2018-03-26 19:10:11.046][E][udt_channel.cc:1061][set_udt_params][t:14348]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-26 19:10:11.046][E][udt_channel.cc:1070][set_udt_params][t:14348]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-26 19:10:11.046][E][udt_channel.cc:1081][set_udt_params][t:14348]: =====>[UDT-STARTED-MAIN]
+[2018-03-26 19:10:11.083][E][udt_channel.cc:453][udt_thread_proc][t:9676]: =====>[UDT-STARTED-WORKER]
+[2018-03-26 19:10:11.083][D][video_ctrl.cc:50][set_sub_video_qos][t:14348]: start set_sub_video_qos.... udt: 1 lan 0
+[2018-03-26 19:10:11.083][W][session_qos.cc:1317][client::multi::qos::SessionQos::apply_video_qos_internal][t:14348]: track video-out is not running.
+[2018-03-26 19:10:11.085][D][track_users.cc:850][track_dispatch_audio][t:9676]: =====>[AUDIO-IN] 12345 notify!
+[2018-03-26 19:10:11.086][E][udt_channel.cc:1061][set_udt_params][t:14348]: qos_udt send: cEnable 1 sendq 800 min_resend 75 max_resend 225 wRTTDelta 10 max_resend_cnt 0 timer_resend_cnt 5 bCongestion 0 CwndLossRate 6000 CwndLossRateAfterUDT 60 CwndDownFactor 50 u64CmdUpTable 0x101040a14 CmdMin 5 CmdMax 20 RTOFactor 4 CongestinLen 800 Mode 13
+[2018-03-26 19:10:11.087][E][udt_channel.cc:1070][set_udt_params][t:14348]: qos_udt recv: cEnable 1 recvq 300 reget1 200 reget2 200 get_timeout 2000 TimelineDelta 10 OutDelay 100 MinDelay 10 PushGopN 2 max_resend_cnt 0 scan_time 50 time_delta 2 minLoss_resend 25 resend_ctrl 0x1 change_range 0 change_val 1 ext_big 500 ext_small 10 jitt_factor 10 exWaitFactor 0x12c0000 step_factor 0xa08 reset_tl_val 0 NormalDelay 0 rMode 13
+[2018-03-26 19:10:11.087][D][video_ctrl.cc:50][set_sub_video_qos][t:14348]: start set_sub_video_qos.... udt: 1 lan 0
+[2018-03-26 19:10:11.087][D][xc_cell.c:535][xc_cell_add_child][t:14348]:  'stream1' add child 'audio-in-12345':'0x05455C18' of 'track'.
+[2018-03-26 19:10:11.087][D][track_users.cc:1116][track_users_cycle_once][t:14348]: =====>[AUDIO-IN] 12345 track added!
+[2018-03-26 19:10:11.087][E][xc_track.c:792][xc_set_err_msg:xc_track_cycle_start][t:14348]: [TRACK] 'audio-in-12345' started!
+[2018-03-26 19:10:11.087][D][track_users.cc:1126][track_users_cycle_once][t:14348]: =====>[AUDIO-IN] 12345 track timer set!
+[2018-03-26 19:10:11.195][E][tve_driver.cc:78][LVE][t:9676]: [CVideoEngine::ReceiveNetData][634]Create video session 1
+[2018-03-26 19:10:11.267][E][tve_driver.cc:78][LVE][t:9676]: [CVideoJitterBuf::WriteData][1948]Recv first I Frame nSubType: 2 
+[2018-03-26 19:10:11.324][E][tve_driver.cc:78][LVE][t:5668]: [CVideoJitterBuf::QueryFrameForDec][2175]CanReturnFrame 1, UDT 0 HeadTimeStamp 15803776 Timeline 2166298048 TimelineDelta 93 GOP 142 FrameType 7 FrameIndex 3 FrameCount 3 Diff 18814535
+[2018-03-26 19:10:11.324][E][tve_driver.cc:78][LVE][t:5668]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34618311][2166298048][15803776], gidx 142 fidx  3 ft 7 cnt 0
+[2018-03-26 19:10:11.324][E][tve_driver.cc:78][LVE][t:5668]: [CVideoDecoder::LoadDecLib][196]load intel decoder suc!
+[2018-03-26 19:10:11.388][E][tve_driver.cc:78][LVE][t:5668]: [CVideoDecoder::Init][428]Init.Sucess[1] CodecType=5 HwDec=1 
+[2018-03-26 19:10:11.388][E][tve_driver.cc:78][LVE][t:5668]: [CVideoDecoder::RequestKeyFrame][1362]Require I/GF GOPIdx[142] GopIdxLastNack[4294967295]
+[2018-03-26 19:10:11.388][E][tve_driver.cc:78][LVE][t:5668]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34618375][2166298048][15803838], gidx 142 fidx  4 ft 0 cnt 1
+[2018-03-26 19:10:11.396][E][tve_driver.cc:78][LVE][t:5668]: [CVideoDecoder::CodecDoneCallback][1204]nFrmType[0], GopIdx[142], Idx[0] Width[864] Height[480] decode[8ms]
+[2018-03-26 19:10:11.397][E][tve_driver.cc:277][Renderer::Render][t:5668]: Render in 10 sec frame 1 width 864 height 480
+[2018-03-26 19:10:11.397][E][tve_driver.cc:78][LVE][t:5668]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    1 gIdx 142 fIdx  4 ftype 0, reffrmidx  0 last-: god  0 ifrm  0 gffrm  0 spfrm  0.
+[2018-03-26 19:10:11.397][I][av_msg_format.cc:717][int_pb_preparse][t:11076]: [MSG] unsupported pb msg[1794].
+[2018-03-26 19:10:11.468][E][tve_driver.cc:78][LVE][t:5668]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34618455][2166298063][15803902], gidx 142 fidx  5 ft 7 cnt 2
+[2018-03-26 19:10:11.474][E][tve_driver.cc:78][LVE][t:5668]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    2 gIdx 142 fIdx  5 ftype 7, reffrmidx  4 last-: god 142 ifrm  4 gffrm  0 spfrm  0.
+[2018-03-26 19:10:11.549][E][tve_driver.cc:78][LVE][t:5668]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34618535][2166298055][15803983], gidx 142 fidx  6 ft 7 cnt 3
+[2018-03-26 19:10:11.553][E][tve_driver.cc:78][LVE][t:5668]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    3 gIdx 142 fIdx  6 ftype 7, reffrmidx  4 last-: god 142 ifrm  4 gffrm  0 spfrm  0.
+[2018-03-26 19:10:11.630][E][tve_driver.cc:78][LVE][t:5668]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34618617][2166298055][15804047], gidx 142 fidx  7 ft 7 cnt 4
+[2018-03-26 19:10:11.634][E][tve_driver.cc:78][LVE][t:5668]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    4 gIdx 142 fIdx  7 ftype 7, reffrmidx  4 last-: god 142 ifrm  4 gffrm  0 spfrm  0.
+[2018-03-26 19:10:11.685][E][tve_driver.cc:78][LVE][t:5668]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34618672][2166298073][15804128], gidx 142 fidx  8 ft 7 cnt 5
+[2018-03-26 19:10:11.689][E][tve_driver.cc:78][LVE][t:5668]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    5 gIdx 142 fIdx  8 ftype 7, reffrmidx  4 last-: god 142 ifrm  4 gffrm  0 spfrm  0.
+[2018-03-26 19:10:11.771][E][tve_driver.cc:78][LVE][t:5668]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34618758][2166298058][15804192], gidx 142 fidx  9 ft 7 cnt 6
+[2018-03-26 19:10:11.775][E][tve_driver.cc:78][LVE][t:5668]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    6 gIdx 142 fIdx  9 ftype 7, reffrmidx  4 last-: god 142 ifrm  4 gffrm  0 spfrm  0.
+[2018-03-26 19:10:11.833][E][tve_driver.cc:78][LVE][t:5668]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34618820][2166298070][15804255], gidx 142 fidx 10 ft 7 cnt 7
+[2018-03-26 19:10:11.837][E][tve_driver.cc:78][LVE][t:5668]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    7 gIdx 142 fIdx 10 ftype 7, reffrmidx  4 last-: god 142 ifrm  4 gffrm  0 spfrm  0.
+[2018-03-26 19:10:11.902][E][tve_driver.cc:78][LVE][t:5668]: [CVideoJitterBuf::QueryFrameForDec][2181]getframe uTimeStamp[34618889][2166298055][15804336], gidx 142 fidx 11 ft 7 cnt 8
+[2018-03-26 19:10:11.906][E][tve_driver.cc:78][LVE][t:5668]: [CVideoDecoder::DecodeFrame][895]decode frame[864 x 480]: chn 1 cnt    8 gIdx 142 fIdx 11 ftype 7, reffrmidx  4 last-: god 142 ifrm  4 gffrm  0 spfrm  0.
+[2018-03-26 19:10:11.973][E][tve_driver.cc:78][LVE][t:5668]: [CVideoJitterBuf::Query

@@ -1005,7 +1005,12 @@ int XCastHelper::switchCamera(bool preview, bool enableVideoOut, bool setDefault
 
 void XCastHelper::requestView(XCastRequestViewItem item, XCHReqViewListCallBack callback)
 {
-	remoteView(item, true, callback);
+	remoteView(item, true, callback, true);
+}
+
+void XCastHelper::requestAudio(XCastRequestViewItem item, XCHReqViewListCallBack callback)
+{
+	remoteView(item, true, callback, false);
 }
 
 
@@ -1681,7 +1686,7 @@ XCastRequestViewItem XCastHelper::getFromTrackID(std::string track)
 	}
 	return item;
 }
-void XCastHelper::remoteViewWithTinyid(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback)
+void XCastHelper::remoteViewWithTinyid(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback, bool isrequestVideo)
 {
 	if (!item.isVaild())
 	{
@@ -1697,20 +1702,28 @@ void XCastHelper::remoteViewWithTinyid(XCastRequestViewItem item, bool enable, X
 	params["enable"] = enable;
 
 	std::string trackid = "";
-	switch (item.video_src)
+	if (isrequestVideo)
 	{
-	case XCastMediaSource_Camera:
-		trackid = kTRACK_CAMERA_IN;
-		break;
-	case XCastMediaSource_Screen_Capture:
-		trackid = kTRACK_SCREEN_CAPTURE_IN;
-		break;
-	case XCastMediaSource_Media_Player:
-		trackid = kTRACK_MEDIA_IN;
-		break;
-	default:
-		break;
+		switch (item.video_src)
+		{
+		case XCastMediaSource_Camera:
+			trackid = kTRACK_CAMERA_IN;
+			break;
+		case XCastMediaSource_Screen_Capture:
+			trackid = kTRACK_SCREEN_CAPTURE_IN;
+			break;
+		case XCastMediaSource_Media_Player:
+			trackid = kTRACK_MEDIA_IN;
+			break;
+		default:
+			break;
+		}
 	}
+	else
+	{
+		trackid = kTRACK_AUDIO_IN;
+	}
+	
 
 	if (trackid.length() == 0)
 	{
@@ -1733,15 +1746,33 @@ void XCastHelper::remoteViewWithTinyid(XCastRequestViewItem item, bool enable, X
 	}
 
 }
-void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback)
+void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewListCallBack callback, bool isrequestVideo)
 {
 	if (isSupportIMAccount() && callback)
 	{
+		if (item.video_src == XCastMediaSource_Unknown || item.identifer.length() == 0)
+		{
+			if (callback)
+			{
+				callback(item, 1004, "item is invaild");
+			}
+			return;
+		}
+
+		if (item.identifer == m_startup_param->identifier)
+		{
+			if (callback)
+			{
+				callback(item, 1004, "can't request self track");
+			}
+			return;
+		}
+
 		getTinyIDWithUserID(item.identifer, [&](uint64_t uin, int code, std::string msg) {
 			if (code == 0 && uin != 0)
 			{
 				item.tinyid = uin;
-				remoteViewWithTinyid(item, enable, callback);
+				remoteViewWithTinyid(item, enable, callback, isrequestVideo);
 			}
 			else
 			{
@@ -1755,7 +1786,25 @@ void XCastHelper::remoteView(XCastRequestViewItem item, bool enable, XCHReqViewL
 	}
 	else
 	{
-		remoteViewWithTinyid(item, enable, callback);
+
+		if (!item.isVaild())
+		{
+			if (callback)
+			{
+				callback(item, 1004, "item is invaild");
+			}
+			return;
+		}
+
+		if (item.tinyid == m_startup_param->tinyid)
+		{
+			if (callback)
+			{
+				callback(item, 1004, "can't request self track");
+			}
+			return;
+		}
+		remoteViewWithTinyid(item, enable, callback, isrequestVideo);
 	}
 
 }

@@ -38,6 +38,7 @@ public:
 
 	virtual void onEndpointUpdateInfo(XCastEndpointEvent event, XCastEndpoint infos);
 	virtual void onEndpointCaptureUpdate(XCastEndpointEvent event, XCastEndpoint infos);
+	virtual void onEndpointRemoved(XCastEndpointEvent event, XCastEndpoint infos);
 	virtual bool needRoomCallbackLocalVideo();
 	virtual void onLocalVideoPreview(const XCastVideoFrame *frame);
 
