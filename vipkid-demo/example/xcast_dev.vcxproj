@@ -52,7 +52,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\GitHub\XCastDemo\vipkid-demo\example\.\..;E:\GitHub\XCastDemo\vipkid-demo\example\.\..\include;E:\GitHub\XCastDemo\vipkid-demo\example\.\..\thirdpart\jansson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\imsdk\include;E:\GitHub\XCastDemo\vipkid-demo\example\.\..;E:\GitHub\XCastDemo\vipkid-demo\example\.\..\include;E:\GitHub\XCastDemo\vipkid-demo\example\.\..\thirdpart\jansson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <CompileAs>CompileAsCpp</CompileAs>
@@ -82,7 +82,7 @@
     </Midl>
     <Link>
       <AdditionalDependencies>..\libs\xcast.lib;jansson.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;Msimg32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:/GitHub/XCastDemo/vipkid-demo/example/../thirdpart;E:/GitHub/XCastDemo/vipkid-demo/example/../thirdpart/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\GitHub\XCastDemo\vipkid-demo\imsdk\libs\$(Configuration);E:/GitHub/XCastDemo/vipkid-demo/example/../thirdpart;E:/GitHub/XCastDemo/vipkid-demo/example/../thirdpart/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86 /subsystem:windows</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -97,7 +97,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>E:\GitHub\XCastDemo\vipkid-demo\example\.\..;E:\GitHub\XCastDemo\vipkid-demo\example\.\..\include;E:\GitHub\XCastDemo\vipkid-demo\example\.\..\thirdpart\jansson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\imsdk\include;E:\GitHub\XCastDemo\vipkid-demo\example\.\..;E:\GitHub\XCastDemo\vipkid-demo\example\.\..\include;E:\GitHub\XCastDemo\vipkid-demo\example\.\..\thirdpart\jansson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Release/</AssemblerListingLocation>
       <CompileAs>CompileAsCpp</CompileAs>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -125,7 +125,7 @@
     </Midl>
     <Link>
       <AdditionalDependencies>..\libs\xcast.lib;jansson.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;Msimg32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:/GitHub/XCastDemo/vipkid-demo/example/../thirdpart;E:/GitHub/XCastDemo/vipkid-demo/example/../thirdpart/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\GitHub\XCastDemo\vipkid-demo\imsdk\libs\$(Configuration);E:/GitHub/XCastDemo/vipkid-demo/example/../thirdpart;E:/GitHub/XCastDemo/vipkid-demo/example/../thirdpart/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:X86 /subsystem:windows</AdditionalOptions>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <GenerateDebugInformation>true</GenerateDebugInformation>

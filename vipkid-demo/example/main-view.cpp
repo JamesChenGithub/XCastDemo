@@ -17,15 +17,21 @@
 
 #include <vector>
 #include <algorithm>
+#include <map>
 #pragma comment(lib, "comctl32.lib")
 #pragma comment(lib, "winmm.lib")
 
+#include <tim_c.h>
+#pragma comment(lib, "libtim.lib")
 
 #define MAX_LOADSTRING 100
 
 int32_t    appid = 0;
 uint64_t   account = 0;
 int32_t    relation_id = 0;
+
+std::string identifier;
+std::string usersig;
 
 // 3780 pixels per meter is equivalent to 96 DPI, typical on desktop monitors.
 static const int kPixelsPerMeter = 3780;
@@ -38,6 +44,9 @@ static bool       test_env;
 static std::string peer_ip;
 static uint16_t      peer_port = 0;
 static bool       is_lan_start = false;
+
+static bool is_init_imsdk = false;
+static bool is_login_imsdk = false;
 
 static LRESULT CALLBACK MainViewProc(HWND, UINT, WPARAM, LPARAM);
 static LRESULT CALLBACK VideoViewProc(HWND, UINT, WPARAM, LPARAM);
@@ -1874,6 +1883,27 @@ RenderBuffer()
 }
 
 
+static void on_imsdk_login_succ(void *data)
+{
+	is_login_imsdk = true;
+	
+	WPARAM wParam;
+
+	wParam = BN_CLICKED;
+
+	wParam <<= 16;   // 左移16位
+
+	wParam |= ID_INIT;    // 按位或
+
+	::PostMessage(main_app.hToolbar, WM_COMMAND, wParam, 0);
+}
+
+static void on_imsdk_login_failed(int code,const char*errmsg, void *data)
+{
+	is_login_imsdk = false;
+	ui_xcast_err(code, errmsg, &main_app);
+}
+
 /* 主窗口消息处理过程 */
 static LRESULT CALLBACK
 MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
@@ -1886,66 +1916,52 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		switch (wmId) {
 		case ID_INIT:
 		{
-			main_observer.reset(new XCastObserver());
-
-			if (!is_initialized)
+			if (!is_init_imsdk)
 			{
-				XCastUtil::setAccountHandler(main_observer);
-				XCastStartParam *param = new XCastStartParam;
-				std::unique_ptr<XCastStartParam> up(param);
-				//up->tinyid = 67890;
+				int ret = TIMInit();
+				is_init_imsdk = ret == 0;
+			}
 
-				char identifier[XCAST_MAX_PATH];
-				sprintf(identifier, "%llu", account);
-				up->identifier = identifier;
-				up->isTestEvn = false;
-				up->sdkappid = appid;
-				up->accounttype = 14180;
+			if (!is_login_imsdk)
+			{
+				//TIM_DECL int	TIMLogin(int sdk_app_id, const TIMUserInfo *tim_user, const char* user_sig, TIMCommCB *callback);
+				TIMUserInfo user;
+				
+				char uid[128];
+				sprintf(uid, "%llu", account);
+				user.identifier = "adev0";
 
-				XCastUtil::startContext(std::move(up), [&](int code, const char *err) {
-					is_initialized = code == 0;
-					//new_ui_init_xcast(is_initialized, &main_app);
-
-					HWND hToolbar = FindWindowEx(hWnd, NULL, TOOLBARCLASSNAME, NULL);
-					TBBUTTONINFO tbInfo;
-					tbInfo.cbSize = sizeof(TBBUTTONINFO);
-					tbInfo.dwMask = TBIF_TEXT | TBIF_IMAGE;
-					tbInfo.iImage = is_initialized ? MAKELONG(4, 0) : MAKELONG(3, 0);
-					tbInfo.pszText = is_initialized ? TEXT("停止") : TEXT("启动");
-					SendMessage(hToolbar, TB_SETBUTTONINFO, (WPARAM)ID_INIT, (LPARAM)&tbInfo);
-
-					if (!is_initialized) {
-						HTREEITEM         hItem;
-						char              path[XCAST_MAX_PATH] = { 0 };
-						snprintf(path, XCAST_MAX_PATH, "stream.%s", "stream1");
-						hItem = GetTreeItem(main_app.hTreeView, path, NULL);
-						if (hItem) {
-							RemoveTreeItem(main_app.hTreeView, hItem);
-						}
-					}
-
-					if (is_initialized)
-					{
-						XCastUtil::setGlobalHandler(main_observer);
-					}
-				});
+				char appidstr[128];
+				sprintf(appidstr, "%d", appid);
+				user.app_id_at_3rd = appidstr;
+				user.account_type = "14180";
+				TIMCommCB callback;
+				callback.OnSuccess = on_imsdk_login_succ;
+				callback.OnError = on_imsdk_login_failed;
+				TIMLogin(appid, &user, "eJxlj01vgkAURff8CsKWps6HQ8WkC2xpJKEiFTVlQ3Bm0BdToDhYpel-r6UmnaRve87Nve-TME3TSsLFbc551ZYqU*daWubYtJB18wfrGkSWq4w24h*UpxoameWFkk0PMWOMIKQ7IGSpoICrkQt51PFB7LO*4zc-vISpgx1XV2Dbw2d-*RBM02LON1WszqPQTkTQfrROhN*7esMpe01XydPL4MTCIt6lHvgeZrNyvVqz3ZQvctI90iAtZm4gvQHYNkT7ONq6k865m3D-XqtU8CavDxFyGTWiQ40eZXOAquwFgjDDhKKfs4wv4xusylvs", &callback);
 			}
 			else
 			{
-				XCastUtil::stopContext([&](int32_t errcode, const char *err) {
-					is_stream_running = false;
-					is_initialized = false;
-					//new_ui_init_xcast(is_initialized, &main_app);
+				main_observer.reset(new XCastObserver());
 
-					HTREEITEM         hItem;
-					char              path[XCAST_MAX_PATH] = { 0 };
-					snprintf(path, XCAST_MAX_PATH, "stream.%s", "stream1");
-					hItem = GetTreeItem(main_app.hTreeView, path, NULL);
-					if (hItem) {
-						RemoveTreeItem(main_app.hTreeView, hItem);
-					}
+				if (!is_initialized)
+				{
+					XCastUtil::setAccountHandler(main_observer);
+					XCastStartParam *param = new XCastStartParam;
+					std::unique_ptr<XCastStartParam> up(param);
+					//up->tinyid = 67890;
 
-					{
+					char identifier[XCAST_MAX_PATH];
+					sprintf(identifier, "%llu", account);
+					up->identifier = "adev0";
+					up->isTestEvn = false;
+					up->sdkappid = appid;
+					up->accounttype = 14180;
+
+					XCastUtil::startContext(std::move(up), [&](int code, const char *err) {
+						is_initialized = code == 0;
+						//new_ui_init_xcast(is_initialized, &main_app);
+
 						HWND hToolbar = FindWindowEx(hWnd, NULL, TOOLBARCLASSNAME, NULL);
 						TBBUTTONINFO tbInfo;
 						tbInfo.cbSize = sizeof(TBBUTTONINFO);
@@ -1963,25 +1979,66 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 								RemoveTreeItem(main_app.hTreeView, hItem);
 							}
 						}
-					}
 
-
-					{
-						HWND hToolbar = FindWindowEx(hWnd, NULL, TOOLBARCLASSNAME, NULL);
-						TBBUTTONINFO tbInfo;
-						tbInfo.cbSize = sizeof(TBBUTTONINFO);
-						tbInfo.dwMask = TBIF_TEXT | TBIF_IMAGE;
-						tbInfo.iImage = is_stream_running ? MAKELONG(4, 0) : MAKELONG(3, 0);
-						tbInfo.pszText = is_stream_running ? TEXT("退房") : TEXT("进房");
-						SendMessage(hToolbar, TB_SETBUTTONINFO, (WPARAM)ID_STARTSTREAM, (LPARAM)&tbInfo);
-
-						if (!is_stream_running) {
-							/* 刷新界面 */
-							ClearTrackBuffer(NULL, false);
-							InvalidVideoView();
+						if (is_initialized)
+						{
+							XCastUtil::setGlobalHandler(main_observer);
 						}
-					}
-				});
+					});
+				}
+				else
+				{
+					XCastUtil::stopContext([&](int32_t errcode, const char *err) {
+						is_stream_running = false;
+						is_initialized = false;
+						//new_ui_init_xcast(is_initialized, &main_app);
+
+						HTREEITEM         hItem;
+						char              path[XCAST_MAX_PATH] = { 0 };
+						snprintf(path, XCAST_MAX_PATH, "stream.%s", "stream1");
+						hItem = GetTreeItem(main_app.hTreeView, path, NULL);
+						if (hItem) {
+							RemoveTreeItem(main_app.hTreeView, hItem);
+						}
+
+						{
+							HWND hToolbar = FindWindowEx(hWnd, NULL, TOOLBARCLASSNAME, NULL);
+							TBBUTTONINFO tbInfo;
+							tbInfo.cbSize = sizeof(TBBUTTONINFO);
+							tbInfo.dwMask = TBIF_TEXT | TBIF_IMAGE;
+							tbInfo.iImage = is_initialized ? MAKELONG(4, 0) : MAKELONG(3, 0);
+							tbInfo.pszText = is_initialized ? TEXT("停止") : TEXT("启动");
+							SendMessage(hToolbar, TB_SETBUTTONINFO, (WPARAM)ID_INIT, (LPARAM)&tbInfo);
+
+							if (!is_initialized) {
+								HTREEITEM         hItem;
+								char              path[XCAST_MAX_PATH] = { 0 };
+								snprintf(path, XCAST_MAX_PATH, "stream.%s", "stream1");
+								hItem = GetTreeItem(main_app.hTreeView, path, NULL);
+								if (hItem) {
+									RemoveTreeItem(main_app.hTreeView, hItem);
+								}
+							}
+						}
+
+
+						{
+							HWND hToolbar = FindWindowEx(hWnd, NULL, TOOLBARCLASSNAME, NULL);
+							TBBUTTONINFO tbInfo;
+							tbInfo.cbSize = sizeof(TBBUTTONINFO);
+							tbInfo.dwMask = TBIF_TEXT | TBIF_IMAGE;
+							tbInfo.iImage = is_stream_running ? MAKELONG(4, 0) : MAKELONG(3, 0);
+							tbInfo.pszText = is_stream_running ? TEXT("退房") : TEXT("进房");
+							SendMessage(hToolbar, TB_SETBUTTONINFO, (WPARAM)ID_STARTSTREAM, (LPARAM)&tbInfo);
+
+							if (!is_stream_running) {
+								/* 刷新界面 */
+								ClearTrackBuffer(NULL, false);
+								InvalidVideoView();
+							}
+						}
+					});
+				}
 			}
 		}
 
