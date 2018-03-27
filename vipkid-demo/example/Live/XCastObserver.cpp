@@ -105,7 +105,16 @@ void XCastObserver::onRoomDisconnected(int result, const char *error)
 	has_enter_room = false;
 }
 
-void XCastObserver::onEndpointsUpdateInfo(XCastEndpointEvent event, XCastEndpoint infos)
+void XCastObserver::onEndpointUpdateInfo(XCastEndpointEvent event, XCastEndpoint infos)
+{
+	const std::string streamid = XCastHelper::getInstance()->getStreamID();
+	if (streamid.length() > 0)
+	{
+		ui_track_update(streamid.c_str(), event, infos, &main_app);
+	}
+}
+
+void XCastObserver::onEndpointCaptureUpdate(XCastEndpointEvent event, XCastEndpoint infos)
 {
 	const std::string streamid = XCastHelper::getInstance()->getStreamID();
 	if (streamid.length() > 0)

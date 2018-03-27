@@ -8,7 +8,7 @@ struct XCastEndpoint;
 enum XCastEndpointEvent;
 
 
- int32_t new_track_event(void *user_data, xcast_data &e);
+ //int32_t new_track_event(void *user_data, xcast_data &e);
 
 
  int32_t new_video_preview_event(void *user_data,const XCastVideoFrame *frame);

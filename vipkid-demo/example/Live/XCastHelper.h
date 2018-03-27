@@ -496,7 +496,7 @@ private:
 
 
 private:
-	void notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCastEndpointEvent event, const bool has);
+	void notifyTrackEndpointEvent(uint64_t uin, std::string userid, XCastEndpointEvent event, const bool has, bool isCaptureChanged = false);
 
 private:
 	inline void atomicAccountCache(std::function<void()> func);

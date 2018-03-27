@@ -116,7 +116,8 @@ public:
 	virtual void onExitRoomComplete(int result, const char *error) = 0;
 	virtual void onRoomDisconnected(int result, const char *error) = 0;
 
-	virtual void onEndpointsUpdateInfo(XCastEndpointEvent event,XCastEndpoint infos) = 0;
+	virtual void onEndpointUpdateInfo(XCastEndpointEvent event,XCastEndpoint infos) = 0;
+	virtual void onEndpointCaptureUpdate(XCastEndpointEvent event, XCastEndpoint infos) = 0;
 	virtual bool needRoomCallbackLocalVideo() = 0;
 	virtual void onLocalVideoPreview(const XCastVideoFrame *frame) = 0;
 

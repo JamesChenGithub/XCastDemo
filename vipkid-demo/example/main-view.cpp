@@ -43,7 +43,7 @@ static LRESULT CALLBACK MainViewProc(HWND, UINT, WPARAM, LPARAM);
 static LRESULT CALLBACK VideoViewProc(HWND, UINT, WPARAM, LPARAM);
 static INT_PTR CALLBACK About(HWND, UINT, WPARAM, LPARAM);
 
-static void TrackBufferRefreshLayers(TrackVideoBuffer *buffer, xcast_data &data);
+//static void TrackBufferRefreshLayers(TrackVideoBuffer *buffer, xcast_data &data);
 
 void CalculateUpdateRect();
 void RenderBuffer();
@@ -965,40 +965,40 @@ ui_device_update(const char *dev, int32_t clazz, int32_t state,
 //
 //	return XCAST_OK;
 //}
-
-int32_t
-ui_device_preview(xcast_data &evt, void *user_data)
-{
-	const char       *dev = evt["src"];
-
-	if (!dev) return XCAST_ERR_INVALID_ARGUMENT;
-
-	switch ((int32_t)evt["class"]) {
-	case xc_device_camera:
-	case xc_device_screen_capture: {
-		/* 摄像头预览数据渲染 */
-		int32_t         width = evt["width"];
-		int32_t         height = evt["height"];
-		int32_t         format = evt["format"];
-		if (format == xc_media_argb32) {
-			TrackVideoBuffer *buffer = GetTrackBuffer(dev, width, height);
-			memcpy(buffer->data, evt["data"].bytes_val(), width * height * kBytesPerPixel);
-			InvalidVideoView(&buffer->rcOut);
-		}
-		else if (format == xc_media_layer) {
-			TrackVideoBuffer *buffer = GetTrackBuffer(dev, width, height, true);
-			TrackBufferRefreshLayers(buffer, evt["data"]);
-		}
-		break;
-	}
-	case xc_device_mic:
-		break;
-	default:
-		break;
-	}
-
-	return XCAST_OK;
-}
+//
+//int32_t
+//ui_device_preview(xcast_data &evt, void *user_data)
+//{
+//	const char       *dev = evt["src"];
+//
+//	if (!dev) return XCAST_ERR_INVALID_ARGUMENT;
+//
+//	switch ((int32_t)evt["class"]) {
+//	case xc_device_camera:
+//	case xc_device_screen_capture: {
+//		/* 摄像头预览数据渲染 */
+//		int32_t         width = evt["width"];
+//		int32_t         height = evt["height"];
+//		int32_t         format = evt["format"];
+//		if (format == xc_media_argb32) {
+//			TrackVideoBuffer *buffer = GetTrackBuffer(dev, width, height);
+//			memcpy(buffer->data, evt["data"].bytes_val(), width * height * kBytesPerPixel);
+//			InvalidVideoView(&buffer->rcOut);
+//		}
+//		else if (format == xc_media_layer) {
+//			TrackVideoBuffer *buffer = GetTrackBuffer(dev, width, height, true);
+//			TrackBufferRefreshLayers(buffer, evt["data"]);
+//		}
+//		break;
+//	}
+//	case xc_device_mic:
+//		break;
+//	default:
+//		break;
+//	}
+//
+//	return XCAST_OK;
+//}
 
 tree_item_data_t *
 CreateItemData(int32_t icon, const char *path, const char *text)
@@ -1605,31 +1605,31 @@ TrackBufferRemoveLayers(TrackVideoBuffer *buffer)
 	buffer->layers.clear();
 }
 
-static void
-TrackBufferRefreshLayers(TrackVideoBuffer *buffer, xcast_data &data)
-{
-	if (buffer->layers.size() > data.size()) {
-		const size_t len = buffer->layers.size() - data.size();
-		auto last = buffer->layers.end();
-		for (size_t i = 0; i < len; ++i) {
-			--last;
-			TrackVideoLayerDestroy(&(*last));
-		}
-		buffer->layers.resize(data.size());
-	}
-	else if (buffer->layers.size() < data.size()) {
-		buffer->layers.resize(data.size());
-		for (size_t i = buffer->layers.size(); i < data.size(); ++i) {
-			TrackVideoLayerCreate(&(buffer->layers[i]), data.at(i));
-		}
-	}
-
-	CalculateUpdateRect();
-	for (size_t i = 0; i < buffer->layers.size(); ++i) {
-		TrackVideoLayerRefresh(&buffer->layers[i], data.at(i),
-			buffer->width, buffer->height, &(buffer->rcOut));
-	}
-}
+//static void
+//TrackBufferRefreshLayers(TrackVideoBuffer *buffer, xcast_data &data)
+//{
+//	if (buffer->layers.size() > data.size()) {
+//		const size_t len = buffer->layers.size() - data.size();
+//		auto last = buffer->layers.end();
+//		for (size_t i = 0; i < len; ++i) {
+//			--last;
+//			TrackVideoLayerDestroy(&(*last));
+//		}
+//		buffer->layers.resize(data.size());
+//	}
+//	else if (buffer->layers.size() < data.size()) {
+//		buffer->layers.resize(data.size());
+//		for (size_t i = buffer->layers.size(); i < data.size(); ++i) {
+//			TrackVideoLayerCreate(&(buffer->layers[i]), data.at(i));
+//		}
+//	}
+//
+//	CalculateUpdateRect();
+//	for (size_t i = 0; i < buffer->layers.size(); ++i) {
+//		TrackVideoLayerRefresh(&buffer->layers[i], data.at(i),
+//			buffer->width, buffer->height, &(buffer->rcOut));
+//	}
+//}
 
 static void
 TrackBufferDraw(TrackVideoBuffer *buffer, bool bottom)
@@ -1985,8 +1985,8 @@ MainViewProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 				param->roomOpera.captureMic = lastMicId;
 				param->roomOpera.outputSpeaker = lastSpeakerId;
 
-				param->roomOpera.autoCameraPreview = true;
-				param->roomOpera.autoCameraCapture = true;
+				param->roomOpera.autoCameraPreview = false;
+				param->roomOpera.autoCameraCapture = false;
 				param->roomOpera.autoMic = true;
 				param->roomOpera.autoSpeaker = true;
 
